@@ -18,7 +18,10 @@
     <ClCompile Include="src\XEngine\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Core.h">
+    <ClCompile Include="src\XEngine\Log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\XCore.h">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -30,6 +33,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\EntryPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

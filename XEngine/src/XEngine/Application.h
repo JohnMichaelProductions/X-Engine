@@ -1,5 +1,5 @@
 #pragma once
-#include "Core.h"
+#include "XCore.h"
 namespace XEngine 
 {
 	class XENGINE_API Application

@@ -11,10 +11,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XEngine\Log.cpp" />
     <ClCompile Include="src\XEngine\Application.cpp" />
-    <ClCompile Include="src\XEngine\Core.h" />
+    <ClCompile Include="src\XEngine\XCore.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\XEngine\Log.h" />
     <ClInclude Include="src\XEngine.h" />
     <ClInclude Include="src\XEngine\Application.h" />
     <ClInclude Include="src\XEngine\EntryPoint.h" />
@@ -67,6 +69,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_BUILD_DLL;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)XEngine\vendor\spdlog\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -81,6 +84,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_BUILD_DLL;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)XEngine\vendor\spdlog\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
