@@ -4,4 +4,4 @@
 bin/
 bin-int/
 #File extensions to ignore
-.user
+.user/
