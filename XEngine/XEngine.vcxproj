@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -9,42 +9,39 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\XEngine\Log.cpp" />
-    <ClCompile Include="src\XEngine\Application.cpp" />
-    <ClCompile Include="src\XEngine\XCore.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\XEngine\Log.h" />
-    <ClInclude Include="src\XEngine.h" />
-    <ClInclude Include="src\XEngine\Application.h" />
-    <ClInclude Include="src\XEngine\EntryPoint.h" />
+    <ProjectConfiguration Include="Dist|x64">
+      <Configuration>Dist</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{5309B837-3AE5-4F7D-91C8-7B049E2E7FB0}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
     <RootNamespace>XEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
-  <ImportGroup Label="Shared">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -52,47 +49,225 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)</IntDir>
+    <OutDir>..\bin\Debug-windows-x86_64\XEngine\</OutDir>
+    <IntDir>..\bin-int\Debug-windows-x86_64\XEngine\</IntDir>
+    <TargetName>XEngine</TargetName>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)</IntDir>
+    <OutDir>..\bin\Release-windows-x86_64\XEngine\</OutDir>
+    <IntDir>..\bin-int\Release-windows-x86_64\XEngine\</IntDir>
+    <TargetName>XEngine</TargetName>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\bin\Dist-windows-x86_64\XEngine\</OutDir>
+    <IntDir>..\bin-int\Dist-windows-x86_64\XEngine\</IntDir>
+    <TargetName>XEngine</TargetName>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_BUILD_DLL;</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)XEngine\vendor\spdlog\include;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_BUILD_DLL;X_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\bin\Debug-windows-x86_64\XEngine\XEngine.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\XEngine\XEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\XEngine\XEngine.dll ..\bin\Debug-windows-x86_64\RainfallCity &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\XEngine\XEngine.dll ..\bin\Debug-windows-x86_64\RainfallCity &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_BUILD_DLL;X_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_BUILD_DLL;</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)XEngine\vendor\spdlog\include;</AdditionalIncludeDirectories>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\bin\Release-windows-x86_64\XEngine\XEngine.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\XEngine\XEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\XEngine\XEngine.dll ..\bin\Release-windows-x86_64\RainfallCity &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\XEngine\XEngine.dll ..\bin\Release-windows-x86_64\RainfallCity &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_BUILD_DLL;X_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ImportLibrary>..\bin\Dist-windows-x86_64\XEngine\XEngine.lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\XEngine\XEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\XEngine\XEngine.dll ..\bin\Dist-windows-x86_64\RainfallCity &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\XEngine\XEngine.dll ..\bin\Dist-windows-x86_64\RainfallCity &gt; nul)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\XEngine.h" />
+    <ClInclude Include="src\XEngine\Application.h" />
+    <ClInclude Include="src\XEngine\EntryPoint.h" />
+    <ClInclude Include="src\XEngine\Log.h" />
+    <ClInclude Include="src\XEngine\XCore.h" />
+    <ClInclude Include="vendor\spdlog\bench\utils.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\async.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\async_logger-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\async_logger.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\common-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\common.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\backtracer-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\backtracer.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\circular_q.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\console_globals.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\file_helper-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\file_helper.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\fmt_helper.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\log_msg-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\log_msg.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\log_msg_buffer-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\log_msg_buffer.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\mpmc_blocking_q.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\null_mutex.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\os-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\os.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\pattern_formatter-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\pattern_formatter.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\periodic_worker-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\periodic_worker.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\registry-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\registry.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\synchronous_factory.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\tcp_client.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\thread_pool-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\thread_pool.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\details\windows_include.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bin_to_hex.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bundled\chrono.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bundled\color.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bundled\compile.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bundled\core.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bundled\format-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bundled\format.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bundled\locale.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bundled\ostream.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bundled\posix.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bundled\printf.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\bundled\ranges.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\fmt.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\fmt\ostr.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\formatter.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\logger-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\logger.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\android_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\ansicolor_sink-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\ansicolor_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\base_sink-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\base_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\basic_file_sink-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\basic_file_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\daily_file_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\dist_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\dup_filter_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\msvc_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\null_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\ostream_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\ringbuffer_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\rotating_file_sink-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\rotating_file_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\sink-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\stdout_color_sinks-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\stdout_color_sinks.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\stdout_sinks-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\stdout_sinks.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\syslog_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\systemd_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\tcp_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\wincolor_sink-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\wincolor_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\sinks\win_eventlog_sink.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\spdlog-inl.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\spdlog.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\tweakme.h" />
+    <ClInclude Include="vendor\spdlog\include\spdlog\version.h" />
+    <ClInclude Include="vendor\spdlog\tests\catch.hpp" />
+    <ClInclude Include="vendor\spdlog\tests\includes.h" />
+    <ClInclude Include="vendor\spdlog\tests\test_sink.h" />
+    <ClInclude Include="vendor\spdlog\tests\utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\XEngine\Application.cpp" />
+    <ClCompile Include="src\XEngine\Log.cpp" />
+    <ClCompile Include="vendor\spdlog\bench\async_bench.cpp" />
+    <ClCompile Include="vendor\spdlog\bench\bench.cpp" />
+    <ClCompile Include="vendor\spdlog\bench\formatter-bench.cpp" />
+    <ClCompile Include="vendor\spdlog\bench\latency.cpp" />
+    <ClCompile Include="vendor\spdlog\example\example.cpp" />
+    <ClCompile Include="vendor\spdlog\src\async.cpp" />
+    <ClCompile Include="vendor\spdlog\src\color_sinks.cpp" />
+    <ClCompile Include="vendor\spdlog\src\file_sinks.cpp" />
+    <ClCompile Include="vendor\spdlog\src\fmt.cpp" />
+    <ClCompile Include="vendor\spdlog\src\spdlog.cpp" />
+    <ClCompile Include="vendor\spdlog\src\stdout_sinks.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\main.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_async.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_backtrace.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_create_dir.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_daily_logger.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_dup_filter.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_errors.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_eventlog.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_file_helper.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_file_logging.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_fmt_helper.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_macros.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_misc.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_mpmc_q.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_pattern_formatter.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_registry.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_stdout_api.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\test_systemd.cpp" />
+    <ClCompile Include="vendor\spdlog\tests\utils.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
