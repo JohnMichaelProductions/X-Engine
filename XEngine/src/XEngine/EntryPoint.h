@@ -20,8 +20,13 @@ void Initialization()
 	X_WARN("Warn Client Test");
 	X_ERROR("Error Client Test");
 	printf("Logging system working\n");
+	X_CORE_TRACE("Now using Logging system");
+	// Pre-Compiled Headers
+	X_CORE_TRACE("Using Pre-Compiled Headers");
+	// Event System
+	X_CORE_TRACE("Starting Event System");
 	// Finish
-	printf("X-Engine initialization finished\n");
+	X_CORE_INFO("X-Engine initialization finished");
 }
 #pragma endregion
 #pragma region MAIN FUNCTION

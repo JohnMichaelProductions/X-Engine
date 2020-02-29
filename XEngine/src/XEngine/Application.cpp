@@ -1,4 +1,5 @@
 #pragma region INCLUDE / NAMESPACES
+#include "Xpch.h"
 #include <stdio.h>
 #include "Application.h"
 #include "../XEngine/EventSystem/ApplicationEvent.h"
@@ -7,7 +8,7 @@
 namespace XEngine
 {
 	// Constructor: Print Application Created
-	Application::Application() { printf("Application Created\n"); }
+	Application::Application() { X_TRACE("Application Created"); }
 	// Destructor: Print Application Deleted
 	Application::~Application() { printf("Application Deleted\n"); }
 	// Function: Keeps application alive and running

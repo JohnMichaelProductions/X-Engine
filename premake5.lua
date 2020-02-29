@@ -8,6 +8,8 @@ project "XEngine"
 	language "C++"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
+	pchheader "Xpch.h"
+	pchsource "XEngine/src/Xpch.cpp"
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
 	includedirs { "%{prj.name}/src", "%{prj.name}/vendor/spdlog/include" }
 	filter "system:windows"

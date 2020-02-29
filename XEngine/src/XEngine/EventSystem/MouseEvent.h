@@ -1,7 +1,6 @@
 #pragma once
 #pragma region INCLUDE / NAMESPACES
 #include "Event.h" 
-#include <sstream>
 #pragma endregion
 namespace XEngine 
 {

@@ -1,6 +1,5 @@
 #pragma once
 #pragma region INCLUDE / NAMESPACES
-#include <memory>
 #include "XCore.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
