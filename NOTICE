@@ -1,0 +1,5 @@
+// Tools being used in X-Engine
+Using spdlog;
+Link https://github.com/gabime/spdlog
+Using premake5;
+Link https://github.com/premake/premake-core
