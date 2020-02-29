@@ -8,3 +8,4 @@
 #else
 	#error X-Engine only supports Windows 64-bit
 #endif
+#define BIT(x) (1 << x)

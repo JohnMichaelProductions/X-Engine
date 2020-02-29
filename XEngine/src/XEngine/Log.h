@@ -2,6 +2,7 @@
 #include <memory>
 #include "XCore.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 namespace XEngine
 {
 	class XENGINE_API Log

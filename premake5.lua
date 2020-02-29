@@ -9,7 +9,7 @@ project "XEngine"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
-	includedirs { "%{prj.name}/vendor/spdlog/include" }
+	includedirs { "%{prj.name}/src", "%{prj.name}/vendor/spdlog/include" }
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
@@ -32,7 +32,7 @@ project "RainfallCity"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
-	includedirs { "XEngine/vendor/spdlog/include", "XEngine/src"}
+	includedirs { "%{prj.name}/src", "XEngine/vendor/spdlog/include", "XEngine/src"}
 	links { "XEngine" }
 	filter "system:windows"
 		cppdialect "C++17"
