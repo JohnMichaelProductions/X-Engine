@@ -1,29 +1,37 @@
 #pragma once
+#pragma region INCLUDE / NAMESPACES
 #include "../XCore.h"
 #include <string>
 #include <functional>
+#pragma endregion
 namespace XEngine
 {
+	#pragma region EVENT TYPE ENUM CLASS
 	// Event Types Enum:
 	// All the events we want to record are in this enum
 	enum class EventType
 	{
 		None = 0,
+		// Application Events:
 		WindowClose,
 		WindowResize,
 		WindowFocus,
 		WindowLostFocus,
 		WindowMoved,
-		AppTrick,
+		AppTick,
 		AppUpdate,
 		AppRender,
+		// Key Events:
 		KeyPressed,
 		KeyReleased,
+		// Mouse Events:
 		MouseButtonPressed,
 		MouseButtonReleased,
 		MouseMoved,
 		MouseScrolled
 	};
+	#pragma endregion
+	#pragma region EVENT CATEGORY ENUM
 	// Event Category Enum:
 	// With this enum we can single out events based on their category
 	enum EventCategory
@@ -35,15 +43,14 @@ namespace XEngine
 		EventCategoryMouse       = BIT(3),
 		EventCategoryMouseButton = BIT(4)
 	};
-//Macro for event names
-#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
-virtual EventType GetEventType() const override { return GetStaticType(); }\
-virtual const char* GetName() const override { return #type; }
-#define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
+	#pragma endregion
+	#pragma region EVENT CLASS
 	// Event Class:
 	// Base class for events
 	class XENGINE_API Event 
 	{
+		// Add Event Dispactcher Class as a friend so it
+		// can access its private/protected members
 		friend class EventDispatcher;
 	public:
 		// Function: Return event type
@@ -62,6 +69,8 @@ virtual const char* GetName() const override { return #type; }
 		// has been handled or not
 		bool m_Handled = false;
 	};
+	#pragma endregion
+	#pragma region EVENT DISPACTCHER CLASS
 	// Event Dispactcher Class:
 	// Class to dispactch events based on their type
 	class EventDispatcher
@@ -83,5 +92,13 @@ virtual const char* GetName() const override { return #type; }
 	private:
 		Event& m_Event;
 	};
+	#pragma endregion
 	inline std::ostream& operator<<(std::ostream& os, const Event& e) { return os << e.ToString(); }
 }
+#pragma region MACROS
+// Macro for event names
+#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
+virtual EventType GetEventType() const override { return GetStaticType(); }\
+virtual const char* GetName() const override { return #type; }
+#define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
+#pragma endregion
