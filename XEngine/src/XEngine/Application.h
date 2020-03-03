@@ -1,6 +1,8 @@
 #pragma once
 #pragma region INCLUDE / NAMESPACES
 #include "XCore.h"
+#include "EventSystem/Event.h"
+#include "Window.h"
 #pragma endregion
 namespace XEngine
 {
@@ -12,6 +14,9 @@ namespace XEngine
 		Application();
 		virtual ~Application();
 		void Run();
+	private:
+		std::unique_ptr<Window> m_Window;
+		bool m_Running = true;
 	};
 	#pragma endregion
 	Application* CreateApplication();

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Platforms">
+      <UniqueIdentifier>{DDACA145-4917-56BC-9255-0762FEFE3311}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platforms\Win10">
+      <UniqueIdentifier>{3B563D43-A7E1-AA07-B0F2-2DFC1CFD0608}</UniqueIdentifier>
+    </Filter>
     <Filter Include="XEngine">
       <UniqueIdentifier>{D342B922-3F22-38BE-483A-C394B4989E1F}</UniqueIdentifier>
     </Filter>
@@ -9,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platforms\Win10\Win10Window.h">
+      <Filter>Platforms\Win10</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine.h" />
     <ClInclude Include="src\XEngine\Application.h">
       <Filter>XEngine</Filter>
@@ -31,18 +40,26 @@
     <ClInclude Include="src\XEngine\Log.h">
       <Filter>XEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\Window.h">
+      <Filter>XEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Xpch.h">
+      <Filter>XEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\XCore.h">
       <Filter>XEngine</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Xpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platforms\Win10\Win10Window.cpp">
+      <Filter>Platforms\Win10</Filter>
+    </ClCompile>
     <ClCompile Include="src\XEngine\Application.cpp">
       <Filter>XEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\Log.cpp">
       <Filter>XEngine</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Xpch.cpp" />
+    <ClCompile Include="src\Xpch.cpp" />
   </ItemGroup>
 </Project>

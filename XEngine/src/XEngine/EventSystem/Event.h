@@ -53,11 +53,11 @@ namespace XEngine
 		// can access its private/protected members
 		friend class EventDispatcher;
 	public:
-		// Function: Return event type
+		// Pure Virtual Function
 		virtual EventType GetEventType() const = 0;
-		// Function: Return event name
+		// Pure Virtual Function
 		virtual const char* GetName() const = 0;
-		// Function: Return event category flags
+		// Pure Virtual Function
 		virtual int GetCategoryFlags() const = 0;
 		// Function: Converts to string by getting event name
 		virtual std::string ToString() const { return GetName(); }
@@ -75,6 +75,7 @@ namespace XEngine
 	// Class to dispactch events based on their type
 	class EventDispatcher
 	{
+		// Define general data type T
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
 	public:
@@ -97,8 +98,6 @@ namespace XEngine
 }
 #pragma region MACROS
 // Macro for event names
-#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
-virtual EventType GetEventType() const override { return GetStaticType(); }\
-virtual const char* GetName() const override { return #type; }
+#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; } virtual EventType GetEventType() const override { return GetStaticType(); } virtual const char* GetName() const override { return #type; }
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 #pragma endregion

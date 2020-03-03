@@ -17,6 +17,7 @@ namespace XEngine
 		std::string ToString() const override
 		{
 			std::stringstream ss;
+			// Width = 20, Height = 20; Print: "WindowResizeEvent: 20, 20"
 			ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
 			return ss.str();
 		}

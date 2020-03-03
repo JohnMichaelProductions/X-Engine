@@ -4,27 +4,25 @@
 #include "Application.h"
 #include "../XEngine/EventSystem/ApplicationEvent.h"
 #include "../XEngine/Log.h"
+#include <GLFW/glfw3.h>
 #pragma endregion
 namespace XEngine
 {
 	// Constructor: Print Application Created
-	Application::Application() { X_TRACE("Application Created"); }
+	Application::Application() {  m_Window = std::unique_ptr<Window>(Window::Create()); }
 	// Destructor: Print Application Deleted
 	Application::~Application() { printf("Application Deleted\n"); }
 	// Function: Keeps application alive and running
 	#pragma region RUN FUNCTION
 	void Application::Run() 
 	{
-		// New Window Resize Event
-		WindowResizeEvent test(1920, 1080);
-		// Log the variable test if it is an application event
-		if (test.IsInCategory(EventCategoryApplication))
-			X_TRACE(test);
-		// Else error
-		else
-			X_ERROR("Variable: \"test\" is not in the Application Event Category");
 		// Keeps the application running
-		while(true); 
+		while (m_Running)
+		{
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate(); 
+		}
 	}
 	#pragma endregion
 }

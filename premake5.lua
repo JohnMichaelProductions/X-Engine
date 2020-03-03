@@ -2,6 +2,9 @@ workspace "XEngine"
 	architecture "x64"
 	configurations { "Debug", "Release", "Dist" }
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+IncludeDir = {}
+IncludeDir["GLFW"] = "XEngine/vendor/GLFW/include"
+include "XEngine/vendor/GLFW"
 project "XEngine"
 	location "XEngine"
 	kind "SharedLib"
@@ -11,7 +14,8 @@ project "XEngine"
 	pchheader "Xpch.h"
 	pchsource "XEngine/src/Xpch.cpp"
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
-	includedirs { "%{prj.name}/src", "%{prj.name}/vendor/spdlog/include" }
+	includedirs { "%{prj.name}/src", "%{prj.name}/vendor/spdlog/include", "%{IncludeDir.GLFW}" }
+	links{ "GLFW", "opengl32.lib" }
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
@@ -34,7 +38,7 @@ project "RainfallCity"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
-	includedirs { "%{prj.name}/src", "XEngine/vendor/spdlog/include", "XEngine/src"}
+	includedirs { "%{prj.name}/src", "XEngine/vendor/spdlog/include", "XEngine/src" }
 	links { "XEngine" }
 	filter "system:windows"
 		cppdialect "C++17"

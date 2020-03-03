@@ -5,7 +5,7 @@ extern XEngine::Application* XEngine::CreateApplication();
 void Initialization()
 {
 	// Start
-	printf("X-Engine starting initialization\n");
+	printf("---X-Engine starting initialization---\n");
 	// Logging
 	printf("Preparing Logging system\n");
 	XEngine::Log::Init();
@@ -26,7 +26,7 @@ void Initialization()
 	// Event System
 	X_CORE_TRACE("Starting Event System");
 	// Finish
-	X_CORE_INFO("X-Engine initialization finished");
+	X_CORE_INFO("X-Engine initialization finished\n\n\n");
 }
 #pragma endregion
 #pragma region MAIN FUNCTION
