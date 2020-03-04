@@ -2,6 +2,7 @@
 #pragma region INCLUDE / NAMESPACES
 #include "XCore.h"
 #include "EventSystem/Event.h"
+#include "../XEngine/EventSystem/ApplicationEvent.h"
 #include "Window.h"
 #pragma endregion
 namespace XEngine
@@ -14,7 +15,9 @@ namespace XEngine
 		Application();
 		virtual ~Application();
 		void Run();
+		void OnEvent(Event& e);
 	private:
+		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 	};
