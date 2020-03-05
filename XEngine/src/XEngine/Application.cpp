@@ -7,7 +7,7 @@
 #pragma endregion
 namespace XEngine
 {
-#define BIND_EVENT_FN(x) std::bind(&Application::OnEvent, this, std::placeholders::_1)
+	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 	// Constructor: Print Application Created
 	Application::Application() 
 	{  
@@ -16,11 +16,11 @@ namespace XEngine
 	}
 	// Destructor: Print Application Deleted
 	Application::~Application() { printf("Application Deleted\n"); }
-	void Application::OnEvent(Event& e) 
-	{ 
+	void Application::OnEvent(Event& e)
+	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		X_CORE_INFO("{0}", e); 
+		X_CORE_TRACE("{0}", e);
 	}
 	// Function: Keeps application alive and running
 	#pragma region RUN FUNCTION

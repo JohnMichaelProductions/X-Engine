@@ -1,8 +1,7 @@
 #pragma once
 #pragma region INCLUDE / NAMESPACES
+#include "Xpch.h"
 #include "../XCore.h"
-#include <string>
-#include <functional>
 #pragma endregion
 namespace XEngine
 {
@@ -75,7 +74,6 @@ namespace XEngine
 	// Class to dispactch events based on their type
 	class EventDispatcher
 	{
-		// Define general data type T
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
 	public:
