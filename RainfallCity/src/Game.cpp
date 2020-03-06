@@ -1,7 +1,11 @@
-#pragma region INCLUDE / NAMESPACES
 #include <XEngine.h>
-#pragma endregion
-#pragma region GAME CLASS
+class XLayer : public XEngine::Layer
+{
+public:
+	XLayer() : Layer("XLayer") {}
+	void OnUpdate() override { X_INFO("XLayer::Update"); }
+	void OnEvent(XEngine::Event& event) override { X_TRACE("{0}", event); }
+};
 class Game : public XEngine::Application
 {
 public:
@@ -9,12 +13,11 @@ public:
 	// print Game Created
 	Game(bool constructorOn)
 	{ 
-		if(constructorOn == true)
-			printf("Game Created\n"); 
+		if (constructorOn == true)
+			PushLayer(new XLayer());
 	}
 	// Destructor: Print Game Deleted
 	~Game() { printf("Game Deleted\n"); }
 };
-#pragma endregion
 // Creating the application, and returns a new game(app)
-XEngine::Application* XEngine::CreateApplication() { return new Game(false); }
+XEngine::Application* XEngine::CreateApplication() { return new Game(true); }

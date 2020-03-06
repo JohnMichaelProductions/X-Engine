@@ -1,15 +1,12 @@
 #pragma once
-#pragma region INCLUDE / NAMESPACES
 #include "Xpch.h"
 #include "../XCore.h"
-#pragma endregion
 namespace XEngine
 {
-	#pragma region EVENT TYPE ENUM CLASS
-	// Event Types Enum:
-	// All the events we want to record are in this enum
 	enum class EventType
 	{
+		// Event Types Enum:
+		// All the events we want to record are in this enum
 		None = 0,
 		// Application Events:
 		WindowClose,
@@ -29,12 +26,10 @@ namespace XEngine
 		MouseMoved,
 		MouseScrolled
 	};
-	#pragma endregion
-	#pragma region EVENT CATEGORY ENUM
-	// Event Category Enum:
-	// With this enum we can single out events based on their category
 	enum EventCategory
 	{
+		// Event Category Enum:
+		// With this enum we can single out events based on their category
 		None = 0,
 		EventCategoryApplication = BIT(0),
 		EventCategoryInput       = BIT(1),
@@ -42,16 +37,15 @@ namespace XEngine
 		EventCategoryMouse       = BIT(3),
 		EventCategoryMouseButton = BIT(4)
 	};
-	#pragma endregion
-	#pragma region EVENT CLASS
-	// Event Class:
-	// Base class for events
 	class XENGINE_API Event 
 	{
+		// Event Class:
+		// Base class for events
+		// ----
 		// Add Event Dispactcher Class as a friend so it
 		// can access its private/protected members
-		friend class EventDispatcher;
 	public:
+		bool Handled = false;
 		// Pure Virtual Function
 		virtual EventType GetEventType() const = 0;
 		// Pure Virtual Function
@@ -66,14 +60,11 @@ namespace XEngine
 	protected:
 		// This bool is important because we need to see whether it 
 		// has been handled or not
-		bool m_Handled = false;
 	};
-	#pragma endregion
-	#pragma region EVENT DISPACTCHER CLASS
-	// Event Dispactcher Class:
-	// Class to dispactch events based on their type
 	class EventDispatcher
 	{
+		// Event Dispactcher Class:
+		// Class to dispactch events based on their type
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
 	public:
@@ -83,7 +74,7 @@ namespace XEngine
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.m_Handled = func(*(T*)&m_Event);
+				m_Event.Handled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;
@@ -91,11 +82,8 @@ namespace XEngine
 	private:
 		Event& m_Event;
 	};
-	#pragma endregion
 	inline std::ostream& operator<<(std::ostream& os, const Event& e) { return os << e.ToString(); }
 }
-#pragma region MACROS
 // Macro for event names
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; } virtual EventType GetEventType() const override { return GetStaticType(); } virtual const char* GetName() const override { return #type; }
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
-#pragma endregion

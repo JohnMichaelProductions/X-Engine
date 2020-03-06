@@ -37,24 +37,34 @@
     <ClInclude Include="src\XEngine\EventSystem\MouseEvent.h">
       <Filter>XEngine\EventSystem</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\Layer.h">
+      <Filter>XEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\LayerStack.h">
+      <Filter>XEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\Log.h">
       <Filter>XEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Window.h">
       <Filter>XEngine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Xpch.h">
-      <Filter>XEngine</Filter>
-    </ClInclude>
     <ClInclude Include="src\XEngine\XCore.h">
       <Filter>XEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Xpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\Win10\Win10Window.cpp">
       <Filter>Platforms\Win10</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\Application.cpp">
+      <Filter>XEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\Layer.cpp">
+      <Filter>XEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\LayerStack.cpp">
       <Filter>XEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\Log.cpp">

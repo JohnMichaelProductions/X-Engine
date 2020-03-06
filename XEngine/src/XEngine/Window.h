@@ -1,12 +1,9 @@
 #pragma once
-#pragma region INCLUDE / NAMESPACES
 #include "Xpch.h"
 #include "XCore.h"
 #include "XEngine/EventSystem/Event.h"
-#pragma endregion
 namespace XEngine
 {
-	#pragma region WINDOWS PROPS STRUCT
 	struct WindowProps
 	{
 		// Windows Title
@@ -18,8 +15,6 @@ namespace XEngine
 		// Setting Title, Width, Height variables
 		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1920, unsigned int height = 1080) :Title(title), Width(width), Height(height) {}
 	};
-	#pragma endregion
-	#pragma region WINDOW CLASS
 	class XENGINE_API Window
 	{
 	public:
@@ -33,5 +28,4 @@ namespace XEngine
 		virtual bool IsVSync() const = 0;
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
-	#pragma endregion
 }

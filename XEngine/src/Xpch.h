@@ -1,5 +1,4 @@
 #pragma once
-#pragma region INCLUDE
 #include <iostream>
 #include <memory>
 #include <utility>
@@ -11,8 +10,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include "XEngine/Log.h"
-// If the platform is windows include Windows.h
+// If the platform is Windows 10 include Windows.h
 #ifdef X_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
-#pragma endregion

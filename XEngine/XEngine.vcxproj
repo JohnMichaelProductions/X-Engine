@@ -76,7 +76,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_BUILD_DLL;X_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -98,7 +99,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_BUILD_DLL;X_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -109,6 +110,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -124,7 +126,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_BUILD_DLL;X_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -135,6 +137,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -157,6 +160,8 @@
     <ClInclude Include="src\XEngine\EventSystem\Event.h" />
     <ClInclude Include="src\XEngine\EventSystem\KeyEvent.h" />
     <ClInclude Include="src\XEngine\EventSystem\MouseEvent.h" />
+    <ClInclude Include="src\XEngine\Layer.h" />
+    <ClInclude Include="src\XEngine\LayerStack.h" />
     <ClInclude Include="src\XEngine\Log.h" />
     <ClInclude Include="src\XEngine\Window.h" />
     <ClInclude Include="src\XEngine\XCore.h" />
@@ -165,8 +170,12 @@
   <ItemGroup>
     <ClCompile Include="src\Platforms\Win10\Win10Window.cpp" />
     <ClCompile Include="src\XEngine\Application.cpp" />
+    <ClCompile Include="src\XEngine\Layer.cpp" />
+    <ClCompile Include="src\XEngine\LayerStack.cpp" />
     <ClCompile Include="src\XEngine\Log.cpp" />
-    <ClCompile Include="src\Xpch.cpp" />
+    <ClCompile Include="src\Xpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

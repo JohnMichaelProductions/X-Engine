@@ -1,11 +1,8 @@
 #pragma once
-#pragma region INCLUDE / NAMESPACES
 #include "Event.h"
 #include "Xpch.h"
-#pragma endregion
 namespace XEngine 
 {
-	#pragma region KEY EVENT CLASS
 	class XENGINE_API KeyEvent : public Event
 	{
 	public:
@@ -18,8 +15,6 @@ namespace XEngine
 		// Key Code Integer
 		int m_KeyCode;
 	};
-	#pragma endregion
-	#pragma region KEY PRESSED EVENT CLASS
 	class XENGINE_API KeyPressedEvent : public KeyEvent
 	{
 	public:
@@ -41,8 +36,6 @@ namespace XEngine
 		// Repeat Count Integer
 		int m_RepeatCount;
 	};
-	#pragma endregion
-	#pragma region KEY RELEASED EVENT CLASS
 	class XENGINE_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
@@ -58,5 +51,4 @@ namespace XEngine
 		// Macro
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
-	#pragma endregion
 }

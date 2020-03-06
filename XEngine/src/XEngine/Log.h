@@ -1,12 +1,9 @@
 #pragma once
-#pragma region INCLUDE / NAMESPACES
 #include "XCore.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
-#pragma endregion
 namespace XEngine
 {
-	#pragma region LOG CLASS
 	class XENGINE_API Log
 	{
 	public:
@@ -20,9 +17,7 @@ namespace XEngine
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
 	};
-	#pragma endregion
 }
-#pragma region LOGGING LIBARY
 // Defining loggers
 #define X_CORE_TRACE(...)::XEngine::Log::GetCoreLogger()->trace(__VA_ARGS__)
 #define X_CORE_INFO(...)::XEngine::Log::GetCoreLogger()->info(__VA_ARGS__)
@@ -34,4 +29,3 @@ namespace XEngine
 #define X_WARN(...)::XEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define X_ERROR(...)::XEngine::Log::GetClientLogger()->error(__VA_ARGS__)
 #define X_FATAL(...)::XEngine::Log::GetClientLogger()->fatal(__VA_ARGS__)
-#pragma endregion

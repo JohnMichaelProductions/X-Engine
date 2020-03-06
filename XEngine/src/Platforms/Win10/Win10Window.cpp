@@ -1,10 +1,8 @@
-#pragma region INCLUDE / NAMESPACE
 #include "Xpch.h"
 #include "Win10Window.h"
 #include "XEngine/EventSystem/KeyEvent.h"
 #include "XEngine/EventSystem/ApplicationEvent.h"
 #include "XEngine/EventSystem/MouseEvent.h"
-#pragma endregion
 namespace XEngine
 {
 	static bool s_GLFWInitialized = false;

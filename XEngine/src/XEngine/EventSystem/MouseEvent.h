@@ -1,11 +1,8 @@
 #pragma once
-#pragma region INCLUDE / NAMESPACES
 #include "Xpch.h"
 #include "Event.h" 
-#pragma endregion
 namespace XEngine 
 {
-	#pragma region MOUSE MOVED EVENT CLASS
 	class XENGINE_API MouseMovedEvent : public Event
 	{
 	public:
@@ -29,8 +26,6 @@ namespace XEngine
 		// Mouse X and Y floats
 		float m_MouseX, m_MouseY;
 	};
-	#pragma endregion
-	#pragma region MOUSE SCROLLED EVENT CLASS
 	class XENGINE_API MouseScrolledEvent : public Event
 	{
 	public:
@@ -55,8 +50,6 @@ namespace XEngine
 		// X and Y offset floats
 		float m_XOffset, m_YOffset;
 	};
-	#pragma endregion
-	#pragma region MOUSE BUTTON EVENT CLASS
 	class XENGINE_API MouseButtonEvent : public Event
 	{
 	public:
@@ -69,8 +62,6 @@ namespace XEngine
 		// Button integer
 		int m_Button;
 	};
-	#pragma endregion
-	#pragma region MOUSE BUTTON PRESSED EVENT CLASS
 	class XENGINE_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
@@ -86,8 +77,6 @@ namespace XEngine
 		// Macro
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
-	#pragma endregion
-	#pragma region MOUSE BUTTON RELEASED CLASS
 	class XENGINE_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
@@ -103,5 +92,4 @@ namespace XEngine
 		// Macro
 		EVENT_CLASS_TYPE(MouseButtonReleased)
 	};
-	#pragma endregion
 }

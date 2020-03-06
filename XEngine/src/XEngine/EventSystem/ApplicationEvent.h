@@ -1,10 +1,7 @@
 #pragma once
-#pragma region INCLUDE / NAMESPACES
 #include "Event.h"
-#pragma endregion
 namespace XEngine 
 {
-	#pragma region WINDOW RESIZE EVENT CLASS
 	class XENGINE_API WindowResizeEvent : public Event
 	{
 	public:
@@ -27,8 +24,6 @@ namespace XEngine
 	private:
 		unsigned int m_Width, m_Height;
 	};
-	#pragma endregion
-	#pragma region WINDOW CLOSE EVENT CLASS
 	class XENGINE_API WindowCloseEvent : public Event
 	{
 	public:
@@ -38,8 +33,6 @@ namespace XEngine
 		EVENT_CLASS_TYPE(WindowClose)
 			EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
-	#pragma endregion
-	#pragma region APP TICK EVENT CLASS
 	class XENGINE_API AppTickEvent : public Event
 	{
 	public:
@@ -48,8 +41,6 @@ namespace XEngine
 		EVENT_CLASS_TYPE(AppTick)
 			EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
-	#pragma endregion
-	#pragma region APP UPDATE EVENT CLASS
 	class XENGINE_API AppUpdateEvent : public Event
 	{
 	public:
@@ -58,8 +49,6 @@ namespace XEngine
 		EVENT_CLASS_TYPE(AppUpdate)
 			EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
-	#pragma endregion
-	#pragma region APP RENDER EVENT CLASS
 	class XENGINE_API AppRenderEvent : public Event
 	{
 	public:
@@ -68,5 +57,4 @@ namespace XEngine
 		EVENT_CLASS_TYPE(AppRender)
 			EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
-	#pragma endregion
 }

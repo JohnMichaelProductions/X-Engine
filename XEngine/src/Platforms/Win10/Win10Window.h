@@ -1,11 +1,8 @@
 #pragma once
-#pragma region INCLUDE / NAMESPACE
 #include "XEngine/Window.h"
 #include <GLFW/glfw3.h>
-#pragma endregion
 namespace XEngine
 {
-	#pragma region WIN 10 WINDOW
 	class Win10Window : public Window
 	{
 	public:
@@ -31,6 +28,5 @@ namespace XEngine
 		};
 		WindowData m_Data;
 	};	
-	#pragma endregion
 }
 

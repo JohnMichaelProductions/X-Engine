@@ -1,7 +1,6 @@
 #pragma once
 #ifdef X_PLATFORM_WINDOWS
 extern XEngine::Application* XEngine::CreateApplication();
-#pragma region INITIALIZATION FUNCTION
 void Initialization()
 {
 	// Start
@@ -28,8 +27,6 @@ void Initialization()
 	// Finish
 	X_CORE_INFO("X-Engine initialization finished\n\n\n");
 }
-#pragma endregion
-#pragma region MAIN FUNCTION
 int main(int argc, char** argv)
 {
 	// Run Initialization function
@@ -41,5 +38,4 @@ int main(int argc, char** argv)
 	// Delete app
 	delete app;
 }
-#pragma endregion
 #endif
