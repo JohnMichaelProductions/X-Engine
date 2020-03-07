@@ -1,4 +1,4 @@
-#pragma 
+#pragma once		
 #include "XEngine/Window.h"
 #include <GLFW/glfw3.h>
 namespace XEngine
