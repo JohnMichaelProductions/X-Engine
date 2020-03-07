@@ -23,7 +23,7 @@ project "XEngine"
 		staticruntime "On"
 		systemversion "latest"
 		defines { "X_PLATFORM_WINDOWS", "X_BUILD_DLL", "GLFW_INCLUDE_NONE" }
-		postbuildcommands { ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputDir .. "/RainfallCity") }
+		postbuildcommands { ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputDir .. "/Game") }
 	filter "configurations:Debug"
 		defines "X_DEBUG"
 		buildoptions "/MDd"
@@ -36,8 +36,8 @@ project "XEngine"
 		defines "X_DIST"
 		buildoptions "/MD"
 		optimize "On"
-project "RainfallCity"
-	location "RainfallCity"
+project "Game"
+	location "Game"
 	kind "ConsoleApp"
 	language "C++"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
