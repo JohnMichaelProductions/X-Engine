@@ -57,9 +57,6 @@ namespace XEngine
 		// Function: Is this event in the given category, 0 is false,
 		// any other number refer to the Event Category enum
 		inline bool IsInCategory(EventCategory category) { return GetCategoryFlags() & category; }
-	protected:
-		// This bool is important because we need to see whether it 
-		// has been handled or not
 	};
 	class EventDispatcher
 	{

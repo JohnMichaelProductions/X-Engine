@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "Application.h"
 #include "../XEngine/Log.h"
-#include <GLFW/glfw3.h>
+#include <GLAD/glad.h>
 namespace XEngine
 {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)

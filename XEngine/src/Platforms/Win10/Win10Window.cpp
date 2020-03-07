@@ -3,6 +3,7 @@
 #include "XEngine/EventSystem/KeyEvent.h"
 #include "XEngine/EventSystem/ApplicationEvent.h"
 #include "XEngine/EventSystem/MouseEvent.h"
+#include <GLAD/glad.h>
 namespace XEngine
 {
 	static bool s_GLFWInitialized = false;
@@ -26,6 +27,8 @@ namespace XEngine
 		}
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		X_CORE_ASSERT(status, "Failed to initialize GLAD");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
