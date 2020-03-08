@@ -13,7 +13,7 @@ namespace XEngine
 		// Postive Window Height
 		unsigned int Height;
 		// Setting Title, Width, Height variables
-		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1920, unsigned int height = 1080) :Title(title), Width(width), Height(height) {}
+		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1440, unsigned int height = 1080) :Title(title), Width(width), Height(height) {}
 	};
 	class XENGINE_API Window
 	{

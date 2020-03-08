@@ -4,6 +4,9 @@
     <Filter Include="Platforms">
       <UniqueIdentifier>{DDACA145-4917-56BC-9255-0762FEFE3311}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platforms\OpenGL">
+      <UniqueIdentifier>{719BB998-5D94-D8EA-86C6-BD6F721EB8F6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platforms\Win10">
       <UniqueIdentifier>{3B563D43-A7E1-AA07-B0F2-2DFC1CFD0608}</UniqueIdentifier>
     </Filter>
@@ -13,8 +16,14 @@
     <Filter Include="XEngine\EventSystem">
       <UniqueIdentifier>{095DBBDC-75BE-98EA-FE2B-DF9C6A8CCFA9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="XEngine\ImGui">
+      <UniqueIdentifier>{3D4A6BF2-A90A-E728-7245-30A6DEC42B05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platforms\OpenGL\ImGuiOpenGL3.h">
+      <Filter>Platforms\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platforms\Win10\Win10Window.h">
       <Filter>Platforms\Win10</Filter>
     </ClInclude>
@@ -37,6 +46,9 @@
     <ClInclude Include="src\XEngine\EventSystem\MouseEvent.h">
       <Filter>XEngine\EventSystem</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\ImGui\ImGuiLayer.h">
+      <Filter>XEngine\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\Layer.h">
       <Filter>XEngine</Filter>
     </ClInclude>
@@ -55,11 +67,17 @@
     <ClInclude Include="src\Xpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platforms\OpenGL\ImGuiOpenGL3.cpp">
+      <Filter>Platforms\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platforms\Win10\Win10Window.cpp">
       <Filter>Platforms\Win10</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\Application.cpp">
       <Filter>XEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\ImGui\ImGuiLayer.cpp">
+      <Filter>XEngine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\Layer.cpp">
       <Filter>XEngine</Filter>
