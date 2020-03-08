@@ -3,7 +3,7 @@
 extern XEngine::Application* XEngine::CreateApplication();
 int main(int argc, char** argv)
 {
-	//Run Logging Inialization
+	// Run Logging Inialization
 	XEngine::Log::Init();
 	// Create app
 	auto app = XEngine::CreateApplication();

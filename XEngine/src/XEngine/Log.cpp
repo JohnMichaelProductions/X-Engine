@@ -5,6 +5,7 @@ namespace XEngine
 {
 	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
 	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
+	// Logging initialization function
 	void Log::Init()
 	{
 		// Setting up pattern for logging

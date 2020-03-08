@@ -51,4 +51,20 @@ namespace XEngine
 		// Macro
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
+	class XENGINE_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		// Function: Typed key's key code data
+		KeyTypedEvent(int keycode) : KeyEvent(keycode) {}
+		// Function: Prints which key code has been typed
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTyped: " << m_KeyCode;
+			return ss.str();
+		}
+		// Macro
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
 }

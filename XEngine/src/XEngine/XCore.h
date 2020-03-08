@@ -16,5 +16,7 @@
 	#define X_ASSERT(x, ...)
 	#define X_CORE_ASSERT(x, ...)
 #endif
-// Bit for Event System
+// Macro Bit for Event System
 #define BIT(x) (1 << x)
+// Macro for dispacting events
+#define X_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1) 
