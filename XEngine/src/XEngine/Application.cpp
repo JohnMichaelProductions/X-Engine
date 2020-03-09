@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "Application.h"
 #include "../XEngine/Log.h"
+#include "Input.h"
 #include <GLAD/glad.h>
 namespace XEngine
 {
@@ -49,6 +50,9 @@ namespace XEngine
 			glClear(GL_COLOR_BUFFER_BIT);
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+			// Testing Input System
+			auto [x, y] = Input::GetMousePostion();
+			X_CORE_TRACE("{0}, {1}", x, y);
 			// Update every frame
 			m_Window->OnUpdate(); 
 		}

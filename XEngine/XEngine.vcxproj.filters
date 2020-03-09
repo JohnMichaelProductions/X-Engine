@@ -65,6 +65,8 @@
       <Filter>XEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\Xpch.h" />
+    <ClInclude Include="src\XEngine\Input.h" />
+    <ClInclude Include="src\Platforms\Win10\Win10Input.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OpenGL\ImGuiOpenGL3.cpp">
@@ -89,5 +91,6 @@
       <Filter>XEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\Xpch.cpp" />
+    <ClCompile Include="src\Platforms\Win10\Win10Input.cpp" />
   </ItemGroup>
 </Project>

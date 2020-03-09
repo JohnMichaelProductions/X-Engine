@@ -152,6 +152,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platforms\Win10\Win10Input.h" />
+    <ClInclude Include="src\XEngine\Input.h" />
     <ClInclude Include="src\Platforms\OpenGL\ImGuiOpenGL3.h" />
     <ClInclude Include="src\Platforms\Win10\Win10Window.h" />
     <ClInclude Include="src\XEngine.h" />
@@ -171,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OpenGL\ImGuiOpenGL3.cpp" />
+    <ClCompile Include="src\Platforms\Win10\Win10Input.cpp" />
     <ClCompile Include="src\Platforms\Win10\Win10Window.cpp" />
     <ClCompile Include="src\XEngine\Application.cpp" />
     <ClCompile Include="src\XEngine\ImGui\ImGuiLayer.cpp" />
