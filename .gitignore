@@ -3,6 +3,5 @@
 .vs/
 bin/
 bin-int/
-BatchFiles/
 #File extensions to ignore
 *.user
