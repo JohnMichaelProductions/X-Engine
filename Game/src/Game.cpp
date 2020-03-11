@@ -3,7 +3,7 @@ class XLayer : public XEngine::Layer
 {
 public:
 	XLayer() : Layer("XLayer") {}
-	void OnUpdate() override { X_INFO("XLayer::Update"); }
+	void OnUpdate() override {}
 	void OnEvent(XEngine::Event& event) override { X_TRACE("{0}", event); }
 };
 class Game : public XEngine::Application

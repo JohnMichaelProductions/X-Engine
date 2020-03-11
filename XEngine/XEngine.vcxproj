@@ -84,7 +84,6 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -110,7 +109,6 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -137,7 +135,6 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -152,9 +149,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platforms\Win10\Win10Input.h" />
-    <ClInclude Include="src\XEngine\Input.h" />
     <ClInclude Include="src\Platforms\OpenGL\ImGuiOpenGL3.h" />
+    <ClInclude Include="src\Platforms\Win10\Win10Input.h" />
     <ClInclude Include="src\Platforms\Win10\Win10Window.h" />
     <ClInclude Include="src\XEngine.h" />
     <ClInclude Include="src\XEngine\Application.h" />
@@ -164,6 +160,9 @@
     <ClInclude Include="src\XEngine\EventSystem\KeyEvent.h" />
     <ClInclude Include="src\XEngine\EventSystem\MouseEvent.h" />
     <ClInclude Include="src\XEngine\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\XEngine\Input.h" />
+    <ClInclude Include="src\XEngine\InputCodes\KeyCodes.h" />
+    <ClInclude Include="src\XEngine\InputCodes\MouseCodes.h" />
     <ClInclude Include="src\XEngine\Layer.h" />
     <ClInclude Include="src\XEngine\LayerStack.h" />
     <ClInclude Include="src\XEngine\Log.h" />

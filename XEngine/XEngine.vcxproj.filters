@@ -19,10 +19,16 @@
     <Filter Include="XEngine\ImGui">
       <UniqueIdentifier>{3D4A6BF2-A90A-E728-7245-30A6DEC42B05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="XEngine\InputCodes">
+      <UniqueIdentifier>{007FFFC2-EC62-C018-55C3-BA6B41C6AA9A}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Platforms\OpenGL\ImGuiOpenGL3.h">
       <Filter>Platforms\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\Win10\Win10Input.h">
+      <Filter>Platforms\Win10</Filter>
     </ClInclude>
     <ClInclude Include="src\Platforms\Win10\Win10Window.h">
       <Filter>Platforms\Win10</Filter>
@@ -49,6 +55,15 @@
     <ClInclude Include="src\XEngine\ImGui\ImGuiLayer.h">
       <Filter>XEngine\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\Input.h">
+      <Filter>XEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\InputCodes\KeyCodes.h">
+      <Filter>XEngine\InputCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\InputCodes\MouseCodes.h">
+      <Filter>XEngine\InputCodes</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\Layer.h">
       <Filter>XEngine</Filter>
     </ClInclude>
@@ -65,12 +80,13 @@
       <Filter>XEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\Xpch.h" />
-    <ClInclude Include="src\XEngine\Input.h" />
-    <ClInclude Include="src\Platforms\Win10\Win10Input.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OpenGL\ImGuiOpenGL3.cpp">
       <Filter>Platforms\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\Win10\Win10Input.cpp">
+      <Filter>Platforms\Win10</Filter>
     </ClCompile>
     <ClCompile Include="src\Platforms\Win10\Win10Window.cpp">
       <Filter>Platforms\Win10</Filter>
@@ -91,6 +107,5 @@
       <Filter>XEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\Xpch.cpp" />
-    <ClCompile Include="src\Platforms\Win10\Win10Input.cpp" />
   </ItemGroup>
 </Project>

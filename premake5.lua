@@ -1,5 +1,6 @@
 workspace "XEngine"
 	architecture "x64"
+	startproject "Game"
 	configurations { "Debug", "Release", "Dist" }
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
@@ -9,7 +10,6 @@ IncludeDir["ImGui"] = "XEngine/vendor/ImGui"
 include "XEngine/vendor/GLFW"
 include "XEngine/vendor/GLAD"
 include "XEngine/vendor/ImGui"
-startproject "Game"
 project "XEngine"
 	location "XEngine"
 	kind "SharedLib"
