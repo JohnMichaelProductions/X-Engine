@@ -7,7 +7,7 @@
 namespace XEngine
 {
 	static bool s_GLFWInitialized = false;
-	static void GLFWErrorCallback(int error, const char* description) { X_CORE_ERROR("GLFW Error ({0}): {1}", error, description); };
+	static void GLFWErrorCallback(int error, const char* description) { XCORE_ERROR("GLFW Error ({0}): {1}", error, description); };
 	Window* Window::Create(const WindowProps& props) { return new Win10Window(props); }
 	Win10Window::Win10Window(const WindowProps& props) { Init(props); }
 	Win10Window::~Win10Window() { Shutdown(); }
@@ -17,7 +17,7 @@ namespace XEngine
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 		// Info Message
-		X_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+		XCORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 		if (!s_GLFWInitialized)
 		{
 			int success = glfwInit();

@@ -32,7 +32,7 @@ namespace XEngine
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		X_CORE_TRACE("{0}", e);
+		XCORE_TRACE("{0}", e);
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
 			(*--it)->OnEvent(e);
@@ -52,7 +52,7 @@ namespace XEngine
 				layer->OnUpdate();
 			// Testing Input System
 			auto [x, y] = Input::GetMousePostion();
-			X_CORE_TRACE("{0}, {1}", x, y);
+			XCORE_TRACE("{0}, {1}", x, y);
 			// Update every frame
 			m_Window->OnUpdate(); 
 		}
