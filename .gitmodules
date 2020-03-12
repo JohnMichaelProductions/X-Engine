@@ -1,0 +1,9 @@
+[submodule "XEngine/vendor/ImGui"]
+	path = XEngine/vendor/ImGui
+	url = https://github.com/TheCherno/imgui.git
+[submodule "XEngine/vendor/spdlog"]
+	path = XEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog.git
+[submodule "XEngine/vendor/GLFW"]
+	path = XEngine/vendor/GLFW
+	url = https://github.com/TheCherno/glfw.git
