@@ -7,6 +7,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "XEngine/vendor/GLFW/include"
 IncludeDir["GLAD"] = "XEngine/vendor/GLAD/include"
 IncludeDir["ImGui"] = "XEngine/vendor/ImGui"
+IncludeDir["glm"] = "XEngine/vendor/glm"
 include "XEngine/vendor/GLFW"
 include "XEngine/vendor/GLAD"
 include "XEngine/vendor/ImGui"
@@ -20,7 +21,7 @@ project "XEngine"
 	pchheader "Xpch.h"
 	pchsource "XEngine/src/Xpch.cpp"
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
-	includedirs { "%{prj.name}/src", "%{prj.name}/vendor/spdlog/include", "%{IncludeDir.GLFW}", "%{IncludeDir.GLAD}", "%{IncludeDir.ImGui}" }
+	includedirs { "%{prj.name}/src", "%{prj.name}/vendor/spdlog/include", "%{IncludeDir.GLFW}", "%{IncludeDir.GLAD}", "%{IncludeDir.ImGui}", "%{IncludeDir.glm}" }
 	links{ "GLFW", "GLAD", "ImGui", "opengl32.lib" }
 	filter "system:windows"
 		cppdialect "C++17"
@@ -48,7 +49,7 @@ project "Game"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
-	includedirs { "%{prj.name}/src", "XEngine/vendor/spdlog/include", "XEngine/src" }
+	includedirs { "%{prj.name}/src", "XEngine/vendor/spdlog/include", "XEngine/src", "%{IncludeDir.glm}" }
 	links { "XEngine" }
 	filter "system:windows"
 		cppdialect "C++17"

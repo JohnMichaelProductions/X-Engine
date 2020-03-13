@@ -7,3 +7,6 @@
 [submodule "XEngine/vendor/ImGui"]
 	path = XEngine/vendor/ImGui
 	url = https://github.com/ocornut/imgui.git
+[submodule "XEngine/vendor/glm"]
+	path = XEngine/vendor/glm
+	url = https://github.com/g-truc/glm.git
