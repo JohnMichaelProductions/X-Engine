@@ -4,9 +4,6 @@
     <Filter Include="Platforms">
       <UniqueIdentifier>{DDACA145-4917-56BC-9255-0762FEFE3311}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platforms\OpenGL">
-      <UniqueIdentifier>{719BB998-5D94-D8EA-86C6-BD6F721EB8F6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Platforms\Win10">
       <UniqueIdentifier>{3B563D43-A7E1-AA07-B0F2-2DFC1CFD0608}</UniqueIdentifier>
     </Filter>
@@ -24,9 +21,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platforms\OpenGL\ImGuiOpenGL3.h">
-      <Filter>Platforms\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platforms\Win10\Win10Input.h">
       <Filter>Platforms\Win10</Filter>
     </ClInclude>
@@ -82,9 +76,6 @@
     <ClInclude Include="src\Xpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platforms\OpenGL\ImGuiOpenGL3.cpp">
-      <Filter>Platforms\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platforms\Win10\Win10Input.cpp">
       <Filter>Platforms\Win10</Filter>
     </ClCompile>
@@ -93,6 +84,9 @@
     </ClCompile>
     <ClCompile Include="src\XEngine\Application.cpp">
       <Filter>XEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\ImGui\ImGuiBuild.cpp">
+      <Filter>XEngine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\ImGui\ImGuiLayer.cpp">
       <Filter>XEngine\ImGui</Filter>

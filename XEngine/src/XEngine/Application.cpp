@@ -15,6 +15,8 @@ namespace XEngine
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create()); 
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		m_ImGuiLayer = new ImGuiLayer;
+		PushOverlay(m_ImGuiLayer);
 	}
 	// Destructor: Print Application Deleted
 	Application::~Application() { printf("Application Deleted\n"); }
@@ -50,9 +52,10 @@ namespace XEngine
 			glClear(GL_COLOR_BUFFER_BIT);
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
-			// Testing Input System
-			auto [x, y] = Input::GetMousePostion();
-			XCORE_TRACE("{0}, {1}", x, y);
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 			// Update every frame
 			m_Window->OnUpdate(); 
 		}

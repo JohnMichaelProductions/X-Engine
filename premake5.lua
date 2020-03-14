@@ -49,7 +49,7 @@ project "Game"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
-	includedirs { "%{prj.name}/src", "XEngine/vendor/spdlog/include", "XEngine/src", "%{IncludeDir.glm}" }
+	includedirs { "%{prj.name}/src", "XEngine/vendor/spdlog/include", "XEngine/src", "%{IncludeDir.glm}", "XEngine/vendor" }
 	links { "XEngine" }
 	filter "system:windows"
 		cppdialect "C++17"

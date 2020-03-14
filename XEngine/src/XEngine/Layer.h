@@ -15,6 +15,7 @@ namespace XEngine
 		virtual void OnDetach() {}
 		// Called when the a layer is update(every frame)
 		virtual void OnUpdate() {}
+		virtual void OnImGuiRender() {}
 		// Called when an a event is sent to a layer
 		virtual void OnEvent(Event& event) {}
 		inline const std::string& GetName() const { return m_DebugName; }

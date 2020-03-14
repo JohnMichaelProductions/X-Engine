@@ -4,6 +4,7 @@
 #include "XEngine/LayerStack.h"
 #include "EventSystem/Event.h"
 #include "../XEngine/EventSystem/ApplicationEvent.h"
+#include "XEngine/ImGui/ImGuiLayer.h"
 namespace XEngine
 {
 	class XENGINE_API Application
@@ -21,6 +22,7 @@ namespace XEngine
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
