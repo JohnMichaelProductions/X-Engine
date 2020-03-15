@@ -7,7 +7,7 @@ int main(int argc, char** argv)
 	XEngine::Log::Init();
 	// Create app
 	auto app = XEngine::CreateApplication();
-	// Keep it running
+	// Running Application
 	app->Run();
 	// Delete app
 	delete app;

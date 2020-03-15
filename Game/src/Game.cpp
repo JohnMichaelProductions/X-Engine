@@ -5,14 +5,14 @@ class XLayer : public XEngine::Layer
 public:
 	XLayer() : Layer("XLayer") {}
 	void OnUpdate() override {}
-	void OnEvent(XEngine::Event& event) override { XCLIENT_TRACE("{0}", event); }
-	/*virtual void OnImGuiRender() override
+	virtual void OnImGuiRender() override
 	{
 		using namespace ImGui;
 		Begin("Test");
 		Text("Hello World");
 		End();
-	}*/
+	}
+	void OnEvent(XEngine::Event& event) override { XCLIENT_TRACE("{0}", event); }
 };
 class Game : public XEngine::Application
 {
