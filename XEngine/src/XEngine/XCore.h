@@ -1,5 +1,5 @@
 #pragma once
-// Platform support
+// Platform Support
 #ifdef X_PLATFORM_WINDOWS
 #if X_DYNAMIC_LINK
 	#ifdef X_BUILD_DLL
@@ -18,7 +18,7 @@
 #endif
 #ifdef X_ENABLE_ASSERTS
 	#define X_ASSERT(x, ...) {if(!(x)) {XCLIENT_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define X_CORE_ASSERT(x, ...)  {if(!(x)) {XCORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define XCORE_ASSERT(x, ...)  {if(!(x)) {XCORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else
 	#define X_ASSERT(x, ...)
 	#define X_CORE_ASSERT(x, ...)

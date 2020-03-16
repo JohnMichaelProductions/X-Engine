@@ -1,12 +1,13 @@
 #pragma once
+// Top Files
 #include "Xpch.h"
+// Mid Files
 #include "../XCore.h"
 namespace XEngine
 {
+	// Event Type enum: All the events we want to record are in this enum
 	enum class EventType
 	{
-		// Event Types Enum:
-		// All the events we want to record are in this enum
 		None = 0,
 		// Application Events:
 		WindowClose,
@@ -27,10 +28,9 @@ namespace XEngine
 		MouseMoved,
 		MouseScrolled
 	};
+	// Event Category enum: With this enum we can single out events based on their category
 	enum EventCategory
 	{
-		// Event Category Enum:
-		// With this enum we can single out events based on their category
 		None = 0,
 		EventCategoryApplication = BIT(0),
 		EventCategoryInput       = BIT(1),
@@ -38,47 +38,41 @@ namespace XEngine
 		EventCategoryMouse       = BIT(3),
 		EventCategoryMouseButton = BIT(4)
 	};
+	// Event Class: Base Class for events
 	class XENGINE_API Event 
 	{
-		// Event Class:
-		// Base class for events
-		// ----
-		// Add Event Dispactcher Class as a friend so it
-		// can access its private/protected members
 	public:
+		// ---FUNCTIONS---
 		bool Handled = false;
-		// Pure Virtual Function
 		virtual EventType GetEventType() const = 0;
-		// Pure Virtual Function
 		virtual const char* GetName() const = 0;
-		// Pure Virtual Function
 		virtual int GetCategoryFlags() const = 0;
-		// Function: Converts to string by getting event name
+		// To String Function: Returns Event Name
 		virtual std::string ToString() const { return GetName(); }
-		// Function: Is this event in the given category, 0 is false,
-		// any other number refer to the Event Category enum
+		// Is In Category: Returns true or false based on whether the event is in the category that is specified
 		inline bool IsInCategory(EventCategory category) { return GetCategoryFlags() & category; }
+		// ---------------
 	};
+	// Event Dispactcher Class: Class to dispactch events based on their type
 	class EventDispatcher
 	{
-		// Event Dispactcher Class:
-		// Class to dispactch events based on their type
+		// New Type
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
 	public:
-		EventDispatcher(Event& event) : m_Event(event) {}
+		EventDispatcher(Event& event) : mainEvent(event) {}
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
-			if (m_Event.GetEventType() == T::GetStaticType())
+			if (mainEvent.GetEventType() == T::GetStaticType())
 			{
-				m_Event.Handled = func(*(T*)&m_Event);
+				mainEvent.Handled = func(*(T*)&mainEvent);
 				return true;
 			}
 			return false;
 		}
 	private:
-		Event& m_Event;
+		Event& mainEvent;
 	};
 	inline std::ostream& operator<<(std::ostream& os, const Event& e) { return os << e.ToString(); }
 }

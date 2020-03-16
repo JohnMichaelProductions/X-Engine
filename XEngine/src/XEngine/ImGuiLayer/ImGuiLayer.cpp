@@ -1,9 +1,14 @@
+// Top Files
 #include "Xpch.h"
+// Mid Files
+#include "XEngine/Application.h"
+// ImGui Layer Files
 #include "ImGuiLayer.h"
+// ImGui Library Files
 #include "imgui.h"
 #include "examples/imgui_impl_glfw.h"
 #include "examples/imgui_impl_opengl3.h"
-#include "XEngine/Application.h"
+// GLFW Library Files
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 namespace XEngine {

@@ -1,7 +1,9 @@
 #pragma once
-#include "XCore.h"
+// spdlog Library Files
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
+// Mid Files
+#include "../XCore.h"
 namespace XEngine
 {
 	class XENGINE_API Log
@@ -18,7 +20,7 @@ namespace XEngine
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
 	};
 }
-// Defining loggers
+// Macros: Logging
 #define XCORE_TRACE(...)		::XEngine::Log::GetCoreLogger	()->trace(__VA_ARGS__)
 #define XCORE_INFO(...)			::XEngine::Log::GetCoreLogger	()->info(__VA_ARGS__)
 #define XCORE_WARN(...)			::XEngine::Log::GetCoreLogger	()->warn(__VA_ARGS__)

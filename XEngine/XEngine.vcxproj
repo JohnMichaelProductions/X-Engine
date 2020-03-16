@@ -80,7 +80,7 @@
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -149,13 +149,13 @@
     <ClInclude Include="src\XEngine\EventSystem\Event.h" />
     <ClInclude Include="src\XEngine\EventSystem\KeyEvent.h" />
     <ClInclude Include="src\XEngine\EventSystem\MouseEvent.h" />
-    <ClInclude Include="src\XEngine\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\XEngine\Input.h" />
-    <ClInclude Include="src\XEngine\InputCodes\KeyCodes.h" />
-    <ClInclude Include="src\XEngine\InputCodes\MouseCodes.h" />
-    <ClInclude Include="src\XEngine\Layer.h" />
-    <ClInclude Include="src\XEngine\LayerStack.h" />
-    <ClInclude Include="src\XEngine\Log.h" />
+    <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h" />
+    <ClInclude Include="src\XEngine\InputSystem\Input.h" />
+    <ClInclude Include="src\XEngine\InputSystem\KeyCodes.h" />
+    <ClInclude Include="src\XEngine\InputSystem\MouseCodes.h" />
+    <ClInclude Include="src\XEngine\LayerSystem\Layer.h" />
+    <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h" />
+    <ClInclude Include="src\XEngine\LogSystem\Log.h" />
     <ClInclude Include="src\XEngine\Window.h" />
     <ClInclude Include="src\XEngine\XCore.h" />
     <ClInclude Include="src\Xpch.h" />
@@ -544,11 +544,11 @@
     <ClCompile Include="src\Platforms\Win10\Win10Input.cpp" />
     <ClCompile Include="src\Platforms\Win10\Win10Window.cpp" />
     <ClCompile Include="src\XEngine\Application.cpp" />
-    <ClCompile Include="src\XEngine\ImGui\ImGuiBuild.cpp" />
-    <ClCompile Include="src\XEngine\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\XEngine\Layer.cpp" />
-    <ClCompile Include="src\XEngine\LayerStack.cpp" />
-    <ClCompile Include="src\XEngine\Log.cpp" />
+    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp" />
+    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiLayer.cpp" />
+    <ClCompile Include="src\XEngine\LayerSystem\Layer.cpp" />
+    <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp" />
+    <ClCompile Include="src\XEngine\LogSystem\Log.cpp" />
     <ClCompile Include="src\Xpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

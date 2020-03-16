@@ -1,6 +1,6 @@
 #pragma once
+// Event System Files
 #include "Event.h"
-#include "Xpch.h"
 namespace XEngine 
 {
 	class XENGINE_API KeyEvent : public Event

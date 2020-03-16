@@ -1,7 +1,10 @@
 #pragma once
+// Top Files
 #include "Xpch.h"
+// Mid Files
 #include "XCore.h"
-#include "XEngine/EventSystem/Event.h"
+// Event System Files
+#include "EventSystem/Event.h"
 namespace XEngine
 {
 	struct WindowProps

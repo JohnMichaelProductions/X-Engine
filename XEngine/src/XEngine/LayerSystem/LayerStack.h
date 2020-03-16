@@ -1,7 +1,10 @@
 #pragma once
-#include "XEngine/XCore.h"
-#include "Layer.h"
+// C++ Libraries
 #include <vector>
+// Mid Files
+#include "XEngine/XCore.h"
+// Layer System Files
+#include "Layer.h"
 namespace XEngine
 {
 	class XENGINE_API LayerStack

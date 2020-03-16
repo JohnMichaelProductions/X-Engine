@@ -1,5 +1,6 @@
 #pragma once
 // Pre-Compiled Headers to increase performance, must include Xpch.h in every source file(.cpp)
+// C++ Libraires
 #include <iostream>
 #include <memory>
 #include <utility>
@@ -10,8 +11,9 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
-#include "XEngine/Log.h"
-// If the platform is Windows 10 include Windows.h
+// Log System Files
+#include "XEngine/LogSystem/Log.h"
+// Libraries exclusive to the Windows Platform
 #ifdef X_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

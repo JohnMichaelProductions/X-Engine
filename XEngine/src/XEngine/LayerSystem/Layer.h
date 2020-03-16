@@ -1,5 +1,7 @@
 #pragma once
+// Mid Files
 #include "XEngine/XCore.h"
+// Event System Files
 #include "XEngine/EventSystem/Event.h"
 namespace XEngine
 {

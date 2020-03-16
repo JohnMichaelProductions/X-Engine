@@ -16,11 +16,17 @@
     <Filter Include="src\XEngine\EventSystem">
       <UniqueIdentifier>{A0377FAE-0C6F-C745-1579-2B69812FEE3E}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\XEngine\ImGui">
-      <UniqueIdentifier>{94BFA069-00D6-9EFF-494D-2A21B5A26F87}</UniqueIdentifier>
+    <Filter Include="src\XEngine\ImGuiLayer">
+      <UniqueIdentifier>{5123C255-3D1D-EBA7-268A-81B812235114}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\XEngine\InputCodes">
-      <UniqueIdentifier>{B7E2D6B9-A3DC-FF0B-8C49-961C78E26578}</UniqueIdentifier>
+    <Filter Include="src\XEngine\InputSystem">
+      <UniqueIdentifier>{CE30C31A-3A68-0BB2-4372-6FD5AF2832AB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\XEngine\LayerSystem">
+      <UniqueIdentifier>{5B239E30-C75A-E6C7-D064-4AEB3C1B0DC1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\XEngine\LogSystem">
+      <UniqueIdentifier>{A02BB24B-0C98-6D46-D58B-05A441B78FAE}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -72,26 +78,26 @@
     <ClInclude Include="src\XEngine\EventSystem\MouseEvent.h">
       <Filter>src\XEngine\EventSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\ImGui\ImGuiLayer.h">
-      <Filter>src\XEngine\ImGui</Filter>
+    <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h">
+      <Filter>src\XEngine\ImGuiLayer</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Input.h">
-      <Filter>src\XEngine</Filter>
+    <ClInclude Include="src\XEngine\InputSystem\Input.h">
+      <Filter>src\XEngine\InputSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\InputCodes\KeyCodes.h">
-      <Filter>src\XEngine\InputCodes</Filter>
+    <ClInclude Include="src\XEngine\InputSystem\KeyCodes.h">
+      <Filter>src\XEngine\InputSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\InputCodes\MouseCodes.h">
-      <Filter>src\XEngine\InputCodes</Filter>
+    <ClInclude Include="src\XEngine\InputSystem\MouseCodes.h">
+      <Filter>src\XEngine\InputSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Layer.h">
-      <Filter>src\XEngine</Filter>
+    <ClInclude Include="src\XEngine\LayerSystem\Layer.h">
+      <Filter>src\XEngine\LayerSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\LayerStack.h">
-      <Filter>src\XEngine</Filter>
+    <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h">
+      <Filter>src\XEngine\LayerSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Log.h">
-      <Filter>src\XEngine</Filter>
+    <ClInclude Include="src\XEngine\LogSystem\Log.h">
+      <Filter>src\XEngine\LogSystem</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Window.h">
       <Filter>src\XEngine</Filter>
@@ -1253,20 +1259,20 @@
     <ClCompile Include="src\XEngine\Application.cpp">
       <Filter>src\XEngine</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\ImGui\ImGuiBuild.cpp">
-      <Filter>src\XEngine\ImGui</Filter>
+    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp">
+      <Filter>src\XEngine\ImGuiLayer</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\ImGui\ImGuiLayer.cpp">
-      <Filter>src\XEngine\ImGui</Filter>
+    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiLayer.cpp">
+      <Filter>src\XEngine\ImGuiLayer</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Layer.cpp">
-      <Filter>src\XEngine</Filter>
+    <ClCompile Include="src\XEngine\LayerSystem\Layer.cpp">
+      <Filter>src\XEngine\LayerSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\LayerStack.cpp">
-      <Filter>src\XEngine</Filter>
+    <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp">
+      <Filter>src\XEngine\LayerSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Log.cpp">
-      <Filter>src\XEngine</Filter>
+    <ClCompile Include="src\XEngine\LogSystem\Log.cpp">
+      <Filter>src\XEngine\LogSystem</Filter>
     </ClCompile>
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
