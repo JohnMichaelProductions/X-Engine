@@ -14,29 +14,55 @@ namespace XEngine
 {
 	// Macro
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
-	Application* Application::s_Instance = nullptr;
-	// Constructor: Print Application Created
+	Application* Application::instance = nullptr;
+	// Constructor
 	Application::Application() 
 	{  
-		XCORE_ASSERT(!s_Instance, "Application already exists");
-		s_Instance = this;
+		XCORE_ASSERT(!instance, "Application already exists");
+		instance = this;
 		mainWindow = std::unique_ptr<Window>(Window::Create()); 
 		mainWindow->SetEventCallback(BIND_EVENT_FN(OnEvent));
-		m_ImGuiLayer = new ImGuiLayer;
-		PushOverlay(m_ImGuiLayer);
+		mainImGuiLayer = new ImGuiLayer;
+		PushOverlay(mainImGuiLayer);
+		// ---RENDERERING---
+		glGenVertexArrays(1, &mainVertexArray);
+		glBindVertexArray(mainVertexArray);
+		glGenBuffers(1, &mainVertexBuffer);
+		glBindBuffer(GL_ARRAY_BUFFER, mainVertexBuffer);
+		// Render Data
+		float vertices[3 * 3] =
+		{
+			-0.5f, -0.5f, 0.0f,
+			0.5f, -0.5f, 0.0f,
+			0.0f, 0.5f, 0.0f
+		};
+		// Upload Data
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		glGenBuffers(1, &mainIndexBuffer);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mainIndexBuffer);
+		unsigned int indices[3] =
+		{
+			0,
+			1,
+			2
+		};
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		// -----------------
 	}
 	// Destructor: Print Application Deleted
 	Application::~Application() { printf("Application Deleted\n"); }
 	// Push Layer Function
 	void Application::PushLayer(Layer* layer) 
 	{ 
-		m_LayerStack.PushLayer(layer); 
+		mainLayerStack.PushLayer(layer); 
 		layer->OnAttach();
 	}
 	// Push Overlay Function
 	void Application::PushOverlay(Layer* layer) 
 	{ 
-		m_LayerStack.PushOverlay(layer); 
+		mainLayerStack.PushOverlay(layer); 
 		layer->OnAttach();
 	}
 	// On Event Function
@@ -45,7 +71,7 @@ namespace XEngine
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		XCORE_TRACE("{0}", e);
-		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
+		for (auto it = mainLayerStack.end(); it != mainLayerStack.begin(); )
 		{
 			(*--it)->OnEvent(e);
 			if (e.Handled)
@@ -56,16 +82,18 @@ namespace XEngine
 	void Application::Run() 
 	{
 		// Keeps the application running
-		while (m_Running)
+		while (mainRunning)
 		{
 			glClearColor(.1743f, .2988f, .5270f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
-			for (Layer* layer : m_LayerStack)
+			glBindVertexArray(mainVertexArray);
+			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+			for (Layer* layer : mainLayerStack)
 				layer->OnUpdate();
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
+			mainImGuiLayer->Begin();
+			for (Layer* layer : mainLayerStack)
 				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
+			mainImGuiLayer->End();
 			// Update every frame
 			mainWindow->OnUpdate(); 
 		}
@@ -73,7 +101,7 @@ namespace XEngine
 	// On Window Close Function: Called when application is closed causing the application to stop running
 	bool Application::OnWindowClose(WindowCloseEvent& e)
 	{
-		m_Running = false;
+		mainRunning = false;
 		return true;
 	}
 }

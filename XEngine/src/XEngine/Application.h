@@ -24,16 +24,17 @@ namespace XEngine
 		// ---------------
 		// ---FUNCTION PROTOTYPES---
 		inline Window& GetWindow() { return *mainWindow; }
-		inline static Application& Get() { return *s_Instance; }
+		inline static Application& Get() { return *instance; }
 		// -------------------------
 	private:
 		// ---VARIABLES---
 		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> mainWindow;
-		ImGuiLayer* m_ImGuiLayer;
-		bool m_Running = true;
-		LayerStack m_LayerStack;
-		static Application* s_Instance;
+		ImGuiLayer* mainImGuiLayer;
+		bool mainRunning = true;
+		LayerStack mainLayerStack;
+		unsigned int mainVertexArray, mainVertexBuffer, mainIndexBuffer;
+		static Application* instance;
 		// ---------------
 	};
 	Application* CreateApplication();

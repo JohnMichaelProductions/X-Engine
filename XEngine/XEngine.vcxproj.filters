@@ -7,6 +7,9 @@
     <Filter Include="src\Platforms">
       <UniqueIdentifier>{B40E5C85-20CF-D7BB-E909-213955891C98}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Platforms\OpenGL">
+      <UniqueIdentifier>{68A52600-5434-B0C9-FD52-C4C4E9C0C06F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platforms\Win10">
       <UniqueIdentifier>{527DA55D-BEDE-826B-474C-C91DB3ACB92A}</UniqueIdentifier>
     </Filter>
@@ -27,6 +30,9 @@
     </Filter>
     <Filter Include="src\XEngine\LogSystem">
       <UniqueIdentifier>{A02BB24B-0C98-6D46-D58B-05A441B78FAE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\XEngine\Renderer">
+      <UniqueIdentifier>{D06DF12E-BCFC-7AF8-651B-8FF351898B9E}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -51,6 +57,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platforms\OpenGL\OpenGlContext.h">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platforms\Win10\Win10Input.h">
       <Filter>src\Platforms\Win10</Filter>
     </ClInclude>
@@ -98,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="src\XEngine\LogSystem\Log.h">
       <Filter>src\XEngine\LogSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h">
+      <Filter>src\XEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Window.h">
       <Filter>src\XEngine</Filter>
@@ -1248,10 +1260,11 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platforms\OpenGL\OpenGlContext.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platforms\OpenGL\OpenGlContext.cpp">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platforms\Win10\Win10Input.cpp">
       <Filter>src\Platforms\Win10</Filter>
     </ClCompile>
@@ -1279,6 +1292,5 @@
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platforms\OpenGL\OpenGlContext.cpp" />
   </ItemGroup>
 </Project>
