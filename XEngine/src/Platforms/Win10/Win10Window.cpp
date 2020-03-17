@@ -5,8 +5,8 @@
 #include "XEngine/EventSystem/ApplicationEvent.h"
 #include "XEngine/EventSystem/KeyEvent.h"
 #include "XEngine/EventSystem/MouseEvent.h"
-// GLAD Library Files
-#include <GLAD/glad.h>
+// OpenGL Files
+#include "Platforms/OpenGL/OpenGlContext.h"
 namespace XEngine
 {
 	// GLFW Initialized Variable
@@ -42,12 +42,12 @@ namespace XEngine
 		}
 		// Creates main window with the Windows 10 Window Properties
 		mainWindow = glfwCreateWindow((int)props.Width, (int)props.Height, windowData.Title.c_str(), nullptr, nullptr);
-		// Creates context based on the active window
-		glfwMakeContextCurrent(mainWindow);
-		// Local Variable status
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		// Throws error
-		XCORE_ASSERT(status, "Failed to initialize GLAD");
+		// ---OPEN GL IMPLEMENTATION---
+		// Create Context
+		mainContext = new OpenGLContext(mainWindow);
+		// Call initialization function
+		mainContext->Init();
+		// ----------------------------
 		// Sets the active windows data to the windowData variable
 		glfwSetWindowUserPointer(mainWindow, &windowData);
 		// Set V Sync to true
@@ -141,7 +141,7 @@ namespace XEngine
 	void Win10Window::OnUpdate() 
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(mainWindow);
+		mainContext->SwapBuffers();
 	}
 	// Set V Sync Function: Sets V Sync on or off
 	void Win10Window::SetVSync(bool enabled)

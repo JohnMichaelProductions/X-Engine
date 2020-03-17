@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platforms\OpenGL\OpenGlContext.h" />
     <ClInclude Include="src\Platforms\Win10\Win10Input.h" />
     <ClInclude Include="src\Platforms\Win10\Win10Window.h" />
     <ClInclude Include="src\XEngine.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="src\XEngine\LayerSystem\Layer.h" />
     <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h" />
     <ClInclude Include="src\XEngine\LogSystem\Log.h" />
+    <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\XEngine\Window.h" />
     <ClInclude Include="src\XEngine\XCore.h" />
     <ClInclude Include="src\Xpch.h" />
@@ -541,6 +543,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platforms\OpenGL\OpenGlContext.cpp" />
     <ClCompile Include="src\Platforms\Win10\Win10Input.cpp" />
     <ClCompile Include="src\Platforms\Win10\Win10Window.cpp" />
     <ClCompile Include="src\XEngine\Application.cpp" />

@@ -1,6 +1,8 @@
 #pragma once		
 // Mid Files
 #include "XEngine/Window.h"
+// Renderer Files
+#include "XEngine/Renderer/GraphicsContext.h"
 // GLFW Library Files
 #include <GLFW/glfw3.h>
 namespace XEngine
@@ -27,6 +29,7 @@ namespace XEngine
 	private:
 		// Window Variable
 		GLFWwindow* mainWindow;
+		GraphicsContext* mainContext;
 		// Window Data Struct: Struct for window properties
 		struct WindowData
 		{
