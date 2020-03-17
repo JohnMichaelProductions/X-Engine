@@ -1,8 +1,8 @@
-#X-Engine git ignore
-#Directories to ignore
+# X-Engine git ignore
+# Directories to ignore
 .vs/
 bin/
 bin-int/
-#File extensions to ignore
+# File extensions to ignore
 *.user
 *.ini
