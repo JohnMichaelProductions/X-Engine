@@ -21,11 +21,9 @@ namespace XEngine
 		void OnEvent(Event& e);
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
-		// ---------------
-		// ---FUNCTION PROTOTYPES---
 		inline Window& GetWindow() { return *mainWindow; }
 		inline static Application& Get() { return *instance; }
-		// -------------------------
+		// ---------------
 	private:
 		// ---VARIABLES---
 		bool OnWindowClose(WindowCloseEvent& e);

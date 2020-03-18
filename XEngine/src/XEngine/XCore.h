@@ -17,6 +17,7 @@
 	#define X_ENABLE_ASSERTS
 #endif
 #ifdef X_ENABLE_ASSERTS
+	// If x is equal to false(or 0) then execute following code
 	#define X_ASSERT(x, ...) {if(!(x)) {XCLIENT_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define XCORE_ASSERT(x, ...)  {if(!(x)) {XCORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else

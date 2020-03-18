@@ -9,15 +9,19 @@ namespace XEngine
 	class XENGINE_API Log
 	{
 	public:
-		// Create Initialization function
+		// ---FUNCTIONS---
+		// Init Function: Initialize Loggers 
 		static void Init();
-		// Core and Client Logger
-		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
-		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
+		// Get Core Logger Function: Returns core logger
+		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return coreLogger; }
+		// Get Client Logger Function: Returns client logger
+		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return clientLogger; }
+		// ---------------
 	private:
-		// Core and Client Logger
-		static std::shared_ptr<spdlog::logger> s_CoreLogger;
-		static std::shared_ptr<spdlog::logger> s_ClientLogger;
+		// Core Logger Variable
+		static std::shared_ptr<spdlog::logger> coreLogger;
+		// Client Logger Variable
+		static std::shared_ptr<spdlog::logger> clientLogger;
 	};
 }
 // Macros: Logging

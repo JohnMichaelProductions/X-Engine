@@ -12,8 +12,8 @@ namespace XEngine
 	public:
 		LayerStack();
 		~LayerStack();
-		void PushLayer(Layer* layer);
-		void PushOverlay(Layer* overlay);
+		void PushLayerStack(Layer* layer);
+		void PushOverlayStack(Layer* overlay);
 		void PopLayer(Layer* layer);
 		void PopOverlay(Layer* overlay);
 		std::vector<Layer*>::iterator begin() { return m_Layers.begin(); }
