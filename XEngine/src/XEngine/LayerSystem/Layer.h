@@ -20,9 +20,9 @@ namespace XEngine
 		virtual void OnImGuiRender() {}
 		// Called when an a event is sent to a layer
 		virtual void OnEvent(Event& event) {}
-		inline const std::string& GetName() const { return mainDebugName; }
+		inline const std::string& GetName() const { return m_DebugName; }
 	protected:
 		// Debug string
-		std::string mainDebugName;
+		std::string m_DebugName;
 	};
 }

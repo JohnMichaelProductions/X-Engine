@@ -10,13 +10,12 @@ namespace XEngine
 		for (Layer* layer : m_Layers)
 			delete layer;
 	}
-	void LayerStack::PushLayerStack(Layer* layer) 
+	void LayerStack::PushLayer(Layer* layer) 
 	{ 
 		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer); 
 		m_LayerInsertIndex++;
-		XCORE_INFO("Added Layer to Layer Stack. Layey Index Count: {0}", m_LayerInsertIndex);
 	}
-	void LayerStack::PushOverlayStack(Layer* overlay) { m_Layers.emplace_back(overlay); }
+	void LayerStack::PushOverlay(Layer* overlay) { m_Layers.emplace_back(overlay); }
 	void LayerStack::PopLayer(Layer* layer)
 	{
 		auto it = std::find(m_Layers.begin(), m_Layers.end(), layer);
