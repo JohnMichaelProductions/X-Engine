@@ -9,6 +9,8 @@
 #include "ImGuiLayer/ImGuiLayer.h"
 // Layer System Files
 #include "LayerSystem/LayerStack.h"
+
+#include "XEngine/Renderer/Shader.h"
 namespace XEngine
 {
 	class XENGINE_API Application
@@ -35,6 +37,8 @@ namespace XEngine
 		LayerStack mainLayerStack;
 		unsigned int mainVertexArray, mainVertexBuffer, mainIndexBuffer;
 		static Application* instance;
+
+		std::unique_ptr<Shader> mainShader;
 		// ---------------
 	};
 	Application* CreateApplication();

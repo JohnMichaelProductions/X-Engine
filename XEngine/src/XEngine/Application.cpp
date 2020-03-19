@@ -33,11 +33,11 @@ namespace XEngine
 		float vertices[3 * 3] =
 		{
 			-0.5f, -0.5f, 0.0f,
-			0.5f, -0.5f, 0.0f,
-			0.0f, 0.5f, 0.0f
+			 0.5f, -0.5f, 0.0f,
+			 0.0f,  0.5f, 0.0f
 		};
 		// Upload Data
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(float), vertices, GL_STATIC_DRAW);
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 		glGenBuffers(1, &mainIndexBuffer);
@@ -50,6 +50,25 @@ namespace XEngine
 		};
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 		// -----------------
+		std::string vertexSourceCode = 
+		R"(
+			#version 330 core
+			layout(location = 0) in vec3 a_Position;
+			out vec3 v_Position;
+			void main()
+			{
+				v_Position = a_Position;
+				gl_Position = vec4(a_Position, 1.0);	
+			}
+		)";
+		std::string fragmentSourceCode = 
+		R"(
+			#version 330 core
+			layout(location = 0) out vec4 color;
+			in vec3 v_Position;
+			void main() { color = vec4(v_Position * 0.5 + 0.5, 1.0); }
+		)";
+		mainShader.reset(new Shader(vertexSourceCode, fragmentSourceCode));
 	}
 	// Destructor: Print Application Deleted
 	Application::~Application() { printf("Application Deleted\n"); }
@@ -86,6 +105,7 @@ namespace XEngine
 		{
 			glClearColor(.1743f, .2988f, .5270f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+			mainShader->Bind();
 			glBindVertexArray(mainVertexArray);
 			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
 			for (Layer* layer : mainLayerStack)
