@@ -4,5 +4,6 @@
 bin/
 bin-int/
 # File extensions to ignore
+*.sln
 *.user
 *.ini

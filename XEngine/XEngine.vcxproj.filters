@@ -792,6 +792,9 @@
     <ClInclude Include="Dependencies\vendor\glm\glm\vector_relational.hpp">
       <Filter>Dependencies\vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platforms\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platforms\OpenGL\OpenGlContext.h">
       <Filter>src\Platforms\OpenGL</Filter>
     </ClInclude>
@@ -843,7 +846,13 @@
     <ClInclude Include="src\XEngine\LogSystem\Log.h">
       <Filter>src\XEngine\LogSystem</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\Buffer.h">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\Renderer.h">
       <Filter>src\XEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Renderer\Shader.h">
@@ -858,11 +867,11 @@
     <ClInclude Include="src\Xpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platforms\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\XEngine\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platforms\OpenGL\OpenGlContext.cpp">
       <Filter>src\Platforms\OpenGL</Filter>
     </ClCompile>
@@ -890,14 +899,17 @@
     <ClCompile Include="src\XEngine\LogSystem\Log.cpp">
       <Filter>src\XEngine\LogSystem</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\Renderer\Buffer.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\Renderer\Renderer.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\XEngine\Renderer\Shader.cpp">
       <Filter>src\XEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\XEngine\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>
