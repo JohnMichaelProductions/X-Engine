@@ -27,8 +27,6 @@ namespace XEngine
 		// ---RENDERERING---
 		glGenVertexArrays(1, &mainVertexArray);
 		glBindVertexArray(mainVertexArray);
-		glGenBuffers(1, &mainVertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, mainVertexBuffer);
 		// Render Data
 		float vertices[3 * 3] =
 		{
@@ -36,21 +34,12 @@ namespace XEngine
 			 0.5f, -0.5f, 0.0f,
 			 0.0f,  0.5f, 0.0f
 		};
-		VertexBuffer buffer = VertexBuffer::Create(sizeof(vertices), vertices);
-		buffer.Bind();
+		mainVertex.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 		// Upload Data
-		glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(float), vertices, GL_STATIC_DRAW);
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-		glGenBuffers(1, &mainIndexBuffer);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mainIndexBuffer);
-		unsigned int indices[3] =
-		{
-			0,
-			1,
-			2
-		};
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		uint32_t indices[3] = { 0, 1, 2 };
+		mainIndex.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		// -----------------
 		std::string vertexSourceCode = 
 		R"(
@@ -109,7 +98,7 @@ namespace XEngine
 			glClear(GL_COLOR_BUFFER_BIT);
 			mainShader->Bind();
 			glBindVertexArray(mainVertexArray);
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES, mainIndex->GetCount(), GL_UNSIGNED_INT, nullptr);
 			for (Layer* layer : mainLayerStack)
 				layer->OnUpdate();
 			mainImGuiLayer->Begin();

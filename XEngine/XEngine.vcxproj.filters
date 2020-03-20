@@ -858,6 +858,9 @@
     <ClInclude Include="src\Xpch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platforms\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\XEngine\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OpenGL\OpenGlContext.cpp">
@@ -893,5 +896,8 @@
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\XEngine\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>

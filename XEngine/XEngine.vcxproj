@@ -384,6 +384,7 @@
     <ClInclude Include="Dependencies\vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="Dependencies\vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="Dependencies\vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="src\Platforms\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGlContext.h" />
     <ClInclude Include="src\Platforms\Win10\Win10Input.h" />
     <ClInclude Include="src\Platforms\Win10\Win10Window.h" />
@@ -401,13 +402,16 @@
     <ClInclude Include="src\XEngine\LayerSystem\Layer.h" />
     <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h" />
     <ClInclude Include="src\XEngine\LogSystem\Log.h" />
+    <ClInclude Include="src\XEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\XEngine\Renderer\Renderer.h" />
     <ClInclude Include="src\XEngine\Renderer\Shader.h" />
     <ClInclude Include="src\XEngine\Window.h" />
     <ClInclude Include="src\XEngine\XCore.h" />
     <ClInclude Include="src\Xpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platforms\OpenGL\OpenGlContext.cpp" />
     <ClCompile Include="src\Platforms\Win10\Win10Input.cpp" />
     <ClCompile Include="src\Platforms\Win10\Win10Window.cpp" />
@@ -417,6 +421,8 @@
     <ClCompile Include="src\XEngine\LayerSystem\Layer.cpp" />
     <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp" />
     <ClCompile Include="src\XEngine\LogSystem\Log.cpp" />
+    <ClCompile Include="src\XEngine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\XEngine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\XEngine\Renderer\Shader.cpp" />
     <ClCompile Include="src\Xpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

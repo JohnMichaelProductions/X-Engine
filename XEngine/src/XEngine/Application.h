@@ -9,8 +9,9 @@
 #include "ImGuiLayer/ImGuiLayer.h"
 // Layer System Files
 #include "LayerSystem/LayerStack.h"
-
+// Renderer Files
 #include "XEngine/Renderer/Shader.h"
+#include "XEngine/Renderer/Buffer.h"+
 namespace XEngine
 {
 	class XENGINE_API Application
@@ -35,9 +36,10 @@ namespace XEngine
 		ImGuiLayer* mainImGuiLayer;
 		bool mainRunning = true;
 		LayerStack mainLayerStack;
-		unsigned int mainVertexArray, mainVertexBuffer, mainIndexBuffer;
+		unsigned int mainVertexArray;
 		static Application* instance;
-
+		std::unique_ptr<VertexBuffer> mainVertex;
+		std::unique_ptr<IndexBuffer> mainIndex;
 		std::unique_ptr<Shader> mainShader;
 		// ---------------
 	};
