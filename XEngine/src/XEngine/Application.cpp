@@ -36,6 +36,8 @@ namespace XEngine
 			 0.5f, -0.5f, 0.0f,
 			 0.0f,  0.5f, 0.0f
 		};
+		VertexBuffer buffer = VertexBuffer::Create(sizeof(vertices), vertices);
+		buffer.Bind();
 		// Upload Data
 		glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(float), vertices, GL_STATIC_DRAW);
 		glEnableVertexAttribArray(0);
