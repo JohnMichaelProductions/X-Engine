@@ -1251,6 +1251,9 @@
     <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h">
       <Filter>src\XEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\Shader.h">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\Window.h">
       <Filter>src\XEngine</Filter>
     </ClInclude>
@@ -1260,7 +1263,6 @@
     <ClInclude Include="src\Xpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OpenGL\OpenGlContext.cpp">
@@ -1290,9 +1292,11 @@
     <ClCompile Include="src\XEngine\LogSystem\Log.cpp">
       <Filter>src\XEngine\LogSystem</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\Renderer\Shader.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>
