@@ -10,6 +10,8 @@
 #include "LogSystem/Log.h"
 // GLAD Library
 #include <GLAD/glad.h>
+
+#include "Renderer/Shader.h"
 namespace XEngine
 {
 	// Macro
@@ -18,6 +20,7 @@ namespace XEngine
 	// Constructor
 	Application::Application() 
 	{  
+		XCORE_INFO("Application(Class) has been created");
 		XCORE_ASSERT(!instance, "Application already exists");
 		instance = this;
 		mainWindow = std::unique_ptr<Window>(Window::Create()); 
@@ -41,24 +44,8 @@ namespace XEngine
 		uint32_t indices[3] = { 0, 1, 2 };
 		mainIndex.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		// -----------------
-		std::string vertexSourceCode = 
-		R"(
-			#version 330 core
-			layout(location = 0) in vec3 a_Position;
-			out vec3 v_Position;
-			void main()
-			{
-				v_Position = a_Position;
-				gl_Position = vec4(a_Position, 1.0);	
-			}
-		)";
-		std::string fragmentSourceCode = 
-		R"(
-			#version 330 core
-			layout(location = 0) out vec4 color;
-			in vec3 v_Position;
-			void main() { color = vec4(v_Position * 0.5 + 0.5, 1.0); }
-		)";
+		std::string vertexSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultVertexShader.shader");
+		std::string fragmentSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultFragmentShader.shader");
 		mainShader.reset(new Shader(vertexSourceCode, fragmentSourceCode));
 	}
 	// Destructor: Print Application Deleted

@@ -91,4 +91,12 @@ namespace XEngine
 	Shader::~Shader() { glDeleteProgram(mainRendererID); }
 	void Shader::Bind() const { glUseProgram(mainRendererID); }
 	void Shader::Unbind() const { glUseProgram(0); }
+	std::string ConvertShader(const std::string& shaderFilestream)
+	{
+		std::ifstream stream;
+		stream.open(shaderFilestream);
+		std::stringstream fileContents;
+		fileContents << stream.rdbuf();
+		return fileContents.str();
+	}
 }

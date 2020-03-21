@@ -11,6 +11,7 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+#include <fstream>
 // Log System Files
 #include "XEngine/LogSystem/Log.h"
 // Libraries exclusive to the Windows Platform

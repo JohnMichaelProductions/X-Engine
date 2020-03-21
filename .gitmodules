@@ -1,12 +1,12 @@
-[submodule "XEngine/Dependencies/GLFW"]
-	path = XEngine/Dependencies/GLFW
+[submodule "XEngine/vendor/GLFW"]
+	path = XEngine/vendor/GLFW
 	url = https://github.com/TheCherno/glfw.git
-[submodule "XEngine/Dependencies/spdlog"]
-	path = XEngine/Dependencies/spdlog
+[submodule "XEngine/vendor/spdlog"]
+	path = XEngine/vendor/spdlog
 	url = https://github.com/gabime/spdlog.git
-[submodule "XEngine/Dependencies/ImGui"]
-	path = XEngine/Dependencies/ImGui
+[submodule "XEngine/vendor/ImGui"]
+	path = XEngine/vendor/ImGui
 	url = https://github.com/ocornut/imgui.git
-[submodule "XEngine/Dependencies/glm"]
-	path = XEngine/Dependencies/glm
+[submodule "XEngine/vendor/glm"]
+	path = XEngine/vendor/glm
 	url = https://github.com/g-truc/glm.git

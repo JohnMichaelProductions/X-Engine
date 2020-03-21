@@ -13,4 +13,5 @@ namespace XEngine
 	private:
 		uint32_t mainRendererID;
 	};
+	std::string ConvertShader(const std::string& shaderFilestream);
 }

@@ -4,14 +4,14 @@ workspace "XEngine"
 	configurations { "Debug", "Release", "Dist" }
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
-IncludeDir["GLFW"] = "XEngine/Dependencies/vendor/GLFW/include"
-IncludeDir["GLAD"] = "XEngine/Dependencies/vendor/GLAD/include"
-IncludeDir["ImGui"] = "XEngine/Dependencies/vendor/ImGui"
-IncludeDir["glm"] = "XEngine/Dependencies/vendor/glm"
+IncludeDir["GLFW"] = "XEngine/vendor/GLFW/include"
+IncludeDir["GLAD"] = "XEngine/vendor/GLAD/include"
+IncludeDir["ImGui"] = "XEngine/vendor/ImGui"
+IncludeDir["glm"] = "XEngine/vendor/glm"
 group "Dependencies"
-	include "XEngine/Dependencies/vendor/GLFW"
-	include "XEngine/Dependencies/vendor/GLAD"
-	include "XEngine/Dependencies/vendor/imgui"
+	include "XEngine/vendor/GLFW"
+	include "XEngine/vendor/GLAD"
+	include "XEngine/vendor/imgui"
 group "X-Engine"
 	project "XEngine"
 		location "XEngine"
@@ -23,9 +23,9 @@ group "X-Engine"
 		objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 		pchheader "Xpch.h"
 		pchsource "XEngine/src/Xpch.cpp"
-		files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp", "%{prj.name}/Dependencies/vendor/glm/glm/**.hpp", "%{prj.name}/Dependencies/glm/glm/**.inl" }
+		files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp", "%{prj.name}/vendor/glm/glm/**.hpp", "%{prj.name}/glm/glm/**.inl" }
 		defines { "_CRT_SECURE_NO_WARNINGS" }
-		includedirs { "%{prj.name}/src", "%{prj.name}/Dependencies/vendor/spdlog/include", "%{IncludeDir.GLFW}", "%{IncludeDir.GLAD}", "%{IncludeDir.ImGui}", "%{IncludeDir.glm}" }
+		includedirs { "%{prj.name}/src", "%{prj.name}/vendor/spdlog/include", "%{IncludeDir.GLFW}", "%{IncludeDir.GLAD}", "%{IncludeDir.ImGui}", "%{IncludeDir.glm}" }
 		links{ "GLFW", "GLAD", "ImGui", "opengl32.lib" }
 		filter "system:windows"
 			staticruntime "On"
@@ -53,7 +53,7 @@ group "Game"
 		targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 		objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 		files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
-		includedirs { "%{prj.name}/src", "XEngine/Dependencies/vendor/spdlog/include", "XEngine/src", "%{IncludeDir.glm}", "XEngine/Dependencies" }
+		includedirs { "%{prj.name}/src", "XEngine/vendor/spdlog/include", "XEngine/src", "%{IncludeDir.glm}", "XEngine/vendor" }
 		links { "XEngine" }
 		filter "system:windows"
 			systemversion "latest"

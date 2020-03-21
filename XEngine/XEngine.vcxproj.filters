@@ -912,4 +912,8 @@
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\res\DefaultFragmentShader.shader" />
+    <None Include="src\res\DefaultVertexShader.shader" />
+  </ItemGroup>
 </Project>
