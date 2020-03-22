@@ -1,5 +1,10 @@
 # X-Engine Weekly Newsletter
 
+### Week 4: March 16th, 2020 - March 22th, 2020
+This week I was mostly working on understanding OpenGL and building the renderer with that knowledge, this week I got a lot of X-Engine organized but I also got basic rendering features finished, like context and the abstraction layer. I don't know what will be in store for this week since I'll be busy a lot and won't be able to work on X-Engine as much, I want to aim for at least one thing done everyday, so that'll at least happen.
+
+With that in mind I want to finish a basic version of the renderer, one that is complete and can be used, obviously I'll have to make improvements to it in the future. So the renderer will be prety much finished by the end of the week I'm hoping. That's pretty much all I have to say for this week I'm hoping next week will be more eventful.
+
 ### Week 3: March 9th, 2020 - March 15th, 2020
 This third week I got to finish setting up the basic fundamentals of the core of X-Engine, I'm still having some issues with the premake files though, and I'm planning to finish that monday and release a build of the engine through github. The features that I got done this week to finish the project set-up were input polling, mouse and key codes, adding a math library, and getting docking and viewports to work with ImGui.
 
