@@ -1,7 +1,4 @@
-// X-Engine Library Files
 #include <XEngine.h>
-// ImGui Library Files
-#include "vendor/imgui/imgui.h"
 // X Layer Class(Derived from Layer Class)
 class XLayer : public XEngine::Layer
 {
@@ -13,7 +10,7 @@ public:
 	// On ImGui Render Function(Override from Layer Class): ImGui Window, customize with ImGui functions
 	virtual void OnImGuiRender() override
 	{
-		using namespace ImGui;
+		// using namespace ImGui;
 		// ---Write ImGui Code Here!---
 		//
 		//

@@ -1,23 +1,33 @@
-// C++ Libraries
 #include <stdio.h>
-// Top Files
 #include "Xpch.h"
-// Mid Files
 #include "Application.h"
-// Input System Files
 #include "InputSystem/Input.h"
-// Log System Files
 #include "LogSystem/Log.h"
-// GLAD Library
 #include <GLAD/glad.h>
-
 #include "Renderer/Shader.h"
 namespace XEngine
 {
-	// Macro
-	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)	// Bind Event Macro: Binds event
 	Application* Application::instance = nullptr;
-	// Constructor
+	static GLenum ShaderDataTypeConvertToOpenGLBaseType(ShaderDataType type)
+	{
+		switch (type)
+		{
+			case XEngine::ShaderDataType::Float:	return GL_FLOAT;
+			case XEngine::ShaderDataType::Float2:	return GL_FLOAT;
+			case XEngine::ShaderDataType::Float3:	return GL_FLOAT;
+			case XEngine::ShaderDataType::Float4:	return GL_FLOAT;
+			case XEngine::ShaderDataType::Mat3:		return GL_FLOAT;
+			case XEngine::ShaderDataType::Mat4:		return GL_FLOAT;
+			case XEngine::ShaderDataType::Int:		return GL_INT;
+			case XEngine::ShaderDataType::Int2:		return GL_INT;
+			case XEngine::ShaderDataType::Int3:		return GL_INT;
+			case XEngine::ShaderDataType::Int4:		return GL_INT;
+			case XEngine::ShaderDataType::Bool:		return GL_BOOL;
+		}
+		XCORE_ASSERT(false, "Unknown ShaderDataType!");
+		return 0;
+	}
 	Application::Application() 
 	{  
 		XCORE_INFO("Application(Class) has been created");
@@ -31,16 +41,31 @@ namespace XEngine
 		glGenVertexArrays(1, &mainVertexArray);
 		glBindVertexArray(mainVertexArray);
 		// Render Data
-		float vertices[3 * 3] =
+		float vertices[3 * 7] =
 		{
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
+			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
+			 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
+			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 		mainVertex.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+
+		{
+			BufferLayout layout =
+			{
+				{ ShaderDataType::Float3, "a_Position" },
+				{ ShaderDataType::Float4, "a_Color" }
+			};
+			mainVertex->SetLayout(layout);
+		}
+		uint32_t index = 0;
+		const auto& layout = mainVertex->GetLayout();
+		for (const auto& element : layout)
+		{
+			glEnableVertexAttribArray(index);
+			glVertexAttribPointer(index, element.GetComponentCount(), ShaderDataTypeConvertToOpenGLBaseType(element.Type), element.Normalized ? GL_TRUE : GL_FALSE, mainVertex->GetLayout().GetStride(), (const void *)element.Offset);
+			index++;
+		}
 		// Upload Data
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 		uint32_t indices[3] = { 0, 1, 2 };
 		mainIndex.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		// -----------------
@@ -62,8 +87,8 @@ namespace XEngine
 		mainLayerStack.PushOverlay(layer); 
 		layer->OnAttach();
 	}
-	// On Event Function
-	void Application::OnEvent(Event& e)
+	void Application::OnEvent(Event& e) // On Event Function
+
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));

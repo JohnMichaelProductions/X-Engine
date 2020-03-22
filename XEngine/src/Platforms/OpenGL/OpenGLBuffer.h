@@ -7,10 +7,15 @@ namespace XEngine
 	public:
 		OpenGlVertexBuffer(float* vertices, uint32_t size);
 		virtual ~OpenGlVertexBuffer();
-		virtual void Bind() const;
-		virtual void Unbind() const;
+		virtual void Bind() const override;
+		virtual void Unbind() const override;
+		virtual const BufferLayout& GetLayout() const override
+			{ return memberLayout; }
+		virtual void SetLayout(const BufferLayout& layout) override
+			{ memberLayout = layout; }
 	private:
 		uint32_t mainRenderID;
+		BufferLayout memberLayout;
 	};	
 	class OpenGlIndexBuffer : public IndexBuffer
 	{

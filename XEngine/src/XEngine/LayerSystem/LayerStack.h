@@ -1,9 +1,6 @@
 #pragma once
-// C++ Libraries
 #include <vector>
-// Mid Files
 #include "XEngine/XCore.h"
-// Layer System Files
 #include "Layer.h"
 namespace XEngine
 {

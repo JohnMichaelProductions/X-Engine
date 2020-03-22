@@ -4,10 +4,10 @@ workspace "XEngine"
 	configurations { "Debug", "Release", "Dist" }
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
-IncludeDir["GLFW"] = "XEngine/vendor/GLFW/include"
-IncludeDir["GLAD"] = "XEngine/vendor/GLAD/include"
+IncludeDir["GLFW"]  = "XEngine/vendor/GLFW/include"
+IncludeDir["GLAD"]  = "XEngine/vendor/GLAD/include"
 IncludeDir["ImGui"] = "XEngine/vendor/ImGui"
-IncludeDir["glm"] = "XEngine/vendor/glm"
+IncludeDir["glm"]   = "XEngine/vendor/glm"
 group "Dependencies"
 	include "XEngine/vendor/GLFW"
 	include "XEngine/vendor/GLAD"

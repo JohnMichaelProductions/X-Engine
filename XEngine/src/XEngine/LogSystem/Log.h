@@ -1,21 +1,18 @@
 #pragma once
-// spdlog Library Files
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
-// Mid Files
 #include "../XCore.h"
 namespace XEngine
 {
 	class XENGINE_API Log
 	{
 	public:
-		// Create Initialization function
 		static void Init();
-		// Core and Client Logger
-		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
-		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
+		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() 
+			{ return s_CoreLogger; }
+		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() 
+			{ return s_ClientLogger; }
 	private:
-		// Core and Client Logger
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
 	};
