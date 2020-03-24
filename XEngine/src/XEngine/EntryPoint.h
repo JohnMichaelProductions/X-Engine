@@ -4,14 +4,10 @@ extern XEngine::Application* XEngine::CreateApplication();
 int main(int argc, char** argv)
 {
 	// ---ENTRY POINT---
-	printf("Starting X-Engine\n");
-	// Run Logging Inialization
-	XEngine::Log::Init();
-	// Create app
-	auto app = XEngine::CreateApplication();
-	// Running Application
-	app->Run();
-	// Delete app
-	delete app;
+	printf("Starting X-Engine\n");				// Start
+	XEngine::Log::Init();						// Run Logging Inialization
+	auto app = XEngine::CreateApplication();	// Create app
+	app->Run();									// Running Application
+	delete app;									// Delete app
 }
 #endif

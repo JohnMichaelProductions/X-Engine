@@ -5,7 +5,7 @@ namespace XEngine
 {
 	class XENGINE_API Layer
 	{
-	public:
+	public:											// {PUBLIC}
 		Layer(const std::string& name = "Layer");	// Constructor Function: Called opon creation
 		virtual ~Layer();							// (Virtual) Destructor Function: Called when object is deleted
 		virtual void OnAttach() {}					// (Virtual) On Attach Function: Called when the layer is attached
@@ -15,7 +15,7 @@ namespace XEngine
 		virtual void OnEvent(Event& event) {}		// (Virtual) On Event Function: Called when an event happens in the layer
 		inline const std::string& GetName() const	// Get Name Function: Returns layer name
 			{ return memberDebugName; }
-	protected:
+	protected:										// {PROTECTED}
 		std::string memberDebugName;				// Layer Name, to be specified when creating new layer
 	};
 }

@@ -1,10 +1,6 @@
-// Top Files
 #include "Xpch.h"
-// Mid Files
 #include "XEngine/Application.h"
-// Win 10 Files
 #include "Win10Input.h"
-// GLFW Library Files
 #include <GLFW/glfw3.h>
 namespace XEngine
 {

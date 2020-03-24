@@ -24,15 +24,12 @@ public:
 class Game : public XEngine::Application
 {
 public:
-	// Constructor
 	Game() 
 	{
-		XCORE_INFO("New Game(Class) has been created!");
-		// Pushes X-Layer 
-		PushLayer(new XLayer()); 
+		XCORE_INFO("New Game(Class) has been created!");	// Logs creation
+		PushLayer(new XLayer());							// Creates and pushes a new X-Layer
 	}
 	// Destructor
 	~Game() { XCORE_INFO("Game(Class) has been destroyed!"); }
 };
-// Using Application Class from XEngine namespace, to override the Create Application function
-XEngine::Application* XEngine::CreateApplication() { return new Game(); }
+XEngine::Application* XEngine::CreateApplication() { return new Game(); }	// Create Application Function: Creates and returns a Game

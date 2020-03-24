@@ -864,6 +864,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platforms\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp">
@@ -908,6 +910,8 @@
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Platforms\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\res\DefaultFragmentShader.shader" />
