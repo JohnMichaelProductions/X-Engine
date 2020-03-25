@@ -7,6 +7,7 @@
 #include "LayerSystem/LayerStack.h"
 #include "XEngine/Renderer/Shader.h"
 #include "XEngine/Renderer/Buffer.h"
+#include "XEngine/Renderer/VertexArray.h"
 namespace XEngine
 {
 	class XENGINE_API Application
@@ -24,15 +25,16 @@ namespace XEngine
 			{ return *instance; }	
 	private:													// {PRIVATE}
 		bool OnWindowClose(WindowCloseEvent& e);				// On Window Close Function: Check Source File
-		unsigned int memberVertexArray;							// (Unsigned) Int Variable: Vertex Array for renderer
 		bool memberRunning = true;								// Boolean Variable: Boolean for telling whether the application is running
 		static Application* instance;							// (Static) Application Variable: The application
 		LayerStack memberLayerStack;							// Layer Stack Variable: Layer Stack for layer system
 		ImGuiLayer* memberImGuiLayer;							// ImGui Layer Variable: ImGui layer for application
 		std::unique_ptr<Window> memberWindow;					// Window Variable: Window for application
-		std::unique_ptr<VertexBuffer> memberVertexBuffer;		// Vertex Buffer Variable: Vertex Buffer for renderer
-		std::unique_ptr<IndexBuffer> memberIndexBuffer;			// Index Buffer Variable: Index Buffer for renderer
-		std::unique_ptr<Shader> memberShader;					// Shader Variable: Shader for renderers
+		std::shared_ptr<VertexArray> memberVertexArray;
+		std::shared_ptr<Shader> memberShader;					// Shader Variable: Shader for renderers
+
+		std::shared_ptr<Shader> memberShader2;					// Shader Variable: Shader for renderers
+		std::shared_ptr<VertexArray> memberSquareVA;
 	};
 	Application* CreateApplication();							// Create Application Function: Creates Application
 }

@@ -18,40 +18,53 @@ namespace XEngine
 		memberWindow->SetEventCallback(BIND_EVENT_FN(OnEvent));
 		memberImGuiLayer = new ImGuiLayer;
 		PushOverlay(memberImGuiLayer);
+		memberVertexArray.reset(VertexArray::Create());
 		// ---RENDERERING---
-		glGenVertexArrays(1, &memberVertexArray);
-		glBindVertexArray(memberVertexArray);
 		float vertices[3 * 7] =								// Renderer Data
 		{
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
 			 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
-		memberVertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		std::shared_ptr<VertexBuffer> vertexBuffer;
 
+		memberVertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		BufferLayout layout =
 		{
-			BufferLayout layout =
-			{
-				{ ShaderDataType::Float3, "a_Position" },
-				{ ShaderDataType::Float4, "a_Color" }
-			};
-			memberVertexBuffer->SetLayout(layout);
-		}
-		uint32_t index = 0;
-		const auto& layout = memberVertexBuffer->GetLayout();
-		for (const auto& element : layout)
-		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index, element.GetComponentCount(), ShaderDataTypeConvertToOpenGLBaseType(element.Type), element.Normalized ? GL_TRUE : GL_FALSE, memberVertexBuffer->GetLayout().GetStride(), (const void *)element.Offset);
-			index++;
-		}
+			{ ShaderDataType::Float3, "a_Position" },
+			{ ShaderDataType::Float4, "a_Color" }
+		};
+		memberVertexBuffer->SetLayout(layout);
+		memberVertexArray->AddVertexBuffer(memberVertexBuffer);
 		// Upload Data
 		uint32_t indices[3] = { 0, 1, 2 };
 		memberIndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		memberVertexArray->SetIndexBuffer(memberIndexBuffer);
 		// -----------------
+		memberSquareVA.reset(VertexArray::Create());
+		float squareVertices[3 * 4] =
+		{
+			-0.5f, -0.5f, 0.0f,
+			0.5f, -0.5f, 0.0f,
+			0.5f, 0.5f, 0.0f,
+			-0.5f, 0.5f, 0.0f
+		};
+		std::shared_ptr<VertexBuffer> squareVB; 
+		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		squareVB->SetLayout({ {ShaderDataType::Float3, "a_Position"} });
+		memberSquareVA->AddVertexBuffer(memberVertexBuffer);
+
+		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
+		std::shared_ptr<IndexBuffer> squareIB;
+		squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		memberSquareVA->SetIndexBuffer(squareIB);
+		// Shader Stuff
 		std::string vertexSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultVertexShader.shader");
 		std::string fragmentSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultFragmentShader.shader");
 		memberShader.reset(new Shader(vertexSourceCode, fragmentSourceCode));
+		std::string vertexSourceCode2 = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultVertexShader2.shader");
+		std::string fragmentSourceCode2 = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultFragmentShader2.shader");
+		memberShader2.reset(new Shader(vertexSourceCode2, fragmentSourceCode2));
 	}
 	// Destructor: Print Application Deleted
 	Application::~Application() { printf("Application Deleted\n"); }
@@ -86,10 +99,16 @@ namespace XEngine
 		// Keeps the application running
 		while (memberRunning)
 		{
-			glClearColor(.1743f, .2988f, .5270f, 1);
+			glClearColor(.2f, .2f, .2f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			memberShader2->Bind();
+			memberSquareVA->Bind();
+			glDrawElements(GL_TRIANGLES, memberSquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
+
 			memberShader->Bind();
-			glBindVertexArray(memberVertexArray);
+			memberVertexArray->Bind();
 			glDrawElements(GL_TRIANGLES, memberIndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
 			for (Layer* layer : memberLayerStack)
 				layer->OnUpdate();

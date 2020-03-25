@@ -24,12 +24,15 @@ namespace XEngine
 	}
 	OpenGLVertexArray::OpenGLVertexArray() 
 		{ glCreateVertexArrays(1, &memberRendererID); }
+	OpenGLVertexArray::~OpenGLVertexArray()
+		{ XCORE_INFO("OpenGLVertexArray Class destroyed"); }
 	void OpenGLVertexArray::Bind() const
 		{ glBindVertexArray(memberRendererID); }
 	void OpenGLVertexArray::Unbind() const
 		{ glBindVertexArray(0); }
 	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
 	{
+		XCORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout");
 		glBindVertexArray(memberRendererID);
 		vertexBuffer->Bind();
 		uint32_t index = 0;
@@ -37,7 +40,7 @@ namespace XEngine
 		for (const auto& element : layout)
 		{
 			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index, element.GetComponentCount(), ShaderDataTypeConvertToOpenGLBaseType(element.Type), element.Normalized ? GL_TRUE : GL_FALSE, memberVertexBuffer->GetLayout().GetStride(), (const void*)element.Offset);
+			glVertexAttribPointer(index, element.GetComponentCount(), ShaderDataTypeConvertToOpenGLBaseType(element.Type), element.Normalized ? GL_TRUE : GL_FALSE, layout.GetStride(), (const void*)element.Offset);
 			index++;
 		}
 		memberVertexBuffer.push_back(vertexBuffer);

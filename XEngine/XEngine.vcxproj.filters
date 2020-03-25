@@ -916,5 +916,7 @@
   <ItemGroup>
     <None Include="src\res\DefaultFragmentShader.shader" />
     <None Include="src\res\DefaultVertexShader.shader" />
+    <None Include="src\res\DefaultVertexShader2.shader" />
+    <None Include="src\res\DefaultFragmentShader2.shader" />
   </ItemGroup>
 </Project>
