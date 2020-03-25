@@ -25,7 +25,7 @@ namespace XEngine
 	OpenGLVertexArray::OpenGLVertexArray() 
 		{ glCreateVertexArrays(1, &memberRendererID); }
 	OpenGLVertexArray::~OpenGLVertexArray()
-		{ XCORE_INFO("OpenGLVertexArray Class destroyed"); }
+		{ glDeleteVertexArrays(1, &memberRendererID); }
 	void OpenGLVertexArray::Bind() const
 		{ glBindVertexArray(memberRendererID); }
 	void OpenGLVertexArray::Unbind() const

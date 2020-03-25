@@ -27,19 +27,19 @@ namespace XEngine
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 		std::shared_ptr<VertexBuffer> vertexBuffer;
-
-		memberVertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 		BufferLayout layout =
 		{
 			{ ShaderDataType::Float3, "a_Position" },
 			{ ShaderDataType::Float4, "a_Color" }
 		};
-		memberVertexBuffer->SetLayout(layout);
-		memberVertexArray->AddVertexBuffer(memberVertexBuffer);
+		vertexBuffer->SetLayout(layout);
+		memberVertexArray->AddVertexBuffer(vertexBuffer);
 		// Upload Data
 		uint32_t indices[3] = { 0, 1, 2 };
-		memberIndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-		memberVertexArray->SetIndexBuffer(memberIndexBuffer);
+		std::shared_ptr<IndexBuffer> indexBuffer;
+		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		memberVertexArray->SetIndexBuffer(indexBuffer);
 		// -----------------
 		memberSquareVA.reset(VertexArray::Create());
 		float squareVertices[3 * 4] =
@@ -52,7 +52,7 @@ namespace XEngine
 		std::shared_ptr<VertexBuffer> squareVB; 
 		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({ {ShaderDataType::Float3, "a_Position"} });
-		memberSquareVA->AddVertexBuffer(memberVertexBuffer);
+		memberSquareVA->AddVertexBuffer(vertexBuffer);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 		std::shared_ptr<IndexBuffer> squareIB;
@@ -109,7 +109,7 @@ namespace XEngine
 
 			memberShader->Bind();
 			memberVertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, memberIndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES, memberVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 			for (Layer* layer : memberLayerStack)
 				layer->OnUpdate();
 			memberImGuiLayer->Begin();
