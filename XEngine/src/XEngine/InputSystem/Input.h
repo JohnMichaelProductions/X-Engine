@@ -1,18 +1,22 @@
 #pragma once
-// Mid Files
 #include "XEngine/XCore.h"
 namespace XEngine
 {
 	class XENGINE_API Input
 	{
 	public:
-		inline static bool IsKeyPressed(int keycode) { return s_Instance->IsKeyPressedImpl(keycode); }
-		inline static bool IsMouseButtonPressed(int button) { return s_Instance->IsMouseButtonPressedImpl(button); }
-		inline static std::pair<float, float> GetMousePostion() { return s_Instance->GetMousePositionImpl(); }
-		inline static float GetMouseX() { return s_Instance->GetMouseXImpl(); }
-		inline static float GetMouseY() { return s_Instance->GetMouseYImpl(); }
+		inline static bool IsKeyPressed(int keycode) 
+			{ return inputInstance->IsKeyPressedImpl(keycode); }
+		inline static bool IsMouseButtonPressed(int button) 
+			{ return inputInstance->IsMouseButtonPressedImpl(button); }
+		inline static std::pair<float, float> GetMousePostion() 
+			{ return inputInstance->GetMousePositionImpl(); }
+		inline static float GetMouseX() 
+			{ return inputInstance->GetMouseXImpl(); }
+		inline static float GetMouseY() 
+			{ return inputInstance->GetMouseYImpl(); }
 	private:
-		static Input* s_Instance;
+		static Input* inputInstance;
 	protected:
 		virtual bool IsKeyPressedImpl(int keycode) = 0;
 		virtual bool IsMouseButtonPressedImpl(int button) = 0;

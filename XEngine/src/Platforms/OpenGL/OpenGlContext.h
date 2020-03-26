@@ -1,20 +1,16 @@
 #pragma once
-// Renderer Files
 #include "XEngine/Renderer/GraphicsContext.h"
 struct GLFWwindow;
 namespace XEngine
 {
 	class OpenGLContext : public GraphicsContext
 	{
-	public:
-		// ---FUNCTIONS---
-		OpenGLContext(GLFWwindow* windowHandle);
-		virtual void Init() override;
-		virtual void SwapBuffers() override;
-		// ---------------
-	private:
-		// New GLFWwindow Variable
-		GLFWwindow* mainWindowHandle;
+	public:											// {PUBLIC}
+		OpenGLContext(GLFWwindow* mainwindowHandle);// Constructor
+		virtual void Init() override;				// (Virtual) (Override) Initilization Function
+		virtual void SwapBuffers() override;		// (Virtual) (Override) Swap Buffers Function
+	private:										// {PRIVATE}
+		GLFWwindow* windowHandle;					// GLFW Window Variable, window handle
 	};
 }
 

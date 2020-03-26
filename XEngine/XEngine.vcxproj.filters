@@ -96,12 +96,6 @@
     <ClInclude Include="src\XEngine\InputSystem\Input.h">
       <Filter>src\XEngine\InputSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\InputSystem\KeyCodes.h">
-      <Filter>src\XEngine\InputSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\InputSystem\MouseCodes.h">
-      <Filter>src\XEngine\InputSystem</Filter>
-    </ClInclude>
     <ClInclude Include="src\XEngine\LayerSystem\Layer.h">
       <Filter>src\XEngine\LayerSystem</Filter>
     </ClInclude>
@@ -866,6 +860,9 @@
     </ClInclude>
     <ClInclude Include="src\XEngine\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\XEngine\InputSystem\XEngineInputCodes.h">
+      <Filter>src\XEngine\InputSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp">

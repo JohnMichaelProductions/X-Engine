@@ -154,8 +154,7 @@
     <ClInclude Include="src\XEngine\EventSystem\MouseEvent.h" />
     <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h" />
     <ClInclude Include="src\XEngine\InputSystem\Input.h" />
-    <ClInclude Include="src\XEngine\InputSystem\KeyCodes.h" />
-    <ClInclude Include="src\XEngine\InputSystem\MouseCodes.h" />
+    <ClInclude Include="src\XEngine\InputSystem\XEngineInputCodes.h" />
     <ClInclude Include="src\XEngine\LayerSystem\Layer.h" />
     <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h" />
     <ClInclude Include="src\XEngine\LogSystem\Log.h" />

@@ -5,7 +5,7 @@
 namespace XEngine
 {
 	// Input Variable(New Win10Input Class)
-	Input* Input::s_Instance = new Win10Input();
+	Input* Input::inputInstance = new Win10Input();
 	// Is Key Pressed Impl Function: Implementation Function, Return true if a key is pressed, gets key and returns the pressed or repeat state
 	bool Win10Input::IsKeyPressedImpl(int keycode)
 	{

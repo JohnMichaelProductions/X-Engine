@@ -14,36 +14,29 @@ namespace XEngine
 		Win10Window(const WindowProps& props);
 		virtual ~Win10Window();
 		void OnUpdate() override;
-		inline unsigned int GetWidth() const override { return windowData.Width; }
-		inline unsigned int GetHeight() const override { return windowData.Height; }
+		inline unsigned int GetWidth() const override 
+			{ return windowData.Width; }
+		inline unsigned int GetHeight() const override 
+			{ return windowData.Height; }
 		inline void SetEventCallback(const EventCallbackFn& callback) override { windowData.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
-		inline virtual void* GetNativeWindow() const { return mainWindow; }
+		inline virtual void* GetNativeWindow() const { return window; }
 		// ---------------
 	private:
-		// ---FUNCTIONS---
-		virtual void Init(const WindowProps& props);
-		virtual void Shutdown();
-		// ---------------
+		virtual void Init(const WindowProps& props);	// (Virtual)
+		virtual void Shutdown();						// (Virtual)
 	private:
-		// Window Variable
-		GLFWwindow* mainWindow;
-		GraphicsContext* mainContext;
-		// Window Data Struct: Struct for window properties
-		struct WindowData
+		GLFWwindow* window;					// GLFW Variable, window 
+		GraphicsContext* windowContext;		// Graphics Context Variable, graphics context for window
+		struct WindowData					// Window Data Struct: Stores all data for the window properties
 		{
-			// string: Title of Window
-			std::string Title;
-			// ints: Length of Window
-			unsigned int Width, Height;
-			// bool: VSync on or off
-			bool VSync;
-			// EventCallBack variable
-			EventCallbackFn EventCallback;
+			std::string Title;				// String Variable, Title of the window
+			unsigned int Width, Height;		// Integer Variables, Width and Height of the window
+			bool VSync;						// Bool Variable, tells whether vsync is on
+			EventCallbackFn EventCallback;	// EventCallbackFn Variable
 		};
-		// Window Data Variable
-		WindowData windowData;
+		WindowData windowData;				// Window Data Variable, window data stored in this struct
 	};	
 }
 

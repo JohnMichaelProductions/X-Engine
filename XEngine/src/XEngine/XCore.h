@@ -1,29 +1,26 @@
 #pragma once
-// Platform Support
-#ifdef X_PLATFORM_WINDOWS
-#if X_DYNAMIC_LINK
-	#ifdef X_BUILD_DLL
-		#define XENGINE_API __declspec(dllexport)
-	#else
-		#define XENGINE_API __declspec(dllimport)
-	#endif
-#else
-	#define XENGINE_API
-#endif
-#else
-	#error X-Engine only supports Windows 64-bit
-#endif
-#ifdef X_DEBUG
-	#define X_ENABLE_ASSERTS
-#endif
-#ifdef X_ENABLE_ASSERTS
-	#define X_ASSERT(x, ...) {if(!(x)) {XCLIENT_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define XCORE_ASSERT(x, ...)  {if(!(x)) {XCORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-#else
-	#define X_ASSERT(x, ...)
-	#define X_CORE_ASSERT(x, ...)
-#endif
-// Macro Bit for Event System
-#define BIT(x) (1 << x)
-// Macro for dispacting events
-#define X_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1) 
+#ifdef X_PLATFORM_WINDOWS																							// IF THE COMPUTERS PLATFORM IS WINDOWS
+#if X_DYNAMIC_LINK																									// IF X-ENGINE IS DYNAMICALLY LINKED
+	#ifdef X_BUILD_DLL																									// IF X-ENGINE IS BUILT AS A DLL
+		#define XENGINE_API __declspec(dllexport)																			// EXPORT DLL SYMBOLS
+	#else																												// IF X-ENGINE IS NOT BUILT AS A DLL
+		#define XENGINE_API __declspec(dllimport)																			// IMPORT DLL SYMBOLS
+	#endif																											// END IF
+#else																												// IF X-ENGINE IS NOT DYNAMICALLY LINKED
+	#define XENGINE_API																									// DEFINE XENGINE_API
+#endif																												// END IF
+#else																												// IF THE COMPUTERS PLATFORM IS NOT WINDOWS
+	#error X-Engine only supports Windows 64-bit																		// THROW ERROR
+#endif																												// END IF
+#ifdef X_DEBUG																										// IF X-ENGINE IS SET TO DEBUG
+	#define X_ENABLE_ASSERTS																							// ENABLE ASSERTS
+#endif																												// END IF
+#ifdef X_ENABLE_ASSERTS																								// IF ASSERTS ARE ENABLED
+	#define X_ASSERT(x, ...) {if(!(x)) {XCLIENT_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }		// DEFINE ASSERT
+	#define XCORE_ASSERT(x, ...)  {if(!(x)) {XCORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }		// DEFINE ASSERT
+#else																												// IF ASSETS ISN'T ENABLED
+	#define X_ASSERT(x, ...)																							// DEFINE ASSERT AS NULL
+	#define XCORE_ASSERT(x, ...)																						// DEFINE ASSERT AS NULL
+#endif																												// END IF
+#define BIT(x) (1 << x)																								// Macro: Bit Macro
+#define X_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)												// Macro: Binding Macro

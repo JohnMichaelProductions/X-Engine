@@ -1,35 +1,28 @@
 #pragma once
-// Top Files
 #include "Xpch.h"
-// Mid Files
 #include "XCore.h"
-// Event System Files
 #include "EventSystem/Event.h"
 namespace XEngine
 {
-	struct WindowProps
+	struct WindowProps					// Window Properties
 	{
-		// Windows Title
-		std::string Title;
-		// Postive Window Width
-		unsigned int Width;
-		// Postive Window Height
-		unsigned int Height;
-		// Setting Title, Width, Height properties
-		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1280, unsigned int height = 720) :Title(title), Width(width), Height(height) {}
+		std::string Title;				// String Variable, Title of the window
+		unsigned int Width;				// (Unsigned) Int, Width of the window
+		unsigned int Height;			// (Unsigned) Int, Height of the window
+		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1280, unsigned int height = 720) : Title(title), Width(width), Height(height) {} // Window Properties Function: Sets properties
 	};
 	class XENGINE_API Window
 	{
-	public:
-		using EventCallbackFn = std::function<void(Event&)>;
-		virtual ~Window() {}
-		virtual void OnUpdate() = 0;
-		virtual unsigned int GetWidth() const = 0;
-		virtual unsigned int GetHeight() const = 0;
-		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
-		virtual void SetVSync(bool enabled) = 0;
-		virtual bool IsVSync() const = 0;
-		virtual void* GetNativeWindow() const = 0;
-		static Window* Create(const WindowProps& props = WindowProps());
+	public:																	// {PUBLIC}
+		using EventCallbackFn = std::function<void(Event&)>;				
+		virtual ~Window() {}												// Destructor
+		virtual void OnUpdate() = 0;										// (Pure Virtual) On Update Function
+		virtual unsigned int GetWidth() const = 0;							// (Pure Virtual) (Unsigned) (Const) Get Width Function 
+		virtual unsigned int GetHeight() const = 0;							// (Pure Virtual) (Unsigned) (Const) Get Height Function
+		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;	// (Pure Virtual) Set Event Callback Function
+		virtual void SetVSync(bool enabled) = 0;							// (Pure Virtual) Set V Sync Function
+		virtual bool IsVSync() const = 0;									// (Pure Virtual) Is V Sync Function
+		virtual void* GetNativeWindow() const = 0;							// (Pure Virtual) Get Native Window Function
+		static Window* Create(const WindowProps& props = WindowProps());	// (Static) Create Function
 	};
 }
