@@ -40,7 +40,6 @@ namespace XEngine
 		std::shared_ptr<IndexBuffer> indexBuffer;
 		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		memberVertexArray->SetIndexBuffer(indexBuffer);
-		// -----------------
 		memberSquareVA.reset(VertexArray::Create());
 		float squareVertices[3 * 4] =
 		{
@@ -65,16 +64,15 @@ namespace XEngine
 		std::string vertexSourceCode2 = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultVertexShader2.shader");
 		std::string fragmentSourceCode2 = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultFragmentShader2.shader");
 		memberShader2.reset(new Shader(vertexSourceCode2, fragmentSourceCode2));
+		// -----------------
 	}
-	// Destructor: Print Application Deleted
-	Application::~Application() { printf("Application Deleted\n"); }
-	// Push Layer Function
+	Application::~Application() 
+		{ XCORE_INFO("Application Deleted\n"); }
 	void Application::PushLayer(Layer* layer) 
 	{ 
 		memberLayerStack.PushLayer(layer); 
 		layer->OnAttach();
 	}
-	// Push Overlay Function
 	void Application::PushOverlay(Layer* layer) 
 	{ 
 		memberLayerStack.PushOverlay(layer); 
@@ -93,11 +91,10 @@ namespace XEngine
 				break;
 		}
 	}
-	// Run Function: Keeps application alive and running
 	void Application::Run() 
 	{
 		// Keeps the application running
-		while (memberRunning)
+		while (appRunning)
 		{
 			glClearColor(.2f, .2f, .2f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
@@ -120,10 +117,9 @@ namespace XEngine
 			memberWindow->OnUpdate();
 		}
 	}
-	// On Window Close Function: Called when application is closed causing the application to stop running
 	bool Application::OnWindowClose(WindowCloseEvent& e)
 	{
-		memberRunning = false;
+		appRunning = false;
 		return true;
 	}
 }

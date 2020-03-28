@@ -1,5 +1,4 @@
 #pragma once
-// Event System Filess
 #include "Event.h"
 namespace XEngine 
 {
@@ -8,9 +7,11 @@ namespace XEngine
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height) : m_Width(width), m_Height(height) {}
 		// Function: Returns window width
-		inline unsigned int GetWidth() const { return m_Width; }
+		inline unsigned int GetWidth() const 
+			{ return m_Width; }
 		// Function: Returns window height
-		inline unsigned int GetHeight() const { return m_Height; }
+		inline unsigned int GetHeight() const 
+			{ return m_Height; }
 		// Function: Prints Window Resize Event info
 		std::string ToString() const override
 		{
@@ -29,7 +30,8 @@ namespace XEngine
 	{
 	public:
 		// Function: Window Closes Event
-		WindowCloseEvent() {}
+		WindowCloseEvent() 
+			{}
 		// Macros
 		EVENT_CLASS_TYPE(WindowClose)
 			EVENT_CLASS_CATEGORY(EventCategoryApplication)

@@ -25,7 +25,7 @@ namespace XEngine
 			{ return *instance; }	
 	private:													// {PRIVATE}
 		bool OnWindowClose(WindowCloseEvent& e);				// On Window Close Function: Check Source File
-		bool memberRunning = true;								// Boolean Variable: Boolean for telling whether the application is running
+		bool appRunning = true;									// Boolean Variable: Boolean for telling whether the application is running
 		static Application* instance;							// (Static) Application Variable: The application
 		LayerStack memberLayerStack;							// Layer Stack Variable: Layer Stack for layer system
 		ImGuiLayer* memberImGuiLayer;							// ImGui Layer Variable: ImGui layer for application
