@@ -1,5 +1,8 @@
 # X-Engine Weekly Newsletter
 
+### Week 4: March 23th, 2020 - March 29th, 2020
+I didn't achieve much this week, I was pretty busy, didn't finish the renderer either, so my goal for this week is finally to finish it. I'll still be busy this week but I'm hoping I'll be able to work a lot on X-Engine. I am supposed to do some school work though, so I'll be extra busy, I will try my best to work on the Engine though.
+
 ### Week 4: March 16th, 2020 - March 22th, 2020
 This week I was mostly working on understanding OpenGL and building the renderer with that knowledge, this week I got a lot of X-Engine organized but I also got basic rendering features finished, like context and the abstraction layer. I don't know what will be in store for this week since I'll be busy a lot and won't be able to work on X-Engine as much, I want to aim for at least one thing done everyday, so that'll at least happen.
 
