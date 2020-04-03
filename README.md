@@ -13,6 +13,5 @@ git clone --recursive https://github.com/JohnMichaelProductions/X-Engine.git
 
 3. Run the solution file for your IDE
 
-Note: Run the solution file at the top of the repository, when you are in visual studios, build the project and X-Engine will run(If it doesn't work the first time, build again).
 
 For questions, concerns, or a bug report email: XOS.Development.Main@gmail.com
