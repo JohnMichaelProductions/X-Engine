@@ -1,5 +1,8 @@
 # X-Engine Weekly Newsletter
 
+### Week 6: March 30th, 2020 - April 5th, 2020
+Didn't have time to do any work this week. I'll be busy once again this week and maybe next week. Although I'll probably get to work on X-Engine a little bit this week. I have other projects I want to work on this week too, I guess you could say X-Engine is on hold right now.
+
 ### Week 5: March 23th, 2020 - March 29th, 2020
 I didn't achieve much this week, I was pretty busy, didn't finish the renderer either, so my goal for this week is finally to finish it. I'll still be busy this week but I'm hoping I'll be able to work a lot on X-Engine. I am supposed to do some school work though, so I'll be extra busy, I will try my best to work on the Engine though.
 
