@@ -7,14 +7,14 @@ namespace XEngine
 	class XENGINE_API Log
 	{
 	public:
-		static void Init();													// (Static) Inialization Function: Initializes spdlog
-		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger()		// (Inline) (Static) Get Core Logger Function: Returns coreLogger Variable
+		static void Init();																// (Static) Inialization Function: Initializes spdlog
+		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger()					// (Inline) (Static) Get Core Logger Function: Returns coreLogger Variable
 			{ return coreLogger; }
-		inline static std::shared_ptr<spdlog::logger>& GetClientLogger()	// (Inline) (Static) Get Client Logger Function: Returns clientLogger Variable
+		inline static std::shared_ptr<spdlog::logger>& GetClientLogger()				// (Inline) (Static) Get Client Logger Function: Returns clientLogger Variable
 			{ return clientLogger; }
 	private:
-		static std::shared_ptr<spdlog::logger> coreLogger;					// (Static) spdlog logger variable, for core logging
-		static std::shared_ptr<spdlog::logger> clientLogger;				// (Static) spdlog logger variable, for client logging
+		static std::shared_ptr<spdlog::logger> coreLogger;								// (Static) spdlog logger variable, for core logging
+		static std::shared_ptr<spdlog::logger> clientLogger;							// (Static) spdlog logger variable, for client logging
 	};
 }
 // ---MACROS---																			// ---MACROS---

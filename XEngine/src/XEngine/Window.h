@@ -4,12 +4,13 @@
 #include "EventSystem/Event.h"
 namespace XEngine
 {
-	struct WindowProps					// Window Properties
+	struct WindowProps														// Window Properties
 	{
-		std::string Title;				// String Variable, Title of the window
-		unsigned int Width;				// (Unsigned) Int, Width of the window
-		unsigned int Height;			// (Unsigned) Int, Height of the window
-		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1280, unsigned int height = 720) : Title(title), Width(width), Height(height) {} // Window Properties Function: Sets properties
+		std::string Title;													// String Variable, Title of the window
+		unsigned int Width;													// (Unsigned) Int, Width of the window
+		unsigned int Height;												// (Unsigned) Int, Height of the window
+		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1280, unsigned int height = 720) : Title(title), Width(width), Height(height) // Window Properties Function: Sets properties
+			{}
 	};
 	class XENGINE_API Window
 	{

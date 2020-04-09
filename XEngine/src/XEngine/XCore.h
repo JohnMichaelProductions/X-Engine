@@ -10,7 +10,7 @@
 	#define XENGINE_API																									// DEFINE XENGINE_API
 #endif																												// END IF
 #else																												// IF THE COMPUTERS PLATFORM IS NOT WINDOWS
-	#error X-Engine only supports Windows 64-bit																		// THROW ERROR
+	#error X-Engine only supports Windows 64-bit
 #endif																												// END IF
 #ifdef X_DEBUG																										// IF X-ENGINE IS SET TO DEBUG
 	#define X_ENABLE_ASSERTS																							// ENABLE ASSERTS

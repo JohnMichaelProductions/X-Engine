@@ -1,35 +1,28 @@
 #pragma once
-// Top Files
 #include "Xpch.h"
-// Mid Files
 #include "../XCore.h"
 namespace XEngine
 {
-	// Event Type enum: All the events we want to record are in this enum
-	enum class EventType
+	enum class EventType	// Event Type enum: All the events we want to record are in this enum
 	{
 		None = 0,
-		// Application Events:
-		WindowClose,
-		WindowResize,
-		WindowFocus,
-		WindowLostFocus,
-		WindowMoved,
-		AppTick,
-		AppUpdate,
-		AppRender,
-		// Key Events:
-		KeyPressed,
-		KeyReleased,
-		KeyTyped,
-		// Mouse Events:
-		MouseButtonPressed,
-		MouseButtonReleased,
-		MouseMoved,
-		MouseScrolled
+		WindowClose,		// Application Events
+		WindowResize,		// Application Events
+		WindowFocus,		// Application Events
+		WindowLostFocus,	// Application Events
+		WindowMoved,		// Application Events
+		AppTick,			// Application Events
+		AppUpdate,			// Application Events
+		AppRender,			// Application Events
+		KeyPressed,			// Key Events
+		KeyReleased,		// Key Events
+		KeyTyped,			// Key Events
+		MouseButtonPressed,	// Mouse Events
+		MouseButtonReleased,// Mouse Events
+		MouseMoved,			// Mouse Events
+		MouseScrolled		// Mouse Events
 	};
-	// Event Category enum: With this enum we can single out events based on their category
-	enum EventCategory
+	enum EventCategory		// Event Category enum: With this enum we can single out events based on their category
 	{
 		None = 0,
 		EventCategoryApplication = BIT(0),
@@ -38,44 +31,39 @@ namespace XEngine
 		EventCategoryMouse       = BIT(3),
 		EventCategoryMouseButton = BIT(4)
 	};
-	// Event Class: Base Class for events
 	class XENGINE_API Event 
 	{
 	public:
-		// ---FUNCTIONS---
-		bool Handled = false;
-		virtual EventType GetEventType() const = 0;
-		virtual const char* GetName() const = 0;
-		virtual int GetCategoryFlags() const = 0;
-		// To String Function: Returns Event Name
-		virtual std::string ToString() const { return GetName(); }
-		// Is In Category: Returns true or false based on whether the event is in the category that is specified
-		inline bool IsInCategory(EventCategory category) { return GetCategoryFlags() & category; }
-		// ---------------
+		virtual EventType GetEventType() const = 0;			// (Pure Virtual) (Const) Get Event Type Function
+		virtual const char* GetName() const = 0;			// (Pure Virtual) (Const) Get Name Function
+		virtual int GetCategoryFlags() const = 0;			// (Pure Virtual) (Const) Get Category Flags Function
+		virtual std::string ToString() const				// (Virtual) (Const) To String: Uses the Get Name function to get the category name and returns it as a string
+			{ return GetName(); }
+		inline bool IsInCategory(EventCategory category)	// (Inline) Returns true or false based on if the event is in the specified event category
+			{ return GetCategoryFlags() & category; }
+		bool handled = false;								// Boolean Variable
 	};
-	// Event Dispactcher Class: Class to dispactch events based on their type
 	class EventDispatcher
 	{
-		// New Type
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
 	public:
-		EventDispatcher(Event& event) : mainEvent(event) {}
+		EventDispatcher(Event& event) : memberEvent(event) 
+			{}
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
-			if (mainEvent.GetEventType() == T::GetStaticType())
+			if (memberEvent.GetEventType() == T::GetStaticType())
 			{
-				mainEvent.Handled = func(*(T*)&mainEvent);
+				memberEvent.handled = func(*(T*)&mainEvent);
 				return true;
 			}
 			return false;
 		}
 	private:
-		Event& mainEvent;
+		Event& memberEvent;
 	};
 	inline std::ostream& operator<<(std::ostream& os, const Event& e) { return os << e.ToString(); }
 }
-// Macro for event names
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; } virtual EventType GetEventType() const override { return GetStaticType(); } virtual const char* GetName() const override { return #type; }
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }

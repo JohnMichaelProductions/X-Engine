@@ -1,137 +1,135 @@
-/*---------*/#pragma once//////////////////////////////////////////////////////////////////////////
-/*---------*/            //////////////////////////////////////////////////////////////////////////
-/*---------*/            #define X_KEY_SPACE              32					// KEY CODES //
-/*---------*/            #define X_KEY_APOSTROPHE         39					// KEY CODES // 
-/*---------*/            #define X_KEY_COMMA              44					// KEY CODES // 
-/*---------*/            #define X_KEY_MINUS              45					// KEY CODES // 
-/*---------*/            #define X_KEY_PERIOD             46					// KEY CODES //
-/*---------*/            #define X_KEY_SLASH              47					// KEY CODES // 
-/*---------*/            #define X_KEY_0                  48					// KEY CODES //
-/*---------*/            #define X_KEY_1                  49					// KEY CODES //
-/*---------*/            #define X_KEY_2                  50					// KEY CODES //
-/*---------*/            #define X_KEY_3                  51					// KEY CODES //
-/*---------*/            #define X_KEY_4                  52					// KEY CODES //
-/*---------*/            #define X_KEY_5                  53					// KEY CODES //
-/*---------*/            #define X_KEY_6                  54					// KEY CODES //
-/*---------*/            #define X_KEY_7                  55					// KEY CODES //
-/*---------*/            #define X_KEY_8                  56					// KEY CODES //
-/*---------*/            #define X_KEY_9                  57					// KEY CODES //
-/*---------*/            #define X_KEY_SEMICOLON          59					// KEY CODES // 
-/*---------*/            #define X_KEY_EQUAL              61					// KEY CODES // 
-/*---------*/            #define X_KEY_A                  65					// KEY CODES //
-/*---------*/            #define X_KEY_B                  66					// KEY CODES //
-/*---------*/            #define X_KEY_C                  67					// KEY CODES //
-/*---------*/            #define X_KEY_D                  68					// KEY CODES //
-/*---------*/            #define X_KEY_E                  69					// KEY CODES //
-/*---------*/            #define X_KEY_F                  70					// KEY CODES //
-/*---------*/            #define X_KEY_G                  71					// KEY CODES //
-/*---------*/            #define X_KEY_H                  72					// KEY CODES //
-/*---------*/            #define X_KEY_I                  73					// KEY CODES //
-/*---------*/            #define X_KEY_J                  74					// KEY CODES //
-/*---------*/            #define X_KEY_K                  75					// KEY CODES //
-/*---------*/            #define X_KEY_L                  76					// KEY CODES //
-/*---------*/            #define X_KEY_M                  77					// KEY CODES //
-/*---------*/            #define X_KEY_N                  78					// KEY CODES //
-/*---------*/            #define X_KEY_O                  79					// KEY CODES //
-/*---------*/            #define X_KEY_P                  80					// KEY CODES //
-/*---------*/            #define X_KEY_Q                  81					// KEY CODES //
-/*---------*/            #define X_KEY_R                  82					// KEY CODES //
-/*---------*/            #define X_KEY_S                  83					// KEY CODES //
-/*---------*/            #define X_KEY_T                  84					// KEY CODES //
-/*---------*/            #define X_KEY_U                  85					// KEY CODES //
-/*---------*/            #define X_KEY_V                  86					// KEY CODES //
-/*---------*/            #define X_KEY_W                  87					// KEY CODES //
-/*---------*/            #define X_KEY_X                  88					// KEY CODES //
-/*---------*/            #define X_KEY_Y                  89					// KEY CODES //
-/*---------*/            #define X_KEY_Z                  90					// KEY CODES //
-/*---------*/            #define X_KEY_LEFT_BRACKET       91					// KEY CODES // 
-/*---------*/            #define X_KEY_BACKSLASH          92					// KEY CODES //  
-/*---------*/            #define X_KEY_RIGHT_BRACKET      93					// KEY CODES // 
-/*---------*/            #define X_KEY_GRAVE_ACCENT       96					// KEY CODES //  
-/*---------*/            #define X_KEY_WORLD_1            161					// KEY CODES //
-/*---------*/            #define X_KEY_WORLD_2            162					// KEY CODES // 
-/*---------*/            #define X_KEY_ESCAPE             256					// KEY CODES //
-/*---------*/            #define X_KEY_ENTER              257					// KEY CODES //
-/*---------*/            #define X_KEY_TAB                258					// KEY CODES //
-/*---------*/            #define X_KEY_BACKSPACE          259					// KEY CODES //
-/*---------*/            #define X_KEY_INSERT             260					// KEY CODES //
-/*---------*/            #define X_KEY_DELETE             261					// KEY CODES //
-/*---------*/            #define X_KEY_RIGHT              262					// KEY CODES //
-/*---------*/            #define X_KEY_LEFT               263					// KEY CODES //
-/*---------*/            #define X_KEY_DOWN               264					// KEY CODES //
-/*---------*/            #define X_KEY_UP                 265					// KEY CODES //
-/*---------*/            #define X_KEY_PAGE_UP            266					// KEY CODES //
-/*---------*/            #define X_KEY_PAGE_DOWN          267					// KEY CODES //
-/*---------*/            #define X_KEY_HOME               268					// KEY CODES //
-/*---------*/            #define X_KEY_END                269					// KEY CODES //
-/*---------*/            #define X_KEY_CAPS_LOCK          280					// KEY CODES //
-/*---------*/            #define X_KEY_SCROLL_LOCK        281					// KEY CODES //
-/*---------*/            #define X_KEY_NUM_LOCK           282					// KEY CODES //
-/*---------*/            #define X_KEY_PRINT_SCREEN       283					// KEY CODES //
-/*---------*/            #define X_KEY_PAUSE              284					// KEY CODES //
-/*---------*/            #define X_KEY_F1                 290					// KEY CODES //
-/*---------*/            #define X_KEY_F2                 291					// KEY CODES //
-/*---------*/            #define X_KEY_F3                 292					// KEY CODES //
-/*---------*/            #define X_KEY_F4                 293					// KEY CODES //
-/*---------*/            #define X_KEY_F5                 294					// KEY CODES //
-/*---------*/            #define X_KEY_F6                 295					// KEY CODES //
-/*---------*/            #define X_KEY_F7                 296					// KEY CODES //
-/*---------*/            #define X_KEY_F8                 297					// KEY CODES //
-/*---------*/            #define X_KEY_F9                 298					// KEY CODES //
-/*---------*/            #define X_KEY_F10                299					// KEY CODES //
-/*---------*/            #define X_KEY_F11                300					// KEY CODES //
-/*---------*/            #define X_KEY_F12                301					// KEY CODES //
-/*---------*/            #define X_KEY_F13                302					// KEY CODES //
-/*---------*/            #define X_KEY_F14                303					// KEY CODES //
-/*---------*/            #define X_KEY_F15                304					// KEY CODES //
-/*---------*/            #define X_KEY_F16                305					// KEY CODES //
-/*---------*/            #define X_KEY_F17                306					// KEY CODES //
-/*---------*/            #define X_KEY_F18                307					// KEY CODES //
-/*---------*/            #define X_KEY_F19                308					// KEY CODES //
-/*---------*/            #define X_KEY_F20                309					// KEY CODES //
-/*---------*/            #define X_KEY_F21                310					// KEY CODES //
-/*---------*/            #define X_KEY_F22                311					// KEY CODES //
-/*---------*/            #define X_KEY_F23                312					// KEY CODES //
-/*---------*/            #define X_KEY_F24                313					// KEY CODES //
-/*---------*/            #define X_KEY_F25                314					// KEY CODES //
-/*---------*/            #define X_KEY_KP_0               320					// KEY CODES //
-/*---------*/            #define X_KEY_KP_1               321					// KEY CODES //
-/*---------*/            #define X_KEY_KP_2               322					// KEY CODES //
-/*---------*/            #define X_KEY_KP_3               323					// KEY CODES //
-/*---------*/            #define X_KEY_KP_4               324					// KEY CODES //
-/*---------*/            #define X_KEY_KP_5               325					// KEY CODES //
-/*---------*/            #define X_KEY_KP_6               326					// KEY CODES //
-/*---------*/            #define X_KEY_KP_7               327					// KEY CODES //
-/*---------*/            #define X_KEY_KP_8               328					// KEY CODES //
-/*---------*/            #define X_KEY_KP_9               329					// KEY CODES //
-/*---------*/            #define X_KEY_KP_DECIMAL         330					// KEY CODES //
-/*---------*/            #define X_KEY_KP_DIVIDE          331					// KEY CODES //
-/*---------*/            #define X_KEY_KP_MULTIPLY        332					// KEY CODES //
-/*---------*/            #define X_KEY_KP_SUBTRACT        333					// KEY CODES //
-/*---------*/            #define X_KEY_KP_ADD             334					// KEY CODES //
-/*---------*/            #define X_KEY_KP_ENTER           335					// KEY CODES //
-/*---------*/            #define X_KEY_KP_EQUAL           336					// KEY CODES //
-/*---------*/            #define X_KEY_LEFT_SHIFT         340					// KEY CODES //
-/*---------*/            #define X_KEY_LEFT_CONTROL       341					// KEY CODES //
-/*---------*/            #define X_KEY_LEFT_ALT           342					// KEY CODES //
-/*---------*/            #define X_KEY_LEFT_MASTER        343					// KEY CODES //
-/*---------*/            #define X_KEY_RIGHT_SHIFT        344					// KEY CODES //
-/*---------*/            #define X_KEY_RIGHT_CONTROL      345					// KEY CODES //
-/*---------*/            #define X_KEY_RIGHT_ALT          346					// KEY CODES //
-/*---------*/            #define X_KEY_RIGHT_MASTER       347					// KEY CODES //
-/*---------*/            #define X_KEY_MENU               348					// KEY CODES //
-/*---------*/            ////////////////////////////////////////////////////////////////////////
-/*---------*/            #define X_MOUSE_BUTTON_1         0						// MOUSE CODES //
-/*---------*/            #define X_MOUSE_BUTTON_2         1						// MOUSE CODES //
-/*---------*/            #define X_MOUSE_BUTTON_3         2						// MOUSE CODES //
-/*---------*/            #define X_MOUSE_BUTTON_4         3						// MOUSE CODES //
-/*---------*/            #define X_MOUSE_BUTTON_5         4						// MOUSE CODES //
-/*---------*/            #define X_MOUSE_BUTTON_6         5						// MOUSE CODES //
-/*---------*/            #define X_MOUSE_BUTTON_7         6						// MOUSE CODES //
-/*---------*/            #define X_MOUSE_BUTTON_8         7						// MOUSE CODES //
-/*---------*/            #define X_MOUSE_BUTTON_LAST      X_MOUSE_BUTTON_8		// MOUSE CODES //
-/*---------*/            #define X_MOUSE_BUTTON_LEFT      X_MOUSE_BUTTON_1		// MOUSE CODES //
-/*---------*/            #define X_MOUSE_BUTTON_RIGHT     X_MOUSE_BUTTON_2		// MOUSE CODES //
-/*---------*/            #define X_MOUSE_BUTTON_MIDDLE    X_MOUSE_BUTTON_3		// MOUSE CODES //
-/*---------*/////////////////////////////////////////////////////////////////////////////////////
-						 
+#pragma once
+// Key Codes
+#define X_KEY_SPACE              32
+#define X_KEY_APOSTROPHE         39
+#define X_KEY_COMMA              44
+#define X_KEY_MINUS              45
+#define X_KEY_PERIOD             46
+#define X_KEY_SLASH              47
+#define X_KEY_0                  48
+#define X_KEY_1                  49
+#define X_KEY_2                  50
+#define X_KEY_3                  51
+#define X_KEY_4                  52
+#define X_KEY_5                  53
+#define X_KEY_6                  54
+#define X_KEY_7                  55
+#define X_KEY_8                  56
+#define X_KEY_9                  57
+#define X_KEY_SEMICOLON          59
+#define X_KEY_EQUAL              61
+#define X_KEY_A                  65
+#define X_KEY_B                  66
+#define X_KEY_C                  67
+#define X_KEY_D                  68
+#define X_KEY_E                  69
+#define X_KEY_F                  70
+#define X_KEY_G                  71
+#define X_KEY_H                  72
+#define X_KEY_I                  73
+#define X_KEY_J                  74
+#define X_KEY_K                  75
+#define X_KEY_L                  76
+#define X_KEY_M                  77
+#define X_KEY_N                  78
+#define X_KEY_O                  79
+#define X_KEY_P                  80
+#define X_KEY_Q                  81
+#define X_KEY_R                  82
+#define X_KEY_S                  83
+#define X_KEY_T                  84
+#define X_KEY_U                  85
+#define X_KEY_V                  86
+#define X_KEY_W                  87
+#define X_KEY_X                  88
+#define X_KEY_Y                  89
+#define X_KEY_Z                  90
+#define X_KEY_LEFT_BRACKET       91
+#define X_KEY_BACKSLASH          92
+#define X_KEY_RIGHT_BRACKET      93
+#define X_KEY_GRAVE_ACCENT       96
+#define X_KEY_WORLD_1            161
+#define X_KEY_WORLD_2            162
+#define X_KEY_ESCAPE             256
+#define X_KEY_ENTER              257
+#define X_KEY_TAB                258
+#define X_KEY_BACKSPACE          259
+#define X_KEY_INSERT             260
+#define X_KEY_DELETE             261
+#define X_KEY_RIGHT              262
+#define X_KEY_LEFT               263
+#define X_KEY_DOWN               264
+#define X_KEY_UP                 265
+#define X_KEY_PAGE_UP            266
+#define X_KEY_PAGE_DOWN          267
+#define X_KEY_HOME               268
+#define X_KEY_END                269
+#define X_KEY_CAPS_LOCK          280
+#define X_KEY_SCROLL_LOCK        281
+#define X_KEY_NUM_LOCK           282
+#define X_KEY_PRINT_SCREEN       283
+#define X_KEY_PAUSE              284
+#define X_KEY_F1                 290
+#define X_KEY_F2                 291
+#define X_KEY_F3                 292
+#define X_KEY_F4                 293
+#define X_KEY_F5                 294
+#define X_KEY_F6                 295
+#define X_KEY_F7                 296
+#define X_KEY_F8                 297
+#define X_KEY_F9                 298
+#define X_KEY_F10                299
+#define X_KEY_F11                300
+#define X_KEY_F12                301
+#define X_KEY_F13                302
+#define X_KEY_F14                303
+#define X_KEY_F15                304
+#define X_KEY_F16                305
+#define X_KEY_F17                306
+#define X_KEY_F18                307
+#define X_KEY_F19                308
+#define X_KEY_F20                309
+#define X_KEY_F21                310
+#define X_KEY_F22                311
+#define X_KEY_F23                312
+#define X_KEY_F24                313
+#define X_KEY_F25                314
+#define X_KEY_KP_0               320
+#define X_KEY_KP_1               321
+#define X_KEY_KP_2               322
+#define X_KEY_KP_3               323
+#define X_KEY_KP_4               324
+#define X_KEY_KP_5               325
+#define X_KEY_KP_6               326
+#define X_KEY_KP_7               327
+#define X_KEY_KP_8               328
+#define X_KEY_KP_9               329
+#define X_KEY_KP_DECIMAL         330
+#define X_KEY_KP_DIVIDE          331
+#define X_KEY_KP_MULTIPLY        332
+#define X_KEY_KP_SUBTRACT        333
+#define X_KEY_KP_ADD             334
+#define X_KEY_KP_ENTER           335
+#define X_KEY_KP_EQUAL           336
+#define X_KEY_LEFT_SHIFT         340
+#define X_KEY_LEFT_CONTROL       341
+#define X_KEY_LEFT_ALT           342
+#define X_KEY_LEFT_MASTER        343
+#define X_KEY_RIGHT_SHIFT        344
+#define X_KEY_RIGHT_CONTROL      345
+#define X_KEY_RIGHT_ALT          346
+#define X_KEY_RIGHT_MASTER       347
+#define X_KEY_MENU               348
+// Mouse Codes
+#define X_MOUSE_BUTTON_1         0	
+#define X_MOUSE_BUTTON_2         1	
+#define X_MOUSE_BUTTON_3         2	
+#define X_MOUSE_BUTTON_4         3	
+#define X_MOUSE_BUTTON_5         4	
+#define X_MOUSE_BUTTON_6         5	
+#define X_MOUSE_BUTTON_7         6	
+#define X_MOUSE_BUTTON_8         7	
+#define X_MOUSE_BUTTON_LAST      X_MOUSE_BUTTON_8
+#define X_MOUSE_BUTTON_LEFT      X_MOUSE_BUTTON_1
+#define X_MOUSE_BUTTON_RIGHT     X_MOUSE_BUTTON_2
+#define X_MOUSE_BUTTON_MIDDLE    X_MOUSE_BUTTON_3

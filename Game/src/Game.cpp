@@ -5,11 +5,11 @@ public:														// {PUBLIC}
 	XLayer() : Layer("X-Layer") 							// Constructor: Logs Creation
 		{ XCORE_INFO("X-Layer Created"); }
 	void OnUpdate() override								// (Override) On Update Function: Called every frame
-		{ /*XCORE_INFO("X-Layer Update");*/ }
+		{ XCORE_INFO("X-Layer Update"); }
 	virtual void OnImGuiRender() override					// (Virtual) (Override) On ImGui Render Function: ImGui Window, customize with ImGui functions
-		{}
+		{ XCORE_INFO("ImGui Renderered on X-Layer"); }
 	void OnEvent(XEngine::Event& event) override			// (Override) On Event Function: Logs events when they happen
-		{ /*XCLIENT_TRACE("{0}", event);*/ } 	
+		{ XCLIENT_TRACE("X-Layer Event: {0}", event); } 	
 };
 class Game : public XEngine::Application
 {

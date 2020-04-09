@@ -87,7 +87,7 @@ namespace XEngine
 		for (auto it = memberLayerStack.end(); it != memberLayerStack.begin(); )
 		{
 			(*--it)->OnEvent(e);
-			if (e.Handled)
+			if (e.handled)
 				break;
 		}
 	}
