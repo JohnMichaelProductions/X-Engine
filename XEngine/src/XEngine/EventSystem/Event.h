@@ -55,7 +55,7 @@ namespace XEngine
 		{
 			if (memberEvent.GetEventType() == T::GetStaticType())
 			{
-				memberEvent.handled = func(*(T*)&mainEvent);
+				memberEvent.handled = func(*(T*)&memberEvent);
 				return true;
 			}
 			return false;

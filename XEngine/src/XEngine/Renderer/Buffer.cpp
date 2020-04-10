@@ -8,11 +8,11 @@ namespace XEngine
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
-			XCORE_ASSERT(false, "RendererAPI::None is not supported");
-			return nullptr;
-		case RendererAPI::OpenGL:
-			return new OpenGlVertexBuffer(vertices, size);
+			case RendererAPI::None:
+				XCORE_ASSERT(false, "RendererAPI::None is not supported");
+				return nullptr;
+			case RendererAPI::OpenGL:
+				return new OpenGlVertexBuffer(vertices, size);
 		}
 		XCORE_ASSERT(false, "Unknown Renderer API!");
 		return nullptr;
@@ -21,11 +21,11 @@ namespace XEngine
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
-			XCORE_ASSERT(false, "RendererAPI::None is not supported");
-			return nullptr;
-		case RendererAPI::OpenGL:
-			return new OpenGlIndexBuffer(indices, size);
+			case RendererAPI::None:
+				XCORE_ASSERT(false, "RendererAPI::None is not supported");
+				return nullptr;
+			case RendererAPI::OpenGL:
+				return new OpenGlIndexBuffer(indices, size);
 		}
 		XCORE_ASSERT(false, "Unknown Renderer API!");
 		return nullptr;
