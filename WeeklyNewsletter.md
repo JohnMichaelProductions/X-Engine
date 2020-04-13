@@ -1,5 +1,8 @@
 # X-Engine Weekly Newsletter
 
+### Week 7: April 6th, 2020 - April 12th, 2020
+Again did not work on X-Engine that much, although should be able to this week, maybe at least a little bit I hope. I'm hoping I will be done being busy by April 21st. Whats good is that the rest of school is canceled as of now, all I need to do is online assignments that should take long so when I get back working I should be able to work until September.
+
 ### Week 6: March 30th, 2020 - April 5th, 2020
 Didn't have time to do any work this week. I'll be busy once again this week and maybe next week. Although I'll probably get to work on X-Engine a little bit this week. I have other projects I want to work on this week too, I guess you could say X-Engine is on hold right now.
 
