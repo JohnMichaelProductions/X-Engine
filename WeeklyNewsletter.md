@@ -1,5 +1,8 @@
 # X-Engine Weekly Newsletter
 
+### Week 9: April 20th, 2020 - April 26th, 2020
+No work done this week, I was catching up on school work. I will work on X-Engine this week but I want to work on some other projects as well, I'm going to stay more oganized now so I'll be able to do a lot more from now on.
+
 ### Week 8: April 13th, 2020 - April 19th, 2020
 Good news, I finished all the weeks long of work I needed to do and I can now do a lot of work on X-Engine. Like usaul I didn't get to do work on X-Engine today, although I can say I will mosty likely be able to work on X-Engine a lot this week! Thanks for the patience.
 
