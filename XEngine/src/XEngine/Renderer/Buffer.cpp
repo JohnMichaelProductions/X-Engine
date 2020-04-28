@@ -1,6 +1,6 @@
 #include "Xpch.h"
 #include "Buffer.h"
-#include "Renderer.h"
+#include "RendererAPI/Renderer.h"
 #include "Platforms/OpenGL/OpenGLBuffer.h"
 namespace XEngine
 {
@@ -8,10 +8,10 @@ namespace XEngine
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:
+			case RendererAPI::API::None:
 				XCORE_ASSERT(false, "RendererAPI::None is not supported");
 				return nullptr;
-			case RendererAPI::OpenGL:
+			case RendererAPI::API::OpenGL:
 				return new OpenGlVertexBuffer(vertices, size);
 		}
 		XCORE_ASSERT(false, "Unknown Renderer API!");
@@ -21,10 +21,10 @@ namespace XEngine
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:
+			case RendererAPI::API::None:
 				XCORE_ASSERT(false, "RendererAPI::None is not supported");
 				return nullptr;
-			case RendererAPI::OpenGL:
+			case RendererAPI::API::OpenGL:
 				return new OpenGlIndexBuffer(indices, size);
 		}
 		XCORE_ASSERT(false, "Unknown Renderer API!");

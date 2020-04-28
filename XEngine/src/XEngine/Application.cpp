@@ -3,8 +3,8 @@
 #include "Application.h"
 #include "InputSystem/Input.h"
 #include "LogSystem/Log.h"
-#include <GLAD/glad.h>
 #include "Renderer/Shader.h"
+#include "Renderer/RendererAPI/Renderer.h"
 namespace XEngine
 {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)	// Bind Event Macro: Binds event
@@ -93,27 +93,22 @@ namespace XEngine
 	}
 	void Application::Run() 
 	{
-		// Keeps the application running
 		while (appRunning)
 		{
-			glClearColor(.2f, .2f, .2f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
-
+			RenderCommand::SetClearColor({ .2f, .2f, .2f, 1 });
+			RenderCommand::Clear();
+			Renderer::BeginScene();
 			memberShader2->Bind();
-			memberSquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, memberSquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-
-
+			Renderer::Submit(memberSquareVA);
 			memberShader->Bind();
-			memberVertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, memberVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(memberVertexArray);
+			Renderer::EndScene();
 			for (Layer* layer : memberLayerStack)
 				layer->OnUpdate();
 			memberImGuiLayer->Begin();
 			for (Layer* layer : memberLayerStack)
 				layer->OnImGuiRender();
 			memberImGuiLayer->End();
-			// Update every frame
 			memberWindow->OnUpdate();
 		}
 	}

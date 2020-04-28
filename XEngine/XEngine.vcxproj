@@ -140,8 +140,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platforms\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Platforms\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platforms\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGlContext.h" />
     <ClInclude Include="src\Platforms\Win10\Win10Input.h" />
     <ClInclude Include="src\Platforms\Win10\Win10Window.h" />
@@ -160,7 +161,9 @@
     <ClInclude Include="src\XEngine\LogSystem\Log.h" />
     <ClInclude Include="src\XEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\XEngine\Renderer\Renderer.h" />
+    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RenderCommand.h" />
+    <ClInclude Include="src\XEngine\Renderer\RendererAPI\Renderer.h" />
+    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RendererAPI.h" />
     <ClInclude Include="src\XEngine\Renderer\Shader.h" />
     <ClInclude Include="src\XEngine\Renderer\VertexArray.h" />
     <ClInclude Include="src\XEngine\Window.h" />
@@ -412,8 +415,9 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platforms\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Platforms\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Platforms\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platforms\OpenGL\OpenGlContext.cpp" />
     <ClCompile Include="src\Platforms\Win10\Win10Input.cpp" />
     <ClCompile Include="src\Platforms\Win10\Win10Window.cpp" />
@@ -424,7 +428,9 @@
     <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp" />
     <ClCompile Include="src\XEngine\LogSystem\Log.cpp" />
     <ClCompile Include="src\XEngine\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\XEngine\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RenderCommand.cpp" />
+    <ClCompile Include="src\XEngine\Renderer\RendererAPI\Renderer.cpp" />
+    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RendererAPI.cpp" />
     <ClCompile Include="src\XEngine\Renderer\Shader.cpp" />
     <ClCompile Include="src\XEngine\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Xpch.cpp">
@@ -441,12 +447,6 @@
     <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\res\DefaultFragmentShader.shader" />
-    <None Include="src\res\DefaultFragmentShader2.shader" />
-    <None Include="src\res\DefaultVertexShader.shader" />
-    <None Include="src\res\DefaultVertexShader2.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

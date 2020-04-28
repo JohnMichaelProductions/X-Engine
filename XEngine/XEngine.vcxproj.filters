@@ -60,6 +60,12 @@
     <ClInclude Include="src\Platforms\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platforms\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platforms\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platforms\OpenGL\OpenGlContext.h">
       <Filter>src\Platforms\OpenGL</Filter>
     </ClInclude>
@@ -96,6 +102,9 @@
     <ClInclude Include="src\XEngine\InputSystem\Input.h">
       <Filter>src\XEngine\InputSystem</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\InputSystem\XEngineInputCodes.h">
+      <Filter>src\XEngine\InputSystem</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\LayerSystem\Layer.h">
       <Filter>src\XEngine\LayerSystem</Filter>
     </ClInclude>
@@ -111,10 +120,10 @@
     <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h">
       <Filter>src\XEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\Renderer.h">
+    <ClInclude Include="src\XEngine\Renderer\Shader.h">
       <Filter>src\XEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\Shader.h">
+    <ClInclude Include="src\XEngine\Renderer\VertexArray.h">
       <Filter>src\XEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Window.h">
@@ -858,14 +867,24 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platforms\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\XEngine\InputSystem\XEngineInputCodes.h">
-      <Filter>src\XEngine\InputSystem</Filter>
+    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RenderCommand.h">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\RendererAPI\Renderer.h">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RendererAPI.h">
+      <Filter>src\XEngine\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\Platforms\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platforms\OpenGL\OpenGlContext.cpp">
@@ -898,22 +917,23 @@
     <ClCompile Include="src\XEngine\Renderer\Buffer.cpp">
       <Filter>src\XEngine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\Renderer.cpp">
+    <ClCompile Include="src\XEngine\Renderer\Shader.cpp">
       <Filter>src\XEngine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\Shader.cpp">
+    <ClCompile Include="src\XEngine\Renderer\VertexArray.cpp">
       <Filter>src\XEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platforms\OpenGL\OpenGLVertexArray.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\res\DefaultFragmentShader.shader" />
-    <None Include="src\res\DefaultVertexShader.shader" />
-    <None Include="src\res\DefaultVertexShader2.shader" />
-    <None Include="src\res\DefaultFragmentShader2.shader" />
+    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RenderCommand.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\Renderer\RendererAPI\Renderer.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RendererAPI.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
