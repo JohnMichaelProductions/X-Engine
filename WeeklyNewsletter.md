@@ -1,5 +1,8 @@
 # X-Engine Weekly Newsletter
 
+### Week 10: April 27th, 2020 - May 3rd, 2020
+Got work done this week not much, I have lots of other projects and school work to do so I'm slowing production down on X-Engine, I'm putting school first but once June hits,(end of school) I'll work more extensively on X-Engine.
+
 ### Week 9: April 20th, 2020 - April 26th, 2020
 No work done this week, I was catching up on school work. I will work on X-Engine this week but I want to work on some other projects as well, I'm going to stay more oganized now so I'll be able to do a lot more from now on.
 
