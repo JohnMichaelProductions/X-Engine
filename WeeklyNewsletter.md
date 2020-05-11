@@ -1,5 +1,8 @@
 # X-Engine Weekly Newsletter
 
+### Week 11: May 4th, 2020 - May 10th, 2020
+Right now I've decided to freeze production on X-Engine until sometime in the June, I've got lots of school work and other exciting projects I'm working on.
+
 ### Week 10: April 27th, 2020 - May 3rd, 2020
 Got work done this week not much, I have lots of other projects and school work to do so I'm slowing production down on X-Engine, I'm putting school first but once June hits,(end of school) I'll work more extensively on X-Engine.
 
