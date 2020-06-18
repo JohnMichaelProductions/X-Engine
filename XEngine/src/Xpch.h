@@ -1,5 +1,5 @@
+// Precompiled Header File
 #pragma once
-// ---PRECOMPILED HEADERS(UNIVERSAL)---
 #include <iostream>
 #include <memory>
 #include <utility>
@@ -12,9 +12,6 @@
 #include <unordered_set>
 #include <fstream>
 #include "XEngine/LogSystem/Log.h"
-// ------------------------------------
-// ---PRECOMPILED HEADERS(WINDOWS)---
 #ifdef X_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
-// ----------------------------------

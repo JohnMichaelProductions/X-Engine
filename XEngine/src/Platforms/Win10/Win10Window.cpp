@@ -6,36 +6,33 @@
 #include "Platforms/OpenGL/OpenGlContext.h"
 namespace XEngine
 {
-	static bool GLFWInitialized;										// GLFW Initialized Variable
-	static void GLFWErrorCallback(int error, const char* description)	// GLFW Error Callback Function: Throws error if theres a problem
+	static bool GLFWInitialized;
+	static void GLFWErrorCallback(int error, const char* description)
 		{ XCORE_ERROR("GLFW Error ({0}): {1}", error, description); };
-	Window* Window::Create(const WindowProps& props)					// Create Function: Creates window with the windows properties class, returns a new Windows 10 window
+	Window* Window::Create(const WindowProps& props)
 		{ return new Win10Window(props); }
-	Win10Window::Win10Window(const WindowProps& props)					// Constructor: Initilizes properties
+	Win10Window::Win10Window(const WindowProps& props)
 		{ Init(props); }
-	Win10Window::~Win10Window()											// Destructor: Calls shutdown function to shut down the window
+	Win10Window::~Win10Window()
 		{ Shutdown(); }
-	void Win10Window::Init(const WindowProps& props)											// initialization Function
+	void Win10Window::Init(const WindowProps& props)
 	{
-		windowData.Title = props.Title;															// Set Window Title
-		windowData.Width = props.Width;															// Set Window Width
-		windowData.Height = props.Height;														// Set Window Height
-		XCORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);	// Log Creation with window details
-		if (!GLFWInitialized)																	// If GLFW is not initilized
+		windowData.Title = props.Title;
+		windowData.Width = props.Width;												
+		windowData.Height = props.Height;											
+		XCORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+		if (!GLFWInitialized)
 		{
-			int success = glfwInit();															// Success integer is equal to glfwInit
-			XCORE_ASSERT(success, "Could not intialize GLFW");									// If GLFW couldn't be initialized throw an error
-			glfwSetErrorCallback(GLFWErrorCallback);											// Call glfwSetErrorCallback with GLFWErrorCallback as the parameter
-			GLFWInitialized = true;																// Set GLFWInitialized variable to true, if successful
+			int success = glfwInit();
+			XCORE_ASSERT(success, "Could not intialize GLFW");
+			glfwSetErrorCallback(GLFWErrorCallback);
+			GLFWInitialized = true;
 		}
-		window = glfwCreateWindow((int)props.Width, (int)props.Height, windowData.Title.c_str(), nullptr, nullptr);		// Creates window and store it in the window variable
-		windowContext = new OpenGLContext(window);																		// Creates context for OpenGL and stores it in the window Context Variable
-		windowContext->Init();																							// Calls windowContext initialization function
-		// Sets the active windows data to the windowData variable
+		window = glfwCreateWindow((int)props.Width, (int)props.Height, windowData.Title.c_str(), nullptr, nullptr);
+		windowContext = new OpenGLContext(window);
+		windowContext->Init();						
 		glfwSetWindowUserPointer(window, &windowData);
-		// Set V Sync to true
 		SetVSync(true);
-		// Set Window Size Callback Function
 		glfwSetWindowSizeCallback(window, [](GLFWwindow* window, int width, int height)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -44,14 +41,12 @@ namespace XEngine
 			WindowResizeEvent event(width, height);
 			data.EventCallback(event);
 		});
-		// Set Window Close Callback Function
 		glfwSetWindowCloseCallback(window, [](GLFWwindow* window)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			WindowCloseEvent event;
 			data.EventCallback(event);
 		});
-		// Set Key Callback Function
 		glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -77,14 +72,12 @@ namespace XEngine
 				}
 			}
 		});
-		// Set Char Callback Function
 		glfwSetCharCallback(window, [](GLFWwindow* window, unsigned int keycode)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			KeyTypedEvent event(keycode);
 			data.EventCallback(event);
 		});
-		// Set Mouse Button Callback Function
 		glfwSetMouseButtonCallback(window, [](GLFWwindow* window, int button, int action, int mods)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -104,14 +97,12 @@ namespace XEngine
 				}
 			}
 		});
-		// Set Scroll Callback Function
 		glfwSetScrollCallback(window, [](GLFWwindow* window, double xOffset, double yOffset)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			MouseScrolledEvent event((float)xOffset, (float)yOffset);
 			data.EventCallback(event);
 		});
-		// Set Cursor Pos Call Back Function
 		glfwSetCursorPosCallback(window, [](GLFWwindow* window, double xPos, double yPos)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -119,25 +110,20 @@ namespace XEngine
 			data.EventCallback(event);
 		});
 	}
-	// Shutdown Function: Destroys window
 	void Win10Window::Shutdown() { glfwDestroyWindow(window); }
 	void Win10Window::OnUpdate() 
 	{
 		glfwPollEvents();
 		windowContext->SwapBuffers();
 	}
-	// Set V Sync Function: Sets V Sync on or off
 	void Win10Window::SetVSync(bool enabled)
 	{
-		// If enabled equals true swap GLFW interval to one
 		if (enabled)
 			glfwSwapInterval(1);
-		// If enabled equals false swap GLFW interval to zero
 		else			
 			glfwSwapInterval(0);
-		// Set VSync to what enabled equals
 		windowData.VSync = enabled;
 	}
-	// Is V Sync Function: Returns V Sync Data
-	bool Win10Window::IsVSync() const { return windowData.VSync; }
+	bool Win10Window::IsVSync() const 
+		{ return windowData.VSync; }
 }

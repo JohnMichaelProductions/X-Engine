@@ -21,19 +21,19 @@ namespace XEngine
 		inline virtual void* GetNativeWindow() const 
 			{ return window; }
 	private:
-		virtual void Init(const WindowProps& props);	// (Virtual) Initialization Function
-		virtual void Shutdown();						// (Virtual) Shutdown Function
+		virtual void Init(const WindowProps& props);
+		virtual void Shutdown();	
 	private:
-		GLFWwindow* window;								// GLFW Variable, window 
-		GraphicsContext* windowContext;					// Graphics Context Variable, graphics context for window
-		struct WindowData								// Window Data Struct: Stores all data for the window properties
+		GLFWwindow* window;
+		GraphicsContext* windowContext;
+		struct WindowData
 		{
-			std::string Title;							// String Variable, Title of the window
-			unsigned int Width, Height;					// Integer Variables, Width and Height of the window
-			bool VSync;									// Bool Variable, tells whether vsync is on
-			EventCallbackFn EventCallback;				// EventCallbackFn Variable
+			std::string Title;						
+			unsigned int Width, Height;				
+			bool VSync;								
+			EventCallbackFn EventCallback;			
 		};
-		WindowData windowData;							// Window Data Variable, window data stored in this struct
+		WindowData windowData;						
 	};	
 }
 

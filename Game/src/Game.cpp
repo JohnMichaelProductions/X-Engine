@@ -1,26 +1,29 @@
 #include <XEngine.h>
 class XLayer : public XEngine::Layer
 {
-public:														// {PUBLIC}
-	XLayer() : Layer("X-Layer") 							// Constructor: Logs Creation
-		{ XCORE_INFO("X-Layer Created"); }
-	void OnUpdate() override								// (Override) On Update Function: Called every frame
+public:
+	XLayer() : Layer("X-Layer")
+	{ 
+		XCORE_INFO("X-Layer Created"); 
+		memberDebugName = "X-Layer";
+	}
+	void OnUpdate() override
 		{ XCORE_INFO("X-Layer Update"); }
-	virtual void OnImGuiRender() override					// (Virtual) (Override) On ImGui Render Function: ImGui Window, customize with ImGui functions
+	virtual void OnImGuiRender() override
 		{ XCORE_INFO("ImGui Renderered on X-Layer"); }
-	void OnEvent(XEngine::Event& event) override			// (Override) On Event Function: Logs events when they happen
+	void OnEvent(XEngine::Event& event) override
 		{ XCLIENT_TRACE("X-Layer Event: {0}", event); } 	
 };
 class Game : public XEngine::Application
 {
-public:														// {PUBLIC}
-	Game()													// Constructor
+public:
+	Game()
 	{
-		XCORE_INFO("New Game(Class) has been created!");	// Logs creation
-		PushLayer(new XLayer());							// Creates and pushes a new X-Layer
+		XCORE_INFO("Game starting");
+		PushLayer(new XLayer());
 	}
-	~Game()													// Destructor: Logs deletion
-		{ XCORE_INFO("Game(Class) has been destroyed!"); }
+	~Game()
+		{ XCORE_INFO("Game shutting down!"); }
 };
-XEngine::Application* XEngine::CreateApplication()			// Create Application Function: Creates and returns a Game
-	{ return new Game(); }	
+XEngine::Application* XEngine::CreateApplication()
+	{ return new Game(); }
