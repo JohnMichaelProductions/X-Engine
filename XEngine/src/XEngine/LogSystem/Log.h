@@ -8,7 +8,7 @@ namespace XEngine
 	{
 	public:
 		static void Init();																// (Static) Inialization Function: Initializes spdlog
-		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger()					// (Inline) (Static) Get Core Logger Function: Returns coreLogger Variable
+		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger()
 			{ return coreLogger; }
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger()
 			{ return clientLogger; }
