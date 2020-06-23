@@ -2,8 +2,7 @@
 #include "OpenGLBuffer.h"
 #include <GLAD/glad.h>
 namespace XEngine
-{
-	// ---VERTEX BUFFER---																			// ---VERTEX BUFFER---
+{																		// ---VERTEX BUFFER---
 	OpenGlVertexBuffer::OpenGlVertexBuffer(float* vertices, uint32_t size)							// Constructor
 	{
 		glCreateBuffers(1, &renderID);																// Create one buffer and assign it to the renderID variable
