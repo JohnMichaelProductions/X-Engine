@@ -1,3 +1,4 @@
+// Where the game source code is written, stored, and called
 #include <XEngine.h>
 class XLayer : public XEngine::Layer
 {
@@ -12,7 +13,7 @@ public:
 	virtual void OnImGuiRender() override
 		{ XCORE_INFO("ImGui Renderered on X-Layer"); }
 	void OnEvent(XEngine::Event& event) override
-		{ XCLIENT_TRACE("X-Layer Event: {0}", event); } 	
+		{ XCLIENT_TRACE("X-Layer Event: {0}", event); }
 };
 class Game : public XEngine::Application
 {

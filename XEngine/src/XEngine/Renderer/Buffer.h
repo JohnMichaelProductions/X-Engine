@@ -75,10 +75,14 @@ namespace XEngine
 			{ return memberStride; }
 		inline const  std::vector<BufferElement>& GetElements() const
 			{ return memberElements; }
-		std::vector<BufferElement>::iterator begin() { return memberElements.begin(); }
-		std::vector<BufferElement>::iterator end() { return memberElements.end(); }
-		std::vector<BufferElement>::const_iterator begin() const { return memberElements.begin(); }
-		std::vector<BufferElement>::const_iterator end() const { return memberElements.end(); }
+		std::vector<BufferElement>::iterator begin() 
+			{ return memberElements.begin(); }
+		std::vector<BufferElement>::iterator end() 
+			{ return memberElements.end(); }
+		std::vector<BufferElement>::const_iterator begin() const 
+			{ return memberElements.begin(); }
+		std::vector<BufferElement>::const_iterator end() const 
+			{ return memberElements.end(); }
 	private:
 		void CalculateOffsetsAndStride()
 		{

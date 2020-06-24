@@ -3,45 +3,45 @@
 #include "../XCore.h"
 namespace XEngine
 {
-	enum class EventType	// Event Type enum: All the events we want to record are in this enum
+	enum class EventType
 	{
 		None = 0,
-		WindowClose,		// Application Events
-		WindowResize,		// Application Events
-		WindowFocus,		// Application Events
-		WindowLostFocus,	// Application Events
-		WindowMoved,		// Application Events
-		AppTick,			// Application Events
-		AppUpdate,			// Application Events
-		AppRender,			// Application Events
-		KeyPressed,			// Key Events
-		KeyReleased,		// Key Events
-		KeyTyped,			// Key Events
-		MouseButtonPressed,	// Mouse Events
-		MouseButtonReleased,// Mouse Events
-		MouseMoved,			// Mouse Events
-		MouseScrolled		// Mouse Events
+		WindowClose,
+		WindowResize,
+		WindowFocus,
+		WindowLostFocus,
+		WindowMoved,
+		AppTick,
+		AppUpdate,
+		AppRender,
+		KeyPressed,
+		KeyReleased,
+		KeyTyped,
+		MouseButtonPressed,
+		MouseButtonReleased,
+		MouseMoved,
+		MouseScrolled
 	};
-	enum EventCategory		// Event Category enum: With this enum we can single out events based on their category
+	enum EventCategory
 	{
 		None = 0,
 		EventCategoryApplication = BIT(0),
-		EventCategoryInput       = BIT(1),
-		EventCategoryKeyboard    = BIT(2),
-		EventCategoryMouse       = BIT(3),
+		EventCategoryInput = BIT(1),
+		EventCategoryKeyboard = BIT(2),
+		EventCategoryMouse = BIT(3),
 		EventCategoryMouseButton = BIT(4)
 	};
 	class XENGINE_API Event 
 	{
 	public:
-		virtual EventType GetEventType() const = 0;			// (Pure Virtual) (Const) Get Event Type Function
-		virtual const char* GetName() const = 0;			// (Pure Virtual) (Const) Get Name Function
-		virtual int GetCategoryFlags() const = 0;			// (Pure Virtual) (Const) Get Category Flags Function
-		virtual std::string ToString() const				// (Virtual) (Const) To String: Uses the Get Name function to get the category name and returns it as a string
+		virtual EventType GetEventType() const = 0;
+		virtual const char* GetName() const = 0;
+		virtual int GetCategoryFlags() const = 0;
+		virtual std::string ToString() const
 			{ return GetName(); }
-		inline bool IsInCategory(EventCategory category)	// (Inline) Returns true or false based on if the event is in the specified event category
+		inline bool IsInCategory(EventCategory category)
 			{ return GetCategoryFlags() & category; }
-		bool handled = false;								// Boolean Variable
+		bool handled = false;
 	};
 	class EventDispatcher
 	{

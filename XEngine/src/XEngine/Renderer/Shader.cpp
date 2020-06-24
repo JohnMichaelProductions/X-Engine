@@ -1,8 +1,5 @@
-// Top Files
 #include "Xpch.h"
-// Renderer Files
 #include "Shader.h"
-// GLAD Library Files
 #include <GLAD/glad.h>
 namespace XEngine
 {
@@ -58,8 +55,8 @@ namespace XEngine
 		// Vertex and fragment shaders are successfully compiled.
 		// Now time to link them together into a program.
 		// Get a program object.
-		mainRendererID = glCreateProgram();
-		GLuint program = mainRendererID;
+		shaderRendererID = glCreateProgram();
+		GLuint program = shaderRendererID;
 		// Attach our shaders to our program
 		glAttachShader(program, vertexShader);
 		glAttachShader(program, fragmentShader);
@@ -88,9 +85,12 @@ namespace XEngine
 		glDetachShader(program, vertexShader);
 		glDetachShader(program, fragmentShader);
 	}
-	Shader::~Shader() { glDeleteProgram(mainRendererID); }
-	void Shader::Bind() const { glUseProgram(mainRendererID); }
-	void Shader::Unbind() const { glUseProgram(0); }
+	Shader::~Shader() 
+		{ glDeleteProgram(shaderRendererID); }
+	void Shader::Bind() const 
+		{ glUseProgram(shaderRendererID); }
+	void Shader::Unbind() const 
+		{ glUseProgram(0); }
 	std::string ConvertShader(const std::string& shaderFilestream)
 	{
 		std::ifstream stream;

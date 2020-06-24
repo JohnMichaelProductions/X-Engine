@@ -21,4 +21,3 @@ namespace XEngine
 		std::shared_ptr<IndexBuffer> memberIndexBuffer;
 	};
 }
-

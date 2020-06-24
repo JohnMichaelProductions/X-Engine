@@ -22,18 +22,17 @@ namespace XEngine
 			{ return window; }
 	private:
 		virtual void Init(const WindowProps& props);
-		virtual void Shutdown();	
+		virtual void Shutdown();
 	private:
 		GLFWwindow* window;
 		GraphicsContext* windowContext;
 		struct WindowData
 		{
-			std::string Title;						
-			unsigned int Width, Height;				
-			bool VSync;								
-			EventCallbackFn EventCallback;			
+			std::string Title;
+			unsigned int Width, Height;
+			bool VSync;
+			EventCallbackFn EventCallback;
 		};
-		WindowData windowData;						
-	};	
+		WindowData windowData;
+	};
 }
-

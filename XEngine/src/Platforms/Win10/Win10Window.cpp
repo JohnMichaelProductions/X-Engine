@@ -18,8 +18,8 @@ namespace XEngine
 	void Win10Window::Init(const WindowProps& props)
 	{
 		windowData.Title = props.Title;
-		windowData.Width = props.Width;												
-		windowData.Height = props.Height;											
+		windowData.Width = props.Width;
+		windowData.Height = props.Height;
 		XCORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 		if (!GLFWInitialized)
 		{
@@ -30,7 +30,7 @@ namespace XEngine
 		}
 		window = glfwCreateWindow((int)props.Width, (int)props.Height, windowData.Title.c_str(), nullptr, nullptr);
 		windowContext = new OpenGLContext(window);
-		windowContext->Init();						
+		windowContext->Init();
 		glfwSetWindowUserPointer(window, &windowData);
 		SetVSync(true);
 		glfwSetWindowSizeCallback(window, [](GLFWwindow* window, int width, int height)
@@ -120,7 +120,7 @@ namespace XEngine
 	{
 		if (enabled)
 			glfwSwapInterval(1);
-		else			
+		else
 			glfwSwapInterval(0);
 		windowData.VSync = enabled;
 	}

@@ -12,7 +12,7 @@ namespace XEngine
 {
 	class XENGINE_API Application
 	{
-	public:											
+	public:
 		Application();
 		virtual ~Application();
 		void Run();
@@ -20,21 +20,18 @@ namespace XEngine
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 		inline Window& GetWindow()
-			{ return *memberWindow; }
+			{ return *applicationWindow; }
 		inline static Application& Get()
-			{ return *instance; }
+			{ return *applicationInstance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool appRunning = true;
-		static Application* instance;
-		LayerStack memberLayerStack;
-		ImGuiLayer* memberImGuiLayer;
-		std::unique_ptr<Window> memberWindow;
-		std::shared_ptr<VertexArray> memberVertexArray;
-		std::shared_ptr<Shader> memberShader;
-		std::shared_ptr<Shader> memberShader2;
-		std::shared_ptr<VertexArray> memberSquareVA;
+		static Application* applicationInstance;
+		LayerStack applicationLayerStack;
+		ImGuiLayer* applicationImGuiLayer;
+		std::unique_ptr<Window> applicationWindow;
+		std::shared_ptr<VertexArray> applicationVertexArray;
+		std::shared_ptr<Shader> applicationShader;
 	};
 	Application* CreateApplication();
 }
-

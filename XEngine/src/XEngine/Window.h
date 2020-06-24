@@ -15,7 +15,7 @@ namespace XEngine
 	class XENGINE_API Window
 	{
 	public:
-		using EventCallbackFn = std::function<void(Event&)>;				
+		using EventCallbackFn = std::function<void(Event&)>;
 		virtual ~Window() {}
 		virtual void OnUpdate() = 0;
 		virtual unsigned int GetWidth() const = 0;

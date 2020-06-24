@@ -1,5 +1,4 @@
 #pragma once
-// C++ Libraries
 #include <string>
 namespace XEngine
 {
@@ -11,7 +10,7 @@ namespace XEngine
 		void Bind() const;
 		void Unbind() const;
 	private:
-		uint32_t mainRendererID;
+		uint32_t shaderRendererID;
 	};
 	std::string ConvertShader(const std::string& shaderFilestream);
 }
