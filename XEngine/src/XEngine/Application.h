@@ -1,3 +1,4 @@
+// Header file for the Application Class
 #pragma once
 #include "XCore.h"
 #include "Window.h"

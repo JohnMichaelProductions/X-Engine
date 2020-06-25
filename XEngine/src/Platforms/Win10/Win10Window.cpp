@@ -1,3 +1,4 @@
+// Source file for Win10Window class functions, configured for Windows 10, also derived from window class
 #include "Xpch.h"
 #include "Win10Window.h"
 #include "XEngine/EventSystem/ApplicationEvent.h"
@@ -12,11 +13,18 @@ namespace XEngine
 	Window* Window::Create(const WindowProps& props)
 		{ return new Win10Window(props); }
 	Win10Window::Win10Window(const WindowProps& props)
-		{ Init(props); }
+	{ 
+		Init(props); 
+		XCORE_INFO("Window initialized for Windows 10");
+	}
 	Win10Window::~Win10Window()
-		{ Shutdown(); }
+	{ 
+		Shutdown(); 
+		XCORE_INFO("Windows 10 Window has shutdown");
+	}
 	void Win10Window::Init(const WindowProps& props)
 	{
+		XCORE_INFO("Initializing Window 10 Window");
 		windowData.Title = props.Title;
 		windowData.Width = props.Width;
 		windowData.Height = props.Height;
@@ -110,7 +118,11 @@ namespace XEngine
 			data.EventCallback(event);
 		});
 	}
-	void Win10Window::Shutdown() { glfwDestroyWindow(window); }
+	void Win10Window::Shutdown() 
+	{ 
+		XCORE_INFO("Windows 10 Window shutting down");
+		glfwDestroyWindow(window); 
+	}
 	void Win10Window::OnUpdate() 
 	{
 		glfwPollEvents();

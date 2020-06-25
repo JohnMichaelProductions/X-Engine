@@ -1,4 +1,5 @@
-#pragma once		
+// Header file for Win10Window class, configured for Windows 10
+#pragma once
 #include "XEngine/Window.h"
 #include "XEngine/Renderer/GraphicsContext.h"
 #include <GLFW/glfw3.h>

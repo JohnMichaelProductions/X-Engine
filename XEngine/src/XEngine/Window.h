@@ -1,4 +1,4 @@
-// Window struct for window properties and window class for window functions
+// Window class and window properties struct
 #pragma once
 #include "Xpch.h"
 #include "XCore.h"
@@ -10,7 +10,8 @@ namespace XEngine
 		std::string Title;
 		unsigned int Width;
 		unsigned int Height;
-		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1280, unsigned int height = 720) : Title(title), Width(width), Height(height) {}
+		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1280, unsigned int height = 720) : Title(title), Width(width), Height(height)
+			{ XCORE_INFO("Window Properties: Title: {0} Width: {1} Height: {2} ", Title, Height, Width); }
 	};
 	class XENGINE_API Window
 	{
