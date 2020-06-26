@@ -6,7 +6,6 @@
 #include "LogSystem/Log.h"
 #include "Renderer/Shader.h"
 #include "Renderer/RendererAPI/Renderer.h"
-#include <GLAD/glad.h>
 namespace XEngine
 {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -22,45 +21,6 @@ namespace XEngine
 		applicationImGuiLayer = new ImGuiLayer();
 		PushOverlay(applicationImGuiLayer);
 		// Rendering
-		applicationVertexArray.reset(VertexArray::Create());
-		applicationVertexArray->Bind();
-		float vertices[3 * 3] =
-		{
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
-		};
-		std::shared_ptr<VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-		BufferLayout layout =
-		{
-			{ ShaderDataType::Float3, "a_Position" },
-			{ ShaderDataType::Float4, "a_Color" }
-		};
-		applicationVertexArray->AddVertexBuffer(vertexBuffer);
-		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<IndexBuffer> indexBuffer;
-		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-		std::string vertexSourceCode =
-		R"(
-		#version 330 core
-		layout(location = 0) in vec3 a_Position;
-		out vec3 v_Position;
-		void main()
-		{
-			v_Position = a_Position;
-			gl_Position = vec4(a_Position, 1.0);	
-		}
-		)";
-		std::string fragmentSourceCode =
-			R"(
-			#version 330 core
-			layout(location = 0) out vec4 color;
-			in vec3 v_Position;
-			void main() { color = vec4(v_Position * 0.5 + 0.5, 1.0); }
-		)";
-		applicationShader.reset(new Shader(vertexSourceCode, fragmentSourceCode));
-			/*
 		applicationVertexArray.reset(VertexArray::Create());
 		float vertices[3 * 7] = 
 		{
@@ -86,8 +46,10 @@ namespace XEngine
 			
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Color;
+
 			out vec3 v_Position;
 			out vec4 v_Color;
+
 			void main()
 			{
 				v_Position = a_Position;
@@ -95,12 +57,15 @@ namespace XEngine
 				gl_Position = vec4(a_Position, 1.0);	
 			}
 		)";
+
 		std::string fragmentSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
+
 			in vec3 v_Position;
 			in vec4 v_Color;
+
 			void main()
 			{
 				color = vec4(v_Position * 0.5 + 0.5, 1.0);
@@ -108,10 +73,9 @@ namespace XEngine
 			}
 		)";
 		applicationShader.reset(new Shader(vertexSrc, fragmentSrc));
-		XCORE_INFO("X-Engine intialized successfully!");
-		*/
 		//std::string vertexSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultVertexShader.shader");
 		//std::string fragmentSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultFragmentShader.shader");
+		//applicationShader.reset(new Shader(vertexSourceCode, fragmentSourceCode));
 	}
 	Application::~Application() 
 		{ XCORE_INFO("Application Shutting Down"); }
@@ -147,10 +111,10 @@ namespace XEngine
 			RenderCommand::SetClearColor({ .2f, .2f, .2f, 1 });
 			RenderCommand::Clear();
 			// Draw command
-			//Renderer::BeginScene();
+			Renderer::BeginScene();
 			applicationShader->Bind();
 			Renderer::Submit(applicationVertexArray);
-			//Renderer::EndScene();
+			Renderer::EndScene();
 			// Update Layers
 			for (Layer* layer : applicationLayerStack)
 				layer->OnUpdate();
