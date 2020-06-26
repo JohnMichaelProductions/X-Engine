@@ -7,17 +7,18 @@ namespace XEngine
 {
 	struct WindowProps
 	{
+		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1280, unsigned int height = 720) : Title(title), Width(width), Height(height)
+			{ XCORE_INFO("Window Properties: Title: {0} Width: {1} Height: {2} ", Title, Height, Width); }
 		std::string Title;
 		unsigned int Width;
 		unsigned int Height;
-		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1280, unsigned int height = 720) : Title(title), Width(width), Height(height)
-			{ XCORE_INFO("Window Properties: Title: {0} Width: {1} Height: {2} ", Title, Height, Width); }
 	};
 	class XENGINE_API Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
-		virtual ~Window() {}
+		virtual ~Window() 
+			{ XCORE_INFO("Window has been destroyed"); }
 		virtual void OnUpdate() = 0;
 		virtual unsigned int GetWidth() const = 0;
 		virtual unsigned int GetHeight() const = 0;

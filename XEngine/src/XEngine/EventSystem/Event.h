@@ -34,13 +34,15 @@ namespace XEngine
 	class XENGINE_API Event 
 	{
 	public:
+		// To Be Defined in derived classes
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
-		virtual std::string ToString() const
-			{ return GetName(); }
+		// Prototype in Header File
 		inline bool IsInCategory(EventCategory category)
 			{ return GetCategoryFlags() & category; }
+		virtual std::string ToString() const
+			{ return GetName(); }
 		bool handled = false;
 	};
 	class EventDispatcher
@@ -48,20 +50,20 @@ namespace XEngine
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
 	public:
-		EventDispatcher(Event& event) : memberEvent(event) 
-			{}
+		EventDispatcher(Event& event) : eventDispatcherEvent(event)
+			{ /* Called everytime a event occurs */ }
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
-			if (memberEvent.GetEventType() == T::GetStaticType())
+			if (eventDispatcherEvent.GetEventType() == T::GetStaticType())
 			{
-				memberEvent.handled = func(*(T*)&memberEvent);
+				eventDispatcherEvent.handled = func(*(T*)&eventDispatcherEvent);
 				return true;
 			}
 			return false;
 		}
 	private:
-		Event& memberEvent;
+		Event& eventDispatcherEvent;
 	};
 	inline std::ostream& operator<<(std::ostream& os, const Event& e) { return os << e.ToString(); }
 }

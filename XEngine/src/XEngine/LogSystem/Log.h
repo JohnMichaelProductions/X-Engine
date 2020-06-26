@@ -8,7 +8,9 @@ namespace XEngine
 	class XENGINE_API Log
 	{
 	public:
+		// Defined in Source File
 		static void Init();
+		// Prototype in Header File
 		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger()
 			{ return coreLogger; }
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger()

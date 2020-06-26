@@ -5,6 +5,7 @@ namespace XEngine
 	class Shader
 	{
 	public:
+		// Defined in Souce File
 		Shader(const std::string& vertexShader, const std::string& fragmentShader);
 		~Shader();
 		void Bind() const;

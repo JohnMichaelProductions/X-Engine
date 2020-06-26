@@ -6,12 +6,14 @@ namespace XEngine
 	{
 	public:
 		inline static void SetClearColor(const glm::vec4& color)
-			{ instanceRendererAPI->SetClearColor(color); }
+			{ renderCommandAPI->SetClearColor(color); }
 		inline static void Clear()
-			{ instanceRendererAPI->Clear(); }
+			{ renderCommandAPI->Clear(); }
 		inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
-			{ instanceRendererAPI->DrawIndexed(vertexArray); }
+			{ renderCommandAPI->DrawIndexed(vertexArray); }
+		inline static void Documentation()
+			{ renderCommandAPI->Documentation(); }
 	private:
-		static RendererAPI* instanceRendererAPI;
+		static RendererAPI* renderCommandAPI;
 	};
 }

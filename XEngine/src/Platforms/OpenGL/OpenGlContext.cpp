@@ -1,3 +1,4 @@
+// Source file for OpenGL Context Class
 #include "Xpch.h"
 #include "OpenGlContext.h"
 #include <GLFW/glfw3.h>
@@ -5,12 +6,16 @@
 namespace XEngine
 {
 	OpenGLContext::OpenGLContext(GLFWwindow* mainwindowHandle) : windowHandle(mainwindowHandle)
-		{ XCORE_ASSERT(mainwindowHandle, "Window handle doesn't exist or is equal to null!") }
+	{
+		XCORE_ASSERT(mainwindowHandle, "Window handle doesn't exist or is equal to null!");
+		XCORE_INFO("OpenGL Context has been created");
+	}
 	void OpenGLContext::Init()
 	{
 		glfwMakeContextCurrent(windowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		XCORE_ASSERT(status, "Failed to initialize Glad!");
+		XCORE_INFO("Glad has been initialized!");
 		XCORE_INFO("OpenGL Renderer: {0} {1} {2} ", glGetString(GL_VENDOR), glGetString(GL_RENDERER), glGetString(GL_VERSION));
 	}
 	void OpenGLContext::SwapBuffers()

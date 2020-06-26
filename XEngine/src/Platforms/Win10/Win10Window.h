@@ -8,25 +8,25 @@ namespace XEngine
 	class Win10Window : public Window
 	{
 	public:
+		// Defined in Source File
 		Win10Window(const WindowProps& props);
 		virtual ~Win10Window();
 		void OnUpdate() override;
-		inline unsigned int GetWidth() const override 
+		void SetVSync(bool enabled) override;
+		bool IsVSync() const override;
+		// Prototype in Header File
+		inline unsigned int GetWidth() const override
 			{ return windowData.Width; }
 		inline unsigned int GetHeight() const override 
 			{ return windowData.Height; }
 		inline void SetEventCallback(const EventCallbackFn& callback) override 
 			{ windowData.EventCallback = callback; }
-		void SetVSync(bool enabled) override;
-		bool IsVSync() const override;
 		inline virtual void* GetNativeWindow() const 
 			{ return window; }
 	private:
+		// Defined in Source File
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
-	private:
-		GLFWwindow* window;
-		GraphicsContext* windowContext;
 		struct WindowData
 		{
 			std::string Title;
@@ -34,6 +34,8 @@ namespace XEngine
 			bool VSync;
 			EventCallbackFn EventCallback;
 		};
+		GLFWwindow* window;
+		GraphicsContext* windowContext;
 		WindowData windowData;
 	};
 }

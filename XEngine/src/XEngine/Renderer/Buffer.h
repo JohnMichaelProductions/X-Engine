@@ -43,8 +43,9 @@ namespace XEngine
 		uint32_t Offset;
 		bool Normalized;
 		BufferElement()
-			{ XCORE_INFO("Buffer Element created"); }
-		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false) : Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized) {}
+			{ XCORE_INFO("{0} has been created as a buffer element", Name); }
+		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false) : Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized) 
+			{ XCORE_INFO("{0} has been created as a buffer element", Name); }
 		uint32_t GetComponentCount() const
 		{
 			switch (Type)
@@ -60,7 +61,6 @@ namespace XEngine
 				case ShaderDataType::Int3: return 3;
 				case ShaderDataType::Int4: return 4;
 				case ShaderDataType::Bool: return 1;
-
 			}
 			XCORE_ASSERT(false, "Unknown ShaderDataType!");
 			return 0;
@@ -69,40 +69,45 @@ namespace XEngine
 	class BufferLayout
 	{
 	public:
-		BufferLayout() {}
-		BufferLayout(const std::initializer_list<BufferElement>& elements) : memberElements(elements) 
-			{ CalculateOffsetsAndStride(); }
+		BufferLayout() 
+			{ XCORE_INFO("Buffer Layout has been created"); }
+		BufferLayout(const std::initializer_list<BufferElement>& elements) : bufferLayoutElements(elements)
+		{ 
+			XCORE_INFO("Buffer Layout has been created");
+			CalculateOffsetsAndStride(); 
+		}
 		inline uint32_t GetStride() const
-			{ return memberStride; }
+			{ return bufferLayoutStride; }
 		inline const  std::vector<BufferElement>& GetElements() const
-			{ return memberElements; }
+			{ return bufferLayoutElements; }
 		std::vector<BufferElement>::iterator begin() 
-			{ return memberElements.begin(); }
+			{ return bufferLayoutElements.begin(); }
 		std::vector<BufferElement>::iterator end() 
-			{ return memberElements.end(); }
+			{ return bufferLayoutElements.end(); }
 		std::vector<BufferElement>::const_iterator begin() const 
-			{ return memberElements.begin(); }
+			{ return bufferLayoutElements.begin(); }
 		std::vector<BufferElement>::const_iterator end() const 
-			{ return memberElements.end(); }
+			{ return bufferLayoutElements.end(); }
 	private:
 		void CalculateOffsetsAndStride()
 		{
 			uint32_t offset = 0;
-			memberStride = 0;
-			for (auto& element : memberElements)
+			bufferLayoutStride = 0;
+			for (auto& element : bufferLayoutElements)
 			{
 				element.Offset = offset;
 				offset += element.Size;
-				memberStride += element.Size;
+				bufferLayoutStride += element.Size;
 			}
 		}
-		std::vector<BufferElement> memberElements;
-		uint32_t memberStride = 0;
+		std::vector<BufferElement> bufferLayoutElements;
+		uint32_t bufferLayoutStride = 0;
 	};
 	class VertexBuffer
 	{
 	public:
-		virtual ~VertexBuffer() {}
+		virtual ~VertexBuffer() 
+			{ XCORE_INFO("Vertex Buffer has been destroyed"); }
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 		virtual const BufferLayout& GetLayout() const = 0;
@@ -112,7 +117,8 @@ namespace XEngine
 	class IndexBuffer
 	{
 	public:
-		virtual ~IndexBuffer() {}
+		virtual ~IndexBuffer() 
+			{ XCORE_INFO("Index Buffer has been destroyed"); }
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 		virtual uint32_t GetCount() const = 0;

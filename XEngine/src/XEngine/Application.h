@@ -14,17 +14,20 @@ namespace XEngine
 	class XENGINE_API Application
 	{
 	public:
+		// Defined in Source File
 		Application();
 		virtual ~Application();
 		void Run();
 		void OnEvent(Event& e);
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
+		// Prototype in Header File
 		inline Window& GetWindow()
 			{ return *applicationWindow; }
 		inline static Application& Get()
 			{ return *applicationInstance; }
 	private:
+		// Defined in Source File
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool appRunning = true;
 		static Application* applicationInstance;
@@ -33,6 +36,7 @@ namespace XEngine
 		std::unique_ptr<Window> applicationWindow;
 		std::shared_ptr<VertexArray> applicationVertexArray;
 		std::shared_ptr<Shader> applicationShader;
+		bool eventUpdates;
 	};
 	Application* CreateApplication();
 }

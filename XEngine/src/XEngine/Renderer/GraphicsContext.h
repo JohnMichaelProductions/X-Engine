@@ -1,3 +1,4 @@
+// Graphics context header file, class meant to be derived from
 #pragma once
 namespace XEngine
 {

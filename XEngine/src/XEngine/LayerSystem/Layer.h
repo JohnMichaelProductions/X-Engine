@@ -7,8 +7,11 @@ namespace XEngine
 	class XENGINE_API Layer
 	{
 	public:
+		// Defined in Source File
 		Layer(const std::string& name = "Layer");
 		virtual ~Layer();
+		virtual void OnImGuiRender() = 0;
+		// Prototype in Header File
 		virtual void OnAttach() 
 			{ XCORE_INFO("{0} attached", GetName()); }
 		virtual void OnDetach() 
@@ -18,13 +21,15 @@ namespace XEngine
 			if(layerUpdates)
 				XCORE_ERROR("{0} Updated", GetName());
 		}
-		virtual void OnImGuiRender() = 0;
 		virtual void OnEvent(Event& event) 
-			{ XCORE_TRACE("{0}", event.GetName()); }
+		{
+			if(layerUpdates)
+				XCORE_TRACE("{0}", event.GetName()); 
+		}
 		inline const std::string& GetName() const
 			{ return layerDebugName; }
-		bool layerUpdates;
 	protected:
 		std::string layerDebugName;
+		bool layerUpdates;
 	};
 }

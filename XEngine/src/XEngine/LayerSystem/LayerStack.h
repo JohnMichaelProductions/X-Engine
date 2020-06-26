@@ -7,12 +7,14 @@ namespace XEngine
 	class XENGINE_API LayerStack
 	{
 	public:
+		// Defined in Source File
 		LayerStack();
 		~LayerStack();
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);
 		void PopLayer(Layer* layer);
 		void PopOverlay(Layer* overlay);
+		// Prototype in Header File
 		std::vector<Layer*>::iterator begin() 
 			{ return m_Layers.begin(); }
 		std::vector<Layer*>::iterator end() 

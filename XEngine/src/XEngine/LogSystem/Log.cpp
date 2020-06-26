@@ -8,9 +8,12 @@ namespace XEngine
 	std::shared_ptr<spdlog::logger> Log::clientLogger;
 	void Log::Init()
 	{
+		#ifdef X_DEBUG
+			spdlog::set_level(spdlog::level::trace);
+		#endif
 		spdlog::set_pattern("%^[%T] %n: %v%$");
 		coreLogger = spdlog::stdout_color_mt("X-Engine");
 		clientLogger = spdlog::stdout_color_mt("App");
-		XCORE_INFO("Logging System initializated");	
+		XCORE_INFO("Logging System initializated");
 	}
 }

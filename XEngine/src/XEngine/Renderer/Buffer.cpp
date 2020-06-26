@@ -12,7 +12,7 @@ namespace XEngine
 				XCORE_ASSERT(false, "RendererAPI::None is not supported");
 				return nullptr;
 			case RendererAPI::API::OpenGL:
-				return new OpenGlVertexBuffer(vertices, size);
+				return new OpenGLVertexBuffer(vertices, size);
 		}
 		XCORE_ASSERT(false, "Unknown Renderer API!");
 		return nullptr;
@@ -25,7 +25,7 @@ namespace XEngine
 				XCORE_ASSERT(false, "RendererAPI::None is not supported");
 				return nullptr;
 			case RendererAPI::API::OpenGL:
-				return new OpenGlIndexBuffer(indices, size);
+				return new OpenGLIndexBuffer(indices, size);
 		}
 		XCORE_ASSERT(false, "Unknown Renderer API!");
 		return nullptr;

@@ -1,31 +1,36 @@
+// Header File for Vertex and Index Buffer Functions
 #pragma once
 #include "XEngine/Renderer/Buffer.h"
 namespace XEngine
 {
-	class OpenGlVertexBuffer : public VertexBuffer
+	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
-		OpenGlVertexBuffer(float* vertices, uint32_t size);
-		virtual ~OpenGlVertexBuffer();
+		// Defined in Source File
+		OpenGLVertexBuffer(float* vertices, uint32_t size);
+		virtual ~OpenGLVertexBuffer();
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
+		// Prototype in Header File
 		virtual const BufferLayout& GetLayout() const override
-			{ return memberLayout; }
+			{ return vertexBufferLayout; }
 		virtual void SetLayout(const BufferLayout& layout) override
-			{ memberLayout = layout; }
+			{ vertexBufferLayout = layout; }
 	private:
 		uint32_t renderID;
-		BufferLayout memberLayout;
+		BufferLayout vertexBufferLayout;
 	};
-	class OpenGlIndexBuffer : public IndexBuffer
+	class OpenGLIndexBuffer : public IndexBuffer
 	{
 	public:
-		OpenGlIndexBuffer(uint32_t* indices, uint32_t count);
-		virtual ~OpenGlIndexBuffer();
-		virtual uint32_t GetCount() const
-			{ return count; }
+		// Defined in Source File
+		OpenGLIndexBuffer(uint32_t* indices, uint32_t count);
+		virtual ~OpenGLIndexBuffer();
 		virtual void Bind() const;
 		virtual void Unbind() const;
+		// Prototype in Header File
+		virtual uint32_t GetCount() const
+			{ return count; }
 	private:
 		uint32_t renderID;
 		uint32_t count;

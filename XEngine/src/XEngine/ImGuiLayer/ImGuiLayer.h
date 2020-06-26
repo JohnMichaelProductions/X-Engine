@@ -8,6 +8,7 @@ namespace XEngine
 	class XENGINE_API ImGuiLayer : public Layer
 	{
 	public:
+		// Defined in Source File
 		ImGuiLayer();
 		~ImGuiLayer();
 		virtual void OnAttach() override;
@@ -19,4 +20,3 @@ namespace XEngine
 		float mainTime = 0.0f;
 	};
 }
-
