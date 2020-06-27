@@ -17,7 +17,7 @@ namespace XEngine
 		virtual void SetLayout(const BufferLayout& layout) override
 			{ vertexBufferLayout = layout; }
 	private:
-		uint32_t renderID;
+		uint32_t vertexBufferRenderID;
 		BufferLayout vertexBufferLayout;
 	};
 	class OpenGLIndexBuffer : public IndexBuffer
@@ -30,9 +30,9 @@ namespace XEngine
 		virtual void Unbind() const;
 		// Prototype in Header File
 		virtual uint32_t GetCount() const
-			{ return count; }
+			{ return indexBufferCount; }
 	private:
-		uint32_t renderID;
-		uint32_t count;
+		uint32_t indexBufferRenderID;
+		uint32_t indexBufferCount;
 	};
 }

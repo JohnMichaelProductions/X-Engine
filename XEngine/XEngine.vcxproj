@@ -141,9 +141,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Platforms\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Platforms\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Platforms\OpenGL\OpenGlContext.h" />
     <ClInclude Include="src\Platforms\Win10\Win10Input.h" />
     <ClInclude Include="src\Platforms\Win10\Win10Window.h" />
     <ClInclude Include="src\XEngine.h" />
@@ -416,9 +416,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Platforms\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platforms\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platforms\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Platforms\OpenGL\OpenGlContext.cpp" />
     <ClCompile Include="src\Platforms\Win10\Win10Input.cpp" />
     <ClCompile Include="src\Platforms\Win10\Win10Window.cpp" />
     <ClCompile Include="src\XEngine\Application.cpp" />

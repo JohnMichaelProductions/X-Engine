@@ -34,6 +34,9 @@
     <Filter Include="src\XEngine\Renderer">
       <UniqueIdentifier>{D06DF12E-BCFC-7AF8-651B-8FF351898B9E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\XEngine\Renderer\RendererAPI">
+      <UniqueIdentifier>{D02E7928-BC7F-646A-E5E3-522CD193F7D3}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -64,6 +67,9 @@
       <Filter>src\Platforms\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platforms\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\OpenGL\OpenGlContext.h">
       <Filter>src\Platforms\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platforms\Win10\Win10Input.h">
@@ -116,6 +122,15 @@
     </ClInclude>
     <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h">
       <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RenderCommand.h">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\RendererAPI\Renderer.h">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RendererAPI.h">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Renderer\Shader.h">
       <Filter>src\XEngine\Renderer</Filter>
@@ -864,16 +879,6 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RenderCommand.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\RendererAPI\Renderer.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RendererAPI.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platforms\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp">
@@ -883,6 +888,9 @@
       <Filter>src\Platforms\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platforms\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\OpenGL\OpenGlContext.cpp">
       <Filter>src\Platforms\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platforms\Win10\Win10Input.cpp">
@@ -912,6 +920,15 @@
     <ClCompile Include="src\XEngine\Renderer\Buffer.cpp">
       <Filter>src\XEngine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RenderCommand.cpp">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\Renderer\RendererAPI\Renderer.cpp">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RendererAPI.cpp">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
+    </ClCompile>
     <ClCompile Include="src\XEngine\Renderer\Shader.cpp">
       <Filter>src\XEngine\Renderer</Filter>
     </ClCompile>
@@ -921,15 +938,5 @@
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RenderCommand.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\RendererAPI\Renderer.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RendererAPI.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platforms\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>
