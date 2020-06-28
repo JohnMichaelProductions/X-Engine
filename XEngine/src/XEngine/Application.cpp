@@ -41,8 +41,8 @@ namespace XEngine
 		std::shared_ptr<IndexBuffer> indexBuffer;
 		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		applicationVertexArray->SetIndexBuffer(indexBuffer);
-		std::string vertexSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultVertexShader.shader");
-		std::string fragmentSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/DefaultFragmentShader.shader");
+		std::string vertexSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/Resources/DefaultVertexShader.shader");
+		std::string fragmentSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/Resources/DefaultFragmentShader.shader");
 		applicationShader.reset(new Shader(vertexSourceCode, fragmentSourceCode));
 	}
 	Application::~Application() 

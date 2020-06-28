@@ -42,8 +42,6 @@ namespace XEngine
 		uint32_t Size;
 		uint32_t Offset;
 		bool Normalized;
-		BufferElement()
-			{ XCORE_INFO("{0} has been created as a buffer element", Name); }
 		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false) : Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized) 
 			{ XCORE_INFO("{0} has been created as a buffer element", Name); }
 		uint32_t GetComponentCount() const

@@ -4,7 +4,7 @@
 #include "XEngine/EventSystem/ApplicationEvent.h"
 #include "XEngine/EventSystem/KeyEvent.h"
 #include "XEngine/EventSystem/MouseEvent.h"
-#include "Platforms/OpenGL/OpenGlContext.h"
+#include "Platforms/RenderingAPIs/OpenGL/OpenGlContext.h"
 namespace XEngine
 {
 	static bool GLFWInitialized;
