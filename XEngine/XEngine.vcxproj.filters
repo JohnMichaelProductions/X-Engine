@@ -7,11 +7,17 @@
     <Filter Include="src\Platforms">
       <UniqueIdentifier>{B40E5C85-20CF-D7BB-E909-213955891C98}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Platforms\OpenGL">
-      <UniqueIdentifier>{68A52600-5434-B0C9-FD52-C4C4E9C0C06F}</UniqueIdentifier>
+    <Filter Include="src\Platforms\OperatingSystems">
+      <UniqueIdentifier>{A477E1BE-909D-AB25-79E3-30F165A8D0F1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Platforms\Win10">
-      <UniqueIdentifier>{527DA55D-BEDE-826B-474C-C91DB3ACB92A}</UniqueIdentifier>
+    <Filter Include="src\Platforms\OperatingSystems\Windows10">
+      <UniqueIdentifier>{DF7BE753-CBF8-DA96-F475-DBAAE051772A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platforms\RenderingAPIs">
+      <UniqueIdentifier>{4E64DCB0-BA71-0A97-4358-0682AF64D64D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platforms\RenderingAPIs\OpenGL">
+      <UniqueIdentifier>{C269EF36-AEA5-F2A0-17B8-0A9803139BBB}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\XEngine">
       <UniqueIdentifier>{EA42F32B-56F8-6B21-DFEC-65F84BA16225}</UniqueIdentifier>
@@ -60,6 +66,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Input.h">
+      <Filter>src\Platforms\OperatingSystems\Windows10</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Window.h">
+      <Filter>src\Platforms\OperatingSystems\Windows10</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGlContext.h">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -81,11 +105,20 @@
     <ClInclude Include="src\XEngine\EventSystem\MouseEvent.h">
       <Filter>src\XEngine\EventSystem</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h">
+      <Filter>src\XEngine\ImGuiLayer</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\InputSystem\Input.h">
       <Filter>src\XEngine\InputSystem</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\InputSystem\XEngineInputCodes.h">
       <Filter>src\XEngine\InputSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\LayerSystem\Layer.h">
+      <Filter>src\XEngine\LayerSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h">
+      <Filter>src\XEngine\LayerSystem</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\LogSystem\Log.h">
       <Filter>src\XEngine\LogSystem</Filter>
@@ -852,38 +885,43 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\Camera.h" />
-    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.h">
-      <Filter>src\Platforms\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGlContext.h">
-      <Filter>src\Platforms\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLRendererAPI.h">
-      <Filter>src\Platforms\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLVertexArray.h">
-      <Filter>src\Platforms\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Input.h">
-      <Filter>src\Platforms\Win10</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Window.h">
-      <Filter>src\Platforms\Win10</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\LayerSystem\Layer.h">
-      <Filter>src\XEngine\LayerSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h">
-      <Filter>src\XEngine\LayerSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h">
-      <Filter>src\XEngine\ImGuiLayer</Filter>
+    <ClInclude Include="src\XEngine\Renderer\Camera.h">
+      <Filter>src\XEngine\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp">
+      <Filter>src\Platforms\OperatingSystems\Windows10</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Window.cpp">
+      <Filter>src\Platforms\OperatingSystems\Windows10</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGlContext.cpp">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\XEngine\Application.cpp">
       <Filter>src\XEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp">
+      <Filter>src\XEngine\ImGuiLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiLayer.cpp">
+      <Filter>src\XEngine\ImGuiLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\LayerSystem\Layer.cpp">
+      <Filter>src\XEngine\LayerSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp">
+      <Filter>src\XEngine\LayerSystem</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\LogSystem\Log.cpp">
       <Filter>src\XEngine\LogSystem</Filter>
@@ -909,36 +947,8 @@
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\Camera.cpp" />
-    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.cpp">
-      <Filter>src\Platforms\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGlContext.cpp">
-      <Filter>src\Platforms\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLRendererAPI.cpp">
-      <Filter>src\Platforms\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLVertexArray.cpp">
-      <Filter>src\Platforms\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp">
-      <Filter>src\Platforms\Win10</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Window.cpp">
-      <Filter>src\Platforms\Win10</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\LayerSystem\Layer.cpp">
-      <Filter>src\XEngine\LayerSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp">
-      <Filter>src\XEngine\LayerSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp">
-      <Filter>src\XEngine\ImGuiLayer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiLayer.cpp">
-      <Filter>src\XEngine\ImGuiLayer</Filter>
+    <ClCompile Include="src\XEngine\Renderer\Camera.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

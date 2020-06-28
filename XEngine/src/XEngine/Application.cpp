@@ -10,7 +10,7 @@ namespace XEngine
 {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 	Application* Application::applicationInstance = nullptr;
-	Application::Application()
+	Application::Application() : applicationCamera(-1.6f, 1.6f, -.9f, .9f)
 	{
 		XCORE_INFO("Application starting");
 		XCORE_ASSERT(!applicationInstance, "Application already exists!");
@@ -78,10 +78,10 @@ namespace XEngine
 			// Background and clear
 			RenderCommand::SetClearColor({ .2f, .2f, .2f, 1 });
 			RenderCommand::Clear();
+			
 			// Draw command
-			Renderer::BeginScene();
-			applicationShader->Bind();
-			Renderer::Submit(applicationVertexArray);
+			Renderer::BeginScene(applicationCamera);
+			Renderer::Submit(applicationVertexArray, applicationShader);
 			Renderer::EndScene();
 			// Update Layers
 			for (Layer* layer : applicationLayerStack)

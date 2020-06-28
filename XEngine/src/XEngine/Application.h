@@ -9,6 +9,7 @@
 #include "XEngine/Renderer/Shader.h"
 #include "XEngine/Renderer/Buffer.h"
 #include "XEngine/Renderer/VertexArray.h"
+#include "Renderer/Camera.h"
 namespace XEngine
 {
 	class XENGINE_API Application
@@ -36,6 +37,7 @@ namespace XEngine
 		std::unique_ptr<Window> applicationWindow;
 		std::shared_ptr<VertexArray> applicationVertexArray;
 		std::shared_ptr<Shader> applicationShader;
+		OrthographicCamera applicationCamera;
 		bool eventUpdates;
 	};
 	Application* CreateApplication();

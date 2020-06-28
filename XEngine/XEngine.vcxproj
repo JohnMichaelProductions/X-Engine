@@ -140,12 +140,12 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Input.h" />
+    <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Window.h" />
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGlContext.h" />
-    <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Input.h" />
-    <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Window.h" />
     <ClInclude Include="src\XEngine.h" />
     <ClInclude Include="src\XEngine\Application.h" />
     <ClInclude Include="src\XEngine\EntryPoint.h" />
@@ -416,12 +416,12 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp" />
+    <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Window.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGlContext.cpp" />
-    <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp" />
-    <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Window.cpp" />
     <ClCompile Include="src\XEngine\Application.cpp" />
     <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp" />
     <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiLayer.cpp" />
