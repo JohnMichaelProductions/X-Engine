@@ -6,11 +6,13 @@
 #include "LogSystem/Log.h"
 #include "Renderer/Shader.h"
 #include "Renderer/RendererAPI/Renderer.h"
+#include "Platforms/OperatingSystems/Windows10/Win10Input.cpp"
+#include "InputSystem/XEngineInputCodes.h"
 namespace XEngine
 {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 	Application* Application::applicationInstance = nullptr;
-	Application::Application() : applicationCamera(-1.6f, 1.6f, -.9f, .9f)
+	Application::Application()
 	{
 		XCORE_INFO("Application starting");
 		XCORE_ASSERT(!applicationInstance, "Application already exists!");
@@ -20,30 +22,6 @@ namespace XEngine
 		applicationWindow->SetEventCallback(BIND_EVENT_FN(OnEvent));
 		applicationImGuiLayer = new ImGuiLayer();
 		PushOverlay(applicationImGuiLayer);
-		// Rendering
-		applicationVertexArray.reset(VertexArray::Create());
-		float vertices[3 * 7] = 
-		{
-			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
-			 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
-			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
-		};
-		std::shared_ptr<VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-		BufferLayout layout = 
-		{
-			{ ShaderDataType::Float3, "a_Position" },
-			{ ShaderDataType::Float4, "a_Color" }
-		};
-		vertexBuffer->SetLayout(layout);
-		applicationVertexArray->AddVertexBuffer(vertexBuffer);
-		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<IndexBuffer> indexBuffer;
-		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-		applicationVertexArray->SetIndexBuffer(indexBuffer);
-		std::string vertexSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/Resources/DefaultVertexShader.shader");
-		std::string fragmentSourceCode = ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/Resources/DefaultFragmentShader.shader");
-		applicationShader.reset(new Shader(vertexSourceCode, fragmentSourceCode));
 	}
 	Application::~Application() 
 		{ XCORE_INFO("Application Shutting Down"); }
@@ -73,16 +51,11 @@ namespace XEngine
 	}
 	void Application::Run() 
 	{
+		float x = 0.0f;
+		float y = 0.0f;
 		while (appRunning)
 		{
-			// Background and clear
-			RenderCommand::SetClearColor({ .2f, .2f, .2f, 1 });
-			RenderCommand::Clear();
-			
-			// Draw command
-			Renderer::BeginScene(applicationCamera);
-			Renderer::Submit(applicationVertexArray, applicationShader);
-			Renderer::EndScene();
+
 			// Update Layers
 			for (Layer* layer : applicationLayerStack)
 				layer->OnUpdate();

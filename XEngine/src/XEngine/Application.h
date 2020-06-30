@@ -32,12 +32,9 @@ namespace XEngine
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool appRunning = true;
 		static Application* applicationInstance;
+		std::unique_ptr<XEngine::Window> applicationWindow;
 		LayerStack applicationLayerStack;
 		ImGuiLayer* applicationImGuiLayer;
-		std::unique_ptr<Window> applicationWindow;
-		std::shared_ptr<VertexArray> applicationVertexArray;
-		std::shared_ptr<Shader> applicationShader;
-		OrthographicCamera applicationCamera;
 		bool eventUpdates;
 	};
 	Application* CreateApplication();
