@@ -2,14 +2,15 @@
 #pragma once
 #include "XCore.h"
 #include "Window.h"
-#include "EventSystem/Event.h"
-#include "EventSystem/ApplicationEvent.h"
-#include "ImGuiLayer/ImGuiLayer.h"
-#include "LayerSystem/LayerStack.h"
+#include "Time.h"
+#include "../EventSystem/Event.h"
+#include "../EventSystem/ApplicationEvent.h"
+#include "../ImGuiLayer/ImGuiLayer.h"
+#include "../LayerSystem/LayerStack.h"
 #include "XEngine/Renderer/Shader.h"
 #include "XEngine/Renderer/Buffer.h"
 #include "XEngine/Renderer/VertexArray.h"
-#include "Renderer/Camera.h"
+#include "../Renderer/Camera.h"
 namespace XEngine
 {
 	class XENGINE_API Application
@@ -35,7 +36,7 @@ namespace XEngine
 		std::unique_ptr<XEngine::Window> applicationWindow;
 		LayerStack applicationLayerStack;
 		ImGuiLayer* applicationImGuiLayer;
-		bool eventUpdates;
+		float lastFrameTime = 0.0f;
 	};
 	Application* CreateApplication();
 }

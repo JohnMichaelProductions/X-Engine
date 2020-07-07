@@ -1,6 +1,6 @@
 // Input Class
 #pragma once
-#include "XEngine/XCore.h"
+#include "XEngine/Core/XCore.h"
 namespace XEngine
 {
 	class XENGINE_API Input

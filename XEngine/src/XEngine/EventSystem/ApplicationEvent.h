@@ -1,3 +1,4 @@
+// Application event classes
 #pragma once
 #include "Event.h"
 namespace XEngine 

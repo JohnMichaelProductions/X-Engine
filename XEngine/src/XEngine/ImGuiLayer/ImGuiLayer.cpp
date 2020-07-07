@@ -1,5 +1,5 @@
 #include "Xpch.h"
-#include "XEngine/Application.h"
+#include "XEngine/Core/Application.h"
 #include "ImGuiLayer.h"
 #include "imgui.h"
 #include "examples/imgui_impl_glfw.h"
@@ -9,10 +9,7 @@
 namespace XEngine 
 {
 	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer")
-	{
-		XCORE_INFO("ImGui Layer has been created");
-		layerUpdates = false;
-	}
+		{ XCORE_INFO("ImGui Layer has been created"); }
 	ImGuiLayer::~ImGuiLayer() 
 		{ XCORE_INFO("ImGui Layer has been destroyed"); }
 	void ImGuiLayer::OnAttach()

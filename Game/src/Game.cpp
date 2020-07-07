@@ -3,7 +3,7 @@
 class XLayer : public XEngine::Layer
 {
 public:
-	XLayer() : Layer("Name"), applicationCamera(-1.6f, 1.6f, -.9f, .9f), applicationCameraPosition({ 0.0f, 0.0f, 0.0f })
+	XLayer() : Layer("XLayer"), applicationCamera(-1.6f, 1.6f, -.9f, .9f), applicationCameraPosition({ 0.0f, 0.0f, 0.0f })
 	{
 		// Rendering
 		applicationVertexArray.reset(XEngine::VertexArray::Create());
@@ -30,19 +30,19 @@ public:
 		std::string fragmentSourceCode = XEngine::ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/Resources/DefaultFragmentShader.shader");
 		applicationShader.reset(new XEngine::Shader(vertexSourceCode, fragmentSourceCode));
 	}
-	void OnUpdate() override
+	void OnUpdate(XEngine::Timestep timestep) override
 	{
 		// Background and clear
 		XEngine::RenderCommand::SetClearColor({ .2f, .2f, .2f, 1 });
 		XEngine::RenderCommand::Clear();
 		if (XEngine::Input::IsKeyPressed(X_KEY_W))
-			applicationCameraPosition.y += 0.01;
+			applicationCameraPosition.y += 1 * timestep;
 		else if (XEngine::Input::IsKeyPressed(X_KEY_S))
-			applicationCameraPosition.y -= 0.01;
+			applicationCameraPosition.y -= 1 * timestep;
 		if (XEngine::Input::IsKeyPressed(X_KEY_D))
-			applicationCameraPosition.x += 0.01;
+			applicationCameraPosition.x += 1 * timestep;
 		else if (XEngine::Input::IsKeyPressed(X_KEY_A))
-			applicationCameraPosition.x -= 0.01;
+			applicationCameraPosition.x -= 1 * timestep;
 		applicationCamera.SetPosition(applicationCameraPosition);
 		// Draw command
 		XEngine::Renderer::BeginScene(applicationCamera);

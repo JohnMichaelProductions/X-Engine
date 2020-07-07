@@ -1,8 +1,9 @@
 // X-Engine Library
 #pragma once
 #include <stdio.h>
-#include "XEngine/Application.h"
-#include "XEngine/EntryPoint.h"
+#include "XEngine/Core/Time.h"
+#include "XEngine/Core/Application.h"
+#include "XEngine/Core/EntryPoint.h"
 #include "XEngine/ImGuiLayer/ImGuiLayer.h"
 #include "XEngine/InputSystem/Input.h"
 #include "XEngine/InputSystem/XEngineInputCodes.h"

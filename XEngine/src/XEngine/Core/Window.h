@@ -2,7 +2,7 @@
 #pragma once
 #include "Xpch.h"
 #include "XCore.h"
-#include "EventSystem/Event.h"
+#include "../EventSystem/Event.h"
 namespace XEngine
 {
 	struct WindowProps

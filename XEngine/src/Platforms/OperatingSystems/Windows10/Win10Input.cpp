@@ -1,6 +1,6 @@
 // Source file that deals with input on window 10 computers
 #include "Xpch.h"
-#include "XEngine/Application.h"
+#include "XEngine/Core/Application.h"
 #include "Win10Input.h"
 #include <GLFW/glfw3.h>
 namespace XEngine

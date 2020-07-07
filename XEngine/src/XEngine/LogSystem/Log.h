@@ -2,7 +2,7 @@
 #pragma once
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
-#include "../XCore.h"
+#include "../Core/XCore.h"
 namespace XEngine
 {
 	class XENGINE_API Log
