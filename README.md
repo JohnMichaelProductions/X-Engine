@@ -11,7 +11,7 @@ git clone --recursive https://github.com/JohnMichaelProductions/X-Engine.git
 
 2. Run the GenerateProject.bat file.
 
-3. Run the solution file for your IDE
+3. Run the solution file for your IDE(Visual Studios only supported IDE)
 
 
-For questions, concerns, or a bug report email: XOS.Development.Main@gmail.com
+For questions, concerns, or a bug report email: JohnMBurnside21@gmail.com
