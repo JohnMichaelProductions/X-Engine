@@ -22,6 +22,9 @@
     <Filter Include="src\XEngine">
       <UniqueIdentifier>{EA42F32B-56F8-6B21-DFEC-65F84BA16225}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\XEngine\Core">
+      <UniqueIdentifier>{82C99CB5-6EC2-BB07-97F4-A08C834C9B13}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\XEngine\EventSystem">
       <UniqueIdentifier>{A0377FAE-0C6F-C745-1579-2B69812FEE3E}</UniqueIdentifier>
     </Filter>
@@ -87,6 +90,21 @@
     <ClInclude Include="src\XEngine.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\Core\Application.h">
+      <Filter>src\XEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Core\EntryPoint.h">
+      <Filter>src\XEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Core\Time.h">
+      <Filter>src\XEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Core\Window.h">
+      <Filter>src\XEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Core\XCore.h">
+      <Filter>src\XEngine\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\EventSystem\ApplicationEvent.h">
       <Filter>src\XEngine\EventSystem</Filter>
     </ClInclude>
@@ -118,6 +136,9 @@
       <Filter>src\XEngine\LogSystem</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Renderer\Buffer.h">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Renderer\Camera.h">
       <Filter>src\XEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h">
@@ -873,22 +894,6 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\Camera.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Core\Time.h" />
-    <ClInclude Include="src\XEngine\Core\XCore.h">
-      <Filter>src\XEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Core\Window.h">
-      <Filter>src\XEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Core\Application.h">
-      <Filter>src\XEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Core\EntryPoint.h">
-      <Filter>src\XEngine</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp">
@@ -909,6 +914,9 @@
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGlContext.cpp">
       <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\Core\Application.cpp">
+      <Filter>src\XEngine\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp">
       <Filter>src\XEngine\ImGuiLayer</Filter>
     </ClCompile>
@@ -925,6 +933,9 @@
       <Filter>src\XEngine\LogSystem</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\Renderer\Buffer.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\Renderer\Camera.cpp">
       <Filter>src\XEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\Renderer\RendererAPI\RenderCommand.cpp">
@@ -944,12 +955,6 @@
     </ClCompile>
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\Camera.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\Core\Application.cpp">
-      <Filter>src\XEngine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

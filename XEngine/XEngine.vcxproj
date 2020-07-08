@@ -148,8 +148,10 @@
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGlContext.h" />
     <ClInclude Include="src\XEngine.h" />
     <ClInclude Include="src\XEngine\Core\Application.h" />
-    <ClInclude Include="src\XEngine\Core\Time.h" />
     <ClInclude Include="src\XEngine\Core\EntryPoint.h" />
+    <ClInclude Include="src\XEngine\Core\Time.h" />
+    <ClInclude Include="src\XEngine\Core\Window.h" />
+    <ClInclude Include="src\XEngine\Core\XCore.h" />
     <ClInclude Include="src\XEngine\EventSystem\ApplicationEvent.h" />
     <ClInclude Include="src\XEngine\EventSystem\Event.h" />
     <ClInclude Include="src\XEngine\EventSystem\KeyEvent.h" />
@@ -168,8 +170,6 @@
     <ClInclude Include="src\XEngine\Renderer\RendererAPI\RendererAPI.h" />
     <ClInclude Include="src\XEngine\Renderer\Shader.h" />
     <ClInclude Include="src\XEngine\Renderer\VertexArray.h" />
-    <ClInclude Include="src\XEngine\Core\Window.h" />
-    <ClInclude Include="src\XEngine\Core\XCore.h" />
     <ClInclude Include="src\Xpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
