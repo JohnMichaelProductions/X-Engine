@@ -1,6 +1,6 @@
 // Header File for Vertex and Index Buffer Functions
 #pragma once
-#include "XEngine/Renderer/Buffer.h"
+#include "XEngine/GraphicsSystem/Buffer.h"
 namespace XEngine
 {
 	class OpenGLVertexBuffer : public VertexBuffer

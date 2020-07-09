@@ -8,7 +8,7 @@ namespace XEngine
 		{ glClearColor(color.r, color.g, color.b, color.a); }
 	void OpenGLRendererAPI::Clear()
 		{ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); }
-	void OpenGLRendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray)
 		{ glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr); }
 	void OpenGLRendererAPI::Documentation()
 	{
@@ -17,6 +17,6 @@ namespace XEngine
 			"SetClearColor(const glm::vec4& color): Set color of background using rgba vec 4\n"
 			"\tExample: SetClearColor(0, 0, 1, 1);\n"
 			"Clear(): Resets buffers\n"
-			"DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray): Draws specified index array\n");
+			"DrawIndexed(const Ref<VertexArray>& vertexArray): Draws specified index array\n");
 	}
 }

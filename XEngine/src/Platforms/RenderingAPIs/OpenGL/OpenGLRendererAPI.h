@@ -1,6 +1,6 @@
 // Header file for OpenGL Specific RenderAPI
 #pragma once
-#include "XEngine/Renderer/RendererAPI/RendererAPI.h"
+#include "XEngine/GraphicsSystem/Renderer/RendererAPI.h"
 namespace XEngine
 {
 	class OpenGLRendererAPI : public RendererAPI
@@ -9,7 +9,7 @@ namespace XEngine
 		// Defined in Source File
 		virtual void SetClearColor(const glm::vec4& color) override;
 		virtual void Clear() override;
-		virtual void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray) override;
+		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray) override;
 		virtual void Documentation() override;
 	};
 }

@@ -7,8 +7,15 @@ namespace XEngine
 {
 	struct WindowProps
 	{
-		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1280, unsigned int height = 720) : Title(title), Width(width), Height(height)
-			{ XCORE_INFO("Window Properties: Title: {0} Width: {1} Height: {2} ", Title, Height, Width); }
+		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1280, unsigned int height = 720) : Title(title), Width(width), Height(height) 
+		{
+			// Windows 10 Implementation
+			RECT desktop;
+			const HWND hDesktop = GetDesktopWindow();
+			GetWindowRect(hDesktop, &desktop);
+			Width = desktop.right;
+			Height = desktop.bottom;
+		}
 		std::string Title;
 		unsigned int Width;
 		unsigned int Height;

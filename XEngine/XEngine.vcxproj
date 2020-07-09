@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Input.h" />
     <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Window.h" />
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.h" />
@@ -162,14 +163,14 @@
     <ClInclude Include="src\XEngine\LayerSystem\Layer.h" />
     <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h" />
     <ClInclude Include="src\XEngine\LogSystem\Log.h" />
-    <ClInclude Include="src\XEngine\Renderer\Buffer.h" />
-    <ClInclude Include="src\XEngine\Renderer\Camera.h" />
-    <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RenderCommand.h" />
-    <ClInclude Include="src\XEngine\Renderer\RendererAPI\Renderer.h" />
-    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RendererAPI.h" />
-    <ClInclude Include="src\XEngine\Renderer\Shader.h" />
-    <ClInclude Include="src\XEngine\Renderer\VertexArray.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\Buffer.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\Camera.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\GraphicsContext.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\Shader.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\VertexArray.h" />
     <ClInclude Include="src\Xpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -417,6 +418,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp" />
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Window.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.cpp" />
@@ -429,13 +431,13 @@
     <ClCompile Include="src\XEngine\LayerSystem\Layer.cpp" />
     <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp" />
     <ClCompile Include="src\XEngine\LogSystem\Log.cpp" />
-    <ClCompile Include="src\XEngine\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\XEngine\Renderer\Camera.cpp" />
-    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RenderCommand.cpp" />
-    <ClCompile Include="src\XEngine\Renderer\RendererAPI\Renderer.cpp" />
-    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RendererAPI.cpp" />
-    <ClCompile Include="src\XEngine\Renderer\Shader.cpp" />
-    <ClCompile Include="src\XEngine\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\Buffer.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\Camera.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\Shader.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\VertexArray.cpp" />
     <ClCompile Include="src\Xpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

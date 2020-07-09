@@ -1,6 +1,6 @@
 // Header file for OpenGL Context, derives from Graphics Context
 #pragma once
-#include "XEngine/Renderer/GraphicsContext.h"
+#include "XEngine/GraphicsSystem/GraphicsContext.h"
 struct GLFWwindow;
 namespace XEngine
 {

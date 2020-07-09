@@ -135,30 +135,6 @@
     <ClInclude Include="src\XEngine\LogSystem\Log.h">
       <Filter>src\XEngine\LogSystem</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\Buffer.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\Camera.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RenderCommand.h">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\RendererAPI\Renderer.h">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\RendererAPI\RendererAPI.h">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\Shader.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Renderer\VertexArray.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="src\Xpch.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -894,6 +870,33 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Buffer.h">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Camera.h">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\GraphicsContext.h">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Shader.h">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\VertexArray.h">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.h">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer.h">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.h">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.h">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp">
@@ -932,29 +935,32 @@
     <ClCompile Include="src\XEngine\LogSystem\Log.cpp">
       <Filter>src\XEngine\LogSystem</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\Buffer.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\Camera.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RenderCommand.cpp">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\RendererAPI\Renderer.cpp">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\RendererAPI\RendererAPI.cpp">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\Shader.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\Renderer\VertexArray.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Buffer.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Camera.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Shader.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\VertexArray.cpp">
+      <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.cpp">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer.cpp">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.cpp">
+      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

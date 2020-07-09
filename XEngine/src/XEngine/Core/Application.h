@@ -7,10 +7,10 @@
 #include "../EventSystem/ApplicationEvent.h"
 #include "../ImGuiLayer/ImGuiLayer.h"
 #include "../LayerSystem/LayerStack.h"
-#include "XEngine/Renderer/Shader.h"
-#include "XEngine/Renderer/Buffer.h"
-#include "XEngine/Renderer/VertexArray.h"
-#include "../Renderer/Camera.h"
+#include "XEngine/GraphicsSystem/Shader.h"
+#include "XEngine/GraphicsSystem/Buffer.h"
+#include "XEngine/GraphicsSystem/VertexArray.h"
+#include "../GraphicsSystem/Camera.h"
 namespace XEngine
 {
 	class XENGINE_API Application

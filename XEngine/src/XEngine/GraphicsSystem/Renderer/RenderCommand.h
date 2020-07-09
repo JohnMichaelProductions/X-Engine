@@ -9,7 +9,7 @@ namespace XEngine
 			{ renderCommandAPI->SetClearColor(color); }
 		inline static void Clear()
 			{ renderCommandAPI->Clear(); }
-		inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray)
 			{ renderCommandAPI->DrawIndexed(vertexArray); }
 		inline static void Documentation()
 			{ renderCommandAPI->Documentation(); }

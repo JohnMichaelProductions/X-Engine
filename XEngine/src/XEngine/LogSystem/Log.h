@@ -16,8 +16,8 @@ namespace XEngine
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger()
 			{ return clientLogger; }
 	private:
-		static std::shared_ptr<spdlog::logger> coreLogger;
-		static std::shared_ptr<spdlog::logger> clientLogger;
+		static Ref<spdlog::logger> coreLogger;
+		static Ref<spdlog::logger> clientLogger;
 	};
 }
 #define XCORE_TRACE(...)::XEngine::Log::GetCoreLogger()->trace(__VA_ARGS__)

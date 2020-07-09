@@ -1,6 +1,6 @@
 // Header file for OpenGL Vertex Arrays
 #pragma once
-#include "XEngine/Renderer/VertexArray.h"
+#include "XEngine/GraphicsSystem/VertexArray.h"
 namespace XEngine
 {
 	class OpenGLVertexArray : public VertexArray
@@ -11,16 +11,16 @@ namespace XEngine
 		virtual ~OpenGLVertexArray();
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
-		virtual void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer) override;
-		virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer) override;
+		virtual void AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer) override;
+		virtual void SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer) override;
 		// Prototype in Header File
-		virtual const std::vector<std::shared_ptr<VertexBuffer>>& GetVertexBuffers() const 
+		virtual const std::vector<Ref<VertexBuffer>>& GetVertexBuffers() const 
 			{ return vertexArrayVertexBuffer; }
-		virtual const std::shared_ptr<IndexBuffer>& GetIndexBuffer() const 
+		virtual const Ref<IndexBuffer>& GetIndexBuffer() const 
 			{ return vertexArrayIndexBuffer; }
 	private:
 		uint32_t vertexArrayRendererID;
-		std::vector<std::shared_ptr<VertexBuffer>> vertexArrayVertexBuffer;
-		std::shared_ptr<IndexBuffer> vertexArrayIndexBuffer;
+		std::vector<Ref<VertexBuffer>> vertexArrayVertexBuffer;
+		Ref<IndexBuffer> vertexArrayIndexBuffer;
 	};
 }

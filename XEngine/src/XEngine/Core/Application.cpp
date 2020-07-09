@@ -5,8 +5,8 @@
 #include "../InputSystem/Input.h"
 #include "../InputSystem/XEngineInputCodes.h"
 #include "../LogSystem/Log.h"
-#include "../Renderer/Shader.h"
-#include "../Renderer/RendererAPI/Renderer.h"
+#include "../GraphicsSystem/Shader.h"
+#include "../GraphicsSystem/Renderer/Renderer.h"
 #include "Platforms/OperatingSystems/Windows10/Win10Input.cpp"
 #include <GLFW/glfw3.h>
 namespace XEngine

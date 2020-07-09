@@ -1,10 +1,10 @@
 #include "Xpch.h"
-#include "Shader.h"
+#include "OpenGLShader.h"
 #include <GLAD/glad.h>
 #include <glm/gtc/type_ptr.hpp>
 namespace XEngine
 {
-	Shader::Shader(const std::string& vertexSrc, const std::string& fragmentSrc)
+	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
 		// Create an empty vertex shader handle
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -86,28 +86,45 @@ namespace XEngine
 		glDetachShader(program, vertexShader);
 		glDetachShader(program, fragmentShader);
 	}
-	Shader::~Shader() 
+	OpenGLShader::~OpenGLShader()
 		{ glDeleteProgram(shaderRendererID); }
-	void Shader::Bind() const 
+	void OpenGLShader::Bind() const
 		{ glUseProgram(shaderRendererID); }
-	void Shader::Unbind() const 
+	void OpenGLShader::Unbind() const
 		{ glUseProgram(0); }
-	void Shader::UploadUniformFloat4(const std::string name, const glm::vec4& values)
+	void OpenGLShader::UploadUniformInt(const std::string name, int value)
+	{
+		GLint location = glGetUniformLocation(shaderRendererID, name.c_str());
+		glUniform1i(location, value);
+	}
+	void OpenGLShader::UploadUniformFloat(const std::string name, float value)
+	{
+		GLint location = glGetUniformLocation(shaderRendererID, name.c_str());
+		glUniform1f(location, value);
+	}
+	void OpenGLShader::UploadUniformFloat2(const std::string name, const glm::vec2& values)
+	{
+		GLint location = glGetUniformLocation(shaderRendererID, name.c_str());
+		glUniform2f(location, values.x, values.y);
+	}
+	void OpenGLShader::UploadUniformFloat3(const std::string name, const glm::vec3& values)
+	{
+		GLint location = glGetUniformLocation(shaderRendererID, name.c_str());
+		glUniform3f(location, values.x, values.y, values.z);
+	}
+	void OpenGLShader::UploadUniformFloat4(const std::string name, const glm::vec4& values)
 	{
 		GLint location = glGetUniformLocation(shaderRendererID, name.c_str());
 		glUniform4f(location, values.x, values.y, values.z, values.w);
 	}
-	void Shader::UploadUniformMat4(const std::string name, const glm::mat4 & matrix)
+	void OpenGLShader::UploadUniformMat3(const std::string name, const glm::mat3& matrix)
 	{
 		GLint location = glGetUniformLocation(shaderRendererID, name.c_str());
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
-	std::string ConvertShader(const std::string& shaderFilestream)
+	void OpenGLShader::UploadUniformMat4(const std::string name, const glm::mat4& matrix)
 	{
-		std::ifstream stream;
-		stream.open(shaderFilestream);
-		std::stringstream fileContents;
-		fileContents << stream.rdbuf();
-		return fileContents.str();
+		GLint location = glGetUniformLocation(shaderRendererID, name.c_str());
+		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 }

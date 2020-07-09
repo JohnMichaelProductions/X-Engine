@@ -5,6 +5,7 @@
 #include "XEngine/EventSystem/KeyEvent.h"
 #include "XEngine/EventSystem/MouseEvent.h"
 #include "Platforms/RenderingAPIs/OpenGL/OpenGlContext.h"
+#include "wtypes.h"
 namespace XEngine
 {
 	static bool GLFWInitialized;
@@ -12,7 +13,7 @@ namespace XEngine
 		{ XCORE_ERROR("GLFW Error ({0}): {1}", error, description); };
 	Window* Window::Create(const WindowProps& props)
 	{  
-		XCORE_INFO("Creating new Windows 10 Window");
+		XCORE_INFO("Windows 10 Window has been created");
 		return new Win10Window(props); 
 	}
 	Win10Window::Win10Window(const WindowProps& props)
@@ -31,7 +32,6 @@ namespace XEngine
 		windowData.Title = props.Title;
 		windowData.Width = props.Width;
 		windowData.Height = props.Height;
-		XCORE_INFO("Creating window with Title: {0} Width: ({1}, and Height: {2})", props.Title, props.Width, props.Height);
 		if (!GLFWInitialized)
 		{
 			int success = glfwInit();

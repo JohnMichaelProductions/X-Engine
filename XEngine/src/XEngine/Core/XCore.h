@@ -1,5 +1,6 @@
 // X-Engine Core File
 #pragma once
+#include <memory>
 #ifdef X_PLATFORM_WINDOWS
 #if X_DYNAMIC_LINK
 	#ifdef X_BUILD_DLL
@@ -25,3 +26,10 @@
 #endif
 #define BIT(x) (1 << x)
 #define X_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+namespace XEngine
+{
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}
