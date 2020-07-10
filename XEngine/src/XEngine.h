@@ -12,6 +12,7 @@
 #include "XEngine/GraphicsSystem/Buffer.h"
 #include "XEngine/GraphicsSystem/Camera.h"
 #include "XEngine/GraphicsSystem/Shader.h"
+#include "XEngine/GraphicsSystem/Texture.h"
 #include "XEngine/GraphicsSystem/VertexArray.h"
 #include "XEngine/GraphicsSystem/Renderer/Renderer.h"
 #include "XEngine/GraphicsSystem/Renderer/RenderCommand.h"

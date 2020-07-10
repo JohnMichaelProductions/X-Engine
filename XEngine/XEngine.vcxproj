@@ -77,7 +77,7 @@
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_PLATFORM_WINDOWS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -97,7 +97,7 @@
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_PLATFORM_WINDOWS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -121,7 +121,7 @@
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_PLATFORM_WINDOWS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -140,11 +140,12 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Input.h" />
     <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Window.h" />
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGlContext.h" />
     <ClInclude Include="src\XEngine.h" />
@@ -157,12 +158,6 @@
     <ClInclude Include="src\XEngine\EventSystem\Event.h" />
     <ClInclude Include="src\XEngine\EventSystem\KeyEvent.h" />
     <ClInclude Include="src\XEngine\EventSystem\MouseEvent.h" />
-    <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h" />
-    <ClInclude Include="src\XEngine\InputSystem\Input.h" />
-    <ClInclude Include="src\XEngine\InputSystem\XEngineInputCodes.h" />
-    <ClInclude Include="src\XEngine\LayerSystem\Layer.h" />
-    <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h" />
-    <ClInclude Include="src\XEngine\LogSystem\Log.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Buffer.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Camera.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\GraphicsContext.h" />
@@ -170,7 +165,14 @@
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Shader.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\Texture.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\VertexArray.h" />
+    <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h" />
+    <ClInclude Include="src\XEngine\InputSystem\Input.h" />
+    <ClInclude Include="src\XEngine\InputSystem\XEngineInputCodes.h" />
+    <ClInclude Include="src\XEngine\LayerSystem\Layer.h" />
+    <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h" />
+    <ClInclude Include="src\XEngine\LogSystem\Log.h" />
     <ClInclude Include="src\Xpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -416,31 +418,35 @@
     <ClInclude Include="vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="vendor\stb\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp" />
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Window.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGlContext.cpp" />
     <ClCompile Include="src\XEngine\Core\Application.cpp" />
-    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp" />
-    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiLayer.cpp" />
-    <ClCompile Include="src\XEngine\LayerSystem\Layer.cpp" />
-    <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp" />
-    <ClCompile Include="src\XEngine\LogSystem\Log.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Buffer.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Camera.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Shader.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\Texture.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\VertexArray.cpp" />
+    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp" />
+    <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiLayer.cpp" />
+    <ClCompile Include="src\XEngine\LayerSystem\Layer.cpp" />
+    <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp" />
+    <ClCompile Include="src\XEngine\LogSystem\Log.cpp" />
     <ClCompile Include="src\Xpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="vendor\stb\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

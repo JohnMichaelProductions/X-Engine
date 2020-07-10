@@ -28,6 +28,12 @@
     <Filter Include="src\XEngine\EventSystem">
       <UniqueIdentifier>{A0377FAE-0C6F-C745-1579-2B69812FEE3E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\XEngine\GraphicsSystem">
+      <UniqueIdentifier>{8F658F69-7B75-3B3A-E42E-A058D05D2AD3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\XEngine\GraphicsSystem\Renderer">
+      <UniqueIdentifier>{155A237E-8113-8E28-0A73-A802762B4498}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\XEngine\ImGuiLayer">
       <UniqueIdentifier>{5123C255-3D1D-EBA7-268A-81B812235114}</UniqueIdentifier>
     </Filter>
@@ -39,12 +45,6 @@
     </Filter>
     <Filter Include="src\XEngine\LogSystem">
       <UniqueIdentifier>{A02BB24B-0C98-6D46-D58B-05A441B78FAE}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\XEngine\Renderer">
-      <UniqueIdentifier>{D06DF12E-BCFC-7AF8-651B-8FF351898B9E}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\XEngine\Renderer\RendererAPI">
-      <UniqueIdentifier>{D02E7928-BC7F-646A-E5E3-522CD193F7D3}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -67,6 +67,9 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb">
+      <UniqueIdentifier>{8BD3C5A8-778B-07F6-E092-E051CC69A2E6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Input.h">
@@ -79,6 +82,12 @@
       <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.h">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLTexture.h">
       <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLVertexArray.h">
@@ -116,6 +125,33 @@
     </ClInclude>
     <ClInclude Include="src\XEngine\EventSystem\MouseEvent.h">
       <Filter>src\XEngine\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Buffer.h">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Camera.h">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\GraphicsContext.h">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.h">
+      <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer.h">
+      <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.h">
+      <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Shader.h">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Texture.h">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\VertexArray.h">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h">
       <Filter>src\XEngine\ImGuiLayer</Filter>
@@ -870,32 +906,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\GraphicsSystem\Buffer.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\GraphicsSystem\Camera.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\GraphicsSystem\GraphicsContext.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\GraphicsSystem\Shader.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\GraphicsSystem\VertexArray.h">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.h">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer.h">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.h">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.h">
-      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    <ClInclude Include="vendor\stb\stb_image.h">
+      <Filter>vendor\stb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -911,6 +923,12 @@
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLRendererAPI.cpp">
       <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
     </ClCompile>
@@ -919,6 +937,30 @@
     </ClCompile>
     <ClCompile Include="src\XEngine\Core\Application.cpp">
       <Filter>src\XEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Buffer.cpp">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Camera.cpp">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.cpp">
+      <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer.cpp">
+      <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.cpp">
+      <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Shader.cpp">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Texture.cpp">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\VertexArray.cpp">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp">
       <Filter>src\XEngine\ImGuiLayer</Filter>
@@ -938,29 +980,8 @@
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\GraphicsSystem\Buffer.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\GraphicsSystem\Camera.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\GraphicsSystem\Shader.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\GraphicsSystem\VertexArray.cpp">
-      <Filter>src\XEngine\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.cpp">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer.cpp">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.cpp">
-      <Filter>src\XEngine\Renderer\RendererAPI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLShader.cpp">
-      <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
+    <ClCompile Include="vendor\stb\stb_image.cpp">
+      <Filter>vendor\stb</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
