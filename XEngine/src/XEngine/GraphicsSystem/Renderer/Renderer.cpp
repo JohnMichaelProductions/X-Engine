@@ -5,6 +5,8 @@
 namespace XEngine
 {
 	Renderer::SceneData* Renderer::rendererSceneData = new Renderer::SceneData;
+	void Renderer::Init()
+		{ RenderCommand::Init(); }
 	void Renderer::BeginScene(OrthographicCamera& camera) 
 		{ rendererSceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix(); }
 	void Renderer::EndScene() {}

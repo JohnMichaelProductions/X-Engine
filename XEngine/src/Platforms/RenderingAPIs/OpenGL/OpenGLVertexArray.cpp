@@ -24,15 +24,9 @@ namespace XEngine
 		return 0;
 	}
 	OpenGLVertexArray::OpenGLVertexArray()
-	{
-		glCreateVertexArrays(1, &vertexArrayRendererID);
-		XCORE_INFO("Vertex Array has been created, RendererID: {0}", vertexArrayRendererID);
-	}
+		{ glCreateVertexArrays(1, &vertexArrayRendererID); }
 	OpenGLVertexArray::~OpenGLVertexArray()
-	{
-		glDeleteVertexArrays(1, &vertexArrayRendererID);
-		XCORE_INFO("Vertex Array has been destroyed, RendererID: {0}", vertexArrayRendererID);
-	}
+		{ glDeleteVertexArrays(1, &vertexArrayRendererID); }
 	void OpenGLVertexArray::Bind() const
 		{ glBindVertexArray(vertexArrayRendererID); }
 	void OpenGLVertexArray::Unbind() const

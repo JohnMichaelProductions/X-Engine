@@ -8,8 +8,7 @@ namespace XEngine
 	public:
 		// Defined in Source File
 		OrthographicCamera(float left, float right, float bottom, float top);
-		~OrthographicCamera()
-			{ XCORE_INFO("Orthographic Camera has been destroyed"); }
+		~OrthographicCamera() {}
 		// Prototype in Header File
 		const glm::vec3 GetPosition() const
 			{ return cameraPosition; }

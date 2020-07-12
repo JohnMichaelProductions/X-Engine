@@ -984,4 +984,12 @@
       <Filter>vendor\stb</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\res\Shaders\DefaultFragmentShader.shader" />
+    <None Include="src\res\Shaders\DefaultVertexShader.shader" />
+    <None Include="src\res\Shaders\SquareFragmentShader.shader" />
+    <None Include="src\res\Shaders\SquareVertexShader.shader" />
+    <None Include="src\res\Shaders\TextureFragmentShader.shader" />
+    <None Include="src\res\Shaders\TextureVertexShader.shader" />
+  </ItemGroup>
 </Project>

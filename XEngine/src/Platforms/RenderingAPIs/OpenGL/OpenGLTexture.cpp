@@ -12,11 +12,24 @@ namespace XEngine
 		XCORE_ASSERT(data, "Failed to load image");
 		textureWidth = width;
 		textureHeight = height;
+
+		GLenum internalFormat = 0, dataFormat = 0;
+		if (channels == 4)
+		{
+			internalFormat = GL_RGBA8;
+			dataFormat = GL_RGBA;
+		}
+		else if (channels == 3)
+		{
+			internalFormat = GL_RGB8;
+			dataFormat = GL_RGB;
+		}
+		XCORE_ASSERT(internalFormat & dataFormat, "Format not supported");
 		glCreateTextures(GL_TEXTURE_2D, 1, &textureRendererID);
-		glTextureStorage2D(textureRendererID, 1, GL_RGB8, textureWidth, textureHeight);
+		glTextureStorage2D(textureRendererID, 1, internalFormat, textureWidth, textureHeight);
 		glTextureParameteri(textureRendererID, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTextureParameteri(textureRendererID, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTextureSubImage2D(textureRendererID, 0, 0, 0, textureWidth, textureHeight, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glTextureSubImage2D(textureRendererID, 0, 0, 0, textureWidth, textureHeight, dataFormat, GL_UNSIGNED_BYTE, data);
 		stbi_image_free(data);
 	}
 	OpenGLTexture2D::~OpenGLTexture2D()

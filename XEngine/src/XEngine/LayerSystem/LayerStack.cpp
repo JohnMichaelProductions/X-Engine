@@ -2,13 +2,11 @@
 #include "LayerStack.h"
 namespace XEngine
 {
-	LayerStack::LayerStack() 
-		{ XCORE_INFO("Layer Stack has been created"); }
+	LayerStack::LayerStack() {}
 	LayerStack::~LayerStack()
 	{
 		for (Layer* layer : m_Layers)
 			delete layer;
-		XCORE_INFO("Layer Stack and all layers have been destroyed");
 	}
 	void LayerStack::PushLayer(Layer* layer) 
 	{ 

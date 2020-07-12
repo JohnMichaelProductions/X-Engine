@@ -12,23 +12,16 @@ namespace XEngine
 	static void GLFWErrorCallback(int error, const char* description)
 		{ XCORE_ERROR("GLFW Error ({0}): {1}", error, description); };
 	Window* Window::Create(const WindowProps& props)
-	{  
-		XCORE_INFO("Windows 10 Window has been created");
-		return new Win10Window(props); 
-	}
+		{ return new Win10Window(props); }
 	Win10Window::Win10Window(const WindowProps& props)
-	{ 
-		Init(props); 
-		XCORE_INFO("Window initialized for Windows 10");
+	{
+		XCORE_INFO("Using Windows 10 Window Class");
+		Init(props);
 	}
 	Win10Window::~Win10Window()
-	{ 
-		Shutdown(); 
-		XCORE_INFO("Windows 10 Window has shutdown");
-	}
+		{ Shutdown(); }
 	void Win10Window::Init(const WindowProps& props)
 	{
-		XCORE_INFO("Initializing Window 10 Window");
 		windowData.Title = props.Title;
 		windowData.Width = props.Width;
 		windowData.Height = props.Height;
@@ -122,11 +115,8 @@ namespace XEngine
 			data.EventCallback(event);
 		});
 	}
-	void Win10Window::Shutdown() 
-	{ 
-		XCORE_INFO("Windows 10 Window shutting down");
-		glfwDestroyWindow(window); 
-	}
+	void Win10Window::Shutdown()
+		{ glfwDestroyWindow(window); }
 	void Win10Window::OnUpdate() 
 	{
 		glfwPollEvents();
@@ -140,6 +130,6 @@ namespace XEngine
 			glfwSwapInterval(0);
 		windowData.VSync = enabled;
 	}
-	bool Win10Window::IsVSync() const 
+	bool Win10Window::IsVSync() const
 		{ return windowData.VSync; }
 }

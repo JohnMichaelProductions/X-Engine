@@ -57,13 +57,9 @@ public:
 		std::shared_ptr<XEngine::IndexBuffer> squareIB;
 		squareIB.reset(XEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		squareVertexArray->SetIndexBuffer(squareIB);
-		std::string vertexSourceCode = XEngine::Shader::ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/Shaders/SquareVertexShader.shader");
-		std::string fragmentSourceCode = XEngine::Shader::ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/Shaders/SquareFragmentShader.shader");
-		squareShader.reset(XEngine::Shader::Create(vertexSourceCode, fragmentSourceCode));
-		std::string textureVertexSource = XEngine::Shader::ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/Shaders/TextureVertexShader.shader");
-		std::string textureFragmentSource = XEngine::Shader::ConvertShader("C:/JohnMichaelProductions/X-Engine/XEngine/src/res/Shaders/TextureFragmentShader.shader");
-		textureShader.reset(XEngine::Shader::Create(textureVertexSource, textureFragmentSource));
+		auto textureShader = applicationShaderLibrary.Load("Assets/Shaders/Texture.shader");
 		texture = XEngine::Texture2D::Create("Assets/Textures/Checkerboard.png");
+		alphaTexture = XEngine::Texture2D::Create("Assets/Textures/ChernoLogo.png");
 		std::dynamic_pointer_cast<XEngine::OpenGLShader>(textureShader)->Bind();
 		std::dynamic_pointer_cast<XEngine::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
@@ -87,6 +83,7 @@ public:
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(.1f));
 		glm::vec4 redColor(.8f, .2f, .3f, 1.0f);
 		glm::vec4 blueColor(.2f, .3f, .8f, 1.0f);
+		auto squareShader = XEngine::Shader::Create("Assets/Shaders/Square.shader");
 		std::dynamic_pointer_cast<XEngine::OpenGLShader>(squareShader)->Bind();
 		std::dynamic_pointer_cast<XEngine::OpenGLShader>(squareShader)->UploadUniformFloat3("u_Color", color);
 		for (int y = 0; y < 15; y++)
@@ -98,11 +95,14 @@ public:
 				XEngine::Renderer::Submit(squareVertexArray, squareShader, transform);
 			}
 		}
+		auto textureShader = applicationShaderLibrary.Get("Texture");
 		texture->Bind();
+		XEngine::Renderer::Submit(squareVertexArray, textureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		alphaTexture->Bind();
 		XEngine::Renderer::Submit(squareVertexArray, textureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		XEngine::Renderer::EndScene();
 	}
-	virtual void OnImGuiRender() override 
+	virtual void OnImGuiRender() override
 	{
 		ImGui::Begin("Settings");
 		ImGui::ColorEdit3("Triangle Color", glm::value_ptr(color));
@@ -110,14 +110,14 @@ public:
 	}
 	void OnEvent(XEngine::Event& event) override {}
 private:
+	XEngine::ShaderLibrary applicationShaderLibrary;
 	// Vertex Arrays
 	XEngine::Ref<XEngine::VertexArray> applicationVertexArray;
 	XEngine::Ref<XEngine::VertexArray> squareVertexArray;
 	// Shaders
 	XEngine::Ref<XEngine::Shader> applicationShader;
-	XEngine::Ref<XEngine::Shader> squareShader;
-	XEngine::Ref<XEngine::Shader> textureShader;
 	XEngine::Ref<XEngine::Texture2D> texture;
+	XEngine::Ref<XEngine::Texture2D> alphaTexture;
 	XEngine::OrthographicCamera applicationCamera;
 	glm::vec3 applicationCameraPosition;
 	glm::vec3 color = { 0.2,.3,.8f };
@@ -131,7 +131,7 @@ public:
 		PushLayer(new XLayer());
 	}
 	~Game()
-		{ XCORE_INFO("Game shutting down!"); }
+		{ XCORE_INFO("Game shutting down"); }
 };
 XEngine::Application* XEngine::CreateApplication()
 	{ return new Game(); }

@@ -24,8 +24,7 @@ namespace XEngine
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
-		virtual ~Window() 
-			{ XCORE_INFO("Window has been destroyed"); }
+		virtual ~Window() {}
 		virtual void OnUpdate() = 0;
 		virtual unsigned int GetWidth() const = 0;
 		virtual unsigned int GetHeight() const = 0;

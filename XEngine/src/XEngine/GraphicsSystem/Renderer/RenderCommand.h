@@ -5,6 +5,8 @@ namespace XEngine
 	class RenderCommand
 	{
 	public:
+		inline static void Init()
+			{ renderCommandAPI->Init(); }
 		inline static void SetClearColor(const glm::vec4& color)
 			{ renderCommandAPI->SetClearColor(color); }
 		inline static void Clear()

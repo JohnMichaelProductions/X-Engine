@@ -8,10 +8,8 @@
 #include <glad/glad.h>
 namespace XEngine 
 {
-	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer")
-		{ XCORE_INFO("ImGui Layer has been created"); }
-	ImGuiLayer::~ImGuiLayer() 
-		{ XCORE_INFO("ImGui Layer has been destroyed"); }
+	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer") {}
+	ImGuiLayer::~ImGuiLayer() {}
 	void ImGuiLayer::OnAttach()
 	{
 		IMGUI_CHECKVERSION();

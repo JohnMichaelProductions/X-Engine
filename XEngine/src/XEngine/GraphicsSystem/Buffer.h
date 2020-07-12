@@ -42,8 +42,7 @@ namespace XEngine
 		uint32_t Size;
 		uint32_t Offset;
 		bool Normalized;
-		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false) : Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized) 
-			{ XCORE_INFO("{0} has been created as a buffer element", Name); }
+		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false) : Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized) {}
 		uint32_t GetComponentCount() const
 		{
 			switch (Type)
@@ -67,24 +66,20 @@ namespace XEngine
 	class BufferLayout
 	{
 	public:
-		BufferLayout() 
-			{ XCORE_INFO("Buffer Layout has been created"); }
+		BufferLayout() {}
 		BufferLayout(const std::initializer_list<BufferElement>& elements) : bufferLayoutElements(elements)
-		{ 
-			XCORE_INFO("Buffer Layout has been created");
-			CalculateOffsetsAndStride(); 
-		}
+		{ CalculateOffsetsAndStride(); }
 		inline uint32_t GetStride() const
 			{ return bufferLayoutStride; }
 		inline const  std::vector<BufferElement>& GetElements() const
 			{ return bufferLayoutElements; }
-		std::vector<BufferElement>::iterator begin() 
+		std::vector<BufferElement>::iterator begin()
 			{ return bufferLayoutElements.begin(); }
-		std::vector<BufferElement>::iterator end() 
+		std::vector<BufferElement>::iterator end()
 			{ return bufferLayoutElements.end(); }
-		std::vector<BufferElement>::const_iterator begin() const 
+		std::vector<BufferElement>::const_iterator begin() const
 			{ return bufferLayoutElements.begin(); }
-		std::vector<BufferElement>::const_iterator end() const 
+		std::vector<BufferElement>::const_iterator end() const
 			{ return bufferLayoutElements.end(); }
 	private:
 		void CalculateOffsetsAndStride()
@@ -104,8 +99,7 @@ namespace XEngine
 	class VertexBuffer
 	{
 	public:
-		virtual ~VertexBuffer() 
-			{ XCORE_INFO("Vertex Buffer has been destroyed"); }
+		virtual ~VertexBuffer() {}
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 		virtual const BufferLayout& GetLayout() const = 0;
@@ -115,8 +109,7 @@ namespace XEngine
 	class IndexBuffer
 	{
 	public:
-		virtual ~IndexBuffer() 
-			{ XCORE_INFO("Index Buffer has been destroyed"); }
+		virtual ~IndexBuffer() {}
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 		virtual uint32_t GetCount() const = 0;

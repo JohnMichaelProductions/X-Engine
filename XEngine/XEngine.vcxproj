@@ -459,6 +459,14 @@
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\res\Shaders\DefaultFragmentShader.shader" />
+    <None Include="src\res\Shaders\DefaultVertexShader.shader" />
+    <None Include="src\res\Shaders\SquareFragmentShader.shader" />
+    <None Include="src\res\Shaders\SquareVertexShader.shader" />
+    <None Include="src\res\Shaders\TextureFragmentShader.shader" />
+    <None Include="src\res\Shaders\TextureVertexShader.shader" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

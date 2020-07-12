@@ -1,4 +1,4 @@
-// Application Source File
+// Application Source file is used to start up the window push layers and other things
 #include <stdio.h>
 #include "Xpch.h"
 #include "Application.h"
@@ -20,6 +20,7 @@ namespace XEngine
 		applicationInstance = this;
 		applicationWindow = std::unique_ptr<Window>(Window::Create());
 		applicationWindow->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		Renderer::Init();
 		applicationImGuiLayer = new ImGuiLayer();
 		PushOverlay(applicationImGuiLayer);
 	}
@@ -29,7 +30,6 @@ namespace XEngine
 	{ 
 		applicationLayerStack.PushLayer(layer);
 		layer->OnAttach();
-		XCORE_INFO(layer->GetName() + " has been pushed");
 	}
 	void Application::PushOverlay(Layer* layer) 
 	{ 
@@ -40,7 +40,6 @@ namespace XEngine
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		//XCORE_TRACE("{0}", e);
 		for (auto it = applicationLayerStack.end(); it != applicationLayerStack.begin(); )
 		{
 			(*--it)->OnEvent(e);
@@ -52,6 +51,7 @@ namespace XEngine
 	{
 		while (appRunning)
 		{
+			// Timestep
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - lastFrameTime;
 			lastFrameTime = time;
