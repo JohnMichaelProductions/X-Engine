@@ -132,6 +132,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Layers\UILayer.h" />
+    <ClCompile Include="src\Layers\XLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XEngine\XEngine.vcxproj">

@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\XEngine\GraphicsSystem\CameraController.h" />
     <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Input.h" />
     <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Window.h" />
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.h" />
@@ -421,6 +422,7 @@
     <ClInclude Include="vendor\stb\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\XEngine\GraphicsSystem\CameraController.cpp" />
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp" />
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Window.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.cpp" />
@@ -458,14 +460,6 @@
     <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\res\Shaders\DefaultFragmentShader.shader" />
-    <None Include="src\res\Shaders\DefaultVertexShader.shader" />
-    <None Include="src\res\Shaders\SquareFragmentShader.shader" />
-    <None Include="src\res\Shaders\SquareVertexShader.shader" />
-    <None Include="src\res\Shaders\TextureFragmentShader.shader" />
-    <None Include="src\res\Shaders\TextureVertexShader.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -68,7 +68,7 @@ namespace XEngine
 	public:
 		BufferLayout() {}
 		BufferLayout(const std::initializer_list<BufferElement>& elements) : bufferLayoutElements(elements)
-		{ CalculateOffsetsAndStride(); }
+			{ CalculateOffsetsAndStride(); }
 		inline uint32_t GetStride() const
 			{ return bufferLayoutStride; }
 		inline const  std::vector<BufferElement>& GetElements() const
@@ -103,7 +103,7 @@ namespace XEngine
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 		virtual const BufferLayout& GetLayout() const = 0;
-		virtual void SetLayout(const BufferLayout& layour) = 0;
+		virtual void SetLayout(const BufferLayout& layout) = 0;
 		static VertexBuffer* Create(float* vertices, uint32_t size);
 	};
 	class IndexBuffer

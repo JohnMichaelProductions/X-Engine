@@ -12,7 +12,8 @@ namespace XEngine
 		case RendererAPI::API::None:
 			XCORE_ASSERT(false, "RendererAPI::None is currently not supported");
 			return nullptr;
-		case RendererAPI::API::OpenGL: return std::make_shared<OpenGLShader>(path);
+		case RendererAPI::API::OpenGL:
+			return std::make_shared<OpenGLShader>(path);
 		}
 		XCORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;
@@ -24,7 +25,8 @@ namespace XEngine
 			case RendererAPI::API::None:
 				XCORE_ASSERT(false, "RendererAPI::None is currently not supported");
 				return nullptr;
-			case RendererAPI::API::OpenGL: return std::make_shared<OpenGLShader>(name, vertexShader, fragmentShader);
+			case RendererAPI::API::OpenGL:
+				return std::make_shared<OpenGLShader>(name, vertexShader, fragmentShader);
 		}
 		XCORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;

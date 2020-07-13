@@ -26,12 +26,12 @@ namespace XEngine
 		}
 		const glm::mat4& GetProjectionMatrix() const 
 			{ return cameraProjectionMatrix; }
+		void SetProjectionMatrix(float left, float right, float bottom, float top);
 		const glm::mat4& GetViewMatrix() const
 			{ return cameraViewMatrix; }
 		const glm::mat4& GetViewProjectionMatrix() const
 			{ return cameraViewProjectionMatrix; }
 	private:
-		// Defined in Source File
 		void RecalculateViewMatrix();
 		glm::mat4 cameraProjectionMatrix;
 		glm::mat4 cameraViewMatrix;
