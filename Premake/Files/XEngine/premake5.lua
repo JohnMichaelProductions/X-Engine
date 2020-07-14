@@ -62,7 +62,6 @@ group "X-Engine"
 			systemversion "latest"
 			defines 
 			{
-				"X_PLATFORM_WINDOWS",
 				"X_BUILD_DLL",
 				"GLFW_INCLUDE_NONE"
 			}
@@ -100,8 +99,6 @@ group "Game"
 			{ "XEngine" }
 		filter "system:windows"
 			systemversion "latest"
-			defines 
-				{ "X_PLATFORM_WINDOWS" }
 		filter "configurations:Debug"
 			defines "X_DEBUG"
 			symbols "on"

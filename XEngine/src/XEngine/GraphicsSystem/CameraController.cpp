@@ -8,20 +8,35 @@ namespace XEngine
 	void OrthographicCameraController::OnUpdate(Timestep timestep)
 	{
 		if (Input::IsKeyPressed(X_KEY_W))
-			cameraPosition.y += cameraSpeed * timestep;
+		{
+			cameraPosition.x += -sin(glm::radians(cameraRotation)) * cameraSpeed * timestep;
+			cameraPosition.y += cos(glm::radians(cameraRotation)) * cameraSpeed * timestep;
+		}
 		else if (Input::IsKeyPressed(X_KEY_S))
-			cameraPosition.y -= cameraSpeed * timestep;
+		{
+			cameraPosition.x -= -sin(glm::radians(cameraRotation)) * cameraSpeed * timestep;
+			cameraPosition.y -= cos(glm::radians(cameraRotation)) * cameraSpeed * timestep;
+		}
 		if (Input::IsKeyPressed(X_KEY_D))
-			cameraPosition.x += cameraSpeed * timestep;
+		{
+			cameraPosition.x += cos(glm::radians(cameraRotation)) * cameraSpeed * timestep;
+			cameraPosition.y += sin(glm::radians(cameraRotation)) * cameraSpeed * timestep;
+		}
 		else if (Input::IsKeyPressed(X_KEY_A))
-			cameraPosition.x -= cameraSpeed * timestep;
-		orthoCamera.SetPosition(cameraPosition);
+		{
+			cameraPosition.x -= cos(glm::radians(cameraRotation)) * cameraSpeed * timestep;
+			cameraPosition.y -= sin(glm::radians(cameraRotation)) * cameraSpeed * timestep;
+		}		orthoCamera.SetPosition(cameraPosition);
 		if (rotationOn)
 		{
 			if (Input::IsKeyPressed(X_KEY_E))
 				cameraRotation += rotationSpeed * timestep;
 			else if (Input::IsKeyPressed(X_KEY_Q))
 				cameraRotation -= rotationSpeed * timestep;
+			if (cameraRotation > 180.0f)
+				cameraRotation -= 360.0f;
+			else if (cameraRotation <= -180.0f)
+				cameraRotation += 360.0f;
 			orthoCamera.SetRotation(cameraRotation);
 		}
 		cameraSpeed = cameraZoomLevel;
@@ -41,7 +56,7 @@ namespace XEngine
 	}
 	bool OrthographicCameraController::OnWindowResize(WindowResizeEvent& e)
 	{
-		cameraAspectRatio -= (float)e.GetWidth() / (float)e.GetHeight();
+		cameraAspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		orthoCamera.SetProjectionMatrix(-cameraAspectRatio * cameraZoomLevel, cameraAspectRatio * cameraZoomLevel, -cameraZoomLevel, cameraZoomLevel);
 		return false;
 	}

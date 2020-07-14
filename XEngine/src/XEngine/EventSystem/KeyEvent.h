@@ -7,39 +7,36 @@ namespace XEngine
 	{
 	public:
 		inline int GetKeyCode() const 
-			{ return m_KeyCode; }
+			{ return eventKeyCode; }
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
-		KeyEvent(int keycode) : m_KeyCode(keycode) 
-			{ /* Called everytime a key event happens */ }
-		int m_KeyCode;
+		KeyEvent(int keycode) : eventKeyCode(keycode) {}
+		int eventKeyCode;
 	};
 	class XENGINE_API KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), m_RepeatCount(repeatCount) 
-			{ /* Called everytime a key is pressed */ }
+		KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), eventRepeatCount(repeatCount) {}
 		inline int GetRepeatCount() const 
-			{ return m_RepeatCount; }
+			{ return eventRepeatCount; }
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyPressedEvent: " << m_KeyCode << " (" << m_RepeatCount << " repeats)";
+			ss << "KeyPressedEvent: " << eventKeyCode << " (" << eventRepeatCount << " repeats)";
 			return ss.str();  
 		}
 		EVENT_CLASS_TYPE(KeyPressed)
 	private:
-		int m_RepeatCount;
+		int eventRepeatCount;
 	};
 	class XENGINE_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(int keycode) : KeyEvent(keycode) 
-			{ /* Called everytime a key is released */ }
+		KeyReleasedEvent(int keycode) : KeyEvent(keycode) {}
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyReleasedEvent: " << m_KeyCode;
+			ss << "KeyReleasedEvent: " << eventKeyCode;
 			return ss.str();
 		}
 		EVENT_CLASS_TYPE(KeyReleased)
@@ -51,7 +48,7 @@ namespace XEngine
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyTyped: " << m_KeyCode;
+			ss << "KeyTyped: " << eventKeyCode;
 			return ss.str();
 		}
 		EVENT_CLASS_TYPE(KeyTyped)

@@ -1,11 +1,11 @@
 // Source file for Win10Window class functions, configured for Windows 10, also derived from window class
 #include "Xpch.h"
-#include "Win10Window.h"
-#include "XEngine/EventSystem/ApplicationEvent.h"
+#include "wtypes.h"
 #include "XEngine/EventSystem/KeyEvent.h"
 #include "XEngine/EventSystem/MouseEvent.h"
+#include "XEngine/EventSystem/ApplicationEvent.h"
 #include "Platforms/RenderingAPIs/OpenGL/OpenGlContext.h"
-#include "wtypes.h"
+#include "Platforms/OperatingSystems/Windows10/Win10Window.h"
 namespace XEngine
 {
 	static bool GLFWInitialized;
@@ -34,10 +34,10 @@ namespace XEngine
 			XCORE_INFO("GLFW intialized");
 		}
 		window = glfwCreateWindow((int)props.Width, (int)props.Height, windowData.Title.c_str(), nullptr, nullptr);
-		windowContext = new OpenGLContext(window);
+		windowContext = CreateScope<OpenGLContext>(window);
 		windowContext->Init();
 		glfwSetWindowUserPointer(window, &windowData);
-		SetVSync(true);
+		SetVSync(false);
 		glfwSetWindowSizeCallback(window, [](GLFWwindow* window, int width, int height)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

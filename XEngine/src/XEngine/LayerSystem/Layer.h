@@ -1,8 +1,8 @@
 // Layer class header file
 #pragma once
+#include "XEngine/Core/Time.h"
 #include "XEngine/Core/XCore.h"
 #include "XEngine/EventSystem/Event.h"
-#include "XEngine/Core/Time.h"
 namespace XEngine
 {
 	class XENGINE_API Layer

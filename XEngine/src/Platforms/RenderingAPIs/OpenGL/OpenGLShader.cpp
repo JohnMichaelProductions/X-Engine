@@ -33,7 +33,10 @@ namespace XEngine
 		Compile(shaderSources);
 	}
 	OpenGLShader::~OpenGLShader()
-		{ glDeleteProgram(shaderRendererID); }
+	{
+		glDeleteProgram(shaderRendererID);
+		glDeleteShader(shaderRendererID);
+	}
 	void OpenGLShader::Bind() const
 		{ glUseProgram(shaderRendererID); }
 	void OpenGLShader::Unbind() const
@@ -103,6 +106,7 @@ namespace XEngine
 			std::string type = source.substr(begin, eol - begin);
 			XCORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified");
 			size_t nextLinePos = source.find_first_not_of("\r\n", eol);
+			XCORE_ASSERT(nextLinePos != std::string::npos, "Syntax error");
 			pos = source.find(typeToken, nextLinePos);
 			shaderSources[ShaderTypeFromString(type)] = source.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? source.size() - 1 : nextLinePos));
 		}

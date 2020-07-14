@@ -6,32 +6,31 @@ namespace XEngine
 	class XENGINE_API MouseMovedEvent : public Event
 	{
 	public:
-		MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y) 
+		MouseMovedEvent(float x, float y) : eventMouseX(x), eventMouseY(y)
 			{ /* Called everytime the mouse is moved */ }
 		inline float GetX() const
-			{ return m_MouseX; }
+			{ return eventMouseX; }
 		inline float GetY() const
-			{ return m_MouseY; }
+			{ return eventMouseY; }
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "MouseMovedEvent: " << m_MouseX << ", " << m_MouseY;
+			ss << "MouseMovedEvent: " << eventMouseX << ", " << eventMouseY;
 			return ss.str();
 		}
 		EVENT_CLASS_TYPE(MouseMoved)
 			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
-		float m_MouseX, m_MouseY;
+		float eventMouseX, eventMouseY;
 	};
 	class XENGINE_API MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(float xOffset, float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) 
-			{ /* Called everytime a mouse is scrolled */ }
+		MouseScrolledEvent(float xOffset, float yOffset) : eventXOffset(xOffset), eventYOffset(yOffset) {}
 		inline float GetXOffset() const 
-			{ return m_XOffset; }
+			{ return eventXOffset; }
 		inline float GetYOffset() const 
-			{ return m_YOffset; }
+			{ return eventYOffset; }
 		std::string ToString() const override
 		{
 			std::stringstream ss;
@@ -39,30 +38,28 @@ namespace XEngine
 			return ss.str();
 		}
 		EVENT_CLASS_TYPE(MouseScrolled)
-			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
-		float m_XOffset, m_YOffset;
+		float eventXOffset, eventYOffset;
 	};
 	class XENGINE_API MouseButtonEvent : public Event
 	{
 	public:
-		inline int GetMouseButton() const 
-			{ return m_Button; }
+		inline int GetMouseButton() const
+			{ return mouseButton; }
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:
-		MouseButtonEvent(int button) : m_Button(button) 
-			{ /* Called everytime a mouse button event happens */ }
-		int m_Button;
+		MouseButtonEvent(int button) : mouseButton(button) {}
+		int mouseButton;
 	};
 	class XENGINE_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) 
-			{ /* Called everytime a mouse button is clicked */ }
+		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "MouseButtonPressedEvent: " << m_Button;
+			ss << "MouseButtonPressedEvent: " << mouseButton;
 			return ss.str();
 		}
 		EVENT_CLASS_TYPE(MouseButtonPressed)
@@ -70,12 +67,11 @@ namespace XEngine
 	class XENGINE_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) 
-			{ /* Called everytime a mouse button is released */ }
+		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "MouseButtonReleasedEvent: " << m_Button;
+			ss << "MouseButtonReleasedEvent: " << mouseButton;
 			return ss.str();
 		}
 		EVENT_CLASS_TYPE(MouseButtonReleased)

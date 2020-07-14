@@ -1,5 +1,5 @@
 #pragma once
-#include "RendererAPI.h"
+#include "XEngine/GraphicsSystem/Renderer/RendererAPI.h"
 namespace XEngine
 {
 	class RenderCommand
@@ -7,6 +7,8 @@ namespace XEngine
 	public:
 		inline static void Init()
 			{ renderCommandAPI->Init(); }
+		inline static void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
+			{ renderCommandAPI->SetViewport(x, y, width, height); }
 		inline static void SetClearColor(const glm::vec4& color)
 			{ renderCommandAPI->SetClearColor(color); }
 		inline static void Clear()
@@ -16,6 +18,6 @@ namespace XEngine
 		inline static void Documentation()
 			{ renderCommandAPI->Documentation(); }
 	private:
-		static RendererAPI* renderCommandAPI;
+		static Scope<RendererAPI> renderCommandAPI;
 	};
 }

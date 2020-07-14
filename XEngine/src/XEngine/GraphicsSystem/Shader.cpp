@@ -42,19 +42,19 @@ namespace XEngine
 		auto& name = shader->GetName();
 		Add(shader, name);
 	}
-	XEngine::Ref<XEngine::Shader> ShaderLibrary::Load(const std::string& path)
+	Ref<Shader> ShaderLibrary::Load(const std::string& path)
 	{
 		auto shader = Shader::Create(path);
 		Add(shader);
 		return shader;
 	}
-	XEngine::Ref<XEngine::Shader> ShaderLibrary::Load(const std::string& path, const std::string& name)
+	Ref<Shader> ShaderLibrary::Load(const std::string& path, const std::string& name)
 	{
 		auto shader = Shader::Create(path);
 		Add(shader, name);
 		return shader;
 	}
-	XEngine::Ref<XEngine::Shader> ShaderLibrary::Get(const std::string& name)
+	Ref<Shader> ShaderLibrary::Get(const std::string& name)
 	{
 		XCORE_ASSERT(Exists(name), "Shader not found!");
 		return libraryShaders[name];

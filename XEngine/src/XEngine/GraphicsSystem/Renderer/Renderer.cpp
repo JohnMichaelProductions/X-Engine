@@ -1,13 +1,15 @@
 #include "Xpch.h"
-#include "Renderer.h"
-#include "../Shader.h"
+#include "XEngine/GraphicsSystem/Shader.h"
+#include "XEngine/GraphicsSystem/Renderer/Renderer.h"
 #include "Platforms/RenderingAPIs/OpenGL/OpenGLShader.h"
 namespace XEngine
 {
-	Renderer::SceneData* Renderer::rendererSceneData = new Renderer::SceneData;
+	Scope<Renderer::SceneData> Renderer::rendererSceneData = CreateScope<Renderer::SceneData>();
 	void Renderer::Init()
 		{ RenderCommand::Init(); }
-	void Renderer::BeginScene(OrthographicCamera& camera) 
+	void Renderer::OnWindowResize(uint32_t width, uint32_t height)
+		{ RenderCommand::SetViewport(0, 0, width, height); }
+	void Renderer::BeginScene(OrthographicCamera& camera)
 		{ rendererSceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix(); }
 	void Renderer::EndScene() {}
 	void Renderer::Submit(const Ref<VertexArray>& vertexArray, const Ref<Shader>& shader, const glm::mat4& transform)

@@ -6,50 +6,48 @@ namespace XEngine
 	class XENGINE_API WindowResizeEvent : public Event
 	{
 	public:
-		WindowResizeEvent(unsigned int width, unsigned int height) : m_Width(width), m_Height(height) 
-			{ /* Called everytime the window is resized */}
+		WindowResizeEvent(unsigned int width, unsigned int height) : windowWidth(width), windowHeight(height) {}
 		inline unsigned int GetWidth() const 
-			{ return m_Width; }
+			{ return windowWidth; }
 		inline unsigned int GetHeight() const 
-			{ return m_Height; }
+			{ return windowHeight; }
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
+			ss << "WindowResizeEvent: " << windowWidth << ", " << windowHeight;
 			return ss.str();
 		}
 		EVENT_CLASS_TYPE(WindowResize)
-			EVENT_CLASS_CATEGORY(EventCategoryApplication)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	private:
-		unsigned int m_Width, m_Height;
+		unsigned int windowWidth, windowHeight;
 	};
 	class XENGINE_API WindowCloseEvent : public Event
 	{
 	public:
-		WindowCloseEvent() 
-			{ /* Called everytime a window is closed*/}
+		WindowCloseEvent() {}
 		EVENT_CLASS_TYPE(WindowClose)
-			EVENT_CLASS_CATEGORY(EventCategoryApplication)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 	class XENGINE_API AppTickEvent : public Event
 	{
 	public:
 		AppTickEvent() {}
 		EVENT_CLASS_TYPE(AppTick)
-			EVENT_CLASS_CATEGORY(EventCategoryApplication)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 	class XENGINE_API AppUpdateEvent : public Event
 	{
 	public:
 		AppUpdateEvent() {}
 		EVENT_CLASS_TYPE(AppUpdate)
-			EVENT_CLASS_CATEGORY(EventCategoryApplication)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 	class XENGINE_API AppRenderEvent : public Event
 	{
 	public:
 		AppRenderEvent() {}
 		EVENT_CLASS_TYPE(AppRender)
-			EVENT_CLASS_CATEGORY(EventCategoryApplication)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 }

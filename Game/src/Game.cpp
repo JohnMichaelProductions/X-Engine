@@ -3,12 +3,13 @@
 #include "XEngine/Core/EntryPoint.h"
 #include "Layers/Xlayer.h"
 #include "Layers/UILayer.h"
+#include "Layers/MainLayer.h"
 class Game : public XEngine::Application
 {
 public:
 	Game()
 	{ 
-		XCORE_INFO("Game starting"); 
+		XCORE_INFO("Game starting");
 		PushLayer(new XLayer());
 	}
 	~Game()

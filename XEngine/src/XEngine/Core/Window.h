@@ -1,8 +1,8 @@
 // Window class and window properties struct
 #pragma once
 #include "Xpch.h"
-#include "XCore.h"
-#include "../EventSystem/Event.h"
+#include "XEngine/Core/XCore.h"
+#include "XEngine/EventSystem/Event.h"
 namespace XEngine
 {
 	struct WindowProps
@@ -10,11 +10,11 @@ namespace XEngine
 		WindowProps(const std::string& title = "X-Engine", unsigned int width = 1280, unsigned int height = 720) : Title(title), Width(width), Height(height) 
 		{
 			// Windows 10 Implementation
-			RECT desktop;
-			const HWND hDesktop = GetDesktopWindow();
-			GetWindowRect(hDesktop, &desktop);
-			Width = desktop.right;
-			Height = desktop.bottom;
+			//RECT desktop;
+			//const HWND hDesktop = GetDesktopWindow();
+			//GetWindowRect(hDesktop, &desktop);
+			//Width = desktop.right /1.5f;
+			//Height = desktop.bottom / 1.5f;
 		}
 		std::string Title;
 		unsigned int Width;

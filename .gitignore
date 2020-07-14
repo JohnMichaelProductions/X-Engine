@@ -1,9 +1,13 @@
 # X-Engine git ignore
 # Directories to ignore
 .vs/
-bin/
+**/bin/
+!vendor/bin/premake/
 bin-int/
 # File extensions to ignore
 *.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
 *.user
 *.ini

@@ -31,7 +31,9 @@ namespace XEngine
 	private:
 		// Defined in Source File
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 		bool appRunning = true;
+		bool applicationMinimized = false;
 		static Application* applicationInstance;
 		std::unique_ptr<XEngine::Window> applicationWindow;
 		LayerStack applicationLayerStack;

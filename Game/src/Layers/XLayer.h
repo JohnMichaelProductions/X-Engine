@@ -9,7 +9,7 @@ class XLayer : public XEngine::Layer
 public:
 	XLayer() : Layer("XLayer"), applicationCamera(1920.0f / 1080.0f, true)
 	{
-		squareVertexArray.reset(XEngine::VertexArray::Create());
+		squareVertexArray = XEngine::VertexArray::Create();
 		float squareVertices[5 * 4] =
 		{
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -69,8 +69,6 @@ public:
 	{
 		ImGui::Begin("Settings");
 		ImGui::ColorEdit3("Color", glm::value_ptr(color));
-		ImGui::DragFloat("Camera Speed", &applicationCamera.cameraSpeed, .1f, 0.0f, 100.0f);
-		//ImGui::DragFloat("Rotation Speed", &applicationCamera.rotationSpeed, .1f, 0.0f, 100.0f);
 		ImGui::End();
 	}
 	void OnEvent(XEngine::Event& e) override
@@ -80,5 +78,5 @@ private:
 	XEngine::Ref<XEngine::VertexArray> squareVertexArray;
 	XEngine::Ref<XEngine::Texture2D> texture, logoTexture;
 	XEngine::OrthographicCameraController applicationCamera;
-	glm::vec3 color = { 0.2,.3,.8f };
+	glm::vec3 color = { 0.2f,.3f,.8f };
 };

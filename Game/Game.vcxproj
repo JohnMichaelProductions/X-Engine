@@ -78,7 +78,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>X_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\XEngine\vendor\spdlog\include;..\XEngine\src;..\XEngine\vendor\glm;..\XEngine\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -94,7 +94,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>X_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\XEngine\vendor\spdlog\include;..\XEngine\src;..\XEngine\vendor\glm;..\XEngine\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -114,7 +114,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>X_PLATFORM_WINDOWS;X_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>X_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\XEngine\vendor\spdlog\include;..\XEngine\src;..\XEngine\vendor\glm;..\XEngine\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -131,19 +131,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Layers\MainLayer.h" />
+    <ClInclude Include="src\Layers\UILayer.h" />
+    <ClInclude Include="src\Layers\XLayer.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\Layers\UILayer.h" />
-    <ClCompile Include="src\Layers\XLayer.h" />
+    <ClCompile Include="src\Layers\MainLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XEngine\XEngine.vcxproj">
       <Project>{D342B922-3F22-38BE-483A-C394B4989E1F}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Shaders\Default.shader" />
-    <None Include="Assets\Shaders\Square.shader" />
-    <None Include="Assets\Shaders\Texture.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

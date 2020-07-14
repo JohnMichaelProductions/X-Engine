@@ -1,5 +1,4 @@
 // X-Engine Library
-//#include "XEngine/Core/EntryPoint.h"
 #pragma once
 #include <stdio.h>
 #include "XEngine/Core/Time.h"

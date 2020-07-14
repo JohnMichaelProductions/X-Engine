@@ -51,8 +51,7 @@ namespace XEngine
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
 	public:
-		EventDispatcher(Event& event) : eventDispatcherEvent(event)
-			{ /* Called everytime a event occurs */ }
+		EventDispatcher(Event& event) : eventDispatcherEvent(event) {}
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
@@ -66,7 +65,8 @@ namespace XEngine
 	private:
 		Event& eventDispatcherEvent;
 	};
-	inline std::ostream& operator<<(std::ostream& os, const Event& e) { return os << e.ToString(); }
+	inline std::ostream& operator<<(std::ostream& os, const Event& e) 
+		{ return os << e.ToString(); }
 }
-#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; } virtual EventType GetEventType() const override { return GetStaticType(); } virtual const char* GetName() const override { return #type; }
+#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; } virtual EventType GetEventType() const override { return GetStaticType(); } virtual const char* GetName() const override { return #type; }
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }

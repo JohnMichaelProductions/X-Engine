@@ -35,7 +35,7 @@ namespace XEngine
 			EventCallbackFn EventCallback;
 		};
 		GLFWwindow* window;
-		GraphicsContext* windowContext;
+		Scope<GraphicsContext> windowContext;
 		WindowData windowData;
 	};
 }

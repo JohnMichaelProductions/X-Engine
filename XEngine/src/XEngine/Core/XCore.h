@@ -1,18 +1,46 @@
 // X-Engine Core File
 #pragma once
 #include <memory>
-#ifdef X_PLATFORM_WINDOWS
-#if X_DYNAMIC_LINK
-	#ifdef X_BUILD_DLL
-		#define XENGINE_API __declspec(dllexport)
+#ifdef _WIN32
+	#ifdef _WIN64
+		#define X_PLATFORM_WINDOWS
 	#else
-		#define XENGINE_API __declspec(dllimport)
+		#error "x86 Builds are not supported!"
 	#endif
+#elif defined(__APPLE__) || defined(__MACH__)
+	#include <TargetConditionals.h>
+	#if TARGET_IPHONE_SIMULATOR == 1
+		#error "IOS simulator is not supported!"
+	#elif TARGET_OS_IPHONE == 1
+		#define X_PLATFORM_IOS
+		#error "IOS is not supported!"
+	#elif TARGET_OS_MAC == 1
+		#define X_PLATFORM_MACOS
+		#error "MacOS is not supported!"
+	#else
+		#error "Unknown Apple platform!"
+	#endif
+#elif defined(__ANDROID__)
+	#define X_PLATFORM_ANDROID
+	#error "Android is not supported!"
+#elif defined(__linux__)
+	#define X_PLATFORM_LINUX
+	#error "Linux is not supported!"
 #else
-	#define XENGINE_API
+	#error "Unknown platform!"
 #endif
-#else
-	#error X-Engine only supports Windows 64-bit
+#ifdef X_PLATFORM_WINDOWS
+	#if X_DYNAMIC_LINK
+		#ifdef X_BUILD_DLL
+			#define XENGINE_API __declspec(dllexport)
+		#else
+			#define XENGINE_API __declspec(dllimport)
+		#endif
+	#else
+		#define XENGINE_API
+	#endif
+	#else
+		#error X-Engine only supports Windows!
 #endif
 #ifdef X_DEBUG
 	#define X_ENABLE_ASSERTS
@@ -30,6 +58,12 @@ namespace XEngine
 {
 	template<typename T>
 	using Scope = std::unique_ptr<T>;
+	template<typename T, typename ... Args>
+	constexpr Scope<T> CreateScope(Args&& ... args)
+		{ return std::make_unique<T>(std::forward<Args>(args)...); }
 	template<typename T>
 	using Ref = std::shared_ptr<T>;
+	template<typename T, typename ... Args>
+	constexpr Ref<T> CreateRef(Args&& ... args)
+		{ return std::make_shared<T>(std::forward<Args>(args)...); }
 }

@@ -1,17 +1,17 @@
 // Precompiled Header File
 #pragma once
-#include <iostream>
+#include <array>
 #include <memory>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <fstream>
 #include <utility>
+#include <iostream>
 #include <algorithm>
 #include <functional>
-#include <string>
-#include <sstream>
-#include <array>
-#include <vector>
 #include <unordered_map>
 #include <unordered_set>
-#include <fstream>
 #include "XEngine/LogSystem/Log.h"
 #ifdef X_PLATFORM_WINDOWS
 	#include <Windows.h>

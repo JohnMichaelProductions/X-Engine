@@ -17,7 +17,7 @@ namespace XEngine
 		inline static float GetMouseY() 
 			{ return inputInstance->GetMouseYImpl(); }
 	private:
-		static Input* inputInstance;
+		static Scope<Input> inputInstance;
 	protected:
 		virtual bool IsKeyPressedImpl(int keycode) = 0;
 		virtual bool IsMouseButtonPressedImpl(int button) = 0;

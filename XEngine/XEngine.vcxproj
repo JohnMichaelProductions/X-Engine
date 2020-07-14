@@ -76,7 +76,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_PLATFORM_WINDOWS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -96,7 +96,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_PLATFORM_WINDOWS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -120,7 +120,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_PLATFORM_WINDOWS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -140,7 +140,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\XEngine\GraphicsSystem\CameraController.h" />
     <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Input.h" />
     <ClInclude Include="src\Platforms\OperatingSystems\Windows10\Win10Window.h" />
     <ClInclude Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.h" />
@@ -161,6 +160,7 @@
     <ClInclude Include="src\XEngine\EventSystem\MouseEvent.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Buffer.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Camera.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\CameraController.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\GraphicsContext.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer.h" />
@@ -422,7 +422,6 @@
     <ClInclude Include="vendor\stb\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\XEngine\GraphicsSystem\CameraController.cpp" />
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp" />
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Window.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLBuffer.cpp" />
@@ -434,6 +433,7 @@
     <ClCompile Include="src\XEngine\Core\Application.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Buffer.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Camera.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\CameraController.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.cpp" />
