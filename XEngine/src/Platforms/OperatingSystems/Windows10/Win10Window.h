@@ -1,8 +1,8 @@
 // Header file for Win10Window class, configured for Windows 10
 #pragma once
+#include <GLFW/glfw3.h>
 #include "XEngine/Core/Window.h"
 #include "XEngine/GraphicsSystem/GraphicsContext.h"
-#include <GLFW/glfw3.h>
 namespace XEngine
 {
 	class Win10Window : public Window

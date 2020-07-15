@@ -1,16 +1,16 @@
 // Header file for the Application Class
 #pragma once
+#include "Time.h"
 #include "XCore.h"
 #include "Window.h"
-#include "Time.h"
-#include "../EventSystem/Event.h"
-#include "../EventSystem/ApplicationEvent.h"
-#include "../ImGuiLayer/ImGuiLayer.h"
-#include "../LayerSystem/LayerStack.h"
+#include "XEngine/EventSystem/Event.h"
+#include "XEngine/ImGuiLayer/ImGuiLayer.h"
 #include "XEngine/GraphicsSystem/Shader.h"
 #include "XEngine/GraphicsSystem/Buffer.h"
+#include "XEngine/GraphicsSystem/Camera.h"
+#include "XEngine/LayerSystem/LayerStack.h"
 #include "XEngine/GraphicsSystem/VertexArray.h"
-#include "../GraphicsSystem/Camera.h"
+#include "XEngine/EventSystem/ApplicationEvent.h"
 namespace XEngine
 {
 	class XENGINE_API Application

@@ -1,6 +1,6 @@
 // Application Source file is used to start up the window, push layers, and other things
-#include <stdio.h>
 #include "Xpch.h"
+#include <stdio.h>
 #include "Application.h"
 #include "XEngine/LogSystem/Log.h"
 #include "XEngine/InputSystem/Input.h"

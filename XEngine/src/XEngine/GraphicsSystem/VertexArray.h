@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include "Buffer.h"
+#include "XEngine/GraphicsSystem/Buffer.h"
 namespace XEngine
 {
 	class VertexArray

@@ -1,9 +1,9 @@
 // Where the game source code is written, stored, and called
 #include "XEngine.h"
-#include "XEngine/Core/EntryPoint.h"
 #include "Layers/Xlayer.h"
 #include "Layers/UILayer.h"
 #include "Layers/MainLayer.h"
+#include "XEngine/Core/EntryPoint.h"
 class Game : public XEngine::Application
 {
 public:

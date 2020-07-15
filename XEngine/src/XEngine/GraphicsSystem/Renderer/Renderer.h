@@ -1,8 +1,8 @@
 #pragma once
-#include "RenderCommand.h"
-#include "RendererAPI.h"
-#include "../Camera.h"
-#include "../Shader.h"
+#include "XEngine/GraphicsSystem/Camera.h"
+#include "XEngine/GraphicsSystem/Shader.h"
+#include "XEngine/GraphicsSystem/Renderer/RendererAPI.h"
+#include "XEngine/GraphicsSystem/Renderer/RenderCommand.h"
 namespace XEngine
 {
 	class Renderer

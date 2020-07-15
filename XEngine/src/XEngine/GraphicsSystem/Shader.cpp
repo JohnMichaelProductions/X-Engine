@@ -1,6 +1,6 @@
 #include "Xpch.h"
-#include "Shader.h"
-#include "Renderer/Renderer.h"
+#include "XEngine/GraphicsSystem/Shader.h"
+#include "XEngine/GraphicsSystem/Renderer/Renderer.h"
 #include "Platforms/RenderingAPIs/OpenGL/OpenGLShader.h"
 namespace XEngine
 {

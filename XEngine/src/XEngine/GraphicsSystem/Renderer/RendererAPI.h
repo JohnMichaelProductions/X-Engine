@@ -1,7 +1,7 @@
 // Renderer API for OpenGL(as of now)
 #pragma once
 #include <glm/glm.hpp>
-#include "../VertexArray.h"
+#include "XEngine/GraphicsSystem/VertexArray.h"
 namespace XEngine
 {
 	class RendererAPI

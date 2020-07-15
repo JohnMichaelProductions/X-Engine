@@ -1,7 +1,7 @@
 #include "Xpch.h"
-#include "OpenGLTexture.h"
 #include "stb_image.h"
 #include <GLAD/glad.h>
+#include "OpenGLTexture.h"
 namespace XEngine
 {
 	OpenGLTexture2D::OpenGLTexture2D(const std::string& path) : texturePath(path)

@@ -15,4 +15,5 @@
 #include "XEngine/InputSystem/XEngineInputCodes.h"
 #include "XEngine/GraphicsSystem/CameraController.h"
 #include "XEngine/GraphicsSystem/Renderer/Renderer.h"
+#include "XEngine/GraphicsSystem/Renderer/Renderer2D.h"
 #include "XEngine/GraphicsSystem/Renderer/RenderCommand.h"

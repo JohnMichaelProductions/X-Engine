@@ -1,7 +1,7 @@
 // Source file for OpenGL Specific RenderAPI
 #include "Xpch.h"
-#include "OpenGLRendererAPI.h"
 #include <GLAD/glad.h>
+#include "OpenGLRendererAPI.h"
 namespace XEngine
 {
 	void OpenGLRendererAPI::Init()

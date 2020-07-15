@@ -1,6 +1,6 @@
 #pragma once
-#include "XEngine/GraphicsSystem/Shader.h"
 #include <glm/glm.hpp>
+#include "XEngine/GraphicsSystem/Shader.h"
 typedef unsigned int GLenum;
 namespace XEngine
 {

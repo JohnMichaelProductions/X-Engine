@@ -1,7 +1,7 @@
 // Base event class, with event type and category enums, as well as an event dispatcher class
 #pragma once
 #include "Xpch.h"
-#include "../Core/XCore.h"
+#include "XEngine/Core/XCore.h"
 namespace XEngine
 {
 	enum class EventType

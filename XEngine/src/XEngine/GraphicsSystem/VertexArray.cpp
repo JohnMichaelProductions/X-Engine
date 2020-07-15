@@ -1,6 +1,6 @@
 #include "Xpch.h"
-#include "VertexArray.h"
-#include "Renderer/Renderer.h"
+#include "XEngine/GraphicsSystem/VertexArray.h"
+#include "XEngine/GraphicsSystem/Renderer/Renderer.h"
 #include "Platforms/RenderingAPIs/OpenGL/OpenGLVertexArray.h"
 namespace XEngine
 {

@@ -164,6 +164,7 @@
     <ClInclude Include="src\XEngine\GraphicsSystem\GraphicsContext.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Shader.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Texture.h" />
@@ -436,6 +437,7 @@
     <ClCompile Include="src\XEngine\GraphicsSystem\CameraController.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Shader.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Texture.cpp" />

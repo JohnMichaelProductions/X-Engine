@@ -1,12 +1,16 @@
 #include "Xpch.h"
 #include "XEngine/GraphicsSystem/Shader.h"
 #include "XEngine/GraphicsSystem/Renderer/Renderer.h"
+#include "XEngine/GraphicsSystem/Renderer/Renderer2D.h"
 #include "Platforms/RenderingAPIs/OpenGL/OpenGLShader.h"
 namespace XEngine
 {
 	Scope<Renderer::SceneData> Renderer::rendererSceneData = CreateScope<Renderer::SceneData>();
 	void Renderer::Init()
-		{ RenderCommand::Init(); }
+	{ 
+		RenderCommand::Init(); 
+		Renderer2D::Init();
+	}
 	void Renderer::OnWindowResize(uint32_t width, uint32_t height)
 		{ RenderCommand::SetViewport(0, 0, width, height); }
 	void Renderer::BeginScene(OrthographicCamera& camera)

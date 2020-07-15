@@ -1,6 +1,6 @@
 #include "Xpch.h"
-#include "Texture.h"
-#include "Renderer/Renderer.h"
+#include "XEngine/GraphicsSystem/Texture.h"
+#include "XEngine/GraphicsSystem/Renderer/Renderer.h"
 #include "Platforms/RenderingAPIs/OpenGL/OpenGLTexture.h"
 namespace XEngine
 {

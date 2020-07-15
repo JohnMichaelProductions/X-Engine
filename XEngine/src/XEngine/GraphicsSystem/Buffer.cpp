@@ -1,6 +1,6 @@
 #include "Xpch.h"
-#include "Buffer.h"
-#include "Renderer/Renderer.h"
+#include "XEngine/GraphicsSystem/Buffer.h"
+#include "XEngine/GraphicsSystem/Renderer/Renderer.h"
 #include "Platforms/RenderingAPIs/OpenGL/OpenGLBuffer.h"
 namespace XEngine
 {

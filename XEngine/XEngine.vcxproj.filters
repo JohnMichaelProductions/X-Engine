@@ -912,6 +912,7 @@
     <ClInclude Include="vendor\stb\stb_image.h">
       <Filter>vendor\stb</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp">
@@ -989,5 +990,6 @@
     <ClCompile Include="vendor\stb\stb_image.cpp">
       <Filter>vendor\stb</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

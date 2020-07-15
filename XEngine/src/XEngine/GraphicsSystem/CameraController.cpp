@@ -1,5 +1,5 @@
 #include "Xpch.h"
-#include "CameraController.h"
+#include "XEngine/GraphicsSystem/CameraController.h"
 #include "XEngine/InputSystem/Input.h"
 #include "XEngine/InputSystem/XEngineInputCodes.h"
 namespace XEngine

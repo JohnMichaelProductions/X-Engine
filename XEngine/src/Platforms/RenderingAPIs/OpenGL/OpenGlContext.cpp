@@ -1,8 +1,8 @@
 // Source file for OpenGL Context Class
 #include "Xpch.h"
-#include "OpenGlContext.h"
-#include <GLFW/glfw3.h>
 #include <GLAD/glad.h>
+#include <GLFW/glfw3.h>
+#include "OpenGlContext.h"
 namespace XEngine
 {
 	OpenGLContext::OpenGLContext(GLFWwindow* mainwindowHandle) : windowHandle(mainwindowHandle)

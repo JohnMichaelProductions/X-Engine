@@ -1,8 +1,8 @@
 // Source file that deals with input on window 10 computers
 #include "Xpch.h"
+#include <GLFW/glfw3.h>
 #include "XEngine/Core/Application.h"
 #include "Platforms/OperatingSystems/Windows10/Win10Input.h"
-#include <GLFW/glfw3.h>
 namespace XEngine
 {
 	Scope<Input> Input::inputInstance = CreateScope<Win10Input>();

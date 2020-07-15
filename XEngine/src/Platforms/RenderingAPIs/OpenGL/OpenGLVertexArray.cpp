@@ -1,7 +1,7 @@
 // Source file for OpenGL Vertex Arrays
 #include "Xpch.h"
-#include "OpenGLVertexArray.h"
 #include <GLAD/glad.h>
+#include "OpenGLVertexArray.h"
 namespace XEngine
 {
 	static GLenum ShaderTypeConvertToOpenGLType(ShaderDataType type)

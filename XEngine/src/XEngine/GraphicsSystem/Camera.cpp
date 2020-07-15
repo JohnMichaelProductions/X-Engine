@@ -1,5 +1,5 @@
 #include "Xpch.h"
-#include "Camera.h"
+#include "XEngine/GraphicsSystem/Camera.h"
 #include <glm/gtc/matrix_transform.hpp>
 namespace XEngine
 {
