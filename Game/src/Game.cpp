@@ -1,5 +1,5 @@
 // Where the game source code is written, stored, and called
-#include <XEngine.h>
+#include "XEngine.h"
 #include "XEngine/Core/EntryPoint.h"
 #include "Layers/Xlayer.h"
 #include "Layers/UILayer.h"
@@ -10,7 +10,7 @@ public:
 	Game()
 	{ 
 		XCORE_INFO("Game starting");
-		PushLayer(new XLayer());
+		PushLayer(new MainLayer());
 	}
 	~Game()
 		{ XCORE_INFO("Game shutting down"); }

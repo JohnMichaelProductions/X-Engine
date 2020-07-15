@@ -3,11 +3,11 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "Platforms/RenderingAPIs/OpenGL/OpenGLShader.h"
-MainLayer::MainLayer() : Layer("Main Layer"), mainCamera(1280.0f, 720.0f) {}
+MainLayer::MainLayer() : Layer("Main Layer"), mainCamera(1920.0f / 1080.0f) {}
 void MainLayer::OnAttach()
 {
 	mainVertexArray = XEngine::VertexArray::Create();
-	float squareVertices[5 * 4] = 
+	float squareVertices[5 * 4] =
 	{
 		-0.5f, -0.5f, 0.0f,
 		 0.5f, -0.5f, 0.0f,
@@ -17,7 +17,7 @@ void MainLayer::OnAttach()
 	std::shared_ptr<XEngine::VertexBuffer> squareVB;
 	squareVB.reset(XEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 	squareVB->SetLayout
-		({ { XEngine::ShaderDataType::Float3, "a_Position" } });
+	({ { XEngine::ShaderDataType::Float3, "a_Position" } });
 	mainVertexArray->AddVertexBuffer(squareVB);
 	uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 	XEngine::Ref<XEngine::IndexBuffer> squareIB;
@@ -25,10 +25,7 @@ void MainLayer::OnAttach()
 	mainVertexArray->SetIndexBuffer(squareIB);
 	mainShader = XEngine::Shader::Create("Assets/Shaders/Square.shader");
 }
-void MainLayer::OnDetach()
-{
-
-}
+void MainLayer::OnDetach() {}
 void MainLayer::OnUpdate(XEngine::Timestep timestep)
 {
 	mainCamera.OnUpdate(timestep);

@@ -6,16 +6,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Layers\MainLayer.h">
+      <Filter>Layers</Filter>
+    </ClInclude>
     <ClInclude Include="src\Layers\UILayer.h">
       <Filter>Layers</Filter>
     </ClInclude>
     <ClInclude Include="src\Layers\XLayer.h">
       <Filter>Layers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Layers\MainLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\Layers\MainLayer.cpp" />
+    <ClCompile Include="src\Layers\MainLayer.cpp">
+      <Filter>Layers</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

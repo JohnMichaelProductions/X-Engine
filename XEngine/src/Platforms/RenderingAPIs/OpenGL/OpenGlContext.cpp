@@ -17,7 +17,7 @@ namespace XEngine
 		XCORE_ASSERT(status, "Failed to initialize Glad!");
 		XCORE_INFO("Glad has been initialized!");
 		XCORE_INFO("OpenGL Renderer: {0} {1} {2} ", glGetString(GL_VENDOR), glGetString(GL_RENDERER), glGetString(GL_VERSION));
-		#ifdef HZ_ENABLE_ASSERTS
+		#ifdef X_ENABLE_ASSERTS
 		int versionMajor;
 		int versionMinor;
 		glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
