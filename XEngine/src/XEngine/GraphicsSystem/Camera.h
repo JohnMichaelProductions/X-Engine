@@ -1,5 +1,4 @@
 #pragma once
-#include "Xpch.h"
 #include <glm/glm.hpp>
 namespace XEngine
 {

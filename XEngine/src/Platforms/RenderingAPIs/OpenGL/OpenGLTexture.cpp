@@ -1,7 +1,7 @@
 #include "Xpch.h"
 #include "stb_image.h"
 #include <GLAD/glad.h>
-#include "OpenGLTexture.h"
+#include "Platforms/RenderingAPIs/OpenGL/OpenGLTexture.h"
 namespace XEngine
 {
 	OpenGLTexture2D::OpenGLTexture2D(const std::string& path) : texturePath(path)
@@ -29,6 +29,8 @@ namespace XEngine
 		glTextureStorage2D(textureRendererID, 1, internalFormat, textureWidth, textureHeight);
 		glTextureParameteri(textureRendererID, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTextureParameteri(textureRendererID, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTextureParameteri(textureRendererID, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTextureParameteri(textureRendererID, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTextureSubImage2D(textureRendererID, 0, 0, 0, textureWidth, textureHeight, dataFormat, GL_UNSIGNED_BYTE, data);
 		stbi_image_free(data);
 	}

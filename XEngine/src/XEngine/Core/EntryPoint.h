@@ -5,7 +5,7 @@ extern XEngine::Application* XEngine::CreateApplication();
 int main(int argc, char** argv)
 {
 	printf("-----Starting X-Engine-----\n");
-	XEngine::Log::Init();
+	XEngine::Logging::Init();
 	auto app = XEngine::CreateApplication();
 	app->Run();
 	delete app;

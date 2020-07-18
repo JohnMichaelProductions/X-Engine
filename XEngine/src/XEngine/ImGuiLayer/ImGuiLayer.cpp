@@ -1,11 +1,11 @@
 #include "Xpch.h"
-#include "XEngine/Core/Application.h"
-#include "ImGuiLayer.h"
 #include "imgui.h"
-#include "examples/imgui_impl_glfw.h"
-#include "examples/imgui_impl_opengl3.h"
-#include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include "examples/imgui_impl_glfw.h"
+#include "XEngine/Core/Application.h"
+#include "examples/imgui_impl_opengl3.h"
+#include "XEngine/ImGuiLayer/ImGuiLayer.h"
 namespace XEngine 
 {
 	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer") {}

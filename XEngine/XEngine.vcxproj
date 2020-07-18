@@ -174,7 +174,7 @@
     <ClInclude Include="src\XEngine\InputSystem\XEngineInputCodes.h" />
     <ClInclude Include="src\XEngine\LayerSystem\Layer.h" />
     <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h" />
-    <ClInclude Include="src\XEngine\LogSystem\Log.h" />
+    <ClInclude Include="src\XEngine\LoggingSystem\Logging.h" />
     <ClInclude Include="src\Xpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -446,7 +446,7 @@
     <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiLayer.cpp" />
     <ClCompile Include="src\XEngine\LayerSystem\Layer.cpp" />
     <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp" />
-    <ClCompile Include="src\XEngine\LogSystem\Log.cpp" />
+    <ClCompile Include="src\XEngine\LoggingSystem\Logging.cpp" />
     <ClCompile Include="src\Xpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

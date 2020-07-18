@@ -1,6 +1,6 @@
 // Key event classes
 #pragma once
-#include "Event.h"
+#include "XEngine/EventSystem/Event.h"
 namespace XEngine 
 {
 	class XENGINE_API KeyEvent : public Event

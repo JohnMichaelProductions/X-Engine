@@ -1,12 +1,12 @@
 // Sets up logging system with Init function
 #include "Xpch.h"
-#include "Log.h"
+#include "XEngine/LoggingSystem/Logging.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 namespace XEngine
 {
-	std::shared_ptr<spdlog::logger> Log::coreLogger;
-	std::shared_ptr<spdlog::logger> Log::clientLogger;
-	void Log::Init()
+	std::shared_ptr<spdlog::logger> Logging::coreLogger;
+	std::shared_ptr<spdlog::logger> Logging::clientLogger;
+	void Logging::Init()
 	{
 		#ifdef X_DEBUG
 			spdlog::set_level(spdlog::level::trace);

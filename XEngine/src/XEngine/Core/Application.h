@@ -1,8 +1,8 @@
 // Header file for the Application Class
 #pragma once
-#include "Time.h"
-#include "XCore.h"
-#include "Window.h"
+#include "XEngine/Core/Time.h"
+#include "XEngine/Core/XCore.h"
+#include "XEngine/Core/Window.h"
 #include "XEngine/EventSystem/Event.h"
 #include "XEngine/ImGuiLayer/ImGuiLayer.h"
 #include "XEngine/GraphicsSystem/Shader.h"

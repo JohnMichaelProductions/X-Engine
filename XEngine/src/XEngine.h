@@ -2,10 +2,10 @@
 #pragma once
 #include <stdio.h>
 #include "XEngine/Core/Time.h"
-#include "XEngine/LogSystem/Log.h"
 #include "XEngine/Core/Application.h"
 #include "XEngine/InputSystem/Input.h"
 #include "XEngine/LayerSystem/Layer.h"
+#include "XEngine/LoggingSystem/Logging.h"
 #include "XEngine/ImGuiLayer/ImGuiLayer.h"
 #include "XEngine/GraphicsSystem/Buffer.h"
 #include "XEngine/GraphicsSystem/Camera.h"

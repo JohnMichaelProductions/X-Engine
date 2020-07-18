@@ -1,7 +1,7 @@
 // Source File for Vertex and Index Buffer Functions
 #include "Xpch.h"
 #include <GLAD/glad.h>
-#include "OpenGLBuffer.h"
+#include "Platforms/RenderingAPIs/OpenGL/OpenGLBuffer.h"
 namespace XEngine
 {
 	// Vertex Buffer Functions

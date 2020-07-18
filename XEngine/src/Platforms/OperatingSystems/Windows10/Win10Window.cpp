@@ -8,7 +8,7 @@
 #include "Platforms/OperatingSystems/Windows10/Win10Window.h"
 namespace XEngine
 {
-	static bool GLFWInitialized;
+	static uint8_t GLFWWindowCount = 0;
 	static void GLFWErrorCallback(int error, const char* description)
 		{ XCORE_ERROR("GLFW Error ({0}): {1}", error, description); };
 	Window* Window::Create(const WindowProps& props)
@@ -25,15 +25,15 @@ namespace XEngine
 		windowData.Title = props.Title;
 		windowData.Width = props.Width;
 		windowData.Height = props.Height;
-		if (!GLFWInitialized)
+		if (GLFWWindowCount == 0)
 		{
 			int success = glfwInit();
 			XCORE_ASSERT(success, "Could not intialize GLFW");
 			glfwSetErrorCallback(GLFWErrorCallback);
-			GLFWInitialized = true;
 			XCORE_INFO("GLFW intialized");
 		}
 		window = glfwCreateWindow((int)props.Width, (int)props.Height, windowData.Title.c_str(), nullptr, nullptr);
+		++GLFWWindowCount;
 		windowContext = CreateScope<OpenGLContext>(window);
 		windowContext->Init();
 		glfwSetWindowUserPointer(window, &windowData);
@@ -116,8 +116,15 @@ namespace XEngine
 		});
 	}
 	void Win10Window::Shutdown()
-		{ glfwDestroyWindow(window); }
-	void Win10Window::OnUpdate() 
+	{
+		glfwDestroyWindow(window);
+		if (--GLFWWindowCount == 0)
+		{
+			XCORE_INFO("Terminating GLFW");
+			glfwTerminate();
+		}
+	}
+	void Win10Window::OnUpdate()
 	{
 		glfwPollEvents();
 		windowContext->SwapBuffers();

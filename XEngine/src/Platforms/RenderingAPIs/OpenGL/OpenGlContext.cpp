@@ -2,7 +2,7 @@
 #include "Xpch.h"
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
-#include "OpenGlContext.h"
+#include "Platforms/RenderingAPIs/OpenGL/OpenGlContext.h"
 namespace XEngine
 {
 	OpenGLContext::OpenGLContext(GLFWwindow* mainwindowHandle) : windowHandle(mainwindowHandle)

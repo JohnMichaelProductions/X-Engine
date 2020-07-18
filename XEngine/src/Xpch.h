@@ -12,7 +12,7 @@
 #include <functional>
 #include <unordered_map>
 #include <unordered_set>
-#include "XEngine/LogSystem/Log.h"
+#include "XEngine/LoggingSystem/Logging.h"
 #ifdef X_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

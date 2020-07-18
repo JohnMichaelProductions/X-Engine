@@ -4,7 +4,6 @@
 #include "Platforms/RenderingAPIs/OpenGL/OpenGLShader.h"
 namespace XEngine
 {
-	// Shader Functions
 	Ref<Shader> Shader::Create(const std::string& path)
 	{
 		switch (Renderer::GetAPI())

@@ -15,5 +15,6 @@ private:
 	XEngine::OrthographicCameraController mainCamera;
 	XEngine::Ref<XEngine::VertexArray> mainVertexArray;
 	XEngine::Ref<XEngine::Shader> mainShader;
+	XEngine::Ref<XEngine::Texture2D> checkerboardTexture;
 	glm::vec4 mainColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };
