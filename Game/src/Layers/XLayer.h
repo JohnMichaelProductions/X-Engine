@@ -29,7 +29,7 @@ public:
 		std::shared_ptr<XEngine::IndexBuffer> squareIB;
 		squareIB.reset(XEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		squareVertexArray->SetIndexBuffer(squareIB);
-		auto textureShader = applicationShaderLibrary.Load("Assets/Shaders/Texture.shader");
+		auto textureShader = applicationShaderLibrary.Load("Assets/Shaders/Texture.glsl");
 		texture = XEngine::Texture2D::Create("Assets/Textures/Checkerboard.png");
 		logoTexture = XEngine::Texture2D::Create("Assets/Textures/ChernoLogo.png");
 		std::dynamic_pointer_cast<XEngine::OpenGLShader>(textureShader)->Bind();
@@ -46,7 +46,7 @@ public:
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(.1f));
 		glm::vec4 redColor(.8f, .2f, .3f, 1.0f);
 		glm::vec4 blueColor(.2f, .3f, .8f, 1.0f);
-		auto squareShader = XEngine::Shader::Create("Assets/Shaders/Square.shader");
+		auto squareShader = XEngine::Shader::Create("Assets/Shaders/FlatColor.glsl");
 		std::dynamic_pointer_cast<XEngine::OpenGLShader>(squareShader)->Bind();
 		std::dynamic_pointer_cast<XEngine::OpenGLShader>(squareShader)->UploadUniformFloat3("u_Color", color);
 		for (int y = 0; y < 15; y++)

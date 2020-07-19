@@ -145,9 +145,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Shaders\Default.shader" />
-    <None Include="Assets\Shaders\Square.shader" />
-    <None Include="Assets\Shaders\Texture.shader" />
+    <None Include="Assets\Shaders\Default.glsl" />
+    <None Include="Assets\Shaders\FlatColor.glsl" />
+    <None Include="Assets\Shaders\Texture.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

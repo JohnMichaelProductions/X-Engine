@@ -4,6 +4,17 @@
 #include "Platforms/RenderingAPIs/OpenGL/OpenGLTexture.h"
 namespace XEngine
 {
+	OpenGLTexture2D::OpenGLTexture2D(uint32_t width, uint32_t height) : textureWidth(width), textureHeight(height)
+	{
+		textureInternalFormat = GL_RGBA8;
+		textureDataFormat = GL_RGBA;
+		glCreateTextures(GL_TEXTURE_2D, 1, &textureRendererID);
+		glTextureStorage2D(textureRendererID, 1, textureInternalFormat, textureWidth, textureHeight);
+		glTextureParameteri(textureRendererID, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTextureParameteri(textureRendererID, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTextureParameteri(textureRendererID, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTextureParameteri(textureRendererID, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	}
 	OpenGLTexture2D::OpenGLTexture2D(const std::string& path) : texturePath(path)
 	{
 		int width, height, channels;
@@ -24,6 +35,8 @@ namespace XEngine
 			internalFormat = GL_RGB8;
 			dataFormat = GL_RGB;
 		}
+		textureInternalFormat = internalFormat;
+		textureDataFormat = dataFormat;
 		XCORE_ASSERT(internalFormat & dataFormat, "Format not supported");
 		glCreateTextures(GL_TEXTURE_2D, 1, &textureRendererID);
 		glTextureStorage2D(textureRendererID, 1, internalFormat, textureWidth, textureHeight);
@@ -36,6 +49,12 @@ namespace XEngine
 	}
 	OpenGLTexture2D::~OpenGLTexture2D()
 		{ glDeleteTextures(1, &textureRendererID); }
+	void OpenGLTexture2D::SetData(void* data, uint32_t size)
+	{
+		uint32_t bpp = textureDataFormat == GL_RGBA ? 4 : 3;
+		XCORE_ASSERT(size == textureWidth * textureHeight * bpp, "Data must be entire texture!");
+		glTextureSubImage2D(textureRendererID, 0, 0, 0, textureWidth, textureHeight, textureDataFormat, GL_UNSIGNED_BYTE, data);
+	}
 	void OpenGLTexture2D::Bind(uint32_t slot) const
 		{ glBindTextureUnit(slot, textureRendererID); }
 }

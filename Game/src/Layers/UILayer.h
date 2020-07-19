@@ -19,14 +19,14 @@ public:
 		{
 			{ XEngine::ShaderDataType::Float3, "a_Position" },
 			{ XEngine::ShaderDataType::Float4, "a_Color" }
-		};
+		}; 
 		vertexBuffer->SetLayout(layout);
 		UIVertexArray->AddVertexBuffer(vertexBuffer);
 		uint32_t indices[3] = { 0, 1, 2 };
 		XEngine::Ref<XEngine::IndexBuffer> indexBuffer;
 		indexBuffer.reset(XEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		UIVertexArray->SetIndexBuffer(indexBuffer);
-		auto defaultShader = UIShaderLibrary.Load("Assets/Shaders/Default.shader");
+		auto defaultShader = UIShaderLibrary.Load("Assets/Shaders/Default.glsl");
 	}
 	void OnUpdate(XEngine::Timestep timestep) override
 	{
