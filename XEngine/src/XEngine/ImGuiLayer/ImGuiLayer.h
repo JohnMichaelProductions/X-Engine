@@ -5,7 +5,7 @@
 #include "XEngine/EventSystem/ApplicationEvent.h"
 namespace XEngine
 {
-	class XENGINE_API ImGuiLayer : public Layer
+	class ImGuiLayer : public Layer
 	{
 	public:
 		// Defined in Source File

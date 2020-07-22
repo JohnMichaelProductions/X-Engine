@@ -1,5 +1,5 @@
 #include "Xpch.h"
-#include "stb_image.h"
+#include <stb_image.h>
 #include <GLAD/glad.h>
 #include "Platforms/RenderingAPIs/OpenGL/OpenGLTexture.h"
 namespace XEngine
@@ -57,4 +57,4 @@ namespace XEngine
 	}
 	void OpenGLTexture2D::Bind(uint32_t slot) const
 		{ glBindTextureUnit(slot, textureRendererID); }
-}
+} 

@@ -11,8 +11,8 @@ namespace XEngine
 	static uint8_t GLFWWindowCount = 0;
 	static void GLFWErrorCallback(int error, const char* description)
 		{ XCORE_ERROR("GLFW Error ({0}): {1}", error, description); };
-	Window* Window::Create(const WindowProps& props)
-		{ return new Win10Window(props); }
+	Scope<Window> Window::Create(const WindowProps& props)
+		{ return CreateScope<Win10Window>(props); }
 	Win10Window::Win10Window(const WindowProps& props)
 	{
 		XCORE_INFO("Using Windows 10 Window Class");
@@ -34,7 +34,7 @@ namespace XEngine
 		}
 		window = glfwCreateWindow((int)props.Width, (int)props.Height, windowData.Title.c_str(), nullptr, nullptr);
 		++GLFWWindowCount;
-		windowContext = CreateScope<OpenGLContext>(window);
+		windowContext = GraphicsContext::Create(window);
 		windowContext->Init();
 		glfwSetWindowUserPointer(window, &windowData);
 		SetVSync(false);
@@ -118,7 +118,8 @@ namespace XEngine
 	void Win10Window::Shutdown()
 	{
 		glfwDestroyWindow(window);
-		if (--GLFWWindowCount == 0)
+		--GLFWWindowCount;
+		if (GLFWWindowCount == 0)
 		{
 			XCORE_INFO("Terminating GLFW");
 			glfwTerminate();

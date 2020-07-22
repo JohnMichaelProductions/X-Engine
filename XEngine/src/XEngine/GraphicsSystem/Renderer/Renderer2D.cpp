@@ -24,8 +24,7 @@ namespace XEngine
 			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
-		std::shared_ptr<VertexBuffer> squareVB;
-		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Ref<VertexBuffer> squareVB = VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout
 		({ 
 			{ShaderDataType::Float3, "a_Position"},
@@ -33,8 +32,7 @@ namespace XEngine
 		});
 		rendererData->vertexArray->AddVertexBuffer(squareVB);
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Ref<IndexBuffer> squareIB;
-		squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Ref<IndexBuffer> squareIB = IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		rendererData->vertexArray->SetIndexBuffer(squareIB);
 		rendererData->whiteTexture = Texture2D::Create(1, 1);
 		uint32_t whiteTextureData = 0xffffffff;

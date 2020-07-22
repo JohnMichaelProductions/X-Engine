@@ -32,7 +32,7 @@ namespace XEngine
 		EventCategoryMouse = BIT(3),
 		EventCategoryMouseButton = BIT(4)
 	};
-	class XENGINE_API Event 
+	class Event 
 	{
 	public:
 		// To Be Defined in derived classes

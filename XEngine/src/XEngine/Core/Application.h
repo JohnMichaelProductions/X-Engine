@@ -13,7 +13,7 @@
 #include "XEngine/EventSystem/ApplicationEvent.h"
 namespace XEngine
 {
-	class XENGINE_API Application
+	class Application
 	{
 	public:
 		// Defined in Source File

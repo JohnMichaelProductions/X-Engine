@@ -3,7 +3,7 @@
 #include "XEngine/EventSystem/Event.h" 
 namespace XEngine 
 {
-	class XENGINE_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y) : eventMouseX(x), eventMouseY(y)
@@ -23,7 +23,7 @@ namespace XEngine
 	private:
 		float eventMouseX, eventMouseY;
 	};
-	class XENGINE_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset) : eventXOffset(xOffset), eventYOffset(yOffset) {}
@@ -42,7 +42,7 @@ namespace XEngine
 	private:
 		float eventXOffset, eventYOffset;
 	};
-	class XENGINE_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const
@@ -52,7 +52,7 @@ namespace XEngine
 		MouseButtonEvent(int button) : mouseButton(button) {}
 		int mouseButton;
 	};
-	class XENGINE_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
@@ -64,7 +64,7 @@ namespace XEngine
 		}
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
-	class XENGINE_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}

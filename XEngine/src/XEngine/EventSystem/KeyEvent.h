@@ -3,7 +3,7 @@
 #include "XEngine/EventSystem/Event.h"
 namespace XEngine 
 {
-	class XENGINE_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const 
@@ -13,7 +13,7 @@ namespace XEngine
 		KeyEvent(int keycode) : eventKeyCode(keycode) {}
 		int eventKeyCode;
 	};
-	class XENGINE_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), eventRepeatCount(repeatCount) {}
@@ -29,7 +29,7 @@ namespace XEngine
 	private:
 		int eventRepeatCount;
 	};
-	class XENGINE_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode) : KeyEvent(keycode) {}
@@ -41,7 +41,7 @@ namespace XEngine
 		}
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
-	class XENGINE_API KeyTypedEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keycode) : KeyEvent(keycode) {}

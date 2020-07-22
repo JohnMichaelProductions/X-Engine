@@ -1,9 +1,9 @@
 #pragma once
 #include "XEngine.h"
-#include "Platforms/RenderingAPIs/OpenGL/OpenGLShader.h"
 #include <glm/gtc/type_ptr.hpp>
 #include "../vendor/ImGui/imgui.h"
 #include <glm/gtc/matrix_transform.hpp>
+#include "Platforms/RenderingAPIs/OpenGL/OpenGLShader.h"
 class XLayer : public XEngine::Layer
 {
 public:
@@ -17,8 +17,7 @@ public:
 			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
-		std::shared_ptr<XEngine::VertexBuffer> squareVB;
-		squareVB.reset(XEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		XEngine::Ref<XEngine::VertexBuffer> squareVB = XEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout
 		({
 			{ XEngine::ShaderDataType::Float3, "a_Position" },
@@ -26,14 +25,13 @@ public:
 		});
 		squareVertexArray->AddVertexBuffer(squareVB);
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<XEngine::IndexBuffer> squareIB;
-		squareIB.reset(XEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		XEngine::Ref<XEngine::IndexBuffer> squareIB = XEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		squareVertexArray->SetIndexBuffer(squareIB);
 		auto textureShader = applicationShaderLibrary.Load("Assets/Shaders/Texture.glsl");
 		texture = XEngine::Texture2D::Create("Assets/Textures/Checkerboard.png");
 		logoTexture = XEngine::Texture2D::Create("Assets/Textures/ChernoLogo.png");
-		std::dynamic_pointer_cast<XEngine::OpenGLShader>(textureShader)->Bind();
-		std::dynamic_pointer_cast<XEngine::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
+		textureShader->Bind();
+		textureShader->SetInt("u_Texture", 0);
 	}
 	void OnUpdate(XEngine::Timestep timestep) override
 	{
@@ -47,8 +45,8 @@ public:
 		glm::vec4 redColor(.8f, .2f, .3f, 1.0f);
 		glm::vec4 blueColor(.2f, .3f, .8f, 1.0f);
 		auto squareShader = XEngine::Shader::Create("Assets/Shaders/FlatColor.glsl");
-		std::dynamic_pointer_cast<XEngine::OpenGLShader>(squareShader)->Bind();
-		std::dynamic_pointer_cast<XEngine::OpenGLShader>(squareShader)->UploadUniformFloat3("u_Color", color);
+		squareShader->Bind();
+		squareShader->SetFloat3("u_Color", color);
 		for (int y = 0; y < 15; y++)
 		{
 			for (int x = 0; x < 15; x++)

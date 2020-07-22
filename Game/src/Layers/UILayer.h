@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include "XEngine.h"
 #include <glm/gtc/type_ptr.hpp>
 class UILayer : public XEngine::Layer
@@ -46,4 +46,4 @@ private:
 	XEngine::Ref<XEngine::VertexArray> UIVertexArray;
 	XEngine::Ref<XEngine::Shader> UIShader;
 	glm::vec3 color = { 0.2,.3,.8f };
-};
+};*/

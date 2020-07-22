@@ -2,6 +2,7 @@
 #pragma once
 #include <stdio.h>
 #include "XEngine/Core/Time.h"
+#include "XEngine/Core/XCore.h"
 #include "XEngine/Core/Application.h"
 #include "XEngine/InputSystem/Input.h"
 #include "XEngine/LayerSystem/Layer.h"

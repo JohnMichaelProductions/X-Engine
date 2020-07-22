@@ -913,6 +913,7 @@
     <ClInclude Include="src\XEngine\LoggingSystem\Logging.h">
       <Filter>src\XEngine\LogSystem</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp">
@@ -991,5 +992,6 @@
     <ClCompile Include="src\XEngine\LoggingSystem\Logging.cpp">
       <Filter>src\XEngine\LogSystem</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\GraphicsContext.cpp" />
   </ItemGroup>
 </Project>

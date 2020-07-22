@@ -154,6 +154,7 @@
     <ClInclude Include="src\XEngine\Core\Time.h" />
     <ClInclude Include="src\XEngine\Core\Window.h" />
     <ClInclude Include="src\XEngine\Core\XCore.h" />
+    <ClInclude Include="src\XEngine\Debug\Instrumentor.h" />
     <ClInclude Include="src\XEngine\EventSystem\ApplicationEvent.h" />
     <ClInclude Include="src\XEngine\EventSystem\Event.h" />
     <ClInclude Include="src\XEngine\EventSystem\KeyEvent.h" />
@@ -435,6 +436,7 @@
     <ClCompile Include="src\XEngine\GraphicsSystem\Buffer.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Camera.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\CameraController.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\GraphicsContext.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.cpp" />

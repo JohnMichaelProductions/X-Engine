@@ -5,7 +5,7 @@
 #include "XEngine/EventSystem/Event.h"
 namespace XEngine
 {
-	class XENGINE_API Layer
+	class Layer
 	{
 	public:
 		// Defined in Source File

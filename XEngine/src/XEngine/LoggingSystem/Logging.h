@@ -1,19 +1,19 @@
 // Header file for log system, also macro setup for logging
 #pragma once
-#include "spdlog/spdlog.h"
-#include "spdlog/fmt/ostr.h"
+#include <spdlog/spdlog.h>
+#include <spdlog/fmt/ostr.h>
 #include "XEngine/Core/XCore.h"
 namespace XEngine
 {
-	class XENGINE_API Logging
+	class Logging
 	{
 	public:
 		// Defined in Source File
 		static void Init();
 		// Prototype in Header File
-		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger()
+		inline static Ref<spdlog::logger>& GetCoreLogger()
 			{ return coreLogger; }
-		inline static std::shared_ptr<spdlog::logger>& GetClientLogger()
+		inline static Ref<spdlog::logger>& GetClientLogger()
 			{ return clientLogger; }
 	private:
 		static Ref<spdlog::logger> coreLogger;

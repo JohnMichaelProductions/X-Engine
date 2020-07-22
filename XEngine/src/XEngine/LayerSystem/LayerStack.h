@@ -4,11 +4,11 @@
 #include "XEngine/LayerSystem/Layer.h"
 namespace XEngine
 {
-	class XENGINE_API LayerStack
+	class LayerStack
 	{
 	public:
 		// Defined in Source File
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);

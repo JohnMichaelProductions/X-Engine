@@ -18,6 +18,7 @@ namespace XEngine
 		virtual void Clear() = 0;
 		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray) = 0;
 		virtual void Documentation() = 0;
+		static Scope<RendererAPI> Create();
 		// Prototype in Header File
 		inline static API GetAPI()
 			{ return renderAPI; }

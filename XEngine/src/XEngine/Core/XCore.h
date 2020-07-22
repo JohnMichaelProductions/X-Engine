@@ -29,19 +29,6 @@
 #else
 	#error "Unknown platform!"
 #endif
-#ifdef X_PLATFORM_WINDOWS
-	#if X_DYNAMIC_LINK
-		#ifdef X_BUILD_DLL
-			#define XENGINE_API __declspec(dllexport)
-		#else
-			#define XENGINE_API __declspec(dllimport)
-		#endif
-	#else
-		#define XENGINE_API
-	#endif
-	#else
-		#error X-Engine only supports Windows!
-#endif
 #ifdef X_DEBUG
 	#define X_ENABLE_ASSERTS
 #endif
