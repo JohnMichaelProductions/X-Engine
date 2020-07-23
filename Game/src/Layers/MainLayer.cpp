@@ -9,6 +9,7 @@ void MainLayer::OnAttach()
 	// Creating Checkerboard Texture
 	XPROFILE_FUNCTION();
 	checkerboardTexture = XEngine::Texture2D::Create("Assets/Textures/Checkerboard.png");
+	logoTexture = XEngine::Texture2D::Create("Assets/Textures/ChernoLogo.png");
 }
 void MainLayer::OnDetach()
 	{ XPROFILE_FUNCTION(); }
@@ -28,7 +29,9 @@ void MainLayer::OnUpdate(XEngine::Timestep timestep)
 		XEngine::Renderer2D::BeginScene(mainCamera.GetCamera());
 		XEngine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
 		XEngine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
-		XEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, checkerboardTexture);
+		XEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, checkerboardTexture, 10.0f);
+		XEngine::Renderer2D::DrawRotatedQuad({ -0.5f, -0.5f, }, { .3f, .3f }, glm::radians(45.0f), { 0.3f, 0.8f, 0.2f, 1.0f });
+		XEngine::Renderer2D::DrawRotatedQuad({  1.5f, 0.0f, }, { .3f, .3f }, glm::radians(100.0f), logoTexture);
 		XEngine::Renderer2D::EndScene();
 	}
 }

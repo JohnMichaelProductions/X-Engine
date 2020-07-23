@@ -55,30 +55,62 @@ namespace XEngine
 		rendererData->textureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 	}
 	void Renderer2D::EndScene() {}
-	// Draw Quad Vector2(Flat Color)
+	// Draw Quad (x, y) (Color)
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color)
 		{ DrawQuad({position.x, position.y, 0.0}, size, color); }
-	// Draw Quad Vector3(Flat Color)
+	// Draw Quad (x, y, z) (Color)
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
 		XPROFILE_FUNCTION();
 		rendererData->textureShader->SetFloat4("u_Color", color);
+		rendererData->textureShader->SetFloat("u_TilingFactor", 1.0f);
 		rendererData->whiteTexture->Bind();
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 		rendererData->textureShader->SetMat4("u_Transform", transform);
 		rendererData->vertexArray->Bind();
 		RenderCommand::DrawIndexed(rendererData->vertexArray);
 	}
-	// Draw Quad Vector2(Texture)
-	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D> texture)
-		{ DrawQuad({position.x, position.y, 0.0}, size, texture); }
-	// Draw Quad Vector3(Texture)
-	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D> texture)
+	// Draw Quad (x, y) (Texture)
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
+		{ DrawQuad({position.x, position.y, 0.0}, size, texture, tilingFactor, tintColor); }
+	// Draw Quad (x, y, z) (Texture)
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
 	{
 		XPROFILE_FUNCTION();
-		rendererData->textureShader->SetFloat4("u_Color", glm::vec4(1.0f));
+		rendererData->textureShader->SetFloat4("u_Color", tintColor);
+		rendererData->textureShader->SetFloat("m_TilingFactor", tilingFactor);
 		texture->Bind();
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+		rendererData->textureShader->SetMat4("u_Transform", transform);
+		rendererData->vertexArray->Bind();
+		RenderCommand::DrawIndexed(rendererData->vertexArray);
+	}
+	// Draw Rotated Quad (x, y) (Color)
+	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const glm::vec4& color)
+		{ DrawRotatedQuad({position.x, position.y, 0.0}, size, rotation, color); }
+	// Draw Rotated Quad (x, y, z) (Color)
+	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color)
+	{
+		XPROFILE_FUNCTION();
+		rendererData->textureShader->SetFloat4("u_Color", color);
+		rendererData->textureShader->SetFloat("u_TilingFactor", 1.0f);
+		rendererData->whiteTexture->Bind();
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::rotate(glm::mat4(1.0f), rotation, {0.0f, 0.0f, 1.0f}) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+		rendererData->textureShader->SetMat4("u_Transform", transform);
+		rendererData->vertexArray->Bind();
+		RenderCommand::DrawIndexed(rendererData->vertexArray);
+	}
+	// Draw Rotated Quad (x, y) (Texture)
+	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
+		{ DrawRotatedQuad({ position.x, position.y, 0.0 }, size, rotation, texture, tilingFactor, tintColor); }
+	// Draw Rotated Quad (x, y, z) (Texture)
+	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
+	{
+		XPROFILE_FUNCTION();
+		rendererData->textureShader->SetFloat4("u_Color", tintColor);
+		rendererData->textureShader->SetFloat("m_TilingFactor", tilingFactor);
+		texture->Bind();
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::rotate(glm::mat4(1.0f), rotation, { 0.0f, 0.0f, 1.0f }) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 		rendererData->textureShader->SetMat4("u_Transform", transform);
 		rendererData->vertexArray->Bind();
 		RenderCommand::DrawIndexed(rendererData->vertexArray);
