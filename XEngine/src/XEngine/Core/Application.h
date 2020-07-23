@@ -11,6 +11,7 @@
 #include "XEngine/LayerSystem/LayerStack.h"
 #include "XEngine/GraphicsSystem/VertexArray.h"
 #include "XEngine/EventSystem/ApplicationEvent.h"
+int main(int argc, char** argv);
 namespace XEngine
 {
 	class Application
@@ -19,7 +20,6 @@ namespace XEngine
 		// Defined in Source File
 		Application();
 		virtual ~Application();
-		void Run();
 		void OnEvent(Event& e);
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
@@ -30,8 +30,10 @@ namespace XEngine
 			{ return *applicationInstance; }
 	private:
 		// Defined in Source File
+		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
+		friend int ::main(int argc, char** argv);
 		bool appRunning = true;
 		bool applicationMinimized = false;
 		static Application* applicationInstance;

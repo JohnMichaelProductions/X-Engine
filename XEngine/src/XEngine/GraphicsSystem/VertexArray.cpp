@@ -6,6 +6,7 @@ namespace XEngine
 {
 	Ref<VertexArray> VertexArray::Create()
 	{
+		XPROFILE_FUNCTION();
 		switch (Renderer::GetAPI())
 		{
 			case RendererAPI::API::None: 

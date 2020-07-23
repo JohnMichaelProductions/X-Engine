@@ -7,6 +7,7 @@ namespace XEngine
 {
 	static GLenum ShaderTypeFromString(const std::string& type)
 	{
+		XPROFILE_FUNCTION();
 		if (type == "vertex")
 			return GL_VERTEX_SHADER;
 		else if (type == "fragment" || type == "pixel")
@@ -16,6 +17,7 @@ namespace XEngine
 	}
 	OpenGLShader::OpenGLShader(const std::string& path)
 	{
+		XPROFILE_FUNCTION();
 		std::string source = ReadFile(path);
 		auto shaderSources = PreProcess(source);
 		Compile(shaderSources);
@@ -27,6 +29,7 @@ namespace XEngine
 	}
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc) : shaderName(name)
 	{
+		XPROFILE_FUNCTION();
 		std::unordered_map<GLenum, std::string> shaderSources;
 		shaderSources[GL_VERTEX_SHADER] = vertexSrc;
 		shaderSources[GL_FRAGMENT_SHADER] = fragmentSrc;
@@ -34,21 +37,40 @@ namespace XEngine
 	}
 	OpenGLShader::~OpenGLShader()
 	{
+		XPROFILE_FUNCTION();
 		glDeleteProgram(shaderRendererID);
 		glDeleteShader(shaderRendererID);
 	}
 	void OpenGLShader::Bind() const
-		{ glUseProgram(shaderRendererID); }
+	{
+		XPROFILE_FUNCTION();
+		glUseProgram(shaderRendererID);
+	}
 	void OpenGLShader::Unbind() const
-		{ glUseProgram(0); }
+	{
+		XPROFILE_FUNCTION();
+		glUseProgram(0);
+	}
 	void OpenGLShader::SetInt(const std::string& name, const int value)
-		{ UploadUniformInt(name, value); }
+	{
+		XPROFILE_FUNCTION();
+		UploadUniformInt(name, value);
+	}
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
-		{ UploadUniformFloat3(name, value); }
+	{
+		XPROFILE_FUNCTION();
+		UploadUniformFloat3(name, value);
+	}
 	void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& value)
-		{ UploadUniformFloat4(name, value); }
+	{
+		XPROFILE_FUNCTION();
+		UploadUniformFloat4(name, value);
+	}
 	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& value)
-		{ UploadUniformMat4(name, value); }
+	{
+		XPROFILE_FUNCTION();
+		UploadUniformMat4(name, value);
+	}
 	void OpenGLShader::UploadUniformInt(const std::string& name, int value)
 	{
 		GLint location = glGetUniformLocation(shaderRendererID, name.c_str());
@@ -86,6 +108,7 @@ namespace XEngine
 	}
 	std::string OpenGLShader::ReadFile(const std::string& path)
 	{
+		XPROFILE_FUNCTION();
 		std::string result;
 		std::ifstream in(path, std::ios::in, std::ios::binary);
 		if (in)
@@ -108,6 +131,7 @@ namespace XEngine
 	}
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
 	{
+		XPROFILE_FUNCTION();
 		std::unordered_map<GLenum, std::string> shaderSources;
 		const char* typeToken = "#type";
 		size_t typeTokenLength = strlen(typeToken);
@@ -128,6 +152,7 @@ namespace XEngine
 	}
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources)
 	{
+		XPROFILE_FUNCTION();
 		GLuint program = glCreateProgram();
 		XCORE_ASSERT(shaderSources.size() <= 2, "Only two shaders are supported for now");
 		std::array <GLenum, 2> glShaderIDs;

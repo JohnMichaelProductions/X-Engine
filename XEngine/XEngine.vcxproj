@@ -172,6 +172,7 @@
     <ClInclude Include="src\XEngine\GraphicsSystem\VertexArray.h" />
     <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h" />
     <ClInclude Include="src\XEngine\InputSystem\Input.h" />
+    <ClInclude Include="src\XEngine\InputSystem\XEngineMouseCodes.h" />
     <ClInclude Include="src\XEngine\InputSystem\XEngineInputCodes.h" />
     <ClInclude Include="src\XEngine\LayerSystem\Layer.h" />
     <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h" />
@@ -433,6 +434,7 @@
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platforms\RenderingAPIs\OpenGL\OpenGlContext.cpp" />
     <ClCompile Include="src\XEngine\Core\Application.cpp" />
+    <ClCompile Include="src\XEngine\Core\Window.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Buffer.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Camera.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\CameraController.cpp" />
@@ -446,6 +448,7 @@
     <ClCompile Include="src\XEngine\GraphicsSystem\VertexArray.cpp" />
     <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp" />
     <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiLayer.cpp" />
+    <ClCompile Include="src\XEngine\InputSystem\Input.cpp" />
     <ClCompile Include="src\XEngine\LayerSystem\Layer.cpp" />
     <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp" />
     <ClCompile Include="src\XEngine\LoggingSystem\Logging.cpp" />

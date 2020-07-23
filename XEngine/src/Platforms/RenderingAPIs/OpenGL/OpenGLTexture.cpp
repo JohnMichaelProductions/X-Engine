@@ -6,6 +6,7 @@ namespace XEngine
 {
 	OpenGLTexture2D::OpenGLTexture2D(uint32_t width, uint32_t height) : textureWidth(width), textureHeight(height)
 	{
+		XPROFILE_FUNCTION();
 		textureInternalFormat = GL_RGBA8;
 		textureDataFormat = GL_RGBA;
 		glCreateTextures(GL_TEXTURE_2D, 1, &textureRendererID);
@@ -17,13 +18,17 @@ namespace XEngine
 	}
 	OpenGLTexture2D::OpenGLTexture2D(const std::string& path) : texturePath(path)
 	{
+		XPROFILE_FUNCTION();
 		int width, height, channels;
 		stbi_set_flip_vertically_on_load(1);
-		stbi_uc* data = stbi_load(path.c_str(), &width, &height, &channels, 0);
+		stbi_uc* data = nullptr;
+		{
+			XPROFILE_SCOPE("stbi_load - OpenGLTexture2D::OpenGLTexture2D(const std::string&)");
+			data = stbi_load(path.c_str(), &width, &height, &channels, 0);
+		}
 		XCORE_ASSERT(data, "Failed to load image");
 		textureWidth = width;
 		textureHeight = height;
-
 		GLenum internalFormat = 0, dataFormat = 0;
 		if (channels == 4)
 		{
@@ -48,13 +53,20 @@ namespace XEngine
 		stbi_image_free(data);
 	}
 	OpenGLTexture2D::~OpenGLTexture2D()
-		{ glDeleteTextures(1, &textureRendererID); }
+	{
+		XPROFILE_FUNCTION();
+		glDeleteTextures(1, &textureRendererID);
+	}
 	void OpenGLTexture2D::SetData(void* data, uint32_t size)
 	{
+		XPROFILE_FUNCTION();
 		uint32_t bpp = textureDataFormat == GL_RGBA ? 4 : 3;
 		XCORE_ASSERT(size == textureWidth * textureHeight * bpp, "Data must be entire texture!");
 		glTextureSubImage2D(textureRendererID, 0, 0, 0, textureWidth, textureHeight, textureDataFormat, GL_UNSIGNED_BYTE, data);
 	}
 	void OpenGLTexture2D::Bind(uint32_t slot) const
-		{ glBindTextureUnit(slot, textureRendererID); }
-} 
+	{
+		XPROFILE_FUNCTION();
+		glBindTextureUnit(slot, textureRendererID);
+	}
+}

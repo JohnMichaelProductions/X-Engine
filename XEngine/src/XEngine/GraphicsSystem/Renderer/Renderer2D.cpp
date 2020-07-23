@@ -15,6 +15,7 @@ namespace XEngine
 	static Renderer2DData* rendererData;
 	void Renderer2D::Init()
 	{
+		XPROFILE_FUNCTION();
 		rendererData = new Renderer2DData();
 		rendererData->vertexArray = VertexArray::Create();
 		float squareVertices[5 * 4] =
@@ -43,9 +44,13 @@ namespace XEngine
 		rendererData->textureShader->SetInt("u_Texture", 0);
 	}
 	void Renderer2D::Shutdown()
-		{ delete rendererData; }
+	{
+		XPROFILE_FUNCTION();
+		delete rendererData;
+	}
 	void Renderer2D::BeginScene(OrthographicCamera& camera)
 	{
+		XPROFILE_FUNCTION();
 		rendererData->textureShader->Bind();
 		rendererData->textureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 	}
@@ -56,6 +61,7 @@ namespace XEngine
 	// Draw Quad Vector3(Flat Color)
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
+		XPROFILE_FUNCTION();
 		rendererData->textureShader->SetFloat4("u_Color", color);
 		rendererData->whiteTexture->Bind();
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
@@ -69,6 +75,7 @@ namespace XEngine
 	// Draw Quad Vector3(Texture)
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D> texture)
 	{
+		XPROFILE_FUNCTION();
 		rendererData->textureShader->SetFloat4("u_Color", glm::vec4(1.0f));
 		texture->Bind();
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });

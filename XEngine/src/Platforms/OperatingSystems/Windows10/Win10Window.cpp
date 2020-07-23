@@ -1,9 +1,11 @@
 // Source file for Win10Window class functions, configured for Windows 10, also derived from window class
 #include "Xpch.h"
 #include "wtypes.h"
+#include "XEngine/InputSystem/Input.h"
 #include "XEngine/EventSystem/KeyEvent.h"
 #include "XEngine/EventSystem/MouseEvent.h"
 #include "XEngine/EventSystem/ApplicationEvent.h"
+#include "XEngine/GraphicsSystem/Renderer/Renderer.h"
 #include "Platforms/RenderingAPIs/OpenGL/OpenGlContext.h"
 #include "Platforms/OperatingSystems/Windows10/Win10Window.h"
 namespace XEngine
@@ -11,17 +13,20 @@ namespace XEngine
 	static uint8_t GLFWWindowCount = 0;
 	static void GLFWErrorCallback(int error, const char* description)
 		{ XCORE_ERROR("GLFW Error ({0}): {1}", error, description); };
-	Scope<Window> Window::Create(const WindowProps& props)
-		{ return CreateScope<Win10Window>(props); }
 	Win10Window::Win10Window(const WindowProps& props)
 	{
+		XPROFILE_FUNCTION();
 		XCORE_INFO("Using Windows 10 Window Class");
 		Init(props);
 	}
 	Win10Window::~Win10Window()
-		{ Shutdown(); }
+	{
+		XPROFILE_FUNCTION();
+		Shutdown();
+	}
 	void Win10Window::Init(const WindowProps& props)
 	{
+		XPROFILE_FUNCTION();
 		windowData.Title = props.Title;
 		windowData.Width = props.Width;
 		windowData.Height = props.Height;
@@ -32,8 +37,15 @@ namespace XEngine
 			glfwSetErrorCallback(GLFWErrorCallback);
 			XCORE_INFO("GLFW intialized");
 		}
-		window = glfwCreateWindow((int)props.Width, (int)props.Height, windowData.Title.c_str(), nullptr, nullptr);
-		++GLFWWindowCount;
+		{
+			XPROFILE_SCOPE("glfwCreateWindow");
+			#if defined(X_DEBUG)
+				if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
+					glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+			#endif
+			window = glfwCreateWindow((int)props.Width, (int)props.Height, windowData.Title.c_str(), nullptr, nullptr);
+			++GLFWWindowCount;
+		}
 		windowContext = GraphicsContext::Create(window);
 		windowContext->Init();
 		glfwSetWindowUserPointer(window, &windowData);
@@ -59,19 +71,19 @@ namespace XEngine
 			{
 				case GLFW_PRESS:
 				{
-					KeyPressedEvent event(key, 0);
+					KeyPressedEvent event(static_cast<KeyCode>(key), 0);
 					data.EventCallback(event);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					KeyReleasedEvent event(key);
+					KeyReleasedEvent event(static_cast<KeyCode>(key));
 					data.EventCallback(event);
 					break;
 				}
 				case GLFW_REPEAT:
 				{
-					KeyPressedEvent event(key, 1);
+					KeyPressedEvent event(static_cast<KeyCode>(key), 1);
 					data.EventCallback(event);
 					break;
 				}
@@ -80,7 +92,7 @@ namespace XEngine
 		glfwSetCharCallback(window, [](GLFWwindow* window, unsigned int keycode)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-			KeyTypedEvent event(keycode);
+			KeyTypedEvent event(static_cast<KeyCode>(keycode));
 			data.EventCallback(event);
 		});
 		glfwSetMouseButtonCallback(window, [](GLFWwindow* window, int button, int action, int mods)
@@ -90,13 +102,13 @@ namespace XEngine
 			{
 				case GLFW_PRESS:
 				{
-					MouseButtonPressedEvent event(button);
+					MouseButtonPressedEvent event(static_cast<MouseCode>(button));
 					data.EventCallback(event);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					MouseButtonReleasedEvent event(button);
+					MouseButtonReleasedEvent event(static_cast<MouseCode>(button));
 					data.EventCallback(event);
 					break;
 				}
@@ -117,6 +129,7 @@ namespace XEngine
 	}
 	void Win10Window::Shutdown()
 	{
+		XPROFILE_FUNCTION();
 		glfwDestroyWindow(window);
 		--GLFWWindowCount;
 		if (GLFWWindowCount == 0)
@@ -127,11 +140,13 @@ namespace XEngine
 	}
 	void Win10Window::OnUpdate()
 	{
+		XPROFILE_FUNCTION();
 		glfwPollEvents();
 		windowContext->SwapBuffers();
 	}
 	void Win10Window::SetVSync(bool enabled)
 	{
+		XPROFILE_FUNCTION();
 		if (enabled)
 			glfwSwapInterval(1);
 		else

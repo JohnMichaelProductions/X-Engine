@@ -1,5 +1,6 @@
 // Mouse event classes
 #pragma once
+#include "XEngine/InputSystem/Input.h"
 #include "XEngine/EventSystem/Event.h" 
 namespace XEngine 
 {
@@ -45,17 +46,17 @@ namespace XEngine
 	class MouseButtonEvent : public Event
 	{
 	public:
-		inline int GetMouseButton() const
+		inline MouseCode GetMouseButton() const
 			{ return mouseButton; }
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:
-		MouseButtonEvent(int button) : mouseButton(button) {}
-		int mouseButton;
+		MouseButtonEvent(MouseCode button) : mouseButton(button) {}
+		MouseCode mouseButton;
 	};
 	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
+		MouseButtonPressedEvent(MouseCode button) : MouseButtonEvent(button) {}
 		std::string ToString() const override
 		{
 			std::stringstream ss;
@@ -67,7 +68,7 @@ namespace XEngine
 	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}
+		MouseButtonReleasedEvent(MouseCode button) : MouseButtonEvent(button) {}
 		std::string ToString() const override
 		{
 			std::stringstream ss;

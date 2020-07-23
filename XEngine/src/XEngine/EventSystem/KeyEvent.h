@@ -1,22 +1,23 @@
 // Key event classes
 #pragma once
+#include "XEngine/InputSystem/Input.h"
 #include "XEngine/EventSystem/Event.h"
 namespace XEngine 
 {
 	class KeyEvent : public Event
 	{
 	public:
-		inline int GetKeyCode() const 
+		inline KeyCode GetKeyCode() const 
 			{ return eventKeyCode; }
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
-		KeyEvent(int keycode) : eventKeyCode(keycode) {}
-		int eventKeyCode;
+		KeyEvent(KeyCode keycode) : eventKeyCode(keycode) {}
+		KeyCode eventKeyCode;
 	};
 	class KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), eventRepeatCount(repeatCount) {}
+		KeyPressedEvent(KeyCode keycode, int repeatCount) : KeyEvent(keycode), eventRepeatCount(repeatCount) {}
 		inline int GetRepeatCount() const 
 			{ return eventRepeatCount; }
 		std::string ToString() const override
@@ -32,7 +33,7 @@ namespace XEngine
 	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(int keycode) : KeyEvent(keycode) {}
+		KeyReleasedEvent(KeyCode keycode) : KeyEvent(keycode) {}
 		std::string ToString() const override
 		{
 			std::stringstream ss;
@@ -44,7 +45,7 @@ namespace XEngine
 	class KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyTypedEvent(int keycode) : KeyEvent(keycode) {}
+		KeyTypedEvent(KeyCode keycode) : KeyEvent(keycode) {}
 		std::string ToString() const override
 		{
 			std::stringstream ss;

@@ -25,6 +25,9 @@
     <Filter Include="src\XEngine\Core">
       <UniqueIdentifier>{82C99CB5-6EC2-BB07-97F4-A08C834C9B13}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\XEngine\Debug">
+      <UniqueIdentifier>{E0544269-4C6B-40FF-95E2-CB2001381187}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\XEngine\EventSystem">
       <UniqueIdentifier>{A0377FAE-0C6F-C745-1579-2B69812FEE3E}</UniqueIdentifier>
     </Filter>
@@ -43,8 +46,8 @@
     <Filter Include="src\XEngine\LayerSystem">
       <UniqueIdentifier>{5B239E30-C75A-E6C7-D064-4AEB3C1B0DC1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\XEngine\LogSystem">
-      <UniqueIdentifier>{A02BB24B-0C98-6D46-D58B-05A441B78FAE}</UniqueIdentifier>
+    <Filter Include="src\XEngine\LoggingSystem">
+      <UniqueIdentifier>{25594A44-911B-7ECE-DACB-0C5B46CD56AC}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -114,6 +117,9 @@
     <ClInclude Include="src\XEngine\Core\XCore.h">
       <Filter>src\XEngine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\Debug\Instrumentor.h">
+      <Filter>src\XEngine\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\EventSystem\ApplicationEvent.h">
       <Filter>src\XEngine\EventSystem</Filter>
     </ClInclude>
@@ -144,6 +150,9 @@
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer.h">
       <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.h">
+      <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.h">
       <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
     </ClInclude>
@@ -170,6 +179,9 @@
     </ClInclude>
     <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h">
       <Filter>src\XEngine\LayerSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\LoggingSystem\Logging.h">
+      <Filter>src\XEngine\LoggingSystem</Filter>
     </ClInclude>
     <ClInclude Include="src\Xpch.h">
       <Filter>src</Filter>
@@ -909,11 +921,7 @@
     <ClInclude Include="vendor\stb\stb_image.h">
       <Filter>vendor\stb</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\XEngine\LoggingSystem\Logging.h">
-      <Filter>src\XEngine\LogSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XEngine\Debug\Instrumentor.h" />
+    <ClInclude Include="src\XEngine\InputSystem\XEngineMouseCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp">
@@ -952,10 +960,16 @@
     <ClCompile Include="src\XEngine\GraphicsSystem\CameraController.cpp">
       <Filter>src\XEngine\GraphicsSystem</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\GraphicsContext.cpp">
+      <Filter>src\XEngine\GraphicsSystem</Filter>
+    </ClCompile>
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RenderCommand.cpp">
       <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer.cpp">
+      <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.cpp">
       <Filter>src\XEngine\GraphicsSystem\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.cpp">
@@ -982,16 +996,16 @@
     <ClCompile Include="src\XEngine\LayerSystem\LayerStack.cpp">
       <Filter>src\XEngine\LayerSystem</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\LoggingSystem\Logging.cpp">
+      <Filter>src\XEngine\LoggingSystem</Filter>
+    </ClCompile>
     <ClCompile Include="src\Xpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="vendor\stb\stb_image.cpp">
       <Filter>vendor\stb</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.cpp" />
-    <ClCompile Include="src\XEngine\LoggingSystem\Logging.cpp">
-      <Filter>src\XEngine\LogSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XEngine\GraphicsSystem\GraphicsContext.cpp" />
+    <ClCompile Include="src\XEngine\InputSystem\Input.cpp" />
+    <ClCompile Include="src\XEngine\Core\Window.cpp" />
   </ItemGroup>
 </Project>

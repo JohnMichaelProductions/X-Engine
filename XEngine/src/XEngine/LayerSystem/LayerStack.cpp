@@ -4,7 +4,7 @@ namespace XEngine
 {
 	LayerStack::~LayerStack()
 	{
-		for (Layer* layer : m_Layers)
+		for (Layer* layer : layerstackLayers)
 		{
 			layer->OnDetach();
 			delete layer;
@@ -12,24 +12,26 @@ namespace XEngine
 	}
 	void LayerStack::PushLayer(Layer* layer) 
 	{ 
-		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer); 
-		m_LayerInsertIndex++;
+		layerstackLayers.emplace(layerstackLayers.begin() + layerstackLayerInsertIndex, layer);
+		layerstackLayerInsertIndex++;
 	}
 	void LayerStack::PushOverlay(Layer* overlay) 
-		{ m_Layers.emplace_back(overlay); }
+	{
+		layerstackLayers.emplace_back(overlay);
+	}
 	void LayerStack::PopLayer(Layer* layer)
 	{
-		auto it = std::find(m_Layers.begin(), m_Layers.end(), layer);
-		if (it != m_Layers.end())
+		auto it = std::find(layerstackLayers.begin(), layerstackLayers.end(), layer);
+		if (it != layerstackLayers.end())
 		{
-			m_Layers.erase(it);
-			m_LayerInsertIndex--;
+			layerstackLayers.erase(it);
+			layerstackLayerInsertIndex--;
 		}
 	}
 	void LayerStack::PopOverlay(Layer* overlay)
 	{
-		auto it = std::find(m_Layers.begin(), m_Layers.end(), overlay);
-		if (it != m_Layers.end())
-			m_Layers.erase(it);
+		auto it = std::find(layerstackLayers.begin(), layerstackLayers.end(), overlay);
+		if (it != layerstackLayers.end())
+			layerstackLayers.erase(it);
 	}
 }

@@ -24,13 +24,25 @@ namespace XEngine
 		return 0;
 	}
 	OpenGLVertexArray::OpenGLVertexArray()
-		{ glCreateVertexArrays(1, &vertexArrayRendererID); }
+	{
+		XPROFILE_FUNCTION();
+		glCreateVertexArrays(1, &vertexArrayRendererID);
+	}
 	OpenGLVertexArray::~OpenGLVertexArray()
-		{ glDeleteVertexArrays(1, &vertexArrayRendererID); }
+	{
+		XPROFILE_FUNCTION();
+		glDeleteVertexArrays(1, &vertexArrayRendererID);
+	}
 	void OpenGLVertexArray::Bind() const
-		{ glBindVertexArray(vertexArrayRendererID); }
+	{
+		XPROFILE_FUNCTION();
+		glBindVertexArray(vertexArrayRendererID);
+	}
 	void OpenGLVertexArray::Unbind() const
-		{ glBindVertexArray(0); }
+	{
+		XPROFILE_FUNCTION();
+		glBindVertexArray(0);
+	}
 	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
 		XCORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout");

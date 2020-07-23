@@ -13,6 +13,7 @@ namespace XEngine
 	Application* Application::applicationInstance = nullptr;
 	Application::Application()
 	{
+		XPROFILE_FUNCTION();
 		XCORE_INFO("Application starting");
 		XCORE_ASSERT(!applicationInstance, "Application already exists!");
 		applicationInstance = this;
@@ -22,49 +23,63 @@ namespace XEngine
 		applicationImGuiLayer = new ImGuiLayer();
 		PushOverlay(applicationImGuiLayer);
 	}
-	Application::~Application() 
-	{ 
-		XCORE_INFO("Application Shutting Down"); 
+	Application::~Application()
+	{
+		XPROFILE_FUNCTION();
+		XCORE_INFO("Application Shutting Down");
 		Renderer::Shutdown();
 	}
-	void Application::PushLayer(Layer* layer) 
-	{ 
+	void Application::PushLayer(Layer* layer)
+	{
+		XPROFILE_FUNCTION();
 		applicationLayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
-	void Application::PushOverlay(Layer* layer) 
-	{ 
+	void Application::PushOverlay(Layer* layer)
+	{
+		XPROFILE_FUNCTION();
 		applicationLayerStack.PushOverlay(layer);
 		layer->OnAttach();
 	}
 	void Application::OnEvent(Event& e)
 	{
+		XPROFILE_FUNCTION();
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(X_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(X_BIND_EVENT_FN(Application::OnWindowResize));
-		for (auto it = applicationLayerStack.end(); it != applicationLayerStack.begin(); )
+		for (auto it = applicationLayerStack.rbegin(); it != applicationLayerStack.rend(); ++it)
 		{
-			(*--it)->OnEvent(e);
+			(*it)->OnEvent(e);
 			if (e.handled)
 				break;
 		}
 	}
 	void Application::Run() 
 	{
+		XPROFILE_FUNCTION();
 		while (appRunning)
 		{
 			// Timestep
+			XPROFILE_SCOPE("Run Loop");
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - lastFrameTime;
 			lastFrameTime = time;
 			// Update Layers
 			if (!applicationMinimized)
-				for (Layer* layer : applicationLayerStack)
-					layer->OnUpdate(timestep);
-			applicationImGuiLayer->Begin();
-			for (Layer* layer : applicationLayerStack)
-				layer->OnImGuiRender();
-			applicationImGuiLayer->End();
+			{
+				{
+					XPROFILE_SCOPE("LayerStack OnUpdate");
+					for (Layer* layer : applicationLayerStack)
+						layer->OnUpdate(timestep);
+				}	
+				applicationImGuiLayer->Begin();
+				{
+					XPROFILE_SCOPE("LayerStack OnUpdate");
+					for (Layer* layer : applicationLayerStack)
+						layer->OnImGuiRender();
+				}
+				applicationImGuiLayer->End();
+			}
 			applicationWindow->OnUpdate();
 		}
 	}
@@ -75,6 +90,7 @@ namespace XEngine
 	}
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		XPROFILE_FUNCTION();
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			applicationMinimized = true;

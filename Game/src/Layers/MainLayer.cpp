@@ -7,16 +7,15 @@ MainLayer::MainLayer() : Layer("Main Layer"), mainCamera(1920.0f / 1080.0f) {}
 void MainLayer::OnAttach()
 {
 	// Creating Checkerboard Texture
+	XPROFILE_FUNCTION();
 	checkerboardTexture = XEngine::Texture2D::Create("Assets/Textures/Checkerboard.png");
 }
-void MainLayer::OnDetach() {}
+void MainLayer::OnDetach()
+	{ XPROFILE_FUNCTION(); }
 void MainLayer::OnUpdate(XEngine::Timestep timestep)
 {
 	XPROFILE_FUNCTION();
-	{
-		XPROFILE_SCOPE("CameraController::OnUpdate");
-		mainCamera.OnUpdate(timestep);
-	}
+	mainCamera.OnUpdate(timestep);
 	// Background and clear
 	{
 		XPROFILE_SCOPE("Renderer Preperation");

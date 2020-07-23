@@ -1,5 +1,5 @@
-workspace "XEngine"
-	architecture "x64"
+workspace "XEngine"	
+	architecture "x86_64"
 	startproject "Game"
 	configurations 
 	{

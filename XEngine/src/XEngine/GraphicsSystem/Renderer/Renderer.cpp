@@ -7,6 +7,7 @@ namespace XEngine
 	Scope<Renderer::SceneData> Renderer::rendererSceneData = CreateScope<Renderer::SceneData>();
 	void Renderer::Init()
 	{ 
+		XPROFILE_FUNCTION();
 		RenderCommand::Init(); 
 		Renderer2D::Init();
 	}

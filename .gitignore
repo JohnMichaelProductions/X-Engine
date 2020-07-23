@@ -2,12 +2,13 @@
 # Directories to ignore
 .vs/
 **/bin/
-!vendor/bin/premake/
 bin-int/
+!vendor/bin/premake/
 # File extensions to ignore
-*.sln
-**.vcxproj
-**.vcxproj.filters
-**.vcxproj.user
-*.user
+*.log
 *.ini
+*.sln
+*.user
+**.vcxproj
+**.vcxproj.user
+**.vcxproj.filters

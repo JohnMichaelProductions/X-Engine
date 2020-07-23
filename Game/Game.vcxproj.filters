@@ -22,9 +22,4 @@
       <Filter>Layers</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Shaders\Texture.glsl" />
-    <None Include="Assets\Shaders\Default.glsl" />
-    <None Include="Assets\Shaders\FlatColor.glsl" />
-  </ItemGroup>
 </Project>
