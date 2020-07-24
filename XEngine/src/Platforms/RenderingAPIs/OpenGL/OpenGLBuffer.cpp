@@ -5,6 +5,13 @@
 namespace XEngine
 {
 	// Vertex Buffer Functions
+	OpenGLVertexBuffer::OpenGLVertexBuffer(uint32_t size)
+	{
+		XPROFILE_FUNCTION();
+		glCreateBuffers(1, &vertexBufferRenderID);
+		glBindBuffer(GL_ARRAY_BUFFER, vertexBufferRenderID);
+		glBufferData(GL_ARRAY_BUFFER, size, nullptr, GL_DYNAMIC_DRAW);
+	}
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
 	{
 		XPROFILE_FUNCTION();
@@ -26,6 +33,11 @@ namespace XEngine
 	{
 		XPROFILE_FUNCTION();
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+	void OpenGLVertexBuffer::SetData(const void* data, uint32_t size)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, vertexBufferRenderID);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, size, data);
 	}
 	// Index Buffer Functions
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count) : indexBufferCount(count)

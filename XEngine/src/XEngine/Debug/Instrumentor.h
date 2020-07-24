@@ -126,7 +126,7 @@ namespace XEngine
 		bool timerStopped;
 	};
 }
-#define XPROFILE 1
+#define XPROFILE 0
 #if XPROFILE
 	#if defined(__GNUC__) || (defined(__MWERKS__) && (__MWERKS__ >= 0x3000)) || (defined(__ICC) && (__ICC >= 600)) || defined(__ghs__)
 		#define X_FUNC_SIG __PRETTY_FUNCTION__

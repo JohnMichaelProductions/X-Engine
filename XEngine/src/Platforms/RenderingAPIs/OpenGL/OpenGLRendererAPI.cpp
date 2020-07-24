@@ -41,18 +41,10 @@ namespace XEngine
 		{ glClearColor(color.r, color.g, color.b, color.a); }
 	void OpenGLRendererAPI::Clear()
 		{ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); }
-	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray)
+	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount)
 	{
-		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr); 
+		uint32_t count = indexCount ? vertexArray->GetIndexBuffer()->GetCount() : indexCount;
+		glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, nullptr); 
 		glBindTexture(GL_TEXTURE_2D, 0);
-	}
-	void OpenGLRendererAPI::Documentation()
-	{
-		printf("OPENGL RENDERER API DOCUMENTATION FUNCTION HAS BEEN CALLED!\n"
-			"Functions\n"
-			"SetClearColor(const glm::vec4& color): Set color of background using rgba vec 4\n"
-			"\tExample: SetClearColor(0, 0, 1, 1);\n"
-			"Clear(): Resets buffers\n"
-			"DrawIndexed(const Ref<VertexArray>& vertexArray): Draws specified index array\n");
 	}
 }

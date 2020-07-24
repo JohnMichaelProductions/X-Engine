@@ -172,8 +172,8 @@
     <ClInclude Include="src\XEngine\GraphicsSystem\VertexArray.h" />
     <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h" />
     <ClInclude Include="src\XEngine\InputSystem\Input.h" />
-    <ClInclude Include="src\XEngine\InputSystem\XEngineMouseCodes.h" />
     <ClInclude Include="src\XEngine\InputSystem\XEngineInputCodes.h" />
+    <ClInclude Include="src\XEngine\InputSystem\XEngineMouseCodes.h" />
     <ClInclude Include="src\XEngine\LayerSystem\Layer.h" />
     <ClInclude Include="src\XEngine\LayerSystem\LayerStack.h" />
     <ClInclude Include="src\XEngine\LoggingSystem\Logging.h" />

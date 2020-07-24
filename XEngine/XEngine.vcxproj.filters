@@ -174,6 +174,9 @@
     <ClInclude Include="src\XEngine\InputSystem\XEngineInputCodes.h">
       <Filter>src\XEngine\InputSystem</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\InputSystem\XEngineMouseCodes.h">
+      <Filter>src\XEngine\InputSystem</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine\LayerSystem\Layer.h">
       <Filter>src\XEngine\LayerSystem</Filter>
     </ClInclude>
@@ -921,7 +924,6 @@
     <ClInclude Include="vendor\stb\stb_image.h">
       <Filter>vendor\stb</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\InputSystem\XEngineMouseCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platforms\OperatingSystems\Windows10\Win10Input.cpp">
@@ -949,6 +951,9 @@
       <Filter>src\Platforms\RenderingAPIs\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\Core\Application.cpp">
+      <Filter>src\XEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\Core\Window.cpp">
       <Filter>src\XEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\XEngine\GraphicsSystem\Buffer.cpp">
@@ -990,6 +995,9 @@
     <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiLayer.cpp">
       <Filter>src\XEngine\ImGuiLayer</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\InputSystem\Input.cpp">
+      <Filter>src\XEngine\InputSystem</Filter>
+    </ClCompile>
     <ClCompile Include="src\XEngine\LayerSystem\Layer.cpp">
       <Filter>src\XEngine\LayerSystem</Filter>
     </ClCompile>
@@ -1005,7 +1013,5 @@
     <ClCompile Include="vendor\stb\stb_image.cpp">
       <Filter>vendor\stb</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\InputSystem\Input.cpp" />
-    <ClCompile Include="src\XEngine\Core\Window.cpp" />
   </ItemGroup>
 </Project>

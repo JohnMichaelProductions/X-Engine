@@ -7,6 +7,7 @@ namespace XEngine
 	{
 	public:
 		// Defined in Source File
+		OpenGLVertexBuffer(uint32_t size);
 		OpenGLVertexBuffer(float* vertices, uint32_t size);
 		virtual ~OpenGLVertexBuffer();
 		virtual void Bind() const override;
@@ -16,6 +17,7 @@ namespace XEngine
 			{ return vertexBufferLayout; }
 		virtual void SetLayout(const BufferLayout& layout) override
 			{ vertexBufferLayout = layout; }
+		virtual void SetData(const void* data, uint32_t size) override;
 	private:
 		uint32_t vertexBufferRenderID;
 		BufferLayout vertexBufferLayout;

@@ -13,10 +13,8 @@ namespace XEngine
 			{ renderCommandAPI->SetClearColor(color); }
 		inline static void Clear()
 			{ renderCommandAPI->Clear(); }
-		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray)
-			{ renderCommandAPI->DrawIndexed(vertexArray); }
-		inline static void Documentation()
-			{ renderCommandAPI->Documentation(); }
+		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t count = 0)
+			{ renderCommandAPI->DrawIndexed(vertexArray, count); }
 	private:
 		static Scope<RendererAPI> renderCommandAPI;
 	};
