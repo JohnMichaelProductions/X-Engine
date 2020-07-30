@@ -20,7 +20,7 @@ namespace XEngine
 		virtual void OnUpdate(Timestep timestep) { }
 		virtual void OnEvent(Event& event) 
 			{ /* XCORE_TRACE("{0}", event.GetName()); */}
-		inline const std::string& GetName() const
+		const std::string& GetName() const
 			{ return layerDebugName; }
 	protected:
 		std::string layerDebugName;

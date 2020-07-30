@@ -7,7 +7,7 @@ namespace XEngine
 	class KeyEvent : public Event
 	{
 	public:
-		inline KeyCode GetKeyCode() const 
+		KeyCode GetKeyCode() const 
 			{ return eventKeyCode; }
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
@@ -18,7 +18,7 @@ namespace XEngine
 	{
 	public:
 		KeyPressedEvent(KeyCode keycode, int repeatCount) : KeyEvent(keycode), eventRepeatCount(repeatCount) {}
-		inline int GetRepeatCount() const 
+		int GetRepeatCount() const 
 			{ return eventRepeatCount; }
 		std::string ToString() const override
 		{

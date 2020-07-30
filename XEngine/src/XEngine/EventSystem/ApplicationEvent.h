@@ -7,9 +7,9 @@ namespace XEngine
 	{
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height) : windowWidth(width), windowHeight(height) {}
-		inline unsigned int GetWidth() const 
+		unsigned int GetWidth() const 
 			{ return windowWidth; }
-		inline unsigned int GetHeight() const 
+		unsigned int GetHeight() const 
 			{ return windowHeight; }
 		std::string ToString() const override
 		{

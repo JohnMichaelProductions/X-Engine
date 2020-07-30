@@ -8,15 +8,15 @@ namespace XEngine
 	class Input
 	{
 	public:
-		inline static bool IsKeyPressed(KeyCode key)
+		static bool IsKeyPressed(KeyCode key)
 			{ return inputInstance->IsKeyPressedImpl(key); }
-		inline static bool IsMouseButtonPressed(MouseCode button)
+		static bool IsMouseButtonPressed(MouseCode button)
 			{ return inputInstance->IsMouseButtonPressedImpl(button); }
-		inline static std::pair<float, float> GetMousePostion()
+		static std::pair<float, float> GetMousePostion()
 			{ return inputInstance->GetMousePositionImpl(); }
-		inline static float GetMouseX()
+		static float GetMouseX()
 			{ return inputInstance->GetMouseXImpl(); }
-		inline static float GetMouseY()
+		static float GetMouseY()
 			{ return inputInstance->GetMouseYImpl(); }
 		static Scope<Input> Create();
 	protected:

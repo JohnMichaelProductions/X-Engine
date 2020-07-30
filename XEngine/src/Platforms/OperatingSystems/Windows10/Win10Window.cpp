@@ -33,7 +33,7 @@ namespace XEngine
 		if (GLFWWindowCount == 0)
 		{
 			int success = glfwInit();
-			XCORE_ASSERT(success, "Could not intialize GLFW");
+			XCORE_ASSERT(success, "Could not initialize GLFW");
 			glfwSetErrorCallback(GLFWErrorCallback);
 			XCORE_INFO("GLFW intialized");
 		}

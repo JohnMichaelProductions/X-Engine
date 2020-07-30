@@ -51,12 +51,17 @@ namespace XEngine
 		XPROFILE_FUNCTION();
 		glUseProgram(0);
 	}
-	void OpenGLShader::SetInt(const std::string& name, const int value)
+	void OpenGLShader::SetInt(const std::string& name, int value)
 	{
 		XPROFILE_FUNCTION();
 		UploadUniformInt(name, value);
 	}
-	void OpenGLShader::SetFloat(const std::string& name, const float value)
+	void OpenGLShader::SetIntArray(const std::string& name, int* values, uint32_t count)
+	{
+		XPROFILE_FUNCTION();
+		UploadUniformIntArray(name, values, count);
+	}
+	void OpenGLShader::SetFloat(const std::string& name, float value)
 	{
 		XPROFILE_FUNCTION();
 		UploadUniformFloat(name, value);
@@ -80,6 +85,11 @@ namespace XEngine
 	{
 		GLint location = glGetUniformLocation(shaderRendererID, name.c_str());
 		glUniform1i(location, value);
+	}
+	void OpenGLShader::UploadUniformIntArray(const std::string& name, int* values, uint32_t count)
+	{
+		GLint location = glGetUniformLocation(shaderRendererID, name.c_str());
+		glUniform1iv(location, count, values);
 	}
 	void OpenGLShader::UploadUniformFloat(const std::string& name, float value)
 	{

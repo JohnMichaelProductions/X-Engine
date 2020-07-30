@@ -9,9 +9,9 @@ namespace XEngine
 	public:
 		MouseMovedEvent(float x, float y) : eventMouseX(x), eventMouseY(y)
 			{ /* Called everytime the mouse is moved */ }
-		inline float GetX() const
+		float GetX() const
 			{ return eventMouseX; }
-		inline float GetY() const
+		float GetY() const
 			{ return eventMouseY; }
 		std::string ToString() const override
 		{
@@ -28,9 +28,9 @@ namespace XEngine
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset) : eventXOffset(xOffset), eventYOffset(yOffset) {}
-		inline float GetXOffset() const 
+		float GetXOffset() const 
 			{ return eventXOffset; }
-		inline float GetYOffset() const 
+		float GetYOffset() const 
 			{ return eventYOffset; }
 		std::string ToString() const override
 		{

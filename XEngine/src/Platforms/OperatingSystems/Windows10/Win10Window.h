@@ -15,13 +15,13 @@ namespace XEngine
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 		// Prototype in Header File
-		inline unsigned int GetWidth() const override
+		unsigned int GetWidth() const override
 			{ return windowData.Width; }
-		inline unsigned int GetHeight() const override 
+		unsigned int GetHeight() const override 
 			{ return windowData.Height; }
-		inline void SetEventCallback(const EventCallbackFn& callback) override 
+		void SetEventCallback(const EventCallbackFn& callback) override 
 			{ windowData.EventCallback = callback; }
-		inline virtual void* GetNativeWindow() const 
+		virtual void* GetNativeWindow() const 
 			{ return window; }
 	private:
 		// Defined in Source File

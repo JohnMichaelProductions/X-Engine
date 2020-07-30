@@ -24,9 +24,9 @@ namespace XEngine
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 		// Prototype in Header File
-		inline Window& GetWindow()
+		Window& GetWindow()
 			{ return *applicationWindow; }
-		inline static Application& Get()
+		static Application& Get()
 			{ return *applicationInstance; }
 	private:
 		// Defined in Source File

@@ -5,15 +5,15 @@ namespace XEngine
 	class RenderCommand
 	{
 	public:
-		inline static void Init()
+		static void Init()
 			{ renderCommandAPI->Init(); }
-		inline static void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
+		static void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
 			{ renderCommandAPI->SetViewport(x, y, width, height); }
-		inline static void SetClearColor(const glm::vec4& color)
+		static void SetClearColor(const glm::vec4& color)
 			{ renderCommandAPI->SetClearColor(color); }
-		inline static void Clear()
+		static void Clear()
 			{ renderCommandAPI->Clear(); }
-		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t count = 0)
+		static void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t count = 0)
 			{ renderCommandAPI->DrawIndexed(vertexArray, count); }
 	private:
 		static Scope<RendererAPI> renderCommandAPI;

@@ -11,9 +11,9 @@ namespace XEngine
 		// Defined in Source File
 		static void Init();
 		// Prototype in Header File
-		inline static Ref<spdlog::logger>& GetCoreLogger()
+		static Ref<spdlog::logger>& GetCoreLogger()
 			{ return coreLogger; }
-		inline static Ref<spdlog::logger>& GetClientLogger()
+		static Ref<spdlog::logger>& GetClientLogger()
 			{ return clientLogger; }
 	private:
 		static Ref<spdlog::logger> coreLogger;

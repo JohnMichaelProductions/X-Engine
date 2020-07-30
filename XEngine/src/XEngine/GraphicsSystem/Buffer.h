@@ -70,9 +70,9 @@ namespace XEngine
 		BufferLayout() {}
 		BufferLayout(const std::initializer_list<BufferElement>& elements) : bufferLayoutElements(elements)
 			{ CalculateOffsetsAndStride(); }
-		inline uint32_t GetStride() const
+		uint32_t GetStride() const
 			{ return bufferLayoutStride; }
-		inline const  std::vector<BufferElement>& GetElements() const
+		const  std::vector<BufferElement>& GetElements() const
 			{ return bufferLayoutElements; }
 		std::vector<BufferElement>::iterator begin()
 			{ return bufferLayoutElements.begin(); }
