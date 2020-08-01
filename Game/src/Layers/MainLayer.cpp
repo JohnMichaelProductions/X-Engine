@@ -17,6 +17,7 @@ void MainLayer::OnUpdate(XEngine::Timestep timestep)
 {
 	XPROFILE_FUNCTION();
 	mainCamera.OnUpdate(timestep);
+	XEngine::Renderer2D::ResetStats();
 	// Background and clear
 	{
 		XPROFILE_SCOPE("Renderer Preperation");
@@ -26,20 +27,24 @@ void MainLayer::OnUpdate(XEngine::Timestep timestep)
 	// Draw command
 	{
 		XPROFILE_SCOPE("Renderer Draw");
-		// columns
-		unsigned static int rows = 2;
-		unsigned static int columns = 1;
-		XCORE_INFO(rows);
-		if (XEngine::Input::IsKeyPressed(XEngine::KeyCode::Right))
-			rows++;
-		if (XEngine::Input::IsKeyPressed(XEngine::KeyCode::Up))
-			columns++;
+		static float rotation = 0.0f;
+		rotation += timestep * 50.0f;
+		XPROFILE_SCOPE("Renderer Draw");
 		XEngine::Renderer2D::BeginScene(mainCamera.GetCamera());
-		for (int i = 0; i < rows; i++)
+		XEngine::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, -45.0f, { 0.8f, 0.2f, 0.3f, 1.0f });
+		XEngine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+		XEngine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
+		XEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, checkerboardTexture, 10.0f);
+		XEngine::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, rotation, checkerboardTexture, 20.0f);
+		XEngine::Renderer2D::EndScene();
+		XEngine::Renderer2D::BeginScene(mainCamera.GetCamera());
+		for (float y = -5.0f; y < 5.0f; y += 0.5f)
 		{
-			XEngine::Renderer2D::DrawQuad({ (float)i, 0.0f, }, { .9f, .9f }, { .8f, .2f, .3f, 1.0f });
-			for (int i = 0; i < columns; i++)
-				XEngine::Renderer2D::DrawQuad({ 0.0f, (float)i, }, { .9f, .9f }, { .8f, .2f, .3f, 1.0f });
+			for (float x = -5.0f; x < 5.0f; x += 0.5f)
+			{
+				glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
+				XEngine::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, color);
+			}
 		}
 		XEngine::Renderer2D::EndScene();
 	}
@@ -47,7 +52,13 @@ void MainLayer::OnUpdate(XEngine::Timestep timestep)
 void MainLayer::OnImGuiRender()
 {
 	XPROFILE_FUNCTION();
+	auto stats = XEngine::Renderer2D::GetStats();
 	ImGui::Begin("Profiler");
+	ImGui::Text("Renderer2D Stats: ");
+	ImGui::Text("Draw Calls: %d", stats.DrawCalls);
+	ImGui::Text("Quads: %d", stats.QuadCount);
+	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 	ImGui::End();
 }
 void MainLayer::OnEvent(XEngine::Event& e)

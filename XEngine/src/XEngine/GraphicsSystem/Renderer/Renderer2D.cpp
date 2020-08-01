@@ -17,9 +17,9 @@ namespace XEngine
 	};
 	struct Renderer2DData
 	{
-		const uint32_t MaxQuads = 10000;
-		const uint32_t MaxVertices = MaxQuads * 4;
-		const uint32_t MaxIndices = MaxQuads * 6;
+		static const uint32_t MaxQuads = 20000;
+		static const uint32_t MaxVertices = MaxQuads * 4;
+		static const uint32_t MaxIndices = MaxQuads * 6;
 		static const uint32_t MaxTextureSlots = 32; // TODO: RenderCaps
 		Ref<VertexArray> VertexArray;
 		Ref<VertexBuffer> VertexBuffer;
@@ -31,6 +31,7 @@ namespace XEngine
 		std::array<Ref<Texture2D>, MaxTextureSlots> TextureSlots;
 		uint32_t TextureSlotIndex = 1;
 		glm::vec4 QuadVertexPositions[4];
+		Renderer2D::Stats RendererStats;
 	}; 
 	static Renderer2DData rendererData;
 	void Renderer2D::Init()
@@ -93,7 +94,8 @@ namespace XEngine
 	void Renderer2D::EndScene()
 	{
 		XPROFILE_FUNCTION();
-		uint32_t dataSize = (uint8_t*)rendererData.QuadVertexBufferPtr - (uint8_t*)rendererData.QuadVertexBufferBase;		rendererData.VertexBuffer->SetData(rendererData.QuadVertexBufferBase, dataSize);
+		uint32_t dataSize = (uint8_t*)rendererData.QuadVertexBufferPtr - (uint8_t*)rendererData.QuadVertexBufferBase;
+		rendererData.VertexBuffer->SetData(rendererData.QuadVertexBufferBase, dataSize);
 		Flush();
 	}
 	void Renderer2D::Flush()
@@ -101,6 +103,14 @@ namespace XEngine
 		for (uint32_t i = 0; i < rendererData.TextureSlotIndex; i++)
 			rendererData.TextureSlots[i]->Bind(i);
 		RenderCommand::DrawIndexed(rendererData.VertexArray, rendererData.QuadIndexCount);
+		rendererData.RendererStats.DrawCalls++;
+	}
+	void Renderer2D::FlushAndReset()
+	{
+		EndScene();
+		rendererData.QuadIndexCount = 0;
+		rendererData.QuadVertexBufferPtr = rendererData.QuadVertexBufferBase;
+		rendererData.TextureSlotIndex = 1;
 	}
 	// Draw Calls
 	// Draw Quad (x, y) (Color)
@@ -110,6 +120,8 @@ namespace XEngine
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
 		XPROFILE_FUNCTION();
+		if (rendererData.QuadIndexCount >= Renderer2DData::MaxIndices)
+			FlushAndReset();
 		const float defualtWhiteTextureIndex = 0.0f;
 		const float tilingFactor = 1.0f;
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
@@ -142,6 +154,7 @@ namespace XEngine
 		rendererData.QuadVertexBufferPtr->TillingFactor = tilingFactor;
 		rendererData.QuadVertexBufferPtr++;
 		rendererData.QuadIndexCount += 6;
+		rendererData.RendererStats.QuadCount++;
 	}
 	// Draw Quad (x, y) (Texture)
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
@@ -150,6 +163,8 @@ namespace XEngine
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
 	{
 		XPROFILE_FUNCTION();
+		if (rendererData.QuadIndexCount >= Renderer2DData::MaxIndices)
+			FlushAndReset();
 		constexpr glm::vec4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
 		float textureIndex = 0.0f;
 		for (uint32_t i = 0; i < rendererData.TextureSlotIndex; i++)
@@ -196,6 +211,7 @@ namespace XEngine
 		rendererData.QuadVertexBufferPtr->TillingFactor = tilingFactor;
 		rendererData.QuadVertexBufferPtr++;
 		rendererData.QuadIndexCount += 6;
+		rendererData.RendererStats.QuadCount++;
 	}
 	// Draw Rotated Quad (x, y) (Color)
 	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const glm::vec4& color)
@@ -204,6 +220,8 @@ namespace XEngine
 	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color)
 	{
 		XPROFILE_FUNCTION();
+		if (rendererData.QuadIndexCount >= Renderer2DData::MaxIndices)
+			FlushAndReset();
 		const float defualtWhiteTextureIndex = 0.0f;
 		const float tilingFactor = 1.0f;
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::rotate(glm::mat4(1.0f), glm::radians(rotation), { 0.0f, 0.0f, 1.0f }) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
@@ -236,6 +254,7 @@ namespace XEngine
 		rendererData.QuadVertexBufferPtr->TillingFactor = tilingFactor;
 		rendererData.QuadVertexBufferPtr++;
 		rendererData.QuadIndexCount += 6;
+		rendererData.RendererStats.QuadCount++;
 	}
 	// Draw Rotated Quad (x, y) (Texture)
 	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
@@ -244,6 +263,8 @@ namespace XEngine
 	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
 	{
 		XPROFILE_FUNCTION();
+		if (rendererData.QuadIndexCount >= Renderer2DData::MaxIndices)
+			FlushAndReset();
 		constexpr glm::vec4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
 		float textureIndex = 0.0f;
 		for (uint32_t i = 0; i < rendererData.TextureSlotIndex; i++)
@@ -290,5 +311,10 @@ namespace XEngine
 		rendererData.QuadVertexBufferPtr->TillingFactor = tilingFactor;
 		rendererData.QuadVertexBufferPtr++;
 		rendererData.QuadIndexCount += 6;
+		rendererData.RendererStats.QuadCount++;
 	}
+	Renderer2D::Stats Renderer2D::GetStats()
+		{ return rendererData.RendererStats; }
+	void Renderer2D::ResetStats()
+		{ memset(&rendererData.RendererStats, 0, sizeof(Stats)); }
 }
