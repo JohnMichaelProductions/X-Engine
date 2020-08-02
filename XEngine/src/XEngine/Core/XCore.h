@@ -1,6 +1,7 @@
 // X-Engine Core File
 #pragma once
 #include <memory>
+// Platforms
 #ifdef _WIN32
 	#ifdef _WIN64
 		#define X_PLATFORM_WINDOWS
@@ -29,12 +30,23 @@
 #else
 	#error "Unknown platform!"
 #endif
+// Configurations
 #ifdef X_DEBUG
-	#define X_ENABLE_ASSERTS
+	#if defined(X_PLATFORM_WINDOWS)
+		#define X_DEBUGBREAK() __debugbreak()
+	#elif defined(X_PLATFORM_LINUX)
+		#include <signal.h>
+		#define X_DEBUGBREAK() raise(SIGTRAP)
+	#else
+		#error "Platform doesn't support debugbreak yet!"
+	#endif
+	#define  X_ENABLE_ASSERTS
+#else
+	#define X_DEBUGBREAK()
 #endif
 #ifdef X_ENABLE_ASSERTS
-	#define X_ASSERT(x, ...) {if(!(x)) {XCLIENT_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define XCORE_ASSERT(x, ...)  {if(!(x)) {XCORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define X_ASSERT(x, ...) {if(!(x)) {XCLIENT_ERROR("Assertion Failed: {0}", __VA_ARGS__); X_DEBUGBREAK(); } }
+	#define XCORE_ASSERT(x, ...)  {if(!(x)) {XCORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); X_DEBUGBREAK(); } }
 #else
 	#define X_ASSERT(x, ...)
 	#define XCORE_ASSERT(x, ...)

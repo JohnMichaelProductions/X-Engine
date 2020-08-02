@@ -4,7 +4,7 @@
 #include "XEngine/InputSystem/XEngineInputCodes.h"
 namespace XEngine
 {
-	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation) : cameraAspectRatio(aspectRatio), rotationOn(rotation), orthoCamera(-cameraAspectRatio * cameraZoomLevel, cameraAspectRatio* cameraZoomLevel, -cameraZoomLevel, cameraZoomLevel){}
+	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation) : cameraAspectRatio(aspectRatio), cameraBounds({ -cameraAspectRatio * cameraZoomLevel, cameraAspectRatio * cameraZoomLevel, -cameraZoomLevel, cameraZoomLevel}), orthoCamera(cameraBounds.Left, cameraBounds.Right, cameraBounds.Bottom, cameraBounds.Top), cameraRotation(rotation) {}
 	void OrthographicCameraController::OnUpdate(Timestep timestep)
 	{
 		XPROFILE_FUNCTION();
@@ -54,14 +54,16 @@ namespace XEngine
 		XPROFILE_FUNCTION();
 		cameraZoomLevel -= e.GetYOffset() * 0.25f;
 		cameraZoomLevel = std::max(cameraZoomLevel, .25f);
-		orthoCamera.SetProjectionMatrix(-cameraAspectRatio * cameraZoomLevel, cameraAspectRatio * cameraZoomLevel, -cameraZoomLevel, cameraZoomLevel);
+		cameraBounds = { -cameraAspectRatio * cameraZoomLevel, cameraAspectRatio * cameraZoomLevel, -cameraZoomLevel, cameraZoomLevel };
+		orthoCamera.SetProjectionMatrix(cameraBounds.Left, cameraBounds.Right, cameraBounds.Bottom, cameraBounds.Top);
 		return false;
 	}
 	bool OrthographicCameraController::OnWindowResize(WindowResizeEvent& e)
 	{
 		XPROFILE_FUNCTION();
 		cameraAspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
-		orthoCamera.SetProjectionMatrix(-cameraAspectRatio * cameraZoomLevel, cameraAspectRatio * cameraZoomLevel, -cameraZoomLevel, cameraZoomLevel);
+		cameraBounds = { -cameraAspectRatio * cameraZoomLevel, cameraAspectRatio * cameraZoomLevel, -cameraZoomLevel, cameraZoomLevel };
+		orthoCamera.SetProjectionMatrix(cameraBounds.Left, cameraBounds.Right, cameraBounds.Bottom, cameraBounds.Top);
 		return false;
 	}
 }

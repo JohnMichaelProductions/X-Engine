@@ -39,7 +39,10 @@ group "X-Engine"
 			"%{prj.name}/glm/glm/**.inl"
 		}
 		defines
-			{ "_CRT_SECURE_NO_WARNINGS" }
+		{
+			"_CRT_SECURE_NO_WARNINGS",
+			"GLFW_INCLUDE_NONE"
+		}
 		includedirs
 		{ 
 			"%{prj.name}/src",
@@ -60,11 +63,6 @@ group "X-Engine"
 		filter "system:windows"
 			staticruntime "On"
 			systemversion "latest"
-			defines 
-			{
-				"X_BUILD_DLL",
-				"GLFW_INCLUDE_NONE"
-			}
 		filter "configurations:Debug"
 			defines "X_DEBUG"
 			symbols "on"
@@ -94,7 +92,7 @@ group "Game"
 			"XEngine/src",
 			"%{IncludeDir.glm}",
 			"XEngine/vendor"
-			}
+		}
 		links 
 			{ "XEngine" }
 		filter "system:windows"

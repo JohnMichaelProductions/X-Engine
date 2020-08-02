@@ -12,7 +12,7 @@ namespace XEngine
 			{ return inputInstance->IsKeyPressedImpl(key); }
 		static bool IsMouseButtonPressed(MouseCode button)
 			{ return inputInstance->IsMouseButtonPressedImpl(button); }
-		static std::pair<float, float> GetMousePostion()
+		static std::pair<float, float> GetMousePosition()
 			{ return inputInstance->GetMousePositionImpl(); }
 		static float GetMouseX()
 			{ return inputInstance->GetMouseXImpl(); }

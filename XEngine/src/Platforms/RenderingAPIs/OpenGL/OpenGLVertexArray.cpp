@@ -52,9 +52,36 @@ namespace XEngine
 		const auto& layout = vertexBuffer->GetLayout();
 		for (const auto& element : layout)
 		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index, element.GetComponentCount(), ShaderTypeConvertToOpenGLType(element.Type), element.Normalized ? GL_TRUE : GL_FALSE, layout.GetStride(), (const void*)element.Offset);
-			index++;
+			uint8_t count = 0;
+			switch (element.Type)
+			{
+				case ShaderDataType::Float:
+				case ShaderDataType::Float2:
+				case ShaderDataType::Float3:
+				case ShaderDataType::Float4:
+				case ShaderDataType::Int:
+				case ShaderDataType::Int2:
+				case ShaderDataType::Int3:
+				case ShaderDataType::Int4:
+				case ShaderDataType::Bool:
+					glEnableVertexAttribArray(index);
+					glVertexAttribPointer(index, element.GetComponentCount(), ShaderTypeConvertToOpenGLType(element.Type), element.Normalized ? GL_TRUE : GL_FALSE, layout.GetStride(), (const void*)element.Offset);
+					index++;
+					break;
+				case ShaderDataType::Mat3:
+				case ShaderDataType::Mat4:
+					count = element.GetComponentCount();
+					for (uint8_t i = 0; i < count; i++)
+					{
+						glEnableVertexAttribArray(index);
+						glVertexAttribPointer(index, count, ShaderTypeConvertToOpenGLType(element.Type), element.Normalized ? GL_TRUE : GL_FALSE, layout.GetStride(), (const void*)(sizeof(float) * count * i));
+						glVertexAttribDivisor(index, 1);
+						index++;
+					}
+					break;
+				default:
+					XCORE_ASSERT(false, "Unknown ShaderDataType!");
+			}
 		}
 		vertexArrayVertexBuffer.push_back(vertexBuffer);
 	}

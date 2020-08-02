@@ -76,7 +76,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;X_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -96,7 +96,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;X_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -120,7 +120,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Xpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;X_BUILD_DLL;GLFW_INCLUDE_NONE;X_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;X_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\ImGui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -168,6 +168,7 @@
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Shader.h" />
+    <ClInclude Include="src\XEngine\GraphicsSystem\SubTexture2D.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Texture.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\VertexArray.h" />
     <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h" />
@@ -444,6 +445,7 @@
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Shader.cpp" />
+    <ClCompile Include="src\XEngine\GraphicsSystem\SubTexture2D.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Texture.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\VertexArray.cpp" />
     <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp" />

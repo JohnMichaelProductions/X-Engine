@@ -6,6 +6,14 @@
 #include "XEngine/EventSystem/ApplicationEvent.h"
 namespace XEngine
 {
+	struct OrthographicCameraBounds
+	{
+		float Left, Right, Bottom, Top;
+		float GetWidth()
+			{ return Right - Left; }
+		float GetHeight()
+			{ return Top - Bottom; }
+	};
 	class OrthographicCameraController
 	{
 	public:
@@ -16,6 +24,8 @@ namespace XEngine
 			{ return orthoCamera; }
 		const OrthographicCamera& GetCamera() const
 			{ return orthoCamera; }
+		const OrthographicCameraBounds& GetBounds() const
+			{ return cameraBounds; }
 		float GetZoomLevel()
 			{ return cameraZoomLevel; }
 		void SetZoomLevel(float level)
@@ -25,6 +35,7 @@ namespace XEngine
 		bool OnWindowResize(WindowResizeEvent& e);
 		float cameraAspectRatio;
 		float cameraZoomLevel = 1.0f;
+		OrthographicCameraBounds cameraBounds;
 		OrthographicCamera orthoCamera;
 		bool rotationOn;
 		glm::vec3 cameraPosition = {0,0,0};
