@@ -41,6 +41,8 @@ namespace XEngine
 		applicationLayerStack.PushOverlay(layer);
 		layer->OnAttach();
 	}
+	void Application::Close()
+		{ appRunning = false; }
 	void Application::OnEvent(Event& e)
 	{
 		XPROFILE_FUNCTION();
@@ -49,9 +51,9 @@ namespace XEngine
 		dispatcher.Dispatch<WindowResizeEvent>(X_BIND_EVENT_FN(Application::OnWindowResize));
 		for (auto it = applicationLayerStack.rbegin(); it != applicationLayerStack.rend(); ++it)
 		{
-			(*it)->OnEvent(e);
 			if (e.handled)
 				break;
+			(*it)->OnEvent(e);
 		}
 	}
 	void Application::Run() 

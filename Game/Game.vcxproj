@@ -134,12 +134,10 @@
     <ClInclude Include="src\Layers\MainLayer.h" />
     <ClInclude Include="src\Layers\UILayer.h" />
     <ClInclude Include="src\Layers\XLayer.h" />
-    <ClInclude Include="src\ParticleSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Layers\MainLayer.cpp" />
-    <ClCompile Include="src\ParticleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XEngine\XEngine.vcxproj">

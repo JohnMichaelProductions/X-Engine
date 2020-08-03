@@ -14,6 +14,8 @@ namespace XEngine
 			{ return textureWidth; }
 		virtual uint32_t GetHeight() const override
 			{ return textureHeight; }
+		virtual uint32_t GetRendererID() const override
+			{ return textureRendererID; }
 		virtual void Bind(uint32_t slot = 0) const override;
 		virtual bool operator==(const Texture& other) const override
 			{ return textureRendererID == ((OpenGLTexture2D&)other).textureRendererID; }

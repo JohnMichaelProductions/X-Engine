@@ -3,49 +3,12 @@
 #include "Layers/MainLayer.h"
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-static const uint32_t mapWidth = 32;
-static const char* mapTiles =
-{
-	"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
-	"WWWWWWWWWWDDDDDDDDDDDDWWWWWWWWWW"
-	"WWWWWDDDDDDDDDDDDDDDDDDWWWWWWWWW"
-	"WWWWDDDDDDDDDDDDDDDDDDDDWWWWWWWW"
-	"WWWDDDDDDDDDDDDDDDDDDDDDDDWWWWWW"
-	"WWWDDDDDDDDWWWWDDDDDDDDDDDWWWWWW"
-	"WWWDDDDDDDWWWWWWWDDDDDDDDDWWWWWW"
-	"WWWDDDDDDDWWWWWWWDDDDDDDDDDWWWWW"
-	"WWWDDDDDDDDWWWWWDDDDDDDDDDDWWWWW"
-	"WWWDDDDDDDDDDWWDDDDDDDDDDDDWWWWW"
-	"WWWDDDDDDDDDDDDDDDDDDDDDDDWWWWWW"
-	"WWWDDDDDDDDDDDDDDDDDDDDDDDWWWWWW"
-	"WWWWDDDDDDDDDDDDDDDDDDDDDWWWWWWW"
-	"WWWWWWWDDDDDDDDDDDDDDDDWWWWWWWWW"
-	"WWWWWWWWWWWWWDDDDDWWWWWWWWWWWWWW"
-	"WWWWWWWWWWWWWWDDDWWWWWWWWWWWWWWW"
-	"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
-	"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
-};
 MainLayer::MainLayer() : Layer("Main Layer"), mainCamera(1920.0f / 1080.0f) {}
 void MainLayer::OnAttach()
 {
 	// Creating Checkerboard Texture
 	XPROFILE_FUNCTION();
 	checkerboardTexture = XEngine::Texture2D::Create("Assets/Textures/Checkerboard.png");
-	spriteSheet = XEngine::Texture2D::Create("Assets/Game/Textures/Tilemap.png");
-	textureMap['W'] = XEngine::SubTexture2D::CreateFromCoords(spriteSheet, { 11, 11 }, { 128, 128 });
-	textureMap['D'] = XEngine::SubTexture2D::CreateFromCoords(spriteSheet, { 6, 11 }, { 128, 128 });
-	invalidTexture = XEngine::SubTexture2D::CreateFromCoords(spriteSheet, { 2, 3 }, { 128, 128 });
-	mainMapWidth = mapWidth;
-	mainMapHeight = strlen(mapTiles) / mapWidth;
-	// Particle Properties
-	mainParticle.ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
-	mainParticle.ColorEnd = { 254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f };
-	mainParticle.SizeBegin = 0.5f, mainParticle.SizeVariation = 0.3f, mainParticle.SizeEnd = 0.0f;
-	mainParticle.LifeTime = 5.0f;
-	mainParticle.Velocity = { 0.0f, 0.0f };
-	mainParticle.VelocityVariation = { 3.0f, 1.0f };
-	mainParticle.Position = { 0.0f, 0.0f };
-	mainCamera.SetZoomLevel(5.0f);
 }
 void MainLayer::OnDetach()
 	{ XPROFILE_FUNCTION(); }
@@ -60,7 +23,6 @@ void MainLayer::OnUpdate(XEngine::Timestep timestep)
 		XEngine::RenderCommand::SetClearColor({ .1f, .1f, .1f, 1 });
 		XEngine::RenderCommand::Clear();
 	}
-	#if 0
 	{
 		XPROFILE_SCOPE("Renderer Draw");
 		static float rotation = 0.0f;
@@ -84,41 +46,49 @@ void MainLayer::OnUpdate(XEngine::Timestep timestep)
 		}
 		XEngine::Renderer2D::EndScene();
 	}
-	#endif
-	if (XEngine::Input::IsMouseButtonPressed(XEngine::MouseCode::ButtonLeft))
-	{
-		auto [x, y] = XEngine::Input::GetMousePosition();
-		auto width = XEngine::Application::Get().GetWindow().GetWidth();
-		auto height = XEngine::Application::Get().GetWindow().GetHeight();
-		auto bounds = mainCamera.GetBounds();
-		auto pos = mainCamera.GetCamera().GetPosition();
-		x = (x / width) * bounds.GetWidth() - bounds.GetWidth() * 0.5f;
-		y = bounds.GetHeight() * 0.5f - (y / height) * bounds.GetHeight();
-		mainParticle.Position = { x + pos.x, y + pos.y };
-		for (int i = 0; i < 5; i++)
-			mainParticleSystem.Emit(mainParticle);
-	}
-	XEngine::Renderer2D::BeginScene(mainCamera.GetCamera());
-	for (uint32_t y = 0; y < mainMapHeight; y++)
-	{
-		for (uint32_t x = 0; x < mainMapWidth; x++)
-		{
-			char tileType = mapTiles[x + y * mapWidth];
-			XEngine::Ref<XEngine::SubTexture2D> texture;
-			if (textureMap.find(tileType) != textureMap.end())
-				texture = textureMap[tileType];
-			else
-				texture = invalidTexture;
-			XEngine::Renderer2D::DrawQuad({ x -mainMapWidth / 2.0f, y - mainMapHeight / 2.0f, .5f }, { 1.0f, 1.0f }, texture);
-		}
-	}
-	XEngine::Renderer2D::EndScene();
-	mainParticleSystem.OnUpdate(timestep);
-	mainParticleSystem.OnRender(mainCamera.GetCamera());
 }
 void MainLayer::OnImGuiRender()
 {
 	XPROFILE_FUNCTION();
+	static bool dockspaceOpen = true;
+	static bool opt_fullscreen_persistant = true;
+	bool opt_fullscreen = opt_fullscreen_persistant;
+	static ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
+	if (opt_fullscreen)
+	{
+		ImGuiViewport* viewport = ImGui::GetMainViewport();
+		ImGui::SetNextWindowPos(viewport->GetWorkPos());
+		ImGui::SetNextWindowSize(viewport->GetWorkSize());
+		ImGui::SetNextWindowViewport(viewport->ID);
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+		window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
+		window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
+	}
+	if (dockspace_flags & ImGuiDockNodeFlags_PassthruCentralNode)
+		window_flags |= ImGuiWindowFlags_NoBackground;
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+	ImGui::Begin("DockSpace Demo", &dockspaceOpen, window_flags);
+	ImGui::PopStyleVar();
+	if (opt_fullscreen)
+		ImGui::PopStyleVar(2);
+	// DockSpace
+	ImGuiIO& io = ImGui::GetIO();
+	if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
+	{
+		ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+		ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
+	}
+	if (ImGui::BeginMenuBar())
+	{
+		if (ImGui::BeginMenu("File"))
+		{
+			if (ImGui::MenuItem("Exit")) XEngine::Application::Get().Close();
+			ImGui::EndMenu();
+		}
+		ImGui::EndMenuBar();
+	}
 	auto stats = XEngine::Renderer2D::GetStats();
 	ImGui::Begin("Profiler");
 	ImGui::Text("Renderer2D Stats: ");
@@ -126,6 +96,9 @@ void MainLayer::OnImGuiRender()
 	ImGui::Text("Quads: %d", stats.QuadCount);
 	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+	uint32_t textureID = checkerboardTexture->GetRendererID();
+	ImGui::Image((void*)textureID, ImVec2{256.0f, 256.0f});
+	ImGui::End();
 	ImGui::End();
 }
 void MainLayer::OnEvent(XEngine::Event& e)

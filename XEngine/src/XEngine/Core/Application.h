@@ -28,6 +28,7 @@ namespace XEngine
 			{ return *applicationWindow; }
 		static Application& Get()
 			{ return *applicationInstance; }
+		void Close();
 	private:
 		// Defined in Source File
 		void Run();

@@ -168,7 +168,6 @@
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Shader.h" />
-    <ClInclude Include="src\XEngine\GraphicsSystem\SubTexture2D.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\Texture.h" />
     <ClInclude Include="src\XEngine\GraphicsSystem\VertexArray.h" />
     <ClInclude Include="src\XEngine\ImGuiLayer\ImGuiLayer.h" />
@@ -445,7 +444,6 @@
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Shader.cpp" />
-    <ClCompile Include="src\XEngine\GraphicsSystem\SubTexture2D.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\Texture.cpp" />
     <ClCompile Include="src\XEngine\GraphicsSystem\VertexArray.cpp" />
     <ClCompile Include="src\XEngine\ImGuiLayer\ImGuiBuild.cpp" />

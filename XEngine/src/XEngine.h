@@ -13,7 +13,6 @@
 #include "XEngine/GraphicsSystem/Shader.h"
 #include "XEngine/GraphicsSystem/Texture.h"
 #include "XEngine/GraphicsSystem/VertexArray.h"
-#include "XEngine/GraphicsSystem/SubTexture2D.h"
 #include "XEngine/InputSystem/XEngineMouseCodes.h"
 #include "XEngine/InputSystem/XEngineInputCodes.h"
 #include "XEngine/GraphicsSystem/CameraController.h"

@@ -15,13 +15,11 @@
     <ClInclude Include="src\Layers\XLayer.h">
       <Filter>Layers</Filter>
     </ClInclude>
-    <ClInclude Include="src\ParticleSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Layers\MainLayer.cpp">
       <Filter>Layers</Filter>
     </ClCompile>
-    <ClCompile Include="src\ParticleSystem.cpp" />
   </ItemGroup>
 </Project>
