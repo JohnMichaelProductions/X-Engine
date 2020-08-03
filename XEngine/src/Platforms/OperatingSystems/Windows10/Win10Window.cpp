@@ -27,6 +27,7 @@ namespace XEngine
 	void Win10Window::Init(const WindowProps& props)
 	{
 		XPROFILE_FUNCTION();
+		SetConsoleTitle(TEXT("X-Engine Console"));
 		windowData.Title = props.Title;
 		windowData.Width = props.Width;
 		windowData.Height = props.Height;

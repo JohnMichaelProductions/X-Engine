@@ -19,8 +19,12 @@ private:
 	// Textures
 	XEngine::Ref<XEngine::Texture2D> checkerboardTexture;
 	XEngine::Ref<XEngine::Texture2D> spriteSheet;
-	XEngine::Ref<XEngine::SubTexture2D> treeTexture;
+	XEngine::Ref<XEngine::SubTexture2D> waterTexture;
+	XEngine::Ref<XEngine::SubTexture2D> dirtTexture;
+	XEngine::Ref<XEngine::SubTexture2D> invalidTexture;
 	glm::vec4 mainColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 	ParticleSystem mainParticleSystem;
 	ParticleProps mainParticle;
+	uint32_t mainMapWidth, mainMapHeight;
+	std::unordered_map<char, XEngine::Ref<XEngine::SubTexture2D>> textureMap;
 };

@@ -29,8 +29,12 @@ namespace XEngine
 		float GetZoomLevel()
 			{ return cameraZoomLevel; }
 		void SetZoomLevel(float level)
-			{ cameraZoomLevel = level; }
+		{
+			cameraZoomLevel = level;
+			CalculateView();
+		}
 	private:
+		void CalculateView();
 		bool OnMouseScrolled(MouseScrolledEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 		float cameraAspectRatio;

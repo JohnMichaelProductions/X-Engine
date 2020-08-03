@@ -3,6 +3,28 @@
 #include "Layers/MainLayer.h"
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+static const uint32_t mapWidth = 32;
+static const char* mapTiles =
+{
+	"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+	"WWWWWWWWWWDDDDDDDDDDDDWWWWWWWWWW"
+	"WWWWWDDDDDDDDDDDDDDDDDDWWWWWWWWW"
+	"WWWWDDDDDDDDDDDDDDDDDDDDWWWWWWWW"
+	"WWWDDDDDDDDDDDDDDDDDDDDDDDWWWWWW"
+	"WWWDDDDDDDDWWWWDDDDDDDDDDDWWWWWW"
+	"WWWDDDDDDDWWWWWWWDDDDDDDDDWWWWWW"
+	"WWWDDDDDDDWWWWWWWDDDDDDDDDDWWWWW"
+	"WWWDDDDDDDDWWWWWDDDDDDDDDDDWWWWW"
+	"WWWDDDDDDDDDDWWDDDDDDDDDDDDWWWWW"
+	"WWWDDDDDDDDDDDDDDDDDDDDDDDWWWWWW"
+	"WWWDDDDDDDDDDDDDDDDDDDDDDDWWWWWW"
+	"WWWWDDDDDDDDDDDDDDDDDDDDDWWWWWWW"
+	"WWWWWWWDDDDDDDDDDDDDDDDWWWWWWWWW"
+	"WWWWWWWWWWWWWDDDDDWWWWWWWWWWWWWW"
+	"WWWWWWWWWWWWWWDDDWWWWWWWWWWWWWWW"
+	"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+	"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+};
 MainLayer::MainLayer() : Layer("Main Layer"), mainCamera(1920.0f / 1080.0f) {}
 void MainLayer::OnAttach()
 {
@@ -10,7 +32,11 @@ void MainLayer::OnAttach()
 	XPROFILE_FUNCTION();
 	checkerboardTexture = XEngine::Texture2D::Create("Assets/Textures/Checkerboard.png");
 	spriteSheet = XEngine::Texture2D::Create("Assets/Game/Textures/Tilemap.png");
-	treeTexture = XEngine::SubTexture2D::CreateFromCoords(spriteSheet, { 2, 1 }, { 128, 128 }, { 1, 2 });
+	textureMap['W'] = XEngine::SubTexture2D::CreateFromCoords(spriteSheet, { 11, 11 }, { 128, 128 });
+	textureMap['D'] = XEngine::SubTexture2D::CreateFromCoords(spriteSheet, { 6, 11 }, { 128, 128 });
+	invalidTexture = XEngine::SubTexture2D::CreateFromCoords(spriteSheet, { 2, 3 }, { 128, 128 });
+	mainMapWidth = mapWidth;
+	mainMapHeight = strlen(mapTiles) / mapWidth;
 	// Particle Properties
 	mainParticle.ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
 	mainParticle.ColorEnd = { 254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f };
@@ -19,6 +45,7 @@ void MainLayer::OnAttach()
 	mainParticle.Velocity = { 0.0f, 0.0f };
 	mainParticle.VelocityVariation = { 3.0f, 1.0f };
 	mainParticle.Position = { 0.0f, 0.0f };
+	mainCamera.SetZoomLevel(5.0f);
 }
 void MainLayer::OnDetach()
 	{ XPROFILE_FUNCTION(); }
@@ -72,7 +99,19 @@ void MainLayer::OnUpdate(XEngine::Timestep timestep)
 			mainParticleSystem.Emit(mainParticle);
 	}
 	XEngine::Renderer2D::BeginScene(mainCamera.GetCamera());
-	XEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, { 1.0f, 2.0f }, treeTexture);
+	for (uint32_t y = 0; y < mainMapHeight; y++)
+	{
+		for (uint32_t x = 0; x < mainMapWidth; x++)
+		{
+			char tileType = mapTiles[x + y * mapWidth];
+			XEngine::Ref<XEngine::SubTexture2D> texture;
+			if (textureMap.find(tileType) != textureMap.end())
+				texture = textureMap[tileType];
+			else
+				texture = invalidTexture;
+			XEngine::Renderer2D::DrawQuad({ x -mainMapWidth / 2.0f, y - mainMapHeight / 2.0f, .5f }, { 1.0f, 1.0f }, texture);
+		}
+	}
 	XEngine::Renderer2D::EndScene();
 	mainParticleSystem.OnUpdate(timestep);
 	mainParticleSystem.OnRender(mainCamera.GetCamera());

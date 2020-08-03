@@ -49,21 +49,24 @@ namespace XEngine
 		dispacter.Dispatch<MouseScrolledEvent>(X_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
 		dispacter.Dispatch<WindowResizeEvent>(X_BIND_EVENT_FN(OrthographicCameraController::OnWindowResize));
 	}
+	void OrthographicCameraController::CalculateView()
+	{
+		cameraBounds = { -cameraAspectRatio * cameraZoomLevel, cameraAspectRatio * cameraZoomLevel, -cameraZoomLevel, cameraZoomLevel };
+		orthoCamera.SetProjectionMatrix(cameraBounds.Left, cameraBounds.Right, cameraBounds.Bottom, cameraBounds.Top);
+	}
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
 		XPROFILE_FUNCTION();
 		cameraZoomLevel -= e.GetYOffset() * 0.25f;
 		cameraZoomLevel = std::max(cameraZoomLevel, .25f);
-		cameraBounds = { -cameraAspectRatio * cameraZoomLevel, cameraAspectRatio * cameraZoomLevel, -cameraZoomLevel, cameraZoomLevel };
-		orthoCamera.SetProjectionMatrix(cameraBounds.Left, cameraBounds.Right, cameraBounds.Bottom, cameraBounds.Top);
+		CalculateView();
 		return false;
 	}
 	bool OrthographicCameraController::OnWindowResize(WindowResizeEvent& e)
 	{
 		XPROFILE_FUNCTION();
 		cameraAspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
-		cameraBounds = { -cameraAspectRatio * cameraZoomLevel, cameraAspectRatio * cameraZoomLevel, -cameraZoomLevel, cameraZoomLevel };
-		orthoCamera.SetProjectionMatrix(cameraBounds.Left, cameraBounds.Right, cameraBounds.Bottom, cameraBounds.Top);
+		CalculateView();
 		return false;
 	}
 }
