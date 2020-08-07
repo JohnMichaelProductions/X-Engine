@@ -13,5 +13,47 @@ git clone --recursive https://github.com/JohnMichaelProductions/X-Engine.git
 
 3. Run: Run the solution file for your IDE(Visual Studios only supported IDE as of now)
 
+## Features
+
+### Currently Implemented
+
+* Basic 2D Renderer
+* Layer System
+* Input System
+* Editor with ImGui
+
+### To be Added
+
++ Particle System
++ 2D Lighting
++ Build System
++ More Coming Soon!
+
+## Operating Systems
+
+### Currently Supported
+
+* Windows 10
+
+### To be Supported
+
++ macOS
++ Linux
++ iOS
++ Android
+
+## Rendering APIs
+
+### Currently Supported
+
+* OpenGL 4.5
+
+### To be Supported
+
++ OpenGL 3.3
++ Vulkan 1.2
++ DirectX 12
++ DirectX 11
++ Metal
 
 For questions, concerns, or a bug report email: JohnMBurnside21@gmail.com
