@@ -1,0 +1,12 @@
+[submodule "X-Engine/vendor/ImGui"]
+	path = X-Engine/vendor/ImGui
+	url = https://github.com/ocornut/imgui.git
+[submodule "X-Engine/vendor/GLFW"]
+	path = X-Engine/vendor/GLFW
+	url = https://github.com/TheCherno/glfw.git
+[submodule "X-Engine/vendor/SPDLOG"]
+	path = X-Engine/vendor/SPDLOG
+	url = https://github.com/gabime/spdlog.git
+[submodule "X-Engine/vendor/GLM"]
+	path = X-Engine/vendor/GLM
+	url = https://github.com/g-truc/glm.git
