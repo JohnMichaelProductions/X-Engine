@@ -17,16 +17,21 @@ git clone --recursive https://github.com/JohnMichaelProductions/X-Engine.git
 
 ### Currently Implemented
 
-* Basic 2D Renderer
+* Basic but fast 2D Renderer
 * Layer System
 * Input System
-* Editor with ImGui
+* Loggging
+* Time
+* Orthographic Camera
+* Docking ImGui with viewport
 
 ### To be Added
 
 + Particle System
 + 2D Lighting
 + Build System
++ C# Scripting support
++ Audio System
 + More Coming Soon!
 
 ## Operating Systems
