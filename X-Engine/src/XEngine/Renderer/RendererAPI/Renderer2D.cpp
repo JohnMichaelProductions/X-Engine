@@ -126,6 +126,13 @@ namespace XEngine
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
 		XPROFILE_FUNCTION();
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+		DrawQuad(transform, color);
+	}
+	// Draw Quad (mat4) (Color)
+	void Renderer2D::DrawQuad(const glm::mat4& transform, const glm::vec4& color)
+	{
+		XPROFILE_FUNCTION();
 		constexpr size_t quadVertexCount = 4;
 		const float defualtWhiteTextureIndex = 0.0f;
 		constexpr glm::vec2 textureCoords[] =
@@ -138,7 +145,6 @@ namespace XEngine
 		const float tilingFactor = 1.0f;
 		if (m_RendererData.QuadIndexCount >= Renderer2DData::MaxIndices)
 			FlushAndReset();
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 		for (size_t i = 0; i < quadVertexCount; i++)
 		{
 			m_RendererData.QuadVertexBufferPtr->Position = transform * m_RendererData.QuadVertexPositions[i];
@@ -152,10 +158,17 @@ namespace XEngine
 		m_RendererData.RendererStats.QuadCount++;
 	}
 	// Draw Quad (x, y) (Texture)
-	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
-		{ DrawQuad({ position.x, position.y, 0.0 }, size, texture, tilingFactor, tintColor); }
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D> texture, float tillingFactor, const glm::vec4& tintColor)
+		{ DrawQuad({ position.x, position.y, 0.0 }, size, texture, tillingFactor, tintColor); }
 	// Draw Quad (x, y, z) (Texture)
-	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D> texture, float tillingFactor, const glm::vec4& tintColor)
+	{
+		XPROFILE_FUNCTION();
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+		DrawQuad(transform, texture, tillingFactor, tintColor);
+	}
+	// Draw Quad (mat4) (Texture)
+	void Renderer2D::DrawQuad(const glm::mat4& transform, const Ref<Texture2D> texture, float tillingFactor, const glm::vec4& tintColor)
 	{
 		XPROFILE_FUNCTION();
 		constexpr size_t quadVertexCount = 4;
@@ -185,14 +198,13 @@ namespace XEngine
 			m_RendererData.TextureSlots[m_RendererData.TextureSlotIndex] = texture;
 			m_RendererData.TextureSlotIndex++;
 		}
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 		for (size_t i = 0; i < quadVertexCount; i++)
 		{
 			m_RendererData.QuadVertexBufferPtr->Position = transform * m_RendererData.QuadVertexPositions[i];
 			m_RendererData.QuadVertexBufferPtr->Color = tintColor;
 			m_RendererData.QuadVertexBufferPtr->TexCoord = textureCoords[i];
 			m_RendererData.QuadVertexBufferPtr->TexIndex = textureIndex;
-			m_RendererData.QuadVertexBufferPtr->TillingFactor = tilingFactor;
+			m_RendererData.QuadVertexBufferPtr->TillingFactor = tillingFactor;
 			m_RendererData.QuadVertexBufferPtr++;
 		}
 		m_RendererData.QuadIndexCount += 6;

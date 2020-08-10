@@ -1,4 +1,4 @@
-workspace "XEngine"	
+workspace "X-Engine"	
 	architecture "x86_64"
 	startproject "X-Editor"
 	configurations 
@@ -12,9 +12,9 @@ IncludeDir = {}
 IncludeDir["GLFW"]  = "X-Engine/vendor/GLFW/include"
 IncludeDir["GLAD"]  = "X-Engine/vendor/GLAD/include"
 IncludeDir["ImGui"] = "X-Engine/vendor/ImGui"
-IncludeDir["ImGuiFileBrowser"] = "X-Engine/vendor/ImGuiFileBrowser"
-IncludeDir["glm"]   = "X-Engine/vendor/glm"
+IncludeDir["GLM"]   = "X-Engine/vendor/GLM"
 IncludeDir["stb"]   = "X-Engine/vendor/stb"
+IncludeDir["Entt"]   = "X-Engine/vendor/Entt/include"
 group "Dependencies"
 	include "X-Engine/vendor/GLFW"
 	include "X-Engine/vendor/GLAD"
@@ -38,7 +38,6 @@ group "Engine"
 			"%{prj.name}/vendor/stb/**.cpp",
 			"%{prj.name}/vendor/glm/glm/**.hpp",
 			"%{prj.name}/glm/glm/**.inl",
-			"%{prj.name}/vendor/ImGuiFileBrowser/**.h"
 		}
 		defines
 		{
@@ -52,9 +51,9 @@ group "Engine"
 			"%{IncludeDir.GLFW}",
 			"%{IncludeDir.GLAD}",
 			"%{IncludeDir.ImGui}",
-			"%{IncludeDir.ImGuiFileBrowser}",
-			"%{IncludeDir.glm}",
-			"%{IncludeDir.stb}"
+			"%{IncludeDir.GLM}",
+			"%{IncludeDir.stb}",
+			"%{IncludeDir.Entt}"
 		}
 		links
 		{ 
@@ -94,10 +93,11 @@ group "Game"
 		includedirs
 		{
 			"%{prj.name}/src",
-			"X-Engine/vendor/spdlog/include",
+			"X-Engine/vendor/SPDLOG/include",
 			"X-Engine/src",
+			"X-Engine/vendor",
 			"%{IncludeDir.glm}",
-			"X-Engine/vendor"
+			"%{IncludeDir.Entt}"
 		}
 		links 
 			{ "X-Engine" }
@@ -135,10 +135,10 @@ group "Editor"
 		includedirs
 		{
 			"%{prj.name}/src",
-			"X-Engine/vendor/spdlog/include",
+			"X-Engine/vendor/SPDLOG/include",
 			"X-Engine/src",
-			"%{IncludeDir.glm}",
-			"X-Engine/vendor"
+			"X-Engine/vendor",
+			"%{IncludeDir.GLM}"
 		}
 		links 
 			{ "X-Engine" }

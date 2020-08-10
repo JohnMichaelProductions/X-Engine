@@ -4,6 +4,7 @@
 #include "Platforms/RenderingAPIs/OpenGL/OpenGLFramebuffer.h"
 namespace XEngine
 {
+	static const uint32_t maxFramebufferSize = 8192;
 	OpenGLFramebuffer::OpenGLFramebuffer(const FramebufferSpecificaion& spec) : m_Spec(spec)
 		{ Invalidate(); }
 	OpenGLFramebuffer::~OpenGLFramebuffer()
@@ -21,6 +22,11 @@ namespace XEngine
 		{ glBindFramebuffer(GL_FRAMEBUFFER, 0); }
 	void OpenGLFramebuffer::Resize(uint32_t width, uint32_t height)
 	{
+		if (width == 0 || height == 0 || width > maxFramebufferSize || height > maxFramebufferSize)
+		{
+			XCORE_WARN("Attempted to resize frame buffer to {0}, {1}", width, height);
+			return;
+		}
 		m_Spec.Width = width;
 		m_Spec.Height = height;
 		Invalidate();

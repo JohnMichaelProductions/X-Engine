@@ -11,43 +11,40 @@ namespace XEngine
 	{
 		// Creating Checkerboard Texture
 		XPROFILE_FUNCTION();
-		m_CheckerboardTexture = XEngine::Texture2D::Create("Assets/Textures/Checkerboard.png");
-		XEngine::FramebufferSpecificaion fbSpec;
+		m_CheckerboardTexture = Texture2D::Create("Assets/Textures/Checkerboard.png");
+		FramebufferSpecificaion fbSpec;
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
-		m_Framebuffer = XEngine::Framebuffer::Create(fbSpec);
+		m_Framebuffer = Framebuffer::Create(fbSpec);
+		m_ActiveScene = CreateRef<Scene>();
+		auto square = m_ActiveScene->CreateEntity();
+		m_ActiveScene->Reg().emplace<TransformComponent>(square);
+		m_ActiveScene->Reg().emplace<SpriteRendererComponent>(square, glm::vec4{ 0.0f, 1.0f, 0.0f, 1.0f });
+		m_Square = square;
 	}
 	void EditorLayer::OnDetach()
 		{ XPROFILE_FUNCTION(); }
-	void EditorLayer::OnUpdate(XEngine::Timestep timestep)
+	void EditorLayer::OnUpdate(Timestep timestep)
 	{
 		XPROFILE_FUNCTION();
+		if (FramebufferSpecificaion spec = m_Framebuffer->GetSpecificaion(); m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && (spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
+		{
+			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			m_Camera.OnResize(m_ViewportSize.x, m_ViewportSize.y);
+		}
 		if(m_ViewportFocused)
 			m_Camera.OnUpdate(timestep);
-		XEngine::Renderer2D::ResetStats();
+		// Update Scene
+		Renderer2D::ResetStats();
 		// Background and clear
-		{
-			XPROFILE_SCOPE("Renderer Preperation");
-			m_Framebuffer->Bind();
-			XEngine::RenderCommand::SetClearColor({ .1f, .1f, .1f, 1 });
-			XEngine::RenderCommand::Clear();
-		}
-		// Draw
-		{
-			XPROFILE_SCOPE("Renderer Draw");
-			XEngine::Renderer2D::BeginScene(m_Camera.GetCamera());
-			XEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, m_CheckerboardTexture, 10.0f);
-			for (float y = -5.0f; y < m_GridSize.y; y += 0.5f)
-			{
-				for (float x = -5.0f; x < m_GridSize.x; x += 0.5f)
-				{
-					glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
-					XEngine::Renderer2D::DrawQuad({ x, y, 0.0F }, { 0.45f, 0.45f }, color);
-				}
-			}
-			XEngine::Renderer2D::EndScene();
-			m_Framebuffer->Unbind();
-		}
+		m_Framebuffer->Bind();
+		RenderCommand::SetClearColor({ .1f, .1f, .1f, 1 });
+		RenderCommand::Clear();
+		// Begin Scene and Draw
+		Renderer2D::BeginScene(m_Camera.GetCamera());
+		m_ActiveScene->OnUpdate(timestep);
+		Renderer2D::EndScene();
+		m_Framebuffer->Unbind();
 	}
 	void EditorLayer::OnImGuiRender()
 	{
@@ -87,12 +84,12 @@ namespace XEngine
 			{
 				if (ImGui::BeginMenu("File"))
 				{
-					if (ImGui::MenuItem("Exit")) XEngine::Application::Get().Close();
+					if (ImGui::MenuItem("Exit")) Application::Get().Close();
 					ImGui::EndMenu();
 				}
 				ImGui::EndMenuBar();
 			}
-			auto stats = XEngine::Renderer2D::GetStats();
+			auto stats = Renderer2D::GetStats();
 			// Viewport
 			{
 				ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
@@ -100,13 +97,8 @@ namespace XEngine
 				m_ViewportFocused = ImGui::IsWindowFocused();
 				m_ViewportHovered = ImGui::IsWindowHovered();
 				Application::Get().GetImGuiLayer()->SetBlockEvents(!m_ViewportFocused || !m_ViewportHovered);
-				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-				if (m_ViewportSize != *((glm::vec2*) & viewportPanelSize))
-				{
-					m_Framebuffer->Resize((uint32_t)viewportPanelSize.x, (uint32_t)viewportPanelSize.y);
-					m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
-					m_Camera.OnResize(viewportPanelSize.x, viewportPanelSize.y);
-				}
+				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();	
+				m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
 				uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
 				ImGui::Image((void*)textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 				ImGui::End();
@@ -120,6 +112,8 @@ namespace XEngine
 				ImGui::Text("Quads: %d", stats.QuadCount);
 				ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 				ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+				auto& squareColor =  m_ActiveScene->Reg().get<SpriteRendererComponent>(m_Square).Color;
+				ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
 				ImGui::End();
 			}
 			// Scene Settings

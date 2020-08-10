@@ -14,7 +14,8 @@ namespace XEngine
 			virtual void OnImGuiRender() override;
 			void OnEvent(Event& e) override;
 		private:
-			// Temp
+			Ref<Scene> m_ActiveScene;
+			entt::entity m_Square;
 			OrthographicCameraController m_Camera;
 			Ref<VertexArray> m_VertexArray;
 			Ref<Shader> m_Shader;
