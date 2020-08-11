@@ -23,7 +23,8 @@ namespace XEngine
 	class Instrumentor
 	{
 	public:
-		Instrumentor() : m_CurrentSession(nullptr) {}
+		Instrumentor(const Instrumentor&) = delete;
+		Instrumentor(Instrumentor&&) = delete;
 		void BeginSession(const std::string& name, const std::string& filepath = "results.json")
 		{
 			std::lock_guard lock(m_Mutex);
@@ -74,6 +75,10 @@ namespace XEngine
 			return instance;
 		}
 	private:
+		// Function
+		Instrumentor() : m_CurrentSession(nullptr) {}
+		~Instrumentor()
+			{ EndSession(); }
 		void WriteHeader()
 		{
 			m_OutputStream << "{\"otherData\": {},\"traceEvents\":[{}";
@@ -94,7 +99,7 @@ namespace XEngine
 				m_CurrentSession = nullptr;
 			}
 		}
-	private:
+		// Member
 		std::mutex m_Mutex;
 		InstrumentationSession* m_CurrentSession;
 		std::ofstream m_OutputStream;
@@ -169,7 +174,9 @@ namespace InstrumentorUtils
 	#endif
 	#define XPROFILE_BEGIN_SESSION(name, filepath) ::XEngine::Instrumentor::Get().BeginSession(name, filepath)
 	#define XPROFILE_END_SESSION() ::XEngine::Instrumentor::Get().EndSession()
-	#define HZ_PROFILE_SCOPE(name) constexpr auto fixedName = ::Hazel::InstrumentorUtils::CleanupOutputString(name, "__cdecl ");::Hazel::InstrumentationTimer timer##__LINE__(fixedName.Data)
+	#define XPROFILE_SCOPE_LINE2(name, line) constexpr auto fixedName##line = ::XEngine::InstrumentorUtils::CleanupOutputString(name, "__cdecl "); ::XEngine::InstrumentationTimer timer##line(fixedName##line.Data)
+	#define XPROFILE_SCOPE_LINE(name, line) XPROFILE_SCOPE_LINE2(name, line)
+	#define XPROFILE_SCOPE(name) XPROFILE_SCOPE_LINE(name, __LINE__)
 	#define XPROFILE_FUNCTION() XPROFILE_SCOPE(X_FUNC_SIG)
 #else
 	#define XPROFILE_BEGIN_SESSION(name, filepath)

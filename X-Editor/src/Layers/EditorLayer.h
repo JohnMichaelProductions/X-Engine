@@ -15,7 +15,7 @@ namespace XEngine
 			void OnEvent(Event& e) override;
 		private:
 			Ref<Scene> m_ActiveScene;
-			entt::entity m_Square;
+			Entity m_SquareEntity;
 			OrthographicCameraController m_Camera;
 			Ref<VertexArray> m_VertexArray;
 			Ref<Shader> m_Shader;

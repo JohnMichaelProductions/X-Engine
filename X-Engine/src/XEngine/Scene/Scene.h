@@ -1,18 +1,18 @@
 #pragma once
+#include <entt.hpp>
 #include "XEngine/Core/Time.h"
-#include "../../../vendor/Entt/include/entt.hpp"
 namespace XEngine
 {
+	class Entity;
 	class Scene
 	{
 	public:
 		Scene();
 		~Scene();
-		entt::entity CreateEntity();
+		Entity CreateEntity(const std::string tagName = std::string());
 		void OnUpdate(Timestep timestep);
-		// TEMP
-		entt::registry& Reg() { return m_Registry; }
 	private:
 		entt::registry m_Registry;
+		friend class Entity;
 	};
 }

@@ -6,6 +6,7 @@
 #include "XEngine/Core/Input.h"
 #include "XEngine/Scene/Scene.h"
 #include "XEngine/Core/Logging.h"
+#include "XEngine/Scene/Entity.h"
 #include "XEngine/Core/KeyCodes.h"
 #include "XEngine/Renderer/Buffer.h"
 #include "XEngine/Renderer/Shader.h"

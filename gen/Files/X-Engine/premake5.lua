@@ -14,7 +14,7 @@ IncludeDir["GLAD"]  = "X-Engine/vendor/GLAD/include"
 IncludeDir["ImGui"] = "X-Engine/vendor/ImGui"
 IncludeDir["GLM"]   = "X-Engine/vendor/GLM"
 IncludeDir["stb"]   = "X-Engine/vendor/stb"
-IncludeDir["Entt"]   = "X-Engine/vendor/Entt/include"
+IncludeDir["EnTT"]   = "X-Engine/vendor/EnTT/include"
 group "Dependencies"
 	include "X-Engine/vendor/GLFW"
 	include "X-Engine/vendor/GLAD"
@@ -48,12 +48,12 @@ group "Engine"
 		{ 
 			"%{prj.name}/src",
 			"%{prj.name}/vendor/spdlog/include",
+			"%{IncludeDir.EnTT}",
 			"%{IncludeDir.GLFW}",
 			"%{IncludeDir.GLAD}",
 			"%{IncludeDir.ImGui}",
 			"%{IncludeDir.GLM}",
-			"%{IncludeDir.stb}",
-			"%{IncludeDir.Entt}"
+			"%{IncludeDir.stb}"
 		}
 		links
 		{ 
@@ -94,10 +94,10 @@ group "Game"
 		{
 			"%{prj.name}/src",
 			"X-Engine/vendor/SPDLOG/include",
+			"%{IncludeDir.EnTT}",
 			"X-Engine/src",
 			"X-Engine/vendor",
 			"%{IncludeDir.glm}",
-			"%{IncludeDir.Entt}"
 		}
 		links 
 			{ "X-Engine" }
@@ -105,7 +105,6 @@ group "Game"
 			systemversion "latest"
 		filter "configurations:Debug"
 			defines "XDEBUG"
-			-- BUG: Staticruntime should be set to on, but the project generates errors when built
 			staticruntime "off"
 			symbols "on"
 			runtime "Debug"
@@ -136,6 +135,7 @@ group "Editor"
 		{
 			"%{prj.name}/src",
 			"X-Engine/vendor/SPDLOG/include",
+			"%{IncludeDir.EnTT}",
 			"X-Engine/src",
 			"X-Engine/vendor",
 			"%{IncludeDir.GLM}"
