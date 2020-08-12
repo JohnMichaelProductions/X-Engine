@@ -1,7 +1,7 @@
 // Renderer 2D(Full static class)
 #pragma once
 #include "XEngine/Renderer/Texture.h"
-#include "XEngine/Renderer/CameraSystem/Camera.h"
+#include "XEngine/Renderer/CameraSystem/Cameras.h"
 namespace XEngine
 {
 	class Renderer2D
@@ -10,7 +10,8 @@ namespace XEngine
 		// Renderer2D API
 		static void Init();
 		static void Shutdown();
-		static void BeginScene(OrthographicCamera& camera);
+		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(OrthographicCamera& camera); // TODO: Remove
 		static void EndScene();
 		static void Flush();
 		// Flat Color

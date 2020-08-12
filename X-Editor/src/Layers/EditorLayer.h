@@ -14,17 +14,18 @@ namespace XEngine
 			virtual void OnImGuiRender() override;
 			void OnEvent(Event& e) override;
 		private:
+			// Entities and Scene
 			Ref<Scene> m_ActiveScene;
 			Entity m_SquareEntity;
-			OrthographicCameraController m_Camera;
-			Ref<VertexArray> m_VertexArray;
-			Ref<Shader> m_Shader;
-			Ref<Framebuffer> m_Framebuffer;
+			Entity m_CameraEntity;
+			Entity m_Checkerboard;
+			// Textures
 			Ref<Texture2D> m_CheckerboardTexture;
-			glm::vec2 m_GridSize = { 5.0f, 5.0f };
+			// Camera
+			OrthographicCameraController m_Camera;
+			// Framebuffer and Viewport
+			Ref<Framebuffer> m_Framebuffer;
 			glm::vec2 m_ViewportSize = { 0.0f, 0.0f };
-			glm::vec4 mainColor = { 0.2f, 0.3f, 0.8f, 1.0f };
-			float m_Framerate = 0.0f;
 			bool m_ViewportFocused = false, m_ViewportHovered = false;
 	};
 }

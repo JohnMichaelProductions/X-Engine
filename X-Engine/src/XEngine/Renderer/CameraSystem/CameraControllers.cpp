@@ -2,7 +2,7 @@
 #include "Xpch.h"
 #include "XEngine/Core/Input.h"
 #include "XEngine/Core/KeyCodes.h"
-#include "XEngine/Renderer/CameraSystem/CameraController.h"
+#include "XEngine/Renderer/CameraSystem/CameraControllers.h"
 namespace XEngine
 {
 	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation) : m_AspectRatio(aspectRatio), m_RotationOn(rotation), m_Camera(-m_AspectRatio * m_ZoomLevel, m_AspectRatio* m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel) {}
@@ -28,7 +28,8 @@ namespace XEngine
 		{
 			m_Position.x -= cos(glm::radians(m_Rotation)) * m_Speed * timestep;
 			m_Position.y -= sin(glm::radians(m_Rotation)) * m_Speed * timestep;
-		}		m_Camera.SetPosition(m_Position);
+		}
+		m_Camera.SetPosition(m_Position);
 		if (m_RotationOn)
 		{
 			if (Input::IsKeyPressed(X_KEY_E))

@@ -9,41 +9,62 @@ namespace XEngine
 	EditorLayer::EditorLayer() : Layer("Editor Layer"), m_Camera(1920.0f / 1080.0f) {}
 	void EditorLayer::OnAttach()
 	{
-		// Creating Checkerboard Texture
 		XPROFILE_FUNCTION();
-		m_CheckerboardTexture = Texture2D::Create("Assets/Textures/Checkerboard.png");
+		// Framebuffer
 		FramebufferSpecificaion fbSpec;
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
 		m_Framebuffer = Framebuffer::Create(fbSpec);
+		// ----------- Editing Starts Here -----------!!!!!
+		// ----------- List of Components ------------!!!
+		// ----------- Tag ---------------------------!
+		// ----------- Transform ---------------------!
+		// ----------- Sprite Renderer ---------------!
+		// ----------- Camera ------------------------!
+		// ----------- List of Components Functions --!!!
+		// ----------- Get Component -----------------!
+		// ----------- Add Component -----------------!
+		// ----------- Has Component -----------------!
+		// ----------- Remove Component --------------!
+		// Create Textures Here
+		m_CheckerboardTexture = Texture2D::Create("Assets/Textures/Checkerboard.png");
+		// Create Scene and Entities Here
 		m_ActiveScene = CreateRef<Scene>();
-		// Entity
-		auto square = m_ActiveScene->CreateEntity("Square");
-		square.AddComponent<SpriteRendererComponent>();
-		m_SquareEntity = square;
+		// Camera
+		m_CameraEntity = m_ActiveScene->CreateEntity("Camera");
+		m_CameraEntity.AddComponent<CameraComponent>();
+		// Creating square with flat color
+		m_SquareEntity = m_ActiveScene->CreateEntity("Square");
+		m_SquareEntity.AddComponent<SpriteRendererComponent>();
+		// Creating square with texture
+		m_Checkerboard = m_ActiveScene->CreateEntity("Checkerboard");
+		m_Checkerboard.AddComponent<SpriteRendererComponent>();
+		m_Checkerboard.GetComponent<SpriteRendererComponent>().Texture = m_CheckerboardTexture;
+		m_Checkerboard.GetComponent<TransformComponent>().Transform[3] = { 3.0f, 3.0f, 0.0f, 0.0f };
+		// -------------------------------------------
 	}
 	void EditorLayer::OnDetach()
 		{ XPROFILE_FUNCTION(); }
 	void EditorLayer::OnUpdate(Timestep timestep)
 	{
 		XPROFILE_FUNCTION();
+		// Framebuffer
 		if (FramebufferSpecificaion spec = m_Framebuffer->GetSpecificaion(); m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && (spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
 		{
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_Camera.OnResize(m_ViewportSize.x, m_ViewportSize.y);
+			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 		if(m_ViewportFocused)
 			m_Camera.OnUpdate(timestep);
-		// Update Scene
+		// Profiler
 		Renderer2D::ResetStats();
 		// Background and clear
 		m_Framebuffer->Bind();
 		RenderCommand::SetClearColor({ .1f, .1f, .1f, 1 });
 		RenderCommand::Clear();
 		// Begin Scene and Draw
-		Renderer2D::BeginScene(m_Camera.GetCamera());
 		m_ActiveScene->OnUpdate(timestep);
-		Renderer2D::EndScene();
 		m_Framebuffer->Unbind();
 	}
 	void EditorLayer::OnImGuiRender()
@@ -116,14 +137,39 @@ namespace XEngine
 			}
 			// Scene Settings
 			{
+				// --- Add new sections for entities here ---
 				ImGui::Begin("Scene Settings");
-				auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
-				ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
+				// Camera
+				{
+					ImGui::Separator();
+					auto& camTag = m_CameraEntity.GetComponent<TagComponent>().Tag;
+					auto& camTransform = m_CameraEntity.GetComponent<TransformComponent>().Transform[3];
+					ImGui::Text("%s", camTag.c_str());
+					ImGui::DragFloat3("Camera Transform", glm::value_ptr(camTransform));
+					ImGui::Separator();
+				}
+				// Square
+				{
+					ImGui::Separator();
+					auto& squareTag = m_SquareEntity.GetComponent<TagComponent>().Tag;
+					auto& squareTransform = m_SquareEntity.GetComponent<TransformComponent>().Transform[3];
+					auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
+					ImGui::Text("%s", squareTag.c_str());
+					ImGui::DragFloat3("Square Transform", glm::value_ptr(squareTransform));
+					ImGui::ColorEdit4("Color", glm::value_ptr(squareColor));
+					ImGui::Separator();
+				}
+				// Checkerboard
+				{
+					ImGui::Separator();
+					auto& checkerboardTag = m_Checkerboard.GetComponent<TagComponent>().Tag;
+					auto& checkerboardTransform = m_Checkerboard.GetComponent<TransformComponent>().Transform[3];
+					ImGui::Text("%s", checkerboardTag.c_str());
+					ImGui::DragFloat3("Checkerboard Transform", glm::value_ptr(checkerboardTransform));
+					ImGui::Separator();
+				}
 				ImGui::End();
-			}
-			// File Manager
-			{
-
+				// -----------------------------------------
 			}
 			ImGui::End();
 		}

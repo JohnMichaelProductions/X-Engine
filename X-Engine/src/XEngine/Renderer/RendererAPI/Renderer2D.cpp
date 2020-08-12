@@ -86,6 +86,16 @@ namespace XEngine
 		XPROFILE_FUNCTION();
 		delete[] m_RendererData.QuadVertexBufferBase;
 	}
+	void Renderer2D::BeginScene(const Camera& camera, const glm::mat4& transform)
+	{
+		XPROFILE_FUNCTION();
+		glm::mat4 viewProjection = camera.GetProjection() * glm::inverse(transform);
+		m_RendererData.TextureShader->Bind();
+		m_RendererData.TextureShader->SetMat4("u_ViewProjection", viewProjection);
+		m_RendererData.QuadIndexCount = 0;
+		m_RendererData.QuadVertexBufferPtr = m_RendererData.QuadVertexBufferBase;
+		m_RendererData.TextureSlotIndex = 1;	
+	}
 	void Renderer2D::BeginScene(OrthographicCamera& camera)
 	{
 		XPROFILE_FUNCTION();
@@ -217,30 +227,12 @@ namespace XEngine
 	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color)
 	{
 		XPROFILE_FUNCTION();
-		constexpr size_t quadVertexCount = 4;
-		const float defualtWhiteTextureIndex = 0.0f;
-		constexpr glm::vec2 textureCoords[] =
-		{
-			{ 0.0f, 0.0f },
-			{ 1.0f, 0.0f },
-			{ 1.0f, 1.0f },
-			{ 0.0f, 1.0f }
-		};
-		const float tilingFactor = 1.0f;
-		if (m_RendererData.QuadIndexCount >= Renderer2DData::MaxIndices)
-			FlushAndReset();
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::rotate(glm::mat4(1.0f), rotation, { 0.0f, 0.0f, 1.0f }) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-		for (size_t i = 0; i < quadVertexCount; i++)
-		{
-			m_RendererData.QuadVertexBufferPtr->Position = transform * m_RendererData.QuadVertexPositions[i];
-			m_RendererData.QuadVertexBufferPtr->Color = color;
-			m_RendererData.QuadVertexBufferPtr->TexCoord = textureCoords[i];
-			m_RendererData.QuadVertexBufferPtr->TexIndex = defualtWhiteTextureIndex;
-			m_RendererData.QuadVertexBufferPtr->TillingFactor = tilingFactor;
-			m_RendererData.QuadVertexBufferPtr++;
-		}
-		m_RendererData.QuadIndexCount += 6;
-		m_RendererData.RendererStats.QuadCount++;
+		XCORE_INFO("0: {0}, {1}, {2}, {3}", transform[0].x, transform[0].y, transform[0].z, transform[0].w);
+		XCORE_INFO("1: {0}, {1}, {2}, {3}", transform[1].x, transform[1].y, transform[1].z, transform[1].w);
+		XCORE_INFO("2: {0}, {1}, {2}, {3}", transform[2].x, transform[2].y, transform[2].z, transform[2].w);
+		XCORE_INFO("3: {0}, {1}, {2}, {3}", transform[3].x, transform[3].y, transform[3].z, transform[3].w);
+		DrawQuad(transform, color);
 	}
 	// Draw Rotated Quad (x, y) (Texture)
 	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
@@ -249,45 +241,8 @@ namespace XEngine
 	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D> texture, float tilingFactor, const glm::vec4& tintColor)
 	{
 		XPROFILE_FUNCTION();
-		constexpr size_t quadVertexCount = 4;
-		constexpr glm::vec2 textureCoords[] =
-		{
-			{ 0.0f, 0.0f },
-			{ 1.0f, 0.0f },
-			{ 1.0f, 1.0f },
-			{ 0.0f, 1.0f }
-		};
-		if (m_RendererData.QuadIndexCount >= Renderer2DData::MaxIndices)
-			FlushAndReset();
-		float textureIndex = 0.0f;
-		for (uint32_t i = 0; i < m_RendererData.TextureSlotIndex; i++)
-		{
-			if (*m_RendererData.TextureSlots[i].get() == *texture.get())
-			{
-				textureIndex = (float)i;
-				break;
-			}
-		}
-		if (textureIndex == 0.0f)
-		{
-			if (m_RendererData.QuadIndexCount >= Renderer2DData::MaxIndices)
-				FlushAndReset();
-			textureIndex = (float)m_RendererData.TextureSlotIndex;
-			m_RendererData.TextureSlots[m_RendererData.TextureSlotIndex] = texture;
-			m_RendererData.TextureSlotIndex++;
-		}
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::rotate(glm::mat4(1.0f), rotation, { 0.0f, 0.0f, 1.0f }) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-		for (size_t i = 0; i < quadVertexCount; i++)
-		{
-			m_RendererData.QuadVertexBufferPtr->Position = transform * m_RendererData.QuadVertexPositions[i];
-			m_RendererData.QuadVertexBufferPtr->Color = tintColor;
-			m_RendererData.QuadVertexBufferPtr->TexCoord = textureCoords[i];
-			m_RendererData.QuadVertexBufferPtr->TexIndex = textureIndex;
-			m_RendererData.QuadVertexBufferPtr->TillingFactor = tilingFactor;
-			m_RendererData.QuadVertexBufferPtr++;
-		}
-		m_RendererData.QuadIndexCount += 6;
-		m_RendererData.RendererStats.QuadCount++;
+		DrawQuad(transform, texture, tilingFactor, tintColor);
 	}
 	Renderer2D::Stats Renderer2D::GetStats()
 		{ return m_RendererData.RendererStats; }

@@ -9,8 +9,8 @@
 #include "XEngine/EventSystem/Event.h"
 #include "XEngine/Renderer/VertexArray.h"
 #include "XEngine/LayerSystem/LayerStack.h"
-#include "XEngine/Renderer/CameraSystem/Camera.h"
 #include "XEngine/EventSystem/ApplicationEvent.h"
+#include "XEngine/Renderer/CameraSystem/Cameras.h"
 int main(int argc, char** argv);
 namespace XEngine
 {

@@ -1,5 +1,8 @@
 #pragma once
 #include <glm/glm.hpp>
+#include "XEngine/Core/XCore.h"
+#include "XEngine/Renderer/Texture.h"
+#include "XEngine/Scene/SceneCamera.h"
 namespace XEngine
 {
 	struct TagComponent
@@ -15,16 +18,25 @@ namespace XEngine
 		TransformComponent() = default;
 		TransformComponent(const TransformComponent&) = default;
 		TransformComponent(const glm::mat4& transform) : Transform(transform) {}
-		operator glm::mat4&()
+		operator glm::mat4& ()
 			{ return Transform; }
-		operator const glm::mat4&() const
+		operator const glm::mat4& () const
 			{ return Transform; }
 	};
 	struct SpriteRendererComponent
 	{
 		glm::vec4 Color{ 1.0f, 1.0f, 1.0f, 1.0f };
+		Ref<Texture2D> Texture;
 		SpriteRendererComponent() = default;
 		SpriteRendererComponent(const SpriteRendererComponent&) = default;
 		SpriteRendererComponent(const glm::vec4& color) : Color(color) {}
+	};
+	struct CameraComponent
+	{
+		SceneCamera Camera;
+		bool Primary = true;
+		bool FixedAspectRatio = false;
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
 	};
 }
