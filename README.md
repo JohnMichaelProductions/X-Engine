@@ -9,7 +9,7 @@ Current way to set-up X-Engine:
 git clone --recursive https://github.com/JohnMichaelProductions/X-Engine.git
 ```
 
-2. Generate: Go to Premake/GenerateProjectScripts and run Win10GenerateProject.bat in that directory
+2. Generate: Go to gen/Scripts and run Win10GenerateProject.bat in that directory
 
 3. Run: Run the solution file for your IDE(Visual Studios only supported IDE as of now)
 
