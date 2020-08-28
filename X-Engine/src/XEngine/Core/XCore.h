@@ -45,7 +45,7 @@
 	#define XDEBUGBREAK()
 #endif
 #ifdef XENABLE_ASSERTS
-	#define X_ASSERT(x, ...) {if(!(x)) {XCLIENT_ERROR("Assertion Failed: {0}", __VA_ARGS__); XDEBUGBREAK(); } }
+	#define XASSERT(x, ...) {if(!(x)) {XCLIENT_ERROR("Assertion Failed: {0}", __VA_ARGS__); XDEBUGBREAK(); } }
 	#define XCORE_ASSERT(x, ...)  {if(!(x)) {XCORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); XDEBUGBREAK(); } }
 #else
 	#define XASSERT(x, ...)

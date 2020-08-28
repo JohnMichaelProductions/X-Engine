@@ -7,7 +7,6 @@
 #include "XEngine/Renderer/Shader.h"
 #include "XEngine/Core/Application.h"
 #include "XEngine/Renderer/RendererAPI/Renderer.h"
-#include "Platforms/OperatingSystems/CrossPlatform/PCInput.cpp"
 namespace XEngine
 {
 	Application* Application::m_Instance = nullptr;
@@ -56,13 +55,14 @@ namespace XEngine
 			(*it)->OnEvent(e);
 		}
 	}
+	// Core of application where everything gets updated
 	void Application::Run() 
 	{
 		XPROFILE_FUNCTION();
 		while (m_Running)
 		{
-			// Timestep
 			XPROFILE_SCOPE("Run Loop");
+			// Timestep calculation
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
@@ -70,10 +70,12 @@ namespace XEngine
 			if (!m_Minimized)
 			{
 				{
+					// Updates all of the OnUpdate functions
 					XPROFILE_SCOPE("LayerStack OnUpdate");
 					for (Layer* layer : m_LayerStack)
 						layer->OnUpdate(timestep);
-				}	
+				}
+				// ImGui Update
 				m_ImGuiLayer->Begin();
 				{
 					XPROFILE_SCOPE("LayerStack OnUpdate");
@@ -82,6 +84,7 @@ namespace XEngine
 				}
 				m_ImGuiLayer->End();
 			}
+			// Update Window
 			m_Window->OnUpdate();
 		}
 	}

@@ -1,4 +1,4 @@
-// Source file that deals with input on window 10 computers
+// Source file that deals with input on standalone devices
 #include "Xpch.h"
 #include <GLFW/glfw3.h>
 #include "XEngine/Core/Input.h"

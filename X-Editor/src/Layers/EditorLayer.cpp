@@ -15,33 +15,42 @@ namespace XEngine
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
 		m_Framebuffer = Framebuffer::Create(fbSpec);
-		// ----------- Editing Starts Here -----------!!!!!
-		// ----------- List of Components ------------!!!
-		// ----------- Tag ---------------------------!
-		// ----------- Transform ---------------------!
-		// ----------- Sprite Renderer ---------------!
-		// ----------- Camera ------------------------!
-		// ----------- List of Components Functions --!!!
-		// ----------- Get Component -----------------!
-		// ----------- Add Component -----------------!
-		// ----------- Has Component -----------------!
-		// ----------- Remove Component --------------!
-		// Create Textures Here
-		m_CheckerboardTexture = Texture2D::Create("Assets/Textures/Checkerboard.png");
-		// Create Scene and Entities Here
+		m_PlayerTexture = Texture2D::Create("Assets/Textures/PlayerIdle.png");
+		m_GroundTexture = Texture2D::Create("Assets/Textures/Ground.png");
+		m_BoundsTexture = Texture2D::Create("Assets/Textures/Bounds.png");
+		m_OuterboundsTexture = Texture2D::Create("Assets/Textures/OuterBounds.png");
 		m_ActiveScene = CreateRef<Scene>();
-		// Camera
 		m_CameraEntity = m_ActiveScene->CreateEntity("Camera");
 		m_CameraEntity.AddComponent<CameraComponent>();
-		// Creating square with flat color
-		m_SquareEntity = m_ActiveScene->CreateEntity("Square");
-		m_SquareEntity.AddComponent<SpriteRendererComponent>();
-		// Creating square with texture
-		m_Checkerboard = m_ActiveScene->CreateEntity("Checkerboard");
-		m_Checkerboard.AddComponent<SpriteRendererComponent>();
-		m_Checkerboard.GetComponent<SpriteRendererComponent>().Texture = m_CheckerboardTexture;
-		m_Checkerboard.GetComponent<TransformComponent>().Transform[3] = { 3.0f, 3.0f, 0.0f, 0.0f };
-		// -------------------------------------------
+		m_Ground = m_ActiveScene->CreateEntity("Ground");
+		m_Ground.AddComponent<SpriteRendererComponent>().Texture = m_GroundTexture;
+		m_Ground.GetComponent<SpriteRendererComponent>().TillingFactor = 10.0f;
+		m_Ground.GetComponent<TransformComponent>().Size = { 10.0f, 10.0f };
+		class Controller : public ScriptableEntity
+		{
+		public:
+			void OnCreate()
+			{
+				auto& transform = GetComponent<TransformComponent>();
+				transform.Position.x = rand() % 10 - 5.0f;
+			}
+			void OnDestroy() {}
+			void OnUpdate(Timestep timestep)
+			{
+				auto& transform = GetComponent<TransformComponent>().Position;
+				float speed = 5.0f;
+				if (Input::IsKeyPressed(KeyCode::A))
+					transform.x -= speed * timestep;
+				if (Input::IsKeyPressed(KeyCode::D))
+					transform.x += speed * timestep;
+				if (Input::IsKeyPressed(KeyCode::W))
+					transform.y += speed * timestep;
+				if (Input::IsKeyPressed(KeyCode::S))
+					transform.y -= speed * timestep;
+			}
+		};
+		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<Controller>();
+		m_Hierarchy.SetContext(m_ActiveScene);
 	}
 	void EditorLayer::OnDetach()
 		{ XPROFILE_FUNCTION(); }
@@ -111,10 +120,10 @@ namespace XEngine
 				ImGui::EndMenuBar();
 			}
 			auto stats = Renderer2D::GetStats();
-			// Viewport
+			// Scene
 			{
 				ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
-				ImGui::Begin("Viewport");
+				ImGui::Begin("Scene");
 				m_ViewportFocused = ImGui::IsWindowFocused();
 				m_ViewportHovered = ImGui::IsWindowHovered();
 				Application::Get().GetImGuiLayer()->SetBlockEvents(!m_ViewportFocused || !m_ViewportHovered);
@@ -135,41 +144,14 @@ namespace XEngine
 				ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 				ImGui::End();
 			}
-			// Scene Settings
+			// Hierarchy
+				{ m_Hierarchy.OnImGuiRender(); }
+			// Inspector
 			{
-				// --- Add new sections for entities here ---
-				ImGui::Begin("Scene Settings");
-				// Camera
-				{
-					ImGui::Separator();
-					auto& camTag = m_CameraEntity.GetComponent<TagComponent>().Tag;
-					auto& camTransform = m_CameraEntity.GetComponent<TransformComponent>().Transform[3];
-					ImGui::Text("%s", camTag.c_str());
-					ImGui::DragFloat3("Camera Transform", glm::value_ptr(camTransform));
-					ImGui::Separator();
-				}
-				// Square
-				{
-					ImGui::Separator();
-					auto& squareTag = m_SquareEntity.GetComponent<TagComponent>().Tag;
-					auto& squareTransform = m_SquareEntity.GetComponent<TransformComponent>().Transform[3];
-					auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
-					ImGui::Text("%s", squareTag.c_str());
-					ImGui::DragFloat3("Square Transform", glm::value_ptr(squareTransform));
-					ImGui::ColorEdit4("Color", glm::value_ptr(squareColor));
-					ImGui::Separator();
-				}
-				// Checkerboard
-				{
-					ImGui::Separator();
-					auto& checkerboardTag = m_Checkerboard.GetComponent<TagComponent>().Tag;
-					auto& checkerboardTransform = m_Checkerboard.GetComponent<TransformComponent>().Transform[3];
-					ImGui::Text("%s", checkerboardTag.c_str());
-					ImGui::DragFloat3("Checkerboard Transform", glm::value_ptr(checkerboardTransform));
-					ImGui::Separator();
-				}
+				ImGui::Begin("Inspector");
+				//if (ImGui::Button("Create Entity", ImVec2(200, 40)))
+				//	m_ActiveScene->CreateEntity("Hello");
 				ImGui::End();
-				// -----------------------------------------
 			}
 			ImGui::End();
 		}

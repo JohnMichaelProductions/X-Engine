@@ -20,7 +20,7 @@ namespace XEngine
 		static const uint32_t MaxQuads = 20000;
 		static const uint32_t MaxVertices = MaxQuads * 4;
 		static const uint32_t MaxIndices = MaxQuads * 6;
-		static const uint32_t MaxTextureSlots = 32; // TODO: RenderCaps
+		static const uint32_t MaxTextureSlots = 32;
 		Ref<VertexArray> VertexArray;
 		Ref<VertexBuffer> VertexBuffer;
 		Ref<Shader> TextureShader;
@@ -30,7 +30,7 @@ namespace XEngine
 		QuadVertex* QuadVertexBufferPtr = nullptr;
 		std::array<Ref<Texture2D>, MaxTextureSlots> TextureSlots;
 		uint32_t TextureSlotIndex = 1;
-		glm::vec4 QuadVertexPositions[4];
+		glm::vec4 QuadVertexPositions[4] = {glm::vec4(1.0f), glm::vec4(1.0f), glm::vec4(1.0f), glm::vec4(1.0f)};
 		Renderer2D::Stats RendererStats;
 	}; 
 	static Renderer2DData m_RendererData;
@@ -228,10 +228,6 @@ namespace XEngine
 	{
 		XPROFILE_FUNCTION();
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::rotate(glm::mat4(1.0f), rotation, { 0.0f, 0.0f, 1.0f }) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-		XCORE_INFO("0: {0}, {1}, {2}, {3}", transform[0].x, transform[0].y, transform[0].z, transform[0].w);
-		XCORE_INFO("1: {0}, {1}, {2}, {3}", transform[1].x, transform[1].y, transform[1].z, transform[1].w);
-		XCORE_INFO("2: {0}, {1}, {2}, {3}", transform[2].x, transform[2].y, transform[2].z, transform[2].w);
-		XCORE_INFO("3: {0}, {1}, {2}, {3}", transform[3].x, transform[3].y, transform[3].z, transform[3].w);
 		DrawQuad(transform, color);
 	}
 	// Draw Rotated Quad (x, y) (Texture)

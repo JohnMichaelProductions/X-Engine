@@ -12,8 +12,8 @@
 #include <functional>
 #include <unordered_map>
 #include <unordered_set>
+#include "XEngine/Debug/Logging.h"
 #include "XEngine/Debug/Instrumentor.h"
-#include "XEngine/Core/Logging.h"
-#ifdef X_PLATFORM_WINDOWS
+#ifdef XPLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

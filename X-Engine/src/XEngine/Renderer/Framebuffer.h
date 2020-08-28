@@ -5,7 +5,7 @@ namespace XEngine
 {
 	struct FramebufferSpecificaion
 	{
-		uint32_t Width, Height;
+		uint32_t Width = 1080, Height = 720;
 		uint32_t Samples = 1;
 		bool SwapChainTarget = false;
 	};
