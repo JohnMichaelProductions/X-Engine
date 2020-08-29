@@ -74,7 +74,7 @@ namespace XEngine
 					for (uint8_t i = 0; i < count; i++)
 					{
 						glEnableVertexAttribArray(index);
-						glVertexAttribPointer(index, count, ShaderTypeConvertToOpenGLType(element.Type), element.Normalized ? GL_TRUE : GL_FALSE, layout.GetStride(), (const void*)(sizeof(float) * count * i));
+						glVertexAttribPointer(index, count, ShaderTypeConvertToOpenGLType(element.Type), element.Normalized ? GL_TRUE : GL_FALSE, layout.GetStride(), (const void*)(element.Offset + sizeof(float) * count * i));
 						glVertexAttribDivisor(index, 1);
 						index++;
 					}

@@ -9,22 +9,22 @@ namespace XEngine
 	void OrthographicCameraController::OnUpdate(Timestep timestep)
 	{
 		XPROFILE_FUNCTION();
-		if (Input::IsKeyPressed(X_KEY_W))
+		if (Input::IsKeyPressed(Key::W))
 		{
 			m_Position.x += -sin(glm::radians(m_Rotation)) * m_Speed * timestep;
 			m_Position.y += cos(glm::radians(m_Rotation)) * m_Speed * timestep;
 		}
-		else if (Input::IsKeyPressed(X_KEY_S))
+		else if (Input::IsKeyPressed(Key::S))
 		{
 			m_Position.x -= -sin(glm::radians(m_Rotation)) * m_Speed * timestep;
 			m_Position.y -= cos(glm::radians(m_Rotation)) * m_Speed * timestep;
 		}
-		if (Input::IsKeyPressed(X_KEY_D))
+		if (Input::IsKeyPressed(Key::D))
 		{
 			m_Position.x += cos(glm::radians(m_Rotation)) * m_Speed * timestep;
 			m_Position.y += sin(glm::radians(m_Rotation)) * m_Speed * timestep;
 		}
-		else if (Input::IsKeyPressed(X_KEY_A))
+		else if (Input::IsKeyPressed(Key::A))
 		{
 			m_Position.x -= cos(glm::radians(m_Rotation)) * m_Speed * timestep;
 			m_Position.y -= sin(glm::radians(m_Rotation)) * m_Speed * timestep;
@@ -32,9 +32,9 @@ namespace XEngine
 		m_Camera.SetPosition(m_Position);
 		if (m_RotationOn)
 		{
-			if (Input::IsKeyPressed(X_KEY_E))
+			if (Input::IsKeyPressed(Key::E))
 				m_Rotation += m_RotationSpeed * timestep;
-			else if (Input::IsKeyPressed(X_KEY_Q))
+			else if (Input::IsKeyPressed(Key::Q))
 				m_Rotation -= m_RotationSpeed * timestep;
 			if (m_Rotation > 180.0f)
 				m_Rotation -= 360.0f;

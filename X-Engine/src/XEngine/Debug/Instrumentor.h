@@ -1,12 +1,12 @@
 // Instrumentor used for debugging, go to chrome://tracing/ and load in instrumentor files
 #if !XDIST
-	#pragma once
 	#include <mutex>
 	#include <chrono>
-	#include <string>
 	#include <thread>
-	#include <iomanip>
+	#include <string>
 	#include <fstream>
+	#include <iomanip>
+	#include <sstream>
 	#include <algorithm>
 	#include "XEngine/Debug/Logging.h"
 	namespace XEngine

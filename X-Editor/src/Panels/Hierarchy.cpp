@@ -22,9 +22,9 @@ namespace XEngine
 		if (!entity.HasComponent<TagComponent>())
 			entity.AddComponent<TagComponent>();
 		auto& tag = entity.GetComponent<TagComponent>().Tag;
-		ImGuiTreeNodeFlags flags = ((m_SelectionContext == entity) ?ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow;
+		ImGuiTreeNodeFlags flags = ((m_SelectionContext == entity) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow;
 		bool opened = ImGui::TreeNodeEx((void*)(uint64_t)(uint32_t)entity, flags, tag.c_str());
-		if(ImGui::IsItemClicked())
+		if (ImGui::IsItemClicked())
 			m_SelectionContext = entity;
 		if (opened)
 		{

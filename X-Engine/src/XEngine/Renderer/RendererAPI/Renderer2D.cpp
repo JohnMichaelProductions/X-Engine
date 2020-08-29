@@ -194,7 +194,7 @@ namespace XEngine
 		float textureIndex = 0.0f;
 		for (uint32_t i = 0; i < m_RendererData.TextureSlotIndex; i++)
 		{
-			if (*m_RendererData.TextureSlots[i].get() == *texture.get())
+			if (*m_RendererData.TextureSlots[i] == *texture)
 			{
 				textureIndex = (float)i;
 				break;

@@ -14,8 +14,10 @@ namespace XEngine
 		void OnImGuiRender();
 		void OnViewportResize(uint32_t width, uint32_t height);
 	private:
+		// Members
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
+		// Friends
 		friend class Entity;
 		friend class Hierarchy;
 	};

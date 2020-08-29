@@ -1,6 +1,7 @@
 // Entry Point of X-Engine
 #pragma once
 #include "XEngine/Core/XCore.h"
+#include "XEngine/Debug/Instrumentor.h"
 #ifdef XPLATFORM_WINDOWS
 extern XEngine::Application* XEngine::CreateApplication();
 int main(int argc, char** argv)

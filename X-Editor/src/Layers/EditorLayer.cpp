@@ -4,6 +4,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "Layers/EditorLayer.h"
 #include <glm/gtc/matrix_transform.hpp>
+#include "XEngine/Debug/Instrumentor.h"
 namespace XEngine
 {
 	EditorLayer::EditorLayer() : Layer("Editor Layer"), m_Camera(1920.0f / 1080.0f) {}
@@ -39,13 +40,13 @@ namespace XEngine
 			{
 				auto& transform = GetComponent<TransformComponent>().Position;
 				float speed = 5.0f;
-				if (Input::IsKeyPressed(KeyCode::A))
+				if (Input::IsKeyPressed(Key::A))
 					transform.x -= speed * timestep;
-				if (Input::IsKeyPressed(KeyCode::D))
+				if (Input::IsKeyPressed(Key::D))
 					transform.x += speed * timestep;
-				if (Input::IsKeyPressed(KeyCode::W))
+				if (Input::IsKeyPressed(Key::W))
 					transform.y += speed * timestep;
-				if (Input::IsKeyPressed(KeyCode::S))
+				if (Input::IsKeyPressed(Key::S))
 					transform.y -= speed * timestep;
 			}
 		};
@@ -129,8 +130,8 @@ namespace XEngine
 				Application::Get().GetImGuiLayer()->SetBlockEvents(!m_ViewportFocused || !m_ViewportHovered);
 				ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();	
 				m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
-				uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
-				ImGui::Image((void*)textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+				uint64_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
+				ImGui::Image(reinterpret_cast<void*>(textureID), ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 				ImGui::End();
 				ImGui::PopStyleVar();
 			}
@@ -147,12 +148,7 @@ namespace XEngine
 			// Hierarchy
 				{ m_Hierarchy.OnImGuiRender(); }
 			// Inspector
-			{
-				ImGui::Begin("Inspector");
-				//if (ImGui::Button("Create Entity", ImVec2(200, 40)))
-				//	m_ActiveScene->CreateEntity("Hello");
-				ImGui::End();
-			}
+				{ m_Properties.OnImGuiRender(m_Hierarchy.m_SelectionContext); }
 			ImGui::End();
 		}
 	}

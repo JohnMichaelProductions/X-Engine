@@ -1,6 +1,6 @@
 // Window class and window properties struct
 #pragma once
-#include "Xpch.h"
+#include <sstream>
 #include "XEngine/Core/XCore.h"
 #include "XEngine/EventSystem/Event.h"
 namespace XEngine

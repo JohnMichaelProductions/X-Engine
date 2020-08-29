@@ -2,6 +2,7 @@
 #pragma once
 #include <XEngine.h>
 #include "Panels/Hierarchy.h"
+#include "Panels/Properties.h"
 namespace XEngine
 {
 	class EditorLayer : public Layer
@@ -32,5 +33,6 @@ namespace XEngine
 			bool m_ViewportFocused = false, m_ViewportHovered = false;
 			// Panels
 			Hierarchy m_Hierarchy;
+			Properties m_Properties;
 	};
 }

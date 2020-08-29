@@ -18,13 +18,7 @@ namespace XEngine
 		XCORE_ASSERT(status, "Failed to initialize Glad!");
 		XCORE_INFO("Glad has been initialized!");
 		XCORE_INFO("OpenGL Renderer: {0} {1} {2} ", glGetString(GL_VENDOR), glGetString(GL_RENDERER), glGetString(GL_VERSION));
-		#ifdef X_ENABLE_ASSERTS
-			int versionMajor;
-			int versionMinor;
-			glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
-			glGetIntegerv(GL_MINOR_VERSION, &versionMinor);
-			XCORE_ASSERT(versionMajor > 4 || (versionMajor == 4 && versionMinor >= 5), "Hazel requires at least OpenGL version 4.5!");
-		#endif
+		XCORE_ASSERT(GLVersion.major > 4 || (GLVersion.major == 4 && GLVersion.minor >= 5), "X-Engine requires at least OpenGL version 4.5!");
 	}
 	void OpenGLContext::SwapBuffers()
 	{

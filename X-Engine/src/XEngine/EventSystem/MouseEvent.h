@@ -1,13 +1,13 @@
 // Mouse event classes
 #pragma once
-#include "XEngine/Core/Input.h"
+#include "XEngine/Core/MouseCodes.h"
 #include "XEngine/EventSystem/Event.h" 
 namespace XEngine 
 {
 	class MouseMovedEvent : public Event
 	{
 	public:
-		MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y) {}
+		MouseMovedEvent(const float x, const float y) : m_MouseX(x), m_MouseY(y) {}
 		float GetX() const
 			{ return m_MouseX; }
 		float GetY() const
@@ -26,7 +26,7 @@ namespace XEngine
 	class MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(float xOffset, float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) {}
+		MouseScrolledEvent(const float xOffset, const float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) {}
 		float GetXOffset() const 
 			{ return m_XOffset; }
 		float GetYOffset() const 
@@ -45,17 +45,17 @@ namespace XEngine
 	class MouseButtonEvent : public Event
 	{
 	public:
-		inline MouseCode GetMouseButton() const
+		MouseCode GetMouseButton() const
 			{ return m_Button; }
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:
-		MouseButtonEvent(MouseCode button) : m_Button(button) {}
+		MouseButtonEvent(const MouseCode button) : m_Button(button) {}
 		MouseCode m_Button;
 	};
 	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(MouseCode button) : MouseButtonEvent(button) {}
+		MouseButtonPressedEvent(const MouseCode button) : MouseButtonEvent(button) {}
 		std::string ToString() const override
 		{
 			std::stringstream ss;
@@ -67,7 +67,7 @@ namespace XEngine
 	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(MouseCode button) : MouseButtonEvent(button) {}
+		MouseButtonReleasedEvent(const MouseCode button) : MouseButtonEvent(button) {}
 		std::string ToString() const override
 		{
 			std::stringstream ss;

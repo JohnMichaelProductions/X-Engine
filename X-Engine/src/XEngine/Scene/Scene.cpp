@@ -67,45 +67,7 @@ namespace XEngine
 			Renderer2D::EndScene();
 		}
 	}
-	void Scene::OnImGuiRender()
-	{
-		auto view = m_Registry.view<TagComponent, TransformComponent, SpriteRendererComponent>();
-		for (auto entity : view)
-		{
-			auto [tag, transform, sprite] = view.get<TagComponent, TransformComponent, SpriteRendererComponent>(entity);
-			// Tag
-			if (m_Registry.has<TagComponent>(entity))
-			{
-				char* cstr = new char[tag.Tag.length() + 1];
-				strcpy(cstr, tag.Tag.c_str());
-				ImGui::Separator();
-				ImGui::Text("Tag Component");
-				ImGui::InputText("Name", cstr, 64, ImGuiInputTextFlags_None, NULL, NULL);
-				ImGui::Separator();
-				delete[] cstr;
-			}
-			// Transform
-			if (m_Registry.has<TransformComponent>(entity))
-			{
-				ImGui::Separator();
-				ImGui::Text("Transform Component");
-				ImGui::DragFloat3("Position", glm::value_ptr(transform.Position), 0.1f);
-				ImGui::DragFloat("Rotation", &transform.Rotation, 0.1f);
-				ImGui::DragFloat2("Size", glm::value_ptr(transform.Size), 0.1f);
-				ImGui::Separator();
-			}
-			// Sprite Renderer
-			if (m_Registry.has<SpriteRendererComponent>(entity))
-			{
-				ImGui::Separator();
-				ImGui::Text("Sprite Renderer Component");
-				ImGui::ColorEdit4("Color", glm::value_ptr(sprite.Color), 0.1f);
-				// TODO: Add Texture
-				ImGui::DragFloat("Tilling Factor", &sprite.TillingFactor, 0.1f);
-				ImGui::Separator();
-			}
-		}
-	}
+	void Scene::OnImGuiRender() {}
 	void Scene::OnViewportResize(uint32_t width, uint32_t height)
 	{
 		m_ViewportWidth = width;

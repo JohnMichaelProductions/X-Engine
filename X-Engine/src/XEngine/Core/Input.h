@@ -1,6 +1,6 @@
 // Input Class
 #pragma once
-#include "XEngine/Core/XCore.h"
+#include <glm/glm.hpp>
 #include "XEngine/Core/KeyCodes.h"
 #include "XEngine/Core/MouseCodes.h"
 namespace XEngine
@@ -10,7 +10,7 @@ namespace XEngine
 	public:
 		static bool IsKeyPressed(KeyCode key);
 		static bool IsMouseButtonPressed(MouseCode button);
-		static std::pair<float, float> GetMousePosition();
+		static glm::vec2 GetMousePosition();
 		static float GetMouseX();
 		static float GetMouseY();
 	};
