@@ -15,6 +15,7 @@ IncludeDir["ImGui"] = "X-Engine/vendor/ImGui"
 IncludeDir["GLM"]   = "X-Engine/vendor/GLM"
 IncludeDir["stb"]   = "X-Engine/vendor/stb"
 IncludeDir["EnTT"]   = "X-Engine/vendor/EnTT/include"
+IncludeDir["Visit_Struct"]   = "X-Engine/vendor/Visit_Struct"
 group "Dependencies"
 	include "X-Engine/vendor/GLFW"
 	include "X-Engine/vendor/GLAD"
@@ -38,6 +39,7 @@ group "Engine"
 			"%{prj.name}/vendor/stb/**.cpp",
 			"%{prj.name}/vendor/glm/glm/**.hpp",
 			"%{prj.name}/glm/glm/**.inl",
+			"%{prj.name}/vendor/Visit_Struct/include/**.hpp"
 		}
 		defines
 		{
@@ -53,7 +55,8 @@ group "Engine"
 			"%{IncludeDir.GLAD}",
 			"%{IncludeDir.ImGui}",
 			"%{IncludeDir.GLM}",
-			"%{IncludeDir.stb}"
+			"%{IncludeDir.stb}",
+			"%{IncludeDir.Visit_Struct}"
 		}
 		links
 		{ 
@@ -97,7 +100,7 @@ group "Game"
 			"%{IncludeDir.EnTT}",
 			"X-Engine/src",
 			"X-Engine/vendor",
-			"%{IncludeDir.glm}",
+			"%{IncludeDir.glm}"
 		}
 		links 
 			{ "X-Engine" }
@@ -138,7 +141,8 @@ group "Editor"
 			"%{IncludeDir.EnTT}",
 			"X-Engine/src",
 			"X-Engine/vendor",
-			"%{IncludeDir.GLM}"
+			"%{IncludeDir.GLM}",
+			"%{IncludeDir.Visit_Struct}"
 		}
 		links 
 			{ "X-Engine" }

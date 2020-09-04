@@ -32,8 +32,7 @@ namespace XEngine
 		public:
 			void OnCreate()
 			{
-				auto& transform = GetComponent<TransformComponent>();
-				transform.Position.x = rand() % 10 - 5.0f;
+
 			}
 			void OnDestroy() {}
 			void OnUpdate(Timestep timestep)
